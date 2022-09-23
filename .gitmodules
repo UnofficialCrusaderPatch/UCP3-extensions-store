@@ -1,0 +1,6 @@
+[submodule "UnofficialCrusaderPatch3-3.0.0"]
+	path = UnofficialCrusaderPatch3-3.0.0
+	url = https://github.com/UnofficialCrusaderPatch/UnofficialCrusaderPatch3
+[submodule "graphicsApiReplacer-1.1.0"]
+	path = graphicsApiReplacer-1.1.0
+	url = https://github.com/TheRedDaemon/ucp_graphicsApiReplacer

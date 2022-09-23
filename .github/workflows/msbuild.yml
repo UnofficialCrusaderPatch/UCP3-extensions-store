@@ -23,6 +23,7 @@ env:
   VERSION_MAJOR: 3
   VERSION_MINOR: 0
   VERSION_PATCH: 0
+  UCP3_DIR: UnofficialCrusaderPatch3-3.0.0
 
 jobs:
   build:
@@ -41,16 +42,17 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Add NuGet source
-      working-directory: ${{env.GITHUB_WORKSPACE}}
+      working-directory: ${{env.UCP3_DIR}}
       env:
         UCP3_READ_PACKAGES: ${{ secrets.UCP3_READ_PACKAGES }}
       run: nuget sources add -Name "gynt-packages" -Source "https://nuget.pkg.github.com/gynt/index.json" -StorePasswordInClearText -Username git -Password "$env:UCP3_READ_PACKAGES"
 
     - name: Restore NuGet packages
-      working-directory: ${{env.GITHUB_WORKSPACE}}
+      working-directory: ${{env.UCP3_DIR}}
       run: nuget restore
       
     - name: Prepare UCP3 package folder structure
+      working-directory: ${{env.UCP3_DIR}}
       shell: pwsh
       run: |
         # Create the right folders
@@ -58,6 +60,7 @@ jobs:
         mkdir "$env:BUILD_CONFIGURATION\ucp-package\ucp"    
       
     - name: Prepare UCP3 package extensions
+      working-directory: ${{env.UCP3_DIR}}
       shell: pwsh
       run: |
         # Copy all content/ucp files ucp-package/ucp, except the modules folder
@@ -138,12 +141,14 @@ jobs:
         }
         
     - name: Copy over FASM dll
+      working-directory: ${{env.UCP3_DIR}}
       shell: pwsh
       run: |
         Copy-Item "dll\vendor\fasm\source\dll\fasm.dll" -Destination "$env:BUILD_CONFIGURATION\ucp-package\ucp\code\vendor\fasm\fasm.dll"
         Copy-Item "dll\vendor\fasm\LICENSE.txt" -Destination "$env:BUILD_CONFIGURATION\ucp-package\ucp\code\vendor\fasm\LICENSE.txt"
         
     - name: Generate zip file of the package for secure versions
+      working-directory: ${{env.UCP3_DIR}}
       shell: pwsh
       run: |
         if(($env:BUILD_CONFIGURATION -eq "DebugSecure") -or ($env:BUILD_CONFIGURATION -eq "ReleaseSecure")) {
@@ -155,13 +160,14 @@ jobs:
         }
         
     - name: Build UCP3
-      working-directory: ${{env.GITHUB_WORKSPACE}}
+      working-directory: ${{env.UCP3_DIR}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: |
         msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
 
     - name: Prepare UCP3 package dll files and cfg file
+      working-directory: ${{env.UCP3_DIR}}
       shell: pwsh
       run: |
         # Copy the dll files, rename binkw32.dll to binkw32_ucp.dll
@@ -189,6 +195,7 @@ jobs:
         mkdir "$env:BUILD_CONFIGURATION\ucp-package\gameseeds"
 
     - name: Generate a default config
+      working-directory: ${{env.UCP3_DIR}}
       shell: pwsh
       run: |
         Install-Module powershell-yaml -Scope CurrentUser -Force
@@ -286,6 +293,7 @@ jobs:
         $o = ConvertTo-Yaml $defaults
         Set-Content -Path "$env:BUILD_CONFIGURATION\ucp-package\ucp-config-defaults.yml" -Value $o
     - name: Generate a UCP3 version file
+      working-directory: ${{env.UCP3_DIR}}
       shell: pwsh
       run: |
         Import-Module powershell-yaml
@@ -299,6 +307,7 @@ jobs:
         $y = ConvertTo-Yaml $versionInfo
         Set-Content -Path "$env:BUILD_CONFIGURATION\ucp-package\ucp-version.yml" -Value $y
     - name: Generate a snapshot UCP3 artifact name
+      working-directory: ${{env.UCP3_DIR}}
       shell: pwsh
       run: |
         $name = "$env:GITHUB_SHA".SubString(0, 10)
@@ -317,6 +326,7 @@ jobs:
         }
         echo "NAME=UCP3-snapshot-$type-$name" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
     - name: Upload UCP3 as an artifact
+      working-directory: ${{env.UCP3_DIR}}
       uses: actions/upload-artifact@v2
       with:
         name: ${{ env.NAME }}
