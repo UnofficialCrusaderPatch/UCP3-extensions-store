@@ -35,6 +35,7 @@ jobs:
         BUILD_CONFIGURATION: ${{ matrix.build_configuration }}
     steps:
     - uses: actions/checkout@v2
+      token: {{ secrets.UCP3_PRIVATE_REPO_READ_ACCESS }}
       with:
         submodules: recursive
 
