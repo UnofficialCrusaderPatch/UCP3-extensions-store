@@ -35,8 +35,8 @@ jobs:
         BUILD_CONFIGURATION: ${{ matrix.build_configuration }}
     steps:
     - uses: actions/checkout@v3
-      token: {{ secrets.UCP3_PRIVATE_REPO_READ_ACCESS }}
       with:
+        token: {{ secrets.UCP3_PRIVATE_REPO_READ_ACCESS }}
         submodules: recursive
 
     - name: Add MSBuild to PATH
