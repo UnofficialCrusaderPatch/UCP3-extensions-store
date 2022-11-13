@@ -49,7 +49,7 @@ jobs:
         automatic_release_tag: '${{ env.GITHUB_REF_NAME  }}'
         prerelease: true
         draft: false
-        title: 'Build for ${{ GITHUB_REF_NAME }}'
+        title: 'Build for ${{ env.GITHUB_REF_NAME }}'
         files: |
           build/${{ env.BUILD_CONFIGURATION }}/latest.json
           build/${{ env.BUILD_CONFIGURATION }}/*.zip
