@@ -56,7 +56,7 @@ jobs:
       uses: 'marvinpinto/action-automatic-releases@latest'
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        automatic_release_tag: ${{ github.ref_name  }}
+        automatic_release_tag: '${{ github.ref_name }}-${{ env.BUILD_CONFIGURATION }}'
         prerelease: true
         draft: false
         title: Build for ${{ github.ref_name }}
