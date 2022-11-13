@@ -33,14 +33,14 @@ jobs:
       run: |
         pushd UnofficialCrusaderPatch3*
         
-        build.ps1 -build "$env:BUILD_CONFIGURATION" -token "TODO"
+        .\build.ps1 -build "$env:BUILD_CONFIGURATION" -token "TODO"
         
         popd
 
     - name: Run build script for the modules
       shell: pwsh
       run: |
-        build.ps1 -build "$env:BUILD_CONFIGURATION" -token "TODO"
+        .\build.ps1 -build "$env:BUILD_CONFIGURATION" -token "TODO"
 
     - name: Create release 
       uses: 'marvinpinto/action-automatic-releases@latest'
