@@ -41,6 +41,8 @@ jobs:
 
     - name: Run build script for the modules
       shell: pwsh
+      env:
+        UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
       run: |
         .\build.ps1 -build "$env:BUILD_CONFIGURATION" -token "$env:UCP3_NUGET_TOKEN"
 

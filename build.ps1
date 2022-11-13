@@ -1,9 +1,11 @@
 param (
-	[string]$buildConfiguration = "Release",
-	[string]$token = ""
+	[string]$build = "Release",
+	[string]$token = "missing"
 	#[Parameter(Mandatory=$true)][string]$username,
 	#[string]$password = $( Read-Host "Input password, please" )
 )
+
+$buildConfiguration = $build
  
 nuget sources add -Name "gynt-packages" -Source "https://nuget.pkg.github.com/gynt/index.json" -StorePasswordInClearText -Username git -Password "$token"
 
@@ -23,6 +25,8 @@ if($buildConfiguration -eq "DebugSecure") {
 if($buildConfiguration -eq "ReleaseSecure") {
 	$simpleBuildConfiguration="Release"
 }
+
+nuget sources add -Name "gynt-packages" -Source "https://nuget.pkg.github.com/gynt/index.json" -StorePasswordInClearText -Username git -Password "$token"
 
 # List all modules to compile, ignore a build directory and any directory starting with a ".", and ignoring the UnofficialCrusaderPatch3 module
 [array]$moduleDirectories = Get-ChildItem -Path $modulesPath -Directory | Where({$_.Name -ne "build"}) | Where({!$_.Name.StartsWith(".")})  | Where({!$_.Name.StartsWith("UnofficialCrusaderPatch3")})
