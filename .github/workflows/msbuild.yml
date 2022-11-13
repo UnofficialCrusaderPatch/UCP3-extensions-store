@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        build_configuration: [Debug, Release, DebugSecure, ReleaseSecure]
+        build_configuration: [Release]
     env:
         BUILD_CONFIGURATION: ${{ matrix.build_configuration }}
     steps:
