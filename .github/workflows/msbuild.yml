@@ -56,10 +56,10 @@ jobs:
       uses: 'marvinpinto/action-automatic-releases@latest'
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        automatic_release_tag: ${{ env.GITHUB_REF_NAME  }}
+        automatic_release_tag: ${{ github.ref_name  }}
         prerelease: true
         draft: false
-        title: Build for ${{ env.GITHUB_REF_NAME }}
+        title: Build for ${{ github.ref_name }}
         files: |
           build/${{ env.BUILD_CONFIGURATION }}/latest.json
           build/${{ env.BUILD_CONFIGURATION }}/*.zip
