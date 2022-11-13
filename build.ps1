@@ -10,7 +10,7 @@ nuget sources add -Name "gynt-packages" -Source "https://nuget.pkg.github.com/gy
 # Set up the directories
 New-Item -Name "build" -ItemType "directory" -Force
 ## Remove old directory for the current build configuration
-Get-ChildItem -Path "build" | Where({$_.Name -eq "$buildConfiguration"}) | Remove-Item -Recurse -Force
+Get-ChildItem -Directory -Path "build" | Where({$_.Name -eq "$buildConfiguration"}) | Remove-Item -Recurse -Force
 ## Create the new directory
 $buildPath = (New-Item -Path "build" -Name "$buildConfiguration" -ItemType "directory").FullName
 $modulesPath = "."
