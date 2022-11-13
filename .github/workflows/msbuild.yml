@@ -35,7 +35,7 @@ jobs:
       run: |
         pushd UnofficialCrusaderPatch3*
         
-        .\build.ps1 -build "$env:BUILD_CONFIGURATION" -token "$env:UCP3_NUGET_TOKEN"
+        .\build.ps1 -Build "$env:BUILD_CONFIGURATION" -NugetToken "$env:UCP3_NUGET_TOKEN"
         
         popd
 
@@ -44,7 +44,13 @@ jobs:
       env:
         UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
       run: |
-        .\build.ps1 -build "$env:BUILD_CONFIGURATION" -token "$env:UCP3_NUGET_TOKEN"
+        .\build.ps1 -Build "$env:BUILD_CONFIGURATION" -NugetToken "$env:UCP3_NUGET_TOKEN"
+
+    - name: Display ref name
+      shell: pwsh
+      run: |
+        echo $env:GITHUB_REF_NAME
+        echo $env:GITHUB_REF
 
     - name: Create release 
       uses: 'marvinpinto/action-automatic-releases@latest'

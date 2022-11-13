@@ -1,13 +1,27 @@
 param (
-	[string]$build = "Release",
-	[string]$token = "missing"
+	[string]$Build = "Release",
+	[string]$NugetToken = "missing"
 	#[Parameter(Mandatory=$true)][string]$username,
 	#[string]$password = $( Read-Host "Input password, please" )
 )
 
-$buildConfiguration = $build
+$ep = Get-ExecutionPolicy -Scope CurrentUser
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Install yaml library
+if(!(Get-Module -ListAvailable -Name powershell-yaml)) {
+  Install-Module powershell-yaml -Scope CurrentUser -Force  
+}
+
+Import-Module powershell-yaml
+
+Set-ExecutionPolicy "$ep" -Scope CurrentUser
+
+
+
+$buildConfiguration = $Build
  
-nuget sources add -Name "gynt-packages" -Source "https://nuget.pkg.github.com/gynt/index.json" -StorePasswordInClearText -Username git -Password "$token"
+nuget sources add -Name "gynt-packages" -Source "https://nuget.pkg.github.com/gynt/index.json" -StorePasswordInClearText -Username git -Password "$NugetToken"
 
 # Set up the directories
 New-Item -Name "build" -ItemType "directory" -Force
@@ -26,7 +40,6 @@ if($buildConfiguration -eq "ReleaseSecure") {
 	$simpleBuildConfiguration="Release"
 }
 
-nuget sources add -Name "gynt-packages" -Source "https://nuget.pkg.github.com/gynt/index.json" -StorePasswordInClearText -Username git -Password "$token"
 
 # List all modules to compile, ignore a build directory and any directory starting with a ".", and ignoring the UnofficialCrusaderPatch3 module
 [array]$moduleDirectories = Get-ChildItem -Path $modulesPath -Directory | Where({$_.Name -ne "build"}) | Where({!$_.Name.StartsWith(".")})  | Where({!$_.Name.StartsWith("UnofficialCrusaderPatch3")})
