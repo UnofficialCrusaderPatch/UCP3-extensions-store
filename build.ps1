@@ -17,11 +17,10 @@ Import-Module powershell-yaml
 
 Set-ExecutionPolicy "$ep" -Scope CurrentUser
 
-
-
 $buildConfiguration = $Build
  
 nuget sources add -Name "gynt-packages" -Source "https://nuget.pkg.github.com/gynt/index.json" -StorePasswordInClearText -Username git -Password "$NugetToken"
+
 
 # Set up the directories
 New-Item -Name "build" -ItemType "directory" -Force
@@ -39,6 +38,23 @@ if($buildConfiguration -eq "DebugSecure") {
 if($buildConfiguration -eq "ReleaseSecure") {
 	$simpleBuildConfiguration="Release"
 }
+
+
+
+
+$UCP3SrcDirName = (Get-Item "UnofficialCrusaderPatch3*").Name
+
+# Compile UCP3
+pushd UnofficialCrusaderPatch3*
+
+.\build.ps1 -Build "$buildConfiguration" -NugetToken "$NugetToken"
+
+popd
+
+Move-Item -Path "UnofficialCrusaderPatch3*\$buildConfiguration\ucp-package\*" -Destination "$buildPath\$UCP3SrcDirName"
+
+
+# Compile the modules
 
 
 # List all modules to compile, ignore a build directory and any directory starting with a ".", and ignoring the UnofficialCrusaderPatch3 module
@@ -123,5 +139,27 @@ foreach($bmd in $buildModuleDirectories) {
 }
 
 Get-Item "*.zip" | ForEach-Object { $h = Get-FileHash $_ -Algorithm SHA256; $n = $_.Name; New-Item -Name "$n.sig" -Value "$($h.Hash)" }
+
+popd
+
+
+
+
+
+pushd $buildPath
+
+[System.Collections.ArrayList]$hashedEntries = @()
+Get-Item *.sig | ForEach-Object { 
+  $h = Get-Content $_; 
+  $n = ($_.Name -Split ".zip.sig")[0];
+  $nz = "$($n).zip"
+  $hashedEntries.Add([ordered]@{
+    extension = $n; 
+    file = $nz;
+    hash = $h.ToString();
+  }) 
+}
+
+ConvertTo-Json $hashedEntries | Set-Content -Path "$buildPath\meta.json"
 
 popd

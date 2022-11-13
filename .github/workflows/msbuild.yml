@@ -28,18 +28,7 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Run build script for UnofficialCrusaderPatch3
-      shell: pwsh
-      env:
-        UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
-      run: |
-        pushd UnofficialCrusaderPatch3*
-        
-        .\build.ps1 -Build "$env:BUILD_CONFIGURATION" -NugetToken "$env:UCP3_NUGET_TOKEN"
-        
-        popd
-
-    - name: Run build script for the modules
+    - name: Run build script for UCP3 and the modules
       shell: pwsh
       env:
         UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
@@ -61,6 +50,6 @@ jobs:
         draft: false
         title: Build for ${{ github.ref_name }}
         files: |
-          build/${{ env.BUILD_CONFIGURATION }}/latest.json
+          build/${{ env.BUILD_CONFIGURATION }}/meta.json
           build/${{ env.BUILD_CONFIGURATION }}/*.zip
           build/${{ env.BUILD_CONFIGURATION }}/*.sig
