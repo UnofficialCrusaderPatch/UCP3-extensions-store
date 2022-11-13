@@ -42,7 +42,7 @@ jobs:
     - name: Run build script for the modules
       shell: pwsh
       run: |
-        .\build.ps1 -build "$env:BUILD_CONFIGURATION" -token "$env:UCP3_NUGET_TOKEN"
+        .\build.ps1 -build "$env:BUILD_CONFIGURATION" -token "TODO"
 
     - name: Create release 
       uses: 'marvinpinto/action-automatic-releases@latest'
