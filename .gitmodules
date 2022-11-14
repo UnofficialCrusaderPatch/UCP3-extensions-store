@@ -4,3 +4,15 @@
 [submodule "graphicsApiReplacer-1.1.0"]
 	path = graphicsApiReplacer-1.1.0
 	url = https://github.com/TheRedDaemon/ucp_graphicsApiReplacer
+[submodule "gmResourceModifier-0.1.0"]
+	path = gmResourceModifier-0.1.0
+	url = https://github.com/TheRedDaemon/ucp_gmResourceModifier
+[submodule "inputHandler-0.1.0"]
+	path = inputHandler-0.1.0
+	url = https://github.com/TheRedDaemon/ucp_inputHandler
+[submodule "textResourceModifier-0.2.0"]
+	path = textResourceModifier-0.2.0
+	url = https://github.com/TheRedDaemon/ucp_textResourceModifier
+[submodule "winProcHandler-0.1.0"]
+	path = winProcHandler-0.1.0
+	url = https://github.com/TheRedDaemon/ucp_winProcHandler
