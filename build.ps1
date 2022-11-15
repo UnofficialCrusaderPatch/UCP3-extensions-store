@@ -40,9 +40,17 @@ if($buildConfiguration -eq "ReleaseSecure") {
 }
 
 
-
+$releaseNames = @{
+  ReleaseSecure = "Release";
+  Release = "Dev";
+}
 
 $UCP3SrcDirName = (Get-Item "UnofficialCrusaderPatch3*").Name
+
+# UNDO: fixme: this is a hack for now to emulate a UCP3 repo without modules
+Get-ChildItem -Directory | Where({$_.Name -ne "$UCP3SrcDirName"}) | Where({$_.Name -match ".*?-[0-9].[0-9].[0-9]$"}) | Remove-Item -Recurse -Force
+Move-Item -Path "$UCP3SrcDirName\content\ucp\modules\*" -Destination "."
+
 
 # Compile UCP3
 pushd UnofficialCrusaderPatch3*
