@@ -177,5 +177,6 @@ Get-Item *.sig | ForEach-Object {
 }
 
 ConvertTo-Yaml $hashedEntries | Set-Content -Path "$buildPath\meta.yml"
+ConvertTo-Json $hashedEntries | Set-Content -Path "$buildPath\meta.json"
 
 popd

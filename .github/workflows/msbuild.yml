@@ -51,5 +51,6 @@ jobs:
         title: Build for ${{ github.ref_name }}
         files: |
           build/${{ env.BUILD_CONFIGURATION }}/meta.json
+          build/${{ env.BUILD_CONFIGURATION }}/meta.yml
           build/${{ env.BUILD_CONFIGURATION }}/*.zip
           build/${{ env.BUILD_CONFIGURATION }}/*.sig
