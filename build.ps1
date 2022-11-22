@@ -41,8 +41,8 @@ if($buildConfiguration -eq "ReleaseSecure") {
 
 
 $releaseNames = @{
-  ReleaseSecure = "Release";
-  Release = "Dev";
+  ReleaseSecure = "";
+  Release = "dev";
 }
 
 $UCP3SrcDirName = (Get-Item "UnofficialCrusaderPatch3*").Name
@@ -160,14 +160,22 @@ pushd $buildPath
 Get-Item *.sig | ForEach-Object { 
   $h = Get-Content $_; 
   $n = ($_.Name -Split ".zip.sig")[0];
+  
+  
+  $def = @{};
+  if(Test-Path "$n\definition.yml") {
+    $def = Get-Item "$n\definition.yml" | Get-Content | ConvertFrom-Yaml
+  }
+  
   $nz = "$($n).zip"
   $hashedEntries.Add([ordered]@{
     extension = $n; 
     file = $nz;
     hash = $h.ToString();
+    header = $def;
   }) 
 }
 
-ConvertTo-Json $hashedEntries | Set-Content -Path "$buildPath\meta.json"
+ConvertTo-Yaml $hashedEntries | Set-Content -Path "$buildPath\meta.yml"
 
 popd
