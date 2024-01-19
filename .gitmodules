@@ -16,3 +16,6 @@
 [submodule "winProcHandler-0.1.0"]
 	path = modules/winProcHandler-0.1.0
 	url = https://github.com/TheRedDaemon/ucp_winProcHandler
+[submodule "modules/startResources-0.1.0"]
+	path = modules/startResources-0.1.0
+	url = https://github.com/gynt/ucp_startResources

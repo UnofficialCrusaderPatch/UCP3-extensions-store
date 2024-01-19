@@ -1,0 +1,6 @@
+name: maploader
+version: 0.0.1
+author: gynt
+game: [SHC==1.41]
+meta:
+  version: 1.0.0
