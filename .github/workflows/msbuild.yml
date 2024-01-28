@@ -33,8 +33,9 @@ jobs:
       env:
         UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
       run: |
-        .\build.ps1 -Build "$env:BUILD_CONFIGURATION" -NugetToken "$env:UCP3_NUGET_TOKEN"
-
+        pushd "UnofficialCrusaderPatch3-*"
+        .\scripts\build.ps1 -What all -BuildType Release -NugetToken "$env:UCP3_NUGET_TOKEN"
+        popd
     - name: Display ref name
       shell: pwsh
       run: |
