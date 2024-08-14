@@ -7,6 +7,10 @@ $REPO = "UnofficialCrusaderPatch/UCP3-extensions-store"
 $UCP3_REPO = "UnofficialCrusaderPatch/UnofficialCrusaderPatch3"
 $STORE_FILE_NAME = "store.yml"
 
+# Prepare the build directory
+Remove-Item -Path "build" -Recurse -ErrorAction Ignore -Force | Out-Null
+New-Item -Path "build" -ItemType "directory" -ErrorAction Ignore | Out-Null
+
 # Stop this entire script in case of errors
 $ErrorActionPreference = 'Stop'
 
@@ -57,7 +61,7 @@ $store = $recipe | ConvertTo-Yaml | ConvertFrom-Yaml
 
 $resolvedExtensions = [System.Collections.ArrayList]::new()
 
-$extensionsToBeBuilt = @($extensions | ForEach-Object { $_ }) # Array copy
+$extensionsToBeBuilt = [System.Collections.ArrayList]@($extensions | ForEach-Object { $_ }) # Array copy
 
 foreach ($release in $sortedReleaseVersionsArray) {
 
@@ -70,7 +74,7 @@ foreach ($release in $sortedReleaseVersionsArray) {
 
   Write-Output "Searching for binaries in release: $tag"
 
-  $releaseStore = gh release download $tag --pattern $STORE_FILE_NAME --repo $REPO --output - | ConvertFrom-Json
+  $releaseStore = gh release download $tag --pattern $STORE_FILE_NAME --repo $REPO --output - | ConvertFrom-Yaml
 
   foreach ($extension in $extensions) {
 
@@ -88,9 +92,8 @@ foreach ($release in $sortedReleaseVersionsArray) {
     
     Write-Output "Looking for a binary for: $name@$version"
 
-    $hit = $releaseStore | Where-Object { $_.definition.name -eq $name } | Where-Object { $_.definition.version -eq $version }
+    $hit = $releaseStore.extensions.list | Where-Object { $_.definition.name -eq $name } | Where-Object { $_.definition.version -eq $version }
 
-    # TODO: test!
     if ($null -ne $hit) {
       Write-Output "Found a binary"
       # Copy over the contents
@@ -100,8 +103,8 @@ foreach ($release in $sortedReleaseVersionsArray) {
       Where-Object { $_.definition.name -eq $extension.definition.name -and $_.definition.version -eq $extension.definition.version } |
       ForEach-Object { $_.contents = $hit.contents }
 
-      $extensionsToBeBuilt.Remove($extension)
-      $resolvedExtensions.Add($extension)
+      $extensionsToBeBuilt.Remove($extension) | Out-Null
+      $resolvedExtensions.Add($extension) | Out-Null
 
       continue
     }
@@ -116,14 +119,11 @@ if ($extensionsToBeBuilt.Count -eq 0) {
   $store | ConvertTo-Yaml | New-Item -Path "build\store.yml" | Out-Null
 
   # We are done!
+  Write-Output "Early exit as all extensions were resolved to binaries"
   return 0
 }
 
 Write-Output "Compiling $($extensionsToBeBuilt.Count) extensions"
-
-# Prepare the build directory
-Remove-Item -Path "build" -Recurse -ErrorAction Ignore -Force | Out-Null
-New-Item -Path "build" -ItemType "directory" -ErrorAction Ignore | Out-Null
 
 
 $frameworkTag = $recipe.framework['github-tag']
