@@ -12,7 +12,7 @@ framework:
 # When this store was created
 timestamp: ~
 # Which certificate signed the modules in this store
-signer: UCP-Team-key-1
+signer: default
 supported-languages:
   - en
 # The extensions defined in this store
@@ -26,7 +26,6 @@ extensions:
         name: files
         type: module
         version: 1.0.0
-        author: [gynt, TheRedDaemon]
       contents:
         # If defined, at this level, applies to both description and package. 
         # Uses all defaults as known today (default locations for locale files)
@@ -37,23 +36,10 @@ extensions:
           url: UnofficialCrusaderPatch/extension-files
           github-sha: f3ba001af4d8116fbeb9183c51a27ce29d052c3c
           github-tag: main
-          signer: default # Optional
-          location: # Optional
-            root: 
-              default: true
-          targets: [description, package] # Optional
     - definition:
         name: aiSwapper
-        display-name: AI Swapper
         version: 1.1.0
-        author: TheRedDaemon, gynt
         type: module
-        dependencies:
-          gmResourceModifier: ">= 0.1.0"
-          textResourceModifier: ">= 0.1.0"
-          aicloader: ">= 0.1.0"
-          aivloader: ">= 0.0.1"
-          files: ">= 0.1.0"
       contents:
         # If defined, at this level, applies to both description and package. 
         # Uses all defaults as known today (default locations for locale files)
@@ -64,8 +50,4 @@ extensions:
           url: UnofficialCrusaderPatch/extension-aiSwapper
           github-sha: f779b9a2bd5a9691b8bbfc9459af019b5ad29f85
           github-tag: main
-          signer: default # Optional
-          location: # Optional
-            root: 
-              default: true
-          targets: [description, package] # Optional    
+   
