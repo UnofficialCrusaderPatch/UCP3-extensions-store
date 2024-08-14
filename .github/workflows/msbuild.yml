@@ -30,6 +30,7 @@ jobs:
         pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
       env:
         UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
+        GH_TOKEN: ${{ github.token }}
       run: |
         .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem"
 
@@ -38,5 +39,6 @@ jobs:
         pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
       env:
         UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
+        GH_TOKEN: ${{ github.token }}
       run: |
         .\scripts\create-release.ps1
