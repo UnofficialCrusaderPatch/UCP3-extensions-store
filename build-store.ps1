@@ -21,9 +21,6 @@ $recipe = Get-Content .\recipe.yml | ConvertFrom-Yaml
 
 $releaseTags = gh --repo $REPO release list --json tagName | ConvertFrom-Json | ForEach-Object { $_.tagName }
 
-# For testing only
-$releaseTags = "['v3.0.0', 'v3.0.1', 'v3.0.2']" | ConvertFrom-Yaml
-
 # Descending order
 $sortedReleaseVersionsArray = @($releaseTags | Where-Object { $_.StartsWith("v") } | ForEach-Object { [semver]($_.Substring(1)) } | Sort-Object -Descending)
 
@@ -93,6 +90,7 @@ foreach ($release in $sortedReleaseVersionsArray) {
 
     $hit = $releaseStore | Where-Object { $_.definition.name -eq $name } | Where-Object { $_.definition.version -eq $version }
 
+    # TODO: test!
     if ($null -ne $hit) {
       Write-Output "Found a binary"
       # Copy over the contents
@@ -130,9 +128,17 @@ New-Item -Path "build" -ItemType "directory" -ErrorAction Ignore | Out-Null
 
 $frameworkTag = $recipe.framework['github-tag']
 $frameworkSha = $recipe.framework['github-sha']
+$ucp3ReleaseTags = gh --repo $UCP3_REPO release list --json tagName | ConvertFrom-Json | ForEach-Object { $_.tagName }
+$isFrameworkReleased = $ucp3ReleaseTags.Contains($frameworkTag)
 
-# We just clone the UCP3 repo for the build scripts!
-gh repo clone $UCP3_REPO "build\ucp3" -- --depth=1 --branch $frameworkTag | Out-Null
+if ($isFrameworkReleased) {
+  # We just clone the UCP3 repo for the build scripts!
+  gh repo clone $UCP3_REPO "build\ucp3" -- --depth=1 --branch $frameworkTag | Out-Null
+} else {
+  # We have to clone the entire thing
+  gh repo clone $UCP3_REPO "build\ucp3" -- --depth=1 --branch $frameworkTag --recurse-submodules | Out-Null
+}
+
 
 Push-Location ".\build\ucp3"
 $localFrameworkSha = git rev-parse HEAD
@@ -144,13 +150,13 @@ if ($localFrameworkSha -ne $frameworkSha) {
 }
 
 
-# Fetch nuget package if it exists
-if ($releaseTags.Contains($frameworkTag)) {
+if ($isFrameworkReleased) {
+  # Fetch nuget package if it exists
   gh release download --dir ".\build\" --pattern "*nupkg[.]zip" --repo $UCP3_REPO $frameworkTag
   Expand-Archive -Path ".\build\*.zip" -DestinationPath ".\build\"
   $NUPKG_DIRECTORY = (Get-Item -Path ".\build\").FullName
 } else {
-  # Build everything given
+  # Build UCP3
   Push-Location "build\ucp3"
 
   if ($NugetToken -ne $null -and $NugetToken -ne "") {
@@ -163,11 +169,6 @@ if ($releaseTags.Contains($frameworkTag)) {
   Pop-Location
 }
 
-
-
-# Clear pre shipped stuff, we don't need it anymore in this store, or maybe we do, but only a subset...
-# Remove-Item -Recurse -Path ".\build\ucp3\content\ucp\modules\*" -Force | Out-Null
-# Remove-Item -Recurse -Path ".\build\ucp3\content\ucp\plugins\*" -Force | Out-Null
 
 New-Item -Path "build\extensions" -ItemType "directory" -ErrorAction Ignore | Out-Null
 New-Item -Path "build\extensions\source" -ItemType "directory" -ErrorAction Ignore | Out-Null
