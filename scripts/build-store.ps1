@@ -225,7 +225,7 @@ foreach ($extension in $extensionsToBeBuilt) {
     & ".\build\ucp3\scripts\build-module.ps1" -Path $destination -Destination "$binaryDestination\" -BUILD_CONFIGURATION "ReleaseSecure" -UCPNuPkgPath "$NUPKG_DIRECTORY" -RemoveZippedFolders
   }
   else {
-    & ".\build\ucp3\scripts\build-plugin.ps1" -Path $destination -Destination "$binaryDestination" -RemoveZippedFolders
+    & ".\build\ucp3\scripts\build-plugin.ps1" -Path $destination -Destination "$binaryDestination" -RemoveZippedFolders -Zip
   }
 }
 
@@ -236,8 +236,6 @@ foreach ($extension in $extensionsToBeBuilt) {
 
   if ( $extension.definition.type -eq "module" ) {
     # Modules
-
-    
 
     $path = ".\build\extensions\$filename"
 
@@ -266,6 +264,8 @@ foreach ($extension in $extensionsToBeBuilt) {
   else {
     # Plugins
     $path = ".\build\extensions\$filename"
+
+    $hash = (Get-FileHash -Algorithm SHA256 -Path $path | Select-Object -ExpandProperty Hash).ToLower()
   
     $item = Get-Item -Path $path
   
@@ -275,6 +275,7 @@ foreach ($extension in $extensionsToBeBuilt) {
         size   = $item.length;
         url    = "https://github.com/$REPO/releases/download/$($frameworkTag)/$filename";
         signer = "default";
+        hash   = $hash;
       }
     )
 
