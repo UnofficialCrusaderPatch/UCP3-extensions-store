@@ -26,14 +26,16 @@ jobs:
         Set-Content -Value "$env:UCP3_SIGNING_CERTIFICATE_CONTENTS" -Path "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -Force
 
     - name: Build store
-      shell: pwsh
+      shell: |
+        pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
       env:
         UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
       run: |
         .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem"
 
     - name: Release store
-      shell: pwsh
+      shell: |
+        pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
       env:
         UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
       run: |
