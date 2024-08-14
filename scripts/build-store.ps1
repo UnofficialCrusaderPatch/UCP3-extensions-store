@@ -42,13 +42,17 @@ foreach ($extension in $extensions) {
     $definition.type = $source['extension-type']
   }
 
+  if ($null -ne $extension.definition.type) {
+    $definition.type = $extension.definition.type
+  }
+
   if (($definition.type -ne "plugin") -and ($definition.type -ne "module")) {
-    Write-Error "Aborting. Extension is of unknown type: $($definition.name)-$($definition.version)"
+    Write-Error "Aborting. Extension is of unknown type: $($definition.name)-$($definition.version): $($definition.type)"
 
     return 1
   }
 
-  if (($extension.definition -ne $null) -and ($extension.definition.version -ne $definition.version)) {
+  if (($null -ne $extension.definition) -and ($extension.definition.version -ne $definition.version)) {
     Write-Error "Aborting. Extension version is different on remote: $($definition.name)-$($definition.version)"
 
     return 1
@@ -134,7 +138,8 @@ $isFrameworkReleased = $ucp3ReleaseTags.Contains($frameworkTag)
 if ($isFrameworkReleased) {
   # We just clone the UCP3 repo for the build scripts!
   gh repo clone $UCP3_REPO "build\ucp3" -- --depth=1 --branch $frameworkTag | Out-Null
-} else {
+}
+else {
   # We have to clone the entire thing
   gh repo clone $UCP3_REPO "build\ucp3" -- --depth=1 --branch $frameworkTag --recurse-submodules | Out-Null
 }
@@ -155,7 +160,8 @@ if ($isFrameworkReleased) {
   gh release download --dir ".\build\" --pattern "*nupkg[.]zip" --repo $UCP3_REPO $frameworkTag
   Expand-Archive -Path ".\build\*.zip" -DestinationPath ".\build\"
   $NUPKG_DIRECTORY = (Get-Item -Path ".\build\").FullName
-} else {
+}
+else {
   # Build UCP3
   Push-Location "build\ucp3"
 
@@ -217,7 +223,8 @@ foreach ($extension in $extensionsToBeBuilt) {
 
   if ($extension.definition.type -eq "module") {
     & ".\build\ucp3\scripts\build-module.ps1" -Path $destination -Destination "$binaryDestination\" -BUILD_CONFIGURATION "ReleaseSecure" -UCPNuPkgPath "$NUPKG_DIRECTORY" -RemoveZippedFolders
-  } else {
+  }
+  else {
     & ".\build\ucp3\scripts\build-plugin.ps1" -Path $destination -Destination "$binaryDestination" -RemoveZippedFolders
   }
 }
