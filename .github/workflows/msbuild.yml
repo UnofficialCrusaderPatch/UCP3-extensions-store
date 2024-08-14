@@ -1,57 +1,40 @@
-name: Build modules
+name: Build and release store
 
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
-  workflow_dispatch
-
-env:
-  # Path to the solution file relative to the root of the project.
-  SOLUTION_FILE_PATH: .
-  UCP3_DIR: UnofficialCrusaderPatch3-3.0.0
+  push
 
 jobs:
   build:
     runs-on: windows-latest
-    strategy:
-      matrix:
-        build_configuration: [Release]
     env:
-        BUILD_CONFIGURATION: ${{ matrix.build_configuration }}
+        BUILD_CONFIGURATION: ReleaseSecure
     steps:
-    - name: Checkout private tools
+    - name: Checkout
       uses: actions/checkout@v3
       with:
-        token: ${{ secrets.UCP3_PRIVATE_REPO_READ_ACCESS }}
         submodules: recursive
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v2
 
-    - name: Run build script for UCP3 and the modules
+    - name: Prepare signing of modules by exporting secret to file
+      shell: pwsh
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      env:
+        UCP3_SIGNING_CERTIFICATE_CONTENTS: ${{ secrets.UCP3_SIGNING_CERTIFICATE_CONTENTS }}
+      run: |
+        Set-Content -Value "$env:UCP3_SIGNING_CERTIFICATE_CONTENTS" -Path "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -Force
+
+    - name: Build store
       shell: pwsh
       env:
         UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
       run: |
-        pushd "UnofficialCrusaderPatch3-*"
-        .\scripts\build.ps1 -What all -BuildType Release -NugetToken "$env:UCP3_NUGET_TOKEN"
-        popd
-    - name: Display ref name
-      shell: pwsh
-      run: |
-        echo $env:GITHUB_REF_NAME
-        echo $env:GITHUB_REF
+        .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem"
 
-    - name: Create release 
-      uses: 'marvinpinto/action-automatic-releases@latest'
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        automatic_release_tag: '${{ github.ref_name }}-${{ env.BUILD_CONFIGURATION }}'
-        prerelease: true
-        draft: false
-        title: Build for ${{ github.ref_name }}
-        files: |
-          build/${{ env.BUILD_CONFIGURATION }}/meta.json
-          build/${{ env.BUILD_CONFIGURATION }}/meta.yml
-          build/${{ env.BUILD_CONFIGURATION }}/*.zip
-          build/${{ env.BUILD_CONFIGURATION }}/*.sig
+    - name: Release store
+      shell: pwsh
+      env:
+        UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
+      run: |
+        .\scripts\create-release.ps1
