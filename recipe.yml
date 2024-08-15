@@ -19,9 +19,7 @@ supported-languages:
 extensions:
 # The list of extensions
   list:
-# An extension content has two parts:
-# - definition: defines the name, version, type, etc.
-# - sources: defines where to get content parts, such as the description, or the package, or the source
+# Plugins
     - definition:
         name: AI-Tournament-Maps
         version: 1.0.0
@@ -50,7 +48,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-Aggressive-AI-Behaviour-Applied
-          github-sha: 91524f71e2f5011f9c4d9d7eebe9a6822ea01c03
+          github-sha: 26494f52da1d2c222acfeb05545ddc72da8e0c42
           github-tag: main
     - definition:
         name: ApeX-AI-Behaviour
@@ -60,7 +58,7 @@ extensions:
         source:
           method: github
           url: Xander10alpha/extension-ApeX-AI-Behaviour
-          github-sha: 45e7f48da4def5f47cc73baf822b6a8e70f02aa4
+          github-sha: 46048311f4230de20c603d0b966d8991678a1a6e
           github-tag: main
     - definition:
         name: ApeX-AI-Behaviour-Applied
@@ -70,7 +68,7 @@ extensions:
         source:
           method: github
           url: Xander10alpha/extension-ApeX-AI-Behaviour-Applied
-          github-sha: 5510dc73ac93ea565019b190cb4f7982cdbf0b04
+          github-sha: 2568968ffd30e7c3590012bf45612adf6ca44c6d
           github-tag: main
     - definition:
         name: Vanilla-Interpretation-Castles
@@ -100,7 +98,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/Vanilla-Retraced
-          github-sha: f81d1231ce58329f300f88a2b5bb5303abad030b
+          github-sha: 28d874b1f172665dc93bfe8fd7b581867f49b90d
           github-tag: main
     - definition:
         name: ucp2-ai-files
@@ -110,7 +108,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-ucp2-ai-files
-          github-sha: 6731a0472d17f00f96b11b5e9b518bd7238c7d4a
+          github-sha: 481d745f8960c44e6de16b6200d66af04cc89b20
           github-tag: main
     - definition:
         name: ucp2-aic-patch
@@ -162,6 +160,7 @@ extensions:
           url: UnofficialCrusaderPatch/extension-ucp2-vanilla-fixed-aiv
           github-sha: 87bb2e97ad2b3ff4368a18516cd5c0856ff666ea
           github-tag: main
+# Modules
     - definition:
         name: aiSwapper
         version: 1.1.0
