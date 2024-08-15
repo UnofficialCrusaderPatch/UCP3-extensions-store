@@ -6,9 +6,9 @@ frontend:
   version: ">=1.0.2"
 # The framework version this store file applies to
 framework:
-  version: =3.0.1
-  github-tag: 'v3.0.1' # Or branch
-  github-sha: 06d485f5ec1e1b625ab889a02edcc2adc6b1c968
+  version: =3.0.2
+  github-tag: 'v3.0.2' # Or branch
+  github-sha: fe91222513f6a4b4639e106f3b927433c464ca2f
 # When this store was created
 timestamp: ~
 # Which certificate signed the modules in this store
@@ -160,6 +160,26 @@ extensions:
           url: UnofficialCrusaderPatch/extension-ucp2-vanilla-fixed-aiv
           github-sha: 87bb2e97ad2b3ff4368a18516cd5c0856ff666ea
           github-tag: main
+    - definition:
+        name: Legends-Of-The-Orient
+        version: 3.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: CrusaderPilaw/extension-Legends-of-the-Orient
+          github-sha: d85e33d25e40dad63b503e684aa099c53c81c783
+          github-tag: main
+    - definition:
+        name: Legends-Of-The-Orient-AI
+        version: 3.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: CrusaderPilaw/extension-Legends-of-the-Orient-AI
+          github-sha: 9aa7715291dc462813f80cc5b324268ef838ed59
+          github-tag: main
 # Modules
     - definition:
         name: aiSwapper
@@ -173,13 +193,13 @@ extensions:
           github-tag: main
     - definition:
         name: aicloader
-        version: 1.0.0
+        version: 1.1.0
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aicloader
-          github-sha: 4c17cc825206fe2d574328768d11000ffb98ddaf
+          github-sha: cdba09138f8d2d26dc186f5fbc4dbc40b6e3e049
           github-tag: main
     - definition:
         name: aivloader
