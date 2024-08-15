@@ -23,30 +23,114 @@ extensions:
 # - definition: defines the name, version, type, etc.
 # - sources: defines where to get content parts, such as the description, or the package, or the source
     - definition:
-        name: files
-        type: module
+        name: AI-Tournament-Maps
         version: 1.0.0
+        type: plugin
       contents:
-        # If defined, at this level, applies to both description and package. 
-        # Uses all defaults as known today (default locations for locale files)
-        # This part sets up the building for this module and the description uploading
         source:
           method: github
-          url: UnofficialCrusaderPatch/extension-files
-          github-sha: f3ba001af4d8116fbeb9183c51a27ce29d052c3c
+          url: Krarilotus/extension-AI-Tournament-Maps
+          github-sha: ae9ffcc35f7ef491fed787be1d75fca979670b81
           github-tag: main
     - definition:
-        name: aiSwapper
-        version: 1.1.0
-        type: module
+        name: Aggressive-AI-Behaviour
+        version: 1.4.0
+        type: plugin
       contents:
-        # If defined, at this level, applies to both description and package. 
-        # Uses all defaults as known today (default locations for locale files)
-        # This part sets up the building for this module and the description uploading
         source:
           method: github
-          url: UnofficialCrusaderPatch/extension-aiSwapper
-          github-sha: f779b9a2bd5a9691b8bbfc9459af019b5ad29f85
+          url: Krarilotus/extension-Aggressive-AI-Behaviour
+          github-sha: 137f71f11a8b6caebfe166ce6156a18b07749718
+          github-tag: main
+    - definition:
+        name: Aggressive-AI-Behaviour-Applied
+        version: 1.4.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Aggressive-AI-Behaviour-Applied
+          github-sha: 91524f71e2f5011f9c4d9d7eebe9a6822ea01c03
+          github-tag: main
+    - definition:
+        name: ApeX-AI-Behaviour
+        version: 1.4.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Xander10alpha/extension-ApeX-AI-Behaviour
+          github-sha: 45e7f48da4def5f47cc73baf822b6a8e70f02aa4
+          github-tag: main
+    - definition:
+        name: ApeX-AI-Behaviour-Applied
+        version: 1.4.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Xander10alpha/extension-ApeX-AI-Behaviour-Applied
+          github-sha: 5510dc73ac93ea565019b190cb4f7982cdbf0b04
+          github-tag: main
+    - definition:
+        name: Vanilla-Interpretation-Castles
+        version: 1.0.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Vanilla-Interpretation-Castles
+          github-sha: eef88bc98e462c6ee3a288e03f13dc3b3702e2e6
+          github-tag: main
+    - definition:
+        name: Vanilla-Interpretation-Castles-Applied
+        version: 1.0.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Vanilla-Interpretation-Castles-Applied
+          github-sha: 1b9e4a863c20f991fae3eb1b236f010d17ca900f
+          github-tag: main
+    - definition:
+        name: Vanilla-Retraced-Unlocked
+        version: 1.0.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Vanilla-Retraced
+          github-sha: f81d1231ce58329f300f88a2b5bb5303abad030b
+          github-tag: main
+    - definition:
+        name: ucp2-ai-files
+        version: 2.15.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-ai-files
+          github-sha: 6731a0472d17f00f96b11b5e9b518bd7238c7d4a
+          github-tag: main
+    - definition:
+        name: ucp2-aic-patch
+        version: 2.15.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-aic-patch
+          github-sha: d151cd0a044222c81465bbe04b600fc3f07701c2
+          github-tag: main
+    - definition:
+        name: ucp2-evrey-aiv
+        version: 2.15.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-evrey-aiv
+          github-sha: 9371f3281ae18ab257c5d3eb74a24b37e91f9c76
           github-tag: main
     - definition:
         name: ucp2-legacy-defaults
@@ -57,6 +141,136 @@ extensions:
           method: github
           url: UnofficialCrusaderPatch/extension-ucp2-legacy-defaults
           github-sha: 68ef49205cc604311f230ef462b0cebf18e74e9d
+          github-tag: main
+    - definition:
+        name: ucp2-tatha-aiv
+        version: 2.15.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-tatha-aiv
+          github-sha: b29b3a3edc4b714a00b063b03a33cca382761340
+          github-tag: main
+    - definition:
+        name: ucp2-vanilla-fixed-aiv
+        version: 2.15.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-vanilla-fixed-aiv
+          github-sha: 87bb2e97ad2b3ff4368a18516cd5c0856ff666ea
+          github-tag: main
+    - definition:
+        name: aiSwapper
+        version: 1.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-aiSwapper
+          github-sha: f779b9a2bd5a9691b8bbfc9459af019b5ad29f85
+          github-tag: main
+    - definition:
+        name: aicloader
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-aicloader
+          github-sha: 4c17cc825206fe2d574328768d11000ffb98ddaf
+          github-tag: main
+    - definition:
+        name: aivloader
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-aivloader
+          github-sha: e5afeb5771b813cf1f594806f16b53c1c3d476c5
+          github-tag: main
+    - definition:
+        name: files
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-files
+          github-sha: f3ba001af4d8116fbeb9183c51a27ce29d052c3c
+          github-tag: main
+    - definition:
+        name: gmResourceModifier
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: TheRedDaemon/ucp_gmResourceModifier
+          github-sha: 019039afcb29f3806aa30c7157ae5a1253c06673
+          github-tag: main
+    - definition:
+        name: graphicsApiReplacer
+        version: 1.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: TheRedDaemon/ucp_graphicsApiReplacer
+          github-sha: 14ef8ddf5b55d57778c2a7cf7b0e522bc045a191
+          github-tag: main
+    - definition:
+        name: maploader
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-maploader
+          github-sha: 658f9e73feb1ff4b4da3e45f236cb2ff0c1d8d32
+          github-tag: main
+    - definition:
+        name: startResources
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp_startResources
+          github-sha: 1942ce1e1d55ea4499a997fbecf719f882c9f715
+          github-tag: main
+    - definition:
+        name: textResourceModifier
+        version: 0.3.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: TheRedDaemon/ucp_textResourceModifier
+          github-sha: 5ab58faf03c47c16f7b23cb6bc651317edf23728
+          github-tag: main
+    - definition:
+        name: ucp2-legacy
+        version: 2.15.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-legacy
+          github-sha: 04e826d00f1a5f8a623e15acffc743f115ee7fb1
+          github-tag: main
+    - definition:
+        name: winProcHandler
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: TheRedDaemon/ucp_winProcHandler
+          github-sha: aa39902c15dc63fc159ade35ca4907ac334e9724
           github-tag: main
 
    
