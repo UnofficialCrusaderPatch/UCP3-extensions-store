@@ -3,6 +3,9 @@ Param(
   [Parameter(Mandatory = $false, ValueFromPipeline = $false)][string]$NugetToken
 )
 
+# Stop this entire script in case of errors
+$ErrorActionPreference = 'Stop'
+
 $REPO = "UnofficialCrusaderPatch/UCP3-extensions-store"
 $UCP3_REPO = "UnofficialCrusaderPatch/UnofficialCrusaderPatch3"
 $STORE_FILE_NAME = "store.yml"
@@ -11,8 +14,6 @@ $STORE_FILE_NAME = "store.yml"
 Remove-Item -Path "build" -Recurse -ErrorAction Ignore -Force | Out-Null
 New-Item -Path "build" -ItemType "directory" -ErrorAction Ignore | Out-Null
 
-# Stop this entire script in case of errors
-$ErrorActionPreference = 'Stop'
 
 # Install yaml library
 if (!(Get-Module -ListAvailable -Name powershell-yaml)) {
@@ -20,6 +21,7 @@ if (!(Get-Module -ListAvailable -Name powershell-yaml)) {
 }
 
 Import-Module powershell-yaml
+Import-Module "$($PSScriptRoot)\fix-dependency-statement.ps1"
 
 $recipe = Get-Content .\recipe.yml | ConvertFrom-Yaml
 
@@ -32,6 +34,7 @@ $extensions = $recipe.extensions.list
 
 # Add the definition to each extension as pulled from the internet.
 foreach ($extension in $extensions) {
+  Write-Debug "Adding definition for: $($extension.definition.name)@$($extension.definition.version)"
   
   $source = $extension.contents.source
   $definition = Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$($source.url)/$($source['github-sha'])/definition.yml" | 
@@ -56,6 +59,10 @@ foreach ($extension in $extensions) {
     Write-Error "Aborting. Extension version is different on remote: $($definition.name)-$($definition.version)"
 
     return 1
+  }
+
+  if ($null -ne $definition.dependencies) {
+    $definition.dependencies = Update-Dependency-Statement $definition.dependencies
   }
 
   $extension.definition = $definition
