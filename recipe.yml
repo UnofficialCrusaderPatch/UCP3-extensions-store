@@ -229,7 +229,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-files
-          github-sha: 35dafd7ca0285ca11255ef80da8b27b4849d040d
+          github-sha: 27b1a19f22c3cc53c1641f593d9f82fa71dfd029
           github-tag: main
     - definition:
         name: gmResourceModifier
