@@ -180,6 +180,26 @@ extensions:
           url: CrusaderPilaw/extension-Legends-of-the-Orient-AI
           github-sha: f9abda8a566b81c6d50382724f5f208f2e1a3202
           github-tag: main
+    - definition:
+        name: Fiery-Ladies
+        type: plugin
+        version: 0.375.0
+      contents:
+        source:
+          method: github
+          url: ByBurton/extension-fiery-ladies
+          github-sha: 4131c5400c2f3fe062ab36d9c7670c0e118e1ab7
+          github-tag: main
+    - definition:
+        name: Fiery-Ladies-AI
+        type: plugin
+        version: 0.375.0
+      contents:
+        source:
+          method: github
+          url: ByBurton/extension-fiery-ladies-ai
+          github-sha: 8711ac1dceb0a9b1eaae2c4399d287fdb3ae0343
+          github-tag: main
 # Modules
     - definition:
         name: aiSwapper
