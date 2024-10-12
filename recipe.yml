@@ -200,6 +200,26 @@ extensions:
           url: ByBurton/extension-fiery-ladies-ai
           github-sha: 8711ac1dceb0a9b1eaae2c4399d287fdb3ae0343
           github-tag: main
+    - definition:
+        name: Schlossgespenst-KI
+        type: plugin
+        version: 1.0.0
+      contents:
+        source:
+          method: github
+          url: Schlossgespensty/Schlossgespenst-KI
+          github-sha: 7d83a405ff8e7549c92505c0de8f49b9844cb896
+          github-tag: main
+    - definition:
+        name: Schlossgespenst-KI-files
+        type: plugin
+        version: 1.0.0
+      contents:
+        source:
+          method: github
+          url: Schlossgespensty/Schlossgespenst-KI-files
+          github-sha: 274e3c596a67bfed74bde41cf958784d04ef3383
+          github-tag: main
 # Modules
     - definition:
         name: aiSwapper
