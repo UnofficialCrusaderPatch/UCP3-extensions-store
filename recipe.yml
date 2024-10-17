@@ -233,13 +233,13 @@ extensions:
           github-tag: main
     - definition:
         name: aicloader
-        version: 1.1.0
+        version: 1.1.1
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aicloader
-          github-sha: cdba09138f8d2d26dc186f5fbc4dbc40b6e3e049
+          github-sha: a6d1a960f9e96f4e815d601ac5dee2a736659da2
           github-tag: main
     - definition:
         name: aivloader
