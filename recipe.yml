@@ -213,12 +213,12 @@ extensions:
     - definition:
         name: Schlossgespenst-KI-files
         type: plugin
-        version: 1.0.3
+        version: 1.0.4
       contents:
         source:
           method: github
           url: Schlossgespensty/Schlossgespenst-KI-files
-          github-sha: 415fa2f87a9cfbe749e6d35be9ea45a81832a796
+          github-sha: 362eadd1d3f5f84d660ffaa2c101f67c95fb2677
           github-tag: main
 # Modules
     - definition:
