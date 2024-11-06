@@ -343,13 +343,13 @@ extensions:
           github-tag: main
     - definition:
         name: running-units
-        version: 1.0.0
+        version: 1.0.1
         type: module
       contents:
         source:
           method: github
           url: gynt/ucp-extension-running-units
-          github-sha: 7412c8da18465cae26d7ab056c5d949c9a06525d
+          github-sha: add648dfda85f5c6c36e8ca1b2c0e4f798a034f4
           github-tag: main
 
    
