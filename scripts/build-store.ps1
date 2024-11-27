@@ -26,7 +26,7 @@ Import-Module "$($PSScriptRoot)\fix-dependency-statement.ps1"
 $recipe = Get-Content .\recipe.yml | ConvertFrom-Yaml
 $gitBranch = git rev-parse --abbrev-ref HEAD
 
-if ($recipe.framework.version -ne $gitBranch) {
+if ($recipe.framework.version -ne "=$($gitBranch)") {
   Write-Error "Aborting. Version mismatch between recipe and branch: $($recipe.framework.version) <> $($gitBranch)"
 
   return 1
