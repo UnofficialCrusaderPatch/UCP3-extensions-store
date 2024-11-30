@@ -220,6 +220,16 @@ extensions:
           url: Schlossgespensty/Schlossgespenst-KI-files
           github-sha: 362eadd1d3f5f84d660ffaa2c101f67c95fb2677
           github-tag: main
+    - definition:
+        name: ConqueringChristmas
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Monsterfisch/ConqueringChristmas_-Stronghold1_textures-with-snow-
+          github-sha: 31a9afac46ee8923704c374feede8eb5ec46b187
+          github-tag: main
 # Modules
     - definition:
         name: aiSwapper
