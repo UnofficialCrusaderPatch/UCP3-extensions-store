@@ -361,5 +361,15 @@ extensions:
           url: gynt/ucp-extension-running-units
           github-sha: add648dfda85f5c6c36e8ca1b2c0e4f798a034f4
           github-tag: main
+    - definition:
+        name: rebalancer
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: CIO61/rebalancer
+          github-sha: 51a3df0b9c0a5528e93b1778aac597fd9fd4b00a
+          github-tag: master
 
    
