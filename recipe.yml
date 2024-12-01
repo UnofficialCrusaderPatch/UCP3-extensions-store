@@ -92,13 +92,13 @@ extensions:
           github-tag: main
     - definition:
         name: Vanilla-Retraced-Unlocked
-        version: 1.0.1
+        version: 1.0.2
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Vanilla-Retraced
-          github-sha: 28d874b1f172665dc93bfe8fd7b581867f49b90d
+          github-sha: 5aea02a5987bef1759e3df50c7bec86084ee7496
           github-tag: main
     - definition:
         name: ucp2-ai-files
