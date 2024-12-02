@@ -239,7 +239,7 @@ extensions:
           method: github
           url: Krarilotus/extension-Ascension-AI-Balance
           github-sha: 625a0aad7fecc71984348dcfc55f6c94a40cbb11
-          github-tag: main
+          github-tag: master
 # Modules
     - definition:
         name: aiSwapper
