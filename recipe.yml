@@ -232,13 +232,13 @@ extensions:
           github-tag: main
     - definition:
         name: Ascension-AI-Balance
-        version: 1.0.0
+        version: 1.0.1
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/extension-Ascension-AI-Balance
-          github-sha: 625a0aad7fecc71984348dcfc55f6c94a40cbb11
+          github-sha: e64d3b74287834297cd68bd35ad7490d06857e60
           github-tag: master
 # Modules
     - definition:
@@ -373,13 +373,13 @@ extensions:
           github-tag: main
     - definition:
         name: rebalancer
-        version: 1.0.1
+        version: 1.0.2
         type: module
       contents:
         source:
           method: github
           url: CIO61/rebalancer
-          github-sha: 17b425a4e692b6441be22eccfca99b5b02b63289
+          github-sha: 75c6e05df2644a4aa092ef961d9129e1b986d210
           github-tag: master
 
    
