@@ -240,6 +240,16 @@ extensions:
           url: Krarilotus/extension-Ascension-AI-Balance
           github-sha: e64d3b74287834297cd68bd35ad7490d06857e60
           github-tag: master
+    - definition:
+        name: Kirito-Kun
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Xander10alpha/extension-Kirito-Kun-AI
+          github-sha: 1b24f0b71d411f79ccb028ce88055230f57de677
+          github-tag: main
 # Modules
     - definition:
         name: aiSwapper
