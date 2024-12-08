@@ -250,7 +250,7 @@ extensions:
           url: Krarilotus/Ascension
           github-sha: 72e961f1c051e8214c2ef041c38bb42c6f2de36a
           github-tag: ucp3-ascension
-          location: extension-Ascension-AI-Balance
+          location: "extension-Ascension-AI-Balance"
 # Modules
     - definition:
         name: aiSwapper
