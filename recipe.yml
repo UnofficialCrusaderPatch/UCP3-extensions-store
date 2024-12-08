@@ -249,7 +249,8 @@ extensions:
           method: github
           url: Krarilotus/Ascension
           github-sha: 72e961f1c051e8214c2ef041c38bb42c6f2de36a
-          github-tag: ucp3-ascension/extension-Ascension-AI-Balance
+          github-tag: ucp3-ascension
+          location: extension-Ascension-AI-Balance
     - definition:
         name: Ascension-Balance
         version: 1.0.0
@@ -259,7 +260,8 @@ extensions:
           method: github
           url: Krarilotus/Ascension
           github-sha: 72e961f1c051e8214c2ef041c38bb42c6f2de36a
-          github-tag: ucp3-ascension/extension-Ascension-Balance
+          github-tag: ucp3-ascension
+          location: extension-Ascension-Balance
     - definition:
         name: Ascension-AI
         version: 1.0.0
@@ -269,7 +271,8 @@ extensions:
           method: github
           url: Krarilotus/Ascension
           github-sha: 72e961f1c051e8214c2ef041c38bb42c6f2de36a
-          github-tag: ucp3-ascension/extension-Ascension-AI
+          github-tag: ucp3-ascension
+          location: extension-Ascension-AI
     - definition:
         name: Ascension-Multiplayer
         version: 1.0.0
@@ -279,7 +282,8 @@ extensions:
           method: github
           url: Krarilotus/Ascension
           github-sha: 72e961f1c051e8214c2ef041c38bb42c6f2de36a
-          github-tag: ucp3-ascension/extension-Ascension-Multiplayer
+          github-tag: ucp3-ascension
+          location: extension-Ascension-Multiplayer
     - definition:
         name: Ascension-Maps
         version: 1.0.0
@@ -289,7 +293,8 @@ extensions:
           method: github
           url: Krarilotus/Ascension
           github-sha: 72e961f1c051e8214c2ef041c38bb42c6f2de36a
-          github-tag: ucp3-ascension/extension-Ascension-Maps
+          github-tag: ucp3-ascension
+          location: extension-Ascension-Maps
 # Modules
     - definition:
         name: aiSwapper
