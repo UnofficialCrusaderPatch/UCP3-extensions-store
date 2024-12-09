@@ -327,7 +327,7 @@ foreach ($extension in $extensionsToBeBuilt) {
           language = $lang;
           method   = 'online';
           type     = "markdown";
-          url      = "$uri";
+          url      = "$langUri";
         }
       )
 
@@ -337,7 +337,7 @@ foreach ($extension in $extensionsToBeBuilt) {
             language = "default";
             method   = 'online';
             type     = "markdown";
-            url      = "$uri";
+            url      = "$langUri";
           }
         ) | Out-Null
       }
