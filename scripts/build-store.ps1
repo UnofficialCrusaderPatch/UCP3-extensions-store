@@ -243,10 +243,12 @@ foreach ($extension in $extensionsToBeBuilt) {
   }
 
   # Support custom subfolder of repo for an extension
-  if ($source.location -ne $null) {
-    $destination = "$($destination)\$($source.location)"
+  if ($null -ne $source.location -and $source.location -ne "") {
+    Move-Item "$destination\$($source.location)\*" "$destination\" -Force
+    Remove-Item "$destination\$($source.location)" -Recurse -Force
   }
 
+  # Now call the build scripts:
   if ($extension.definition.type -eq "module") {
     & ".\build\ucp3\scripts\build-module.ps1" -Path $destination -Destination "$binaryDestination\" -BUILD_CONFIGURATION "ReleaseSecure" -UCPNuPkgPath "$NUPKG_DIRECTORY" -RemoveZippedFolders
   }
