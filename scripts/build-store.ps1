@@ -44,9 +44,16 @@ foreach ($extension in $extensions) {
   Write-Debug "Adding definition for: $($extension.definition.name)@$($extension.definition.version)"
   
   $source = $extension.contents.source
-  $definition = Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$($source.url)/$($source['github-sha'])/definition.yml" | 
-  Select-Object -ExpandProperty Content | 
-  ConvertFrom-Yaml
+  $baseUrl = "https://raw.githubusercontent.com/$($source.url)/$($source['github-sha'])"
+  $defPath = "definition.yml"
+  
+  if ($null -ne $source.location -and $source.location -ne "") {
+      $defPath = "$($source.location)/definition.yml"
+  }
+  
+  $definition = Invoke-WebRequest -Uri "$baseUrl/$defPath" |
+    Select-Object -ExpandProperty Content | 
+    ConvertFrom-Yaml
 
   if ($null -ne $source['extension-type']) {
     $definition.type = $source['extension-type']
@@ -306,8 +313,14 @@ foreach ($extension in $extensionsToBeBuilt) {
 
   $description = [System.Collections.ArrayList]::new()
   foreach ($lang in $recipe['supported-languages']) {
-    $uri = "https://raw.githubusercontent.com/$($extension.contents.source.url)/$($extension.contents.source['github-sha'])/locale/description-$lang.md"
-    $response = Invoke-WebRequest -Uri $uri -SkipHttpErrorCheck
+    $baseUrl = "https://raw.githubusercontent.com/$($extension.contents.source.url)/$($extension.contents.source['github-sha'])"
+    if ($null -ne $extension.contents.source.location -and $extension.contents.source.location -ne "") {
+        $langUri = "$baseUrl/$($extension.contents.source.location)/locale/description-$lang.md"
+    } else {
+        $langUri = "$baseUrl/locale/description-$lang.md"
+    }
+    $response = Invoke-WebRequest -Uri $langUri -SkipHttpErrorCheck
+
     if ($response.StatusCode -eq 200) {
       $description.Add(
         @{
