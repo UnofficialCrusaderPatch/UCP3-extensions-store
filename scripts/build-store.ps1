@@ -48,12 +48,12 @@ foreach ($extension in $extensions) {
   $defPath = "definition.yml"
   
   if ($null -ne $source.location -and $source.location -ne "") {
-      $defPath = "$($source.location)/definition.yml"
+    $defPath = "$($source.location)/definition.yml"
   }
   
   $definition = Invoke-WebRequest -Uri "$baseUrl/$defPath" |
-    Select-Object -ExpandProperty Content | 
-    ConvertFrom-Yaml
+  Select-Object -ExpandProperty Content | 
+  ConvertFrom-Yaml
 
   if ($null -ne $source['extension-type']) {
     $definition.type = $source['extension-type']
@@ -244,7 +244,18 @@ foreach ($extension in $extensionsToBeBuilt) {
 
   # Support custom subfolder of repo for an extension
   if ($null -ne $source.location -and $source.location -ne "") {
+    # Because GitHub checks out the whole repo, but we only want a subdirectory
+    # We do this move statement to move the subfolder to the root folder.
+    # However, before we do this, we have to clear the whole folder except the target folder
+    Get-ChildItem -Directory "$destination" | 
+    # Select the items not equal to the target location
+    Where-Object { $_.Name -ne $source.location } |
+    # Remove them
+    Remove-Item -Recurse -Force
+
+    # Now move the target to the root location
     Move-Item "$destination\$($source.location)\*" "$destination\" -Force
+    # And remove the empty target location
     Remove-Item "$destination\$($source.location)" -Recurse -Force
   }
 
@@ -317,9 +328,10 @@ foreach ($extension in $extensionsToBeBuilt) {
   foreach ($lang in $recipe['supported-languages']) {
     $baseUrl = "https://raw.githubusercontent.com/$($extension.contents.source.url)/$($extension.contents.source['github-sha'])"
     if ($null -ne $extension.contents.source.location -and $extension.contents.source.location -ne "") {
-        $langUri = "$baseUrl/$($extension.contents.source.location)/locale/description-$lang.md"
-    } else {
-        $langUri = "$baseUrl/locale/description-$lang.md"
+      $langUri = "$baseUrl/$($extension.contents.source.location)/locale/description-$lang.md"
+    }
+    else {
+      $langUri = "$baseUrl/locale/description-$lang.md"
     }
     $response = Invoke-WebRequest -Uri $langUri -SkipHttpErrorCheck
 
