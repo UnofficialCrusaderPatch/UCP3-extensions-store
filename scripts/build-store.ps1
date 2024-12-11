@@ -227,7 +227,20 @@ foreach ($extension in $extensionsToBeBuilt) {
     Pop-Location
   }
   else {
-    gh repo clone "$($source.url)" $destination -- --recurse-submodules --depth=1 --branch $source['github-tag'] | Out-Null
+    
+
+    if ($null -ne $source['github-sha'] -and $source['github-sha'] -ne ""  ) {
+      # Set no depth limit
+      gh repo clone "$($source.url)" $destination -- --recurse-submodules --branch $source['github-tag'] | Out-Null
+
+      Push-Location $destination
+      git checkout $source['github-sha'] | Out-Null
+      Pop-Location
+    }
+    else {
+      # Set depth limit to 1
+      gh repo clone "$($source.url)" $destination -- --recurse-submodules --depth=1 --branch $source['github-tag'] | Out-Null
+    }
   }
   
   
