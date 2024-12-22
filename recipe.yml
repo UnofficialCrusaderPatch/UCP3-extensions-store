@@ -436,5 +436,14 @@ extensions:
           url: CIO61/rebalancer
           github-sha: 8b256116ef3b62493ace2159834888a90e9870ab
           github-tag: master
-
+    - definition:
+        name: automarket
+        version: 0.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/StrongholdCrusader-AutoMarket
+          github-sha: fa4f561e865afeb0d77cbee0aa8529839475cdb1
+          github-tag: master
    
