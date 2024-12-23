@@ -358,13 +358,13 @@ extensions:
           github-tag: main
     - definition:
         name: graphicsApiReplacer
-        version: 1.2.0
+        version: 1.2.1
         type: module
       contents:
         source:
           method: github
           url: TheRedDaemon/ucp_graphicsApiReplacer
-          github-sha: 14ef8ddf5b55d57778c2a7cf7b0e522bc045a191
+          github-sha: 72212d7bc3db0d8f46bfefc45b27018b03e96e1b
           github-tag: main
     - definition:
         name: maploader
