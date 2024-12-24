@@ -128,7 +128,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-ucp2-evrey-aiv
-          github-sha: 5c67ddb6558c6fe5d7b5a2564a7db50710428f63
+          github-sha: d1c5007f19103917947682755b7d4bce394c9243
           github-tag: main
     - definition:
         name: ucp2-legacy-defaults
@@ -148,7 +148,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-ucp2-tatha-aiv
-          github-sha: b1b9dd4be179b767a7c0957b24ab15a76033eac4
+          github-sha: 5c9775b6dd90f9be77b50f30183c3c69a2467ee9
           github-tag: main
     - definition:
         name: ucp2-vanilla-fixed-aiv
@@ -158,7 +158,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-ucp2-vanilla-fixed-aiv
-          github-sha: ed71d886c611b95e85bfd0fe547519ed98c89a5a
+          github-sha: 2aac2f860ed81a0f38212e4ae953d53867f5f396
           github-tag: main
     - definition:
         name: Legends-Of-The-Orient
