@@ -118,7 +118,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-ucp2-aic-patch
-          github-sha: d151cd0a044222c81465bbe04b600fc3f07701c2
+          github-sha: 3d39204e179bf848896fd59b6efae9b5a959123c
           github-tag: main
     - definition:
         name: ucp2-evrey-aiv
@@ -128,7 +128,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-ucp2-evrey-aiv
-          github-sha: 9371f3281ae18ab257c5d3eb74a24b37e91f9c76
+          github-sha: 5c67ddb6558c6fe5d7b5a2564a7db50710428f63
           github-tag: main
     - definition:
         name: ucp2-legacy-defaults
@@ -148,7 +148,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-ucp2-tatha-aiv
-          github-sha: b29b3a3edc4b714a00b063b03a33cca382761340
+          github-sha: b1b9dd4be179b767a7c0957b24ab15a76033eac4
           github-tag: main
     - definition:
         name: ucp2-vanilla-fixed-aiv
@@ -158,7 +158,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-ucp2-vanilla-fixed-aiv
-          github-sha: 87bb2e97ad2b3ff4368a18516cd5c0856ff666ea
+          github-sha: ed71d886c611b95e85bfd0fe547519ed98c89a5a
           github-tag: main
     - definition:
         name: Legends-Of-The-Orient
@@ -242,24 +242,24 @@ extensions:
           github-tag: main
     - definition:
         name: Ascension-AI-Balance
-        version: 1.0.2
+        version: 1.0.3
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 72e961f1c051e8214c2ef041c38bb42c6f2de36a
+          github-sha: 28d23dfb7db8e23095d042c9bb9f9c5012fd80cf
           github-tag: ucp3-ascension
           location: extension-Ascension-AI-Balance   
     - definition:
         name: Ascension-Balance
-        version: 1.0.0
+        version: 1.0.1
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 72e961f1c051e8214c2ef041c38bb42c6f2de36a
+          github-sha: 28d23dfb7db8e23095d042c9bb9f9c5012fd80cf
           github-tag: ucp3-ascension
           location: extension-Ascension-Balance
     - definition:
@@ -270,29 +270,29 @@ extensions:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 72e961f1c051e8214c2ef041c38bb42c6f2de36a
+          github-sha: 28d23dfb7db8e23095d042c9bb9f9c5012fd80cf
           github-tag: ucp3-ascension
           location: extension-Ascension-AI
     - definition:
         name: Ascension-Multiplayer
-        version: 1.0.0
+        version: 1.0.1
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 72e961f1c051e8214c2ef041c38bb42c6f2de36a
+          github-sha: 28d23dfb7db8e23095d042c9bb9f9c5012fd80cf
           github-tag: ucp3-ascension
           location: extension-Ascension-Multiplayer
     - definition:
         name: Ascension-Maps
-        version: 1.0.0
+        version: 1.0.1
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 72e961f1c051e8214c2ef041c38bb42c6f2de36a
+          github-sha: 28d23dfb7db8e23095d042c9bb9f9c5012fd80cf
           github-tag: ucp3-ascension
           location: extension-Ascension-Maps
     - definition:
@@ -448,13 +448,13 @@ extensions:
           github-tag: main
     - definition:
         name: rebalancer
-        version: 1.0.3
+        version: 1.0.4
         type: module
       contents:
         source:
           method: github
           url: CIO61/rebalancer
-          github-sha: 8b256116ef3b62493ace2159834888a90e9870ab
+          github-sha: 6d8011c02c985c1e0e008cd4f63e533fcdc65dc9
           github-tag: master
 
    
