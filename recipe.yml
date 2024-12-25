@@ -242,24 +242,24 @@ extensions:
           github-tag: main
     - definition:
         name: Ascension-AI-Balance
-        version: 1.0.3
+        version: 1.0.4
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 28d23dfb7db8e23095d042c9bb9f9c5012fd80cf
+          github-sha: be86f42a57f579063aaa1827a93f0e2df3738867
           github-tag: ucp3-ascension
           location: extension-Ascension-AI-Balance   
     - definition:
         name: Ascension-Balance
-        version: 1.0.1
+        version: 1.0.2
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 28d23dfb7db8e23095d042c9bb9f9c5012fd80cf
+          github-sha: be86f42a57f579063aaa1827a93f0e2df3738867
           github-tag: ucp3-ascension
           location: extension-Ascension-Balance
     - definition:
@@ -270,18 +270,18 @@ extensions:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 28d23dfb7db8e23095d042c9bb9f9c5012fd80cf
+          github-sha: be86f42a57f579063aaa1827a93f0e2df3738867
           github-tag: ucp3-ascension
           location: extension-Ascension-AI
     - definition:
         name: Ascension-Multiplayer
-        version: 1.0.1
+        version: 1.0.2
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 28d23dfb7db8e23095d042c9bb9f9c5012fd80cf
+          github-sha: be86f42a57f579063aaa1827a93f0e2df3738867
           github-tag: ucp3-ascension
           location: extension-Ascension-Multiplayer
     - definition:
@@ -292,7 +292,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 28d23dfb7db8e23095d042c9bb9f9c5012fd80cf
+          github-sha: be86f42a57f579063aaa1827a93f0e2df3738867
           github-tag: ucp3-ascension
           location: extension-Ascension-Maps
     - definition:
@@ -448,13 +448,13 @@ extensions:
           github-tag: main
     - definition:
         name: rebalancer
-        version: 1.0.4
+        version: 1.0.5
         type: module
       contents:
         source:
           method: github
           url: CIO61/rebalancer
-          github-sha: 6d8011c02c985c1e0e008cd4f63e533fcdc65dc9
+          github-sha: 02a4adae3aea9fb8fa53cca4330cb03f92cb9176
           github-tag: master
 
    
