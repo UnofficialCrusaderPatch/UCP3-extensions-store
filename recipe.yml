@@ -296,6 +296,28 @@ extensions:
           github-tag: ucp3-ascension
           location: extension-Ascension-Maps
     - definition:
+        name: Community-Paket-Files
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Nevikov/Community-Paket-UCP3
+          github-sha: 5a4645617a59b7c2e2ecffa4c01e8b56abd20a6c
+          github-tag: main
+          location: Community-Paket-Files
+    - definition:
+        name: Community-Paket
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Nevikov/Community-Paket-UCP3
+          github-sha: 5a4645617a59b7c2e2ecffa4c01e8b56abd20a6c
+          github-tag: main
+          location: Community-Paket
+    - definition:
         name: Die-neuen-Herrscher
         version: 1.0.0
         type: plugin
