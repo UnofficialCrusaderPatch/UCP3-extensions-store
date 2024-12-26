@@ -303,7 +303,7 @@ extensions:
         source:
           method: github
           url: Nevikov/Community-Paket-UCP3
-          github-sha: 5a4645617a59b7c2e2ecffa4c01e8b56abd20a6c
+          github-sha: 40a861f7cfc8b72a30e85becf49df28759d6a28c
           github-tag: main
           location: Community-Paket-Files
     - definition:
@@ -314,7 +314,7 @@ extensions:
         source:
           method: github
           url: Nevikov/Community-Paket-UCP3
-          github-sha: 5a4645617a59b7c2e2ecffa4c01e8b56abd20a6c
+          github-sha: 40a861f7cfc8b72a30e85becf49df28759d6a28c
           github-tag: main
           location: Community-Paket
     - definition:
