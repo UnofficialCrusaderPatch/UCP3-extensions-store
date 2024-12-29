@@ -444,5 +444,5 @@ extensions:
         source:
           method: github
           url: gynt/StrongholdCrusader-AutoMarket
-          github-sha: a0bd67a39edec4bf04ce0ce7c70798f4fd2e6ccb
+          github-sha: 2b041da4203e7c1754fbcd646e434b7569924c97
           github-tag: master
