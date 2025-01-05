@@ -478,5 +478,15 @@ extensions:
           url: CIO61/rebalancer
           github-sha: 14af1a3239e2a912de6e19b1a406917583acca2e
           github-tag: master
+    - definition:
+        name: citizens
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-citizens
+          github-sha: 74b4b610212110f4bd21195efb9d35b0d0c90f04
+          github-tag: main
 
    
