@@ -183,22 +183,22 @@ extensions:
     - definition:
         name: Fiery-Ladies
         type: plugin
-        version: 0.375.0
+        version: 0.4.0
       contents:
         source:
           method: github
           url: ByBurton/extension-fiery-ladies
-          github-sha: 4131c5400c2f3fe062ab36d9c7670c0e118e1ab7
+          github-sha: 39bc99c47eee03311440b37882c68ed442a4ef73
           github-tag: main
     - definition:
         name: Fiery-Ladies-AI
         type: plugin
-        version: 0.375.0
+        version: 0.4.0
       contents:
         source:
           method: github
           url: ByBurton/extension-fiery-ladies-ai
-          github-sha: 8711ac1dceb0a9b1eaae2c4399d287fdb3ae0343
+          github-sha: 5567282108b89387bd2bc7016d67995c7cd0fcb4
           github-tag: main
     - definition:
         name: Schlossgespenst-KI
