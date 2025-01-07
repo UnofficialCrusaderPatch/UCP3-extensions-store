@@ -420,13 +420,13 @@ extensions:
           github-tag: main
     - definition:
         name: startResources
-        version: 1.0.0
+        version: 1.0.1
         type: module
       contents:
         source:
           method: github
-          url: gynt/ucp_startResources
-          github-sha: 1942ce1e1d55ea4499a997fbecf719f882c9f715
+          url: gynt/ucp-extension-startResources
+          github-sha: 71e6d7c2a9691c2110a2e823501ab9c4510d537f
           github-tag: main
     - definition:
         name: textResourceModifier
