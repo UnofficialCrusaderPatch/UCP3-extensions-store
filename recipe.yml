@@ -420,13 +420,13 @@ extensions:
           github-tag: main
     - definition:
         name: maploader
-        version: 1.0.0
+        version: 1.0.1
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-maploader
-          github-sha: 658f9e73feb1ff4b4da3e45f236cb2ff0c1d8d32
+          github-sha: 0786734b212f486743157a94ba089e3e31805bbc
           github-tag: main
     - definition:
         name: startResources
