@@ -231,6 +231,16 @@ extensions:
           github-sha: cc03cf4d47d06657402365987a7699c2cbd27e25
           github-tag: main
     - definition:
+        name: ConqueringEurope
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Monsterfisch/ConqueringEurope_-Stronghold1_textures-
+          github-sha: fb703ff23c4f05b761fbc3dc0dcdaab108d8ff3f
+          github-tag: main
+    - definition:
         name: Kirito-Kun
         version: 1.0.0
         type: plugin
