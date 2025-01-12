@@ -8,7 +8,7 @@ frontend:
 framework:
   version: =3.0.6
   github-tag: 'v3.0.6' # Or branch
-  github-sha: 85005291a393aa1472222a3bb974561bc51cd4e7
+  github-sha: 720117b4598fbd027e3eb5383d2716342ce67403
 # When this store was created
 timestamp: ~
 # Which certificate signed the modules in this store
