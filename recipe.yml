@@ -213,12 +213,12 @@ extensions:
     - definition:
         name: Schlossgespenst-KI-files
         type: plugin
-        version: 1.0.4
+        version: 1.0.6
       contents:
         source:
           method: github
           url: Schlossgespensty/Schlossgespenst-KI-files
-          github-sha: 362eadd1d3f5f84d660ffaa2c101f67c95fb2677
+          github-sha: e2e792635eb600de570ac45d9ad2f7c688a97b34
           github-tag: main
     - definition:
         name: ConqueringChristmas
