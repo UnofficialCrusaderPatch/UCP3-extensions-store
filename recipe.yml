@@ -508,4 +508,15 @@ extensions:
           url: gynt/ucp-extension-custom-skirmish-trails
           github-sha: 17fbaf5f692f430f18763319c992bc905fcba461
           github-tag: main
+    - definition:
+        name: workers
+        version: 0.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-workers
+          github-sha: e7a629c031308fe1b9dca467213f4e1b943479db
+          github-tag: main
+          
    
