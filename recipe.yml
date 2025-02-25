@@ -347,6 +347,26 @@ extensions:
           url: Hacksuelze/Die-neuen-Herrscher-KI
           github-sha: 080d56188175cb36699b8b980e1d73543dc01fdb
           github-tag: main
+    - definition:
+        name: Kommander-AI
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Xander10alpha/extension-Kommander-AI
+          github-sha: 0e09f6cfdc05338e108c333e4f70eb2c3a6c19c8
+          github-tag: main
+    - definition:
+        name: AI-Battlefront-Maps
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Xander10alpha/extension-AI-Battlefront-Maps
+          github-sha: 8cd7aba214ad53e37dc4a75e1ef69ed7bc74bfd5
+          github-tag: main
 # Modules
     - definition:
         name: aiSwapper
