@@ -364,7 +364,7 @@ extensions:
       contents:
         source:
           method: github
-          url: Xander10alpha/extension-AI-Battlefront-Maps
+          url: Xander10alpha/extension-AI-Battlefronts-Maps
           github-sha: 8cd7aba214ad53e37dc4a75e1ef69ed7bc74bfd5
           github-tag: main
 # Modules
