@@ -518,5 +518,14 @@ extensions:
           url: gynt/ucp-extension-workers
           github-sha: e7a629c031308fe1b9dca467213f4e1b943479db
           github-tag: main
-          
+    - definition:
+        name: ai-ox-tethers
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-ai-ox-tethers
+          github-sha: 26c92fa8b50de78b746be1084db29125e33fc261
+          github-tag: main
    
