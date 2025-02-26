@@ -358,14 +358,14 @@ extensions:
           github-sha: 0e09f6cfdc05338e108c333e4f70eb2c3a6c19c8
           github-tag: main
     - definition:
-        name: AI-Battlefront-Maps
+        name: Xanders-UCP-AI-Default
         version: 1.0.0
         type: plugin
       contents:
         source:
           method: github
-          url: Xander10alpha/extension-AI-Battlefronts-Maps
-          github-sha: 8cd7aba214ad53e37dc4a75e1ef69ed7bc74bfd5
+          url: Xander10alpha/extension-Xanders-UCP-AI-Default
+          github-sha: 7dc500c0ba099ec5a290eeaa427604b3762a0885
           github-tag: main
 # Modules
     - definition:
