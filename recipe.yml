@@ -410,23 +410,13 @@ extensions:
           github-tag: main
     - definition:
         name: files
-        version: 1.1.0
+        version: 1.3.0
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-files
-          github-sha: 27b1a19f22c3cc53c1641f593d9f82fa71dfd029
-          github-tag: main
-    - definition:
-        name: files
-        version: 1.2.2
-        type: module
-      contents:
-        source:
-          method: github
-          url: UnofficialCrusaderPatch/extension-files
-          github-sha: 18b3490bcb93db4159c3cb84c77d31bcfb82beac
+          github-sha: 8e48fe8b53dbb85a7672e4d36744163fc266a5a3
           github-tag: main
     - definition:
         name: gmResourceModifier
