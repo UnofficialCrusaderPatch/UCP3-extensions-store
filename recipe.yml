@@ -8,7 +8,7 @@ frontend:
 framework:
   version: =3.0.6
   github-tag: 'v3.0.6' # Or branch
-  github-sha: 85005291a393aa1472222a3bb974561bc51cd4e7
+  github-sha: 720117b4598fbd027e3eb5383d2716342ce67403
 # When this store was created
 timestamp: ~
 # Which certificate signed the modules in this store
@@ -162,13 +162,13 @@ extensions:
           github-tag: main
     - definition:
         name: Legends-Of-The-Orient
-        version: 3.0.3
+        version: 3.0.4
         type: plugin
       contents:
         source:
           method: github
           url: CrusaderPilaw/extension-Legends-of-the-Orient
-          github-sha: 1e9a785e65107345403f28fb40d365d6df8001ab
+          github-sha: dcb660fa8ff5a23c854cf7e59d404d6d39532bfc
           github-tag: main
     - definition:
         name: Legends-Of-The-Orient-AI
@@ -183,22 +183,22 @@ extensions:
     - definition:
         name: Fiery-Ladies
         type: plugin
-        version: 0.4.0
+        version: 0.5.2
       contents:
         source:
           method: github
           url: ByBurton/extension-fiery-ladies
-          github-sha: 39bc99c47eee03311440b37882c68ed442a4ef73
+          github-sha: 660c0caf842123fe4cef4a41147f57698f3e1291
           github-tag: main
     - definition:
         name: Fiery-Ladies-AI
         type: plugin
-        version: 0.4.0
+        version: 0.5.2
       contents:
         source:
           method: github
           url: ByBurton/extension-fiery-ladies-ai
-          github-sha: 5567282108b89387bd2bc7016d67995c7cd0fcb4
+          github-sha: 770e911173368492ba2c7c34a068e34fd01973a8
           github-tag: main
     - definition:
         name: Schlossgespenst-KI
@@ -213,12 +213,12 @@ extensions:
     - definition:
         name: Schlossgespenst-KI-files
         type: plugin
-        version: 1.0.4
+        version: 1.0.6
       contents:
         source:
           method: github
           url: Schlossgespensty/Schlossgespenst-KI-files
-          github-sha: 362eadd1d3f5f84d660ffaa2c101f67c95fb2677
+          github-sha: e2e792635eb600de570ac45d9ad2f7c688a97b34
           github-tag: main
     - definition:
         name: ConqueringChristmas
@@ -229,6 +229,16 @@ extensions:
           method: github
           url: Monsterfisch/ConqueringChristmas_-Stronghold1_textures-with-snow-
           github-sha: cc03cf4d47d06657402365987a7699c2cbd27e25
+          github-tag: main
+    - definition:
+        name: ConqueringEurope
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Monsterfisch/ConqueringEurope_-Stronghold1_textures-
+          github-sha: fb703ff23c4f05b761fbc3dc0dcdaab108d8ff3f
           github-tag: main
     - definition:
         name: Kirito-Kun
@@ -337,6 +347,36 @@ extensions:
           url: Hacksuelze/Die-neuen-Herrscher-KI
           github-sha: 080d56188175cb36699b8b980e1d73543dc01fdb
           github-tag: main
+    - definition:
+        name: Kommander-AI
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Xander10alpha/extension-Kommander-AI
+          github-sha: 0e09f6cfdc05338e108c333e4f70eb2c3a6c19c8
+          github-tag: main
+    - definition:
+        name: Xanders-UCP-AI-Default
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Xander10alpha/extension-Xanders-UCP-AI-Default
+          github-sha: 7dc500c0ba099ec5a290eeaa427604b3762a0885
+          github-tag: main
+    - definition:
+        name: Xanders-Plug-and-Play
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Xander10alpha/extension-Xanders-Crusader-Mod
+          github-sha: 98bff729dc8a50ed0dc6241ee673e851680ea83e
+          github-tag: main
 # Modules
     - definition:
         name: aiSwapper
@@ -370,23 +410,13 @@ extensions:
           github-tag: main
     - definition:
         name: files
-        version: 1.1.0
+        version: 1.3.0
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-files
-          github-sha: 27b1a19f22c3cc53c1641f593d9f82fa71dfd029
-          github-tag: main
-    - definition:
-        name: files
-        version: 1.2.0
-        type: module
-      contents:
-        source:
-          method: github
-          url: UnofficialCrusaderPatch/extension-files
-          github-sha: c77b07577aef94d594b2454cbde8a81f9e15e4d4
+          github-sha: 8e48fe8b53dbb85a7672e4d36744163fc266a5a3
           github-tag: main
     - definition:
         name: gmResourceModifier
@@ -410,13 +440,13 @@ extensions:
           github-tag: main
     - definition:
         name: maploader
-        version: 1.0.1
+        version: 1.1.0
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-maploader
-          github-sha: 0786734b212f486743157a94ba089e3e31805bbc
+          github-sha: 1045d679646051f110cc81e86aebe0b9bce11beb
           github-tag: main
     - definition:
         name: startResources
@@ -488,5 +518,34 @@ extensions:
           url: gynt/ucp-extension-citizens
           github-sha: 74b4b610212110f4bd21195efb9d35b0d0c90f04
           github-tag: main
-
+    - definition:
+        name: custom-skirmish-trails
+        version: 1.1.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-custom-skirmish-trails
+          github-sha: e0f917c1fb4b1709356b48fed691f1b93bdf019e
+          github-tag: main
+    - definition:
+        name: workers
+        version: 0.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-workers
+          github-sha: e7a629c031308fe1b9dca467213f4e1b943479db
+          github-tag: main
+    - definition:
+        name: ai-ox-tethers
+        version: 1.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-ai-ox-tethers
+          github-sha: 0b2bc860d49494adf700c1976d5507bc56cf4bf0
+          github-tag: main
    
