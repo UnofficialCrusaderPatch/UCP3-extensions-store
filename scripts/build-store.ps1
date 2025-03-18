@@ -2,7 +2,10 @@ Param(
   [Parameter(Mandatory = $true, ValueFromPipeline = $false)][string]$Certificate,
   [Parameter(Mandatory = $false, ValueFromPipeline = $false)][string]$NugetToken,
   [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$Clean = $true, 
-  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$IgnoreBranchMismatch = $false
+  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$IgnoreRecipeBranchMismatch = $false,
+  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][string]$FrameworkVersion = "",
+  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][string]$FrameworkTag = "",
+  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][string]$FrameworkSha = ""
 )
 
 # Stop this entire script in case of errors
@@ -28,10 +31,26 @@ Import-Module powershell-yaml
 # Import-Module "$($PSScriptRoot)\fix-dependency-statement.ps1"
 
 $recipe = Get-Content .\recipe.yml | ConvertFrom-Yaml
+
+$recipeFrameworkVersion = $recipe.framework.version
+if ($FrameworkVersion) {
+  $recipeFrameworkVersion = $FrameworkVersion
+}
+
+$recipeFrameworkTag = $recipe.framework['github-tag']
+if ($FrameworkTag) {
+  $recipeFrameworkTag = $FrameworkTag
+}
+
+$recipeFrameworkSha = $recipe.framework['github-sha']
+if ($FrameworkSha) {
+  $recipeFrameworkSha = $FrameworkSha
+}
+
 $gitBranch = git rev-parse --abbrev-ref HEAD
 
-if (($false -eq $IgnoreBranchMismatch) -and ($recipe.framework.version -ne "=$($gitBranch)")) {
-  Write-Error "Aborting. Version mismatch between recipe and branch: $($recipe.framework.version) <> $($gitBranch)"
+if (($false -eq $IgnoreRecipeBranchMismatch) -and ($recipeFrameworkVersion -ne "=$($gitBranch)")) {
+  Write-Error "Aborting. Version mismatch between recipe and branch: $($recipeFrameworkVersion) <> $($gitBranch)"
 
   return 1
 }
@@ -159,26 +178,33 @@ if ($extensionsToBeBuilt.Count -eq 0) {
 Write-Output "Compiling $($extensionsToBeBuilt.Count) extensions"
 
 
-$frameworkTag = $recipe.framework['github-tag']
-$frameworkSha = $recipe.framework['github-sha']
 $ucp3ReleaseTags = gh --repo $UCP3_REPO release list --json tagName | ConvertFrom-Json | ForEach-Object { $_.tagName }
-$isFrameworkReleased = $ucp3ReleaseTags.Contains($frameworkTag)
+$isFrameworkReleased = $ucp3ReleaseTags.Contains($recipeFrameworkTag)
 
-if ($isFrameworkReleased) {
-  # We just clone the UCP3 repo for the build scripts!
-  gh repo clone $UCP3_REPO "build\ucp3" -- --depth=1 --branch $frameworkTag | Out-Null
+if ($null -eq (Get-Item "build\ucp3" -ErrorAction Ignore)) {
+  if ($isFrameworkReleased) {
+    # We just clone the UCP3 repo for the build scripts!
+    gh repo clone $UCP3_REPO "build\ucp3" -- --depth=1 --branch $recipeFrameworkTag | Out-Null
+  }
+  else {
+    # We have to clone the entire thing
+    gh repo clone $UCP3_REPO "build\ucp3"  -- --depth=1 --branch $recipeFrameworkTag | Out-Null
+    Push-Location "build\ucp3"
+    git checkout $recipeFrameworkSha | Out-Null
+    git submodule update --init --recursive
+    Pop-Location
+  }
+} else {
+  Write-Warning "build\ucp3 exists, may be dirty, use -Clean if building for production"
 }
-else {
-  # We have to clone the entire thing
-  gh repo clone $UCP3_REPO "build\ucp3" -- --depth=1 --branch $frameworkTag --recurse-submodules | Out-Null
-}
+
 
 
 Push-Location ".\build\ucp3"
 $localFrameworkSha = git rev-parse HEAD
 Pop-Location
 
-if ($localFrameworkSha -ne $frameworkSha) {
+if ($localFrameworkSha -ne $recipeFrameworkSha) {
   Write-Error "Abort. GitHub SHA does not match for repo: $UCP3_REPO"
   return 1
 }
@@ -186,7 +212,7 @@ if ($localFrameworkSha -ne $frameworkSha) {
 
 if ($isFrameworkReleased) {
   # Fetch nuget package if it exists
-  gh release download --dir ".\build\" --pattern "*nupkg[.]zip" --repo $UCP3_REPO $frameworkTag
+  gh release download --dir ".\build\" --pattern "*nupkg[.]zip" --repo $UCP3_REPO $recipeFrameworkTag
   Expand-Archive -Path ".\build\*.zip" -DestinationPath ".\build\"
   $NUPKG_DIRECTORY = (Get-Item -Path ".\build\").FullName
 }
@@ -313,7 +339,7 @@ foreach ($extension in $extensionsToBeBuilt) {
       @{
         method    = "github-binary";
         size      = $item.length;
-        url       = "https://github.com/$REPO/releases/download/$($frameworkTag)/$filename";
+        url       = "https://github.com/$REPO/releases/download/$($recipeFrameworkTag)/$filename";
         signer    = "default";
         hash      = $hash;
         signature = $sig;
@@ -333,7 +359,7 @@ foreach ($extension in $extensionsToBeBuilt) {
       @{
         method = "github-binary";
         size   = $item.length;
-        url    = "https://github.com/$REPO/releases/download/$($frameworkTag)/$filename";
+        url    = "https://github.com/$REPO/releases/download/$($recipeFrameworkTag)/$filename";
         signer = "default";
         hash   = $hash;
       }

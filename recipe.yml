@@ -543,10 +543,11 @@ extensions:
         version: 1.0.1          
         type: module
       contents:
-        method: github
-        url: gynt/ucp-extension-ai-ox-tethers
-        github-sha: 0b2bc860d49494adf700c1976d5507bc56cf4bf0
-        github-tag: main
+        source:
+          method: github
+          url: gynt/ucp-extension-ai-ox-tethers
+          github-sha: 0b2bc860d49494adf700c1976d5507bc56cf4bf0
+          github-tag: main
     - definition:
         name: cffi
         version: 1.0.0
@@ -565,7 +566,7 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-luajit
-          github-sha: 01d0aa1835963acca22b041b53e4760028a22dff
+          github-sha: 4dfd10071799d7a318abf5c9804650c065b4fdd2
           github-tag: main
     - definition:
         name: ui
