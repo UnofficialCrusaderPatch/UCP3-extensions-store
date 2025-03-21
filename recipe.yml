@@ -6,9 +6,9 @@ frontend:
   version: ">=1.0.2"
 # The framework version this store file applies to
 framework:
-  version: =3.0.6
-  github-tag: 'v3.0.6' # Or branch
-  github-sha: 720117b4598fbd027e3eb5383d2716342ce67403
+  version: =3.0.7
+  github-tag: 'v3.0.7' # Or branch
+  github-sha: c8828f0470961bebfa9db0bbada8d0fd1cf70777
 # When this store was created
 timestamp: ~
 # Which certificate signed the modules in this store
