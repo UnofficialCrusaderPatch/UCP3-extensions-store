@@ -566,7 +566,7 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-luajit
-          github-sha: 4dfd10071799d7a318abf5c9804650c065b4fdd2
+          github-sha: aaf01673da34e44661bb9b58378a3e579c230b0d
           github-tag: main
     - definition:
         name: ui
