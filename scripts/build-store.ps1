@@ -2,6 +2,7 @@ Param(
   [Parameter(Mandatory = $true, ValueFromPipeline = $false)][string]$Certificate,
   [Parameter(Mandatory = $false, ValueFromPipeline = $false)][string]$NugetToken,
   [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$Clean = $true, 
+  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$AllowSuperseded = $false,
   [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$IgnoreRecipeBranchMismatch = $false,
   [Parameter(Mandatory = $false, ValueFromPipeline = $false)][string]$FrameworkVersion = "",
   [Parameter(Mandatory = $false, ValueFromPipeline = $false)][string]$FrameworkTag = "",
@@ -144,6 +145,20 @@ foreach ($release in $sortedReleaseVersionsArray) {
     
     Write-Output "Looking for a binary for: $name@$version"
 
+    $latestVersion = $releaseStore.extensions.list | 
+      Where-Object { $_.definition.name -eq $name } | 
+      ForEach-Object { [semver]($_.definition.version) } | Sort-Object -Descending | 
+      Select-Object -First 1
+
+    Write-Output "Latest known version is $($latestVersion)"
+    if ([semver]($version) -lt $latestVersion) {
+      if ($AllowSuperseded) {
+        Write-Warning "Latest known version is higher than the recipe version. This is probably not what you want"
+      } else {
+        Throw "Latest known version is higher than the recipe version. This is probably not what you want"
+      }
+    }
+    
     $hit = $releaseStore.extensions.list | Where-Object { $_.definition.name -eq $name } | Where-Object { $_.definition.version -eq $version }
 
     if ($null -ne $hit) {

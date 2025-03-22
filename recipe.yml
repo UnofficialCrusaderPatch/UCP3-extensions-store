@@ -8,7 +8,7 @@ frontend:
 framework:
   version: =3.0.7
   github-tag: 'v3.0.7' # Or branch
-  github-sha: c8828f0470961bebfa9db0bbada8d0fd1cf70777
+  github-sha: 7af39c2583368201ba140f406865f3b25d0968a0
 # When this store was created
 timestamp: ~
 # Which certificate signed the modules in this store
@@ -390,13 +390,13 @@ extensions:
           github-tag: main
     - definition:
         name: aicloader
-        version: 1.1.1
+        version: 1.1.2
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aicloader
-          github-sha: a6d1a960f9e96f4e815d601ac5dee2a736659da2
+          github-sha: b4942485293b308ddb54e8a8ab93743b36d6a79b
           github-tag: main
     - definition:
         name: aivloader
@@ -430,13 +430,13 @@ extensions:
           github-tag: main
     - definition:
         name: graphicsApiReplacer
-        version: 1.2.0
+        version: 1.3.0
         type: module
       contents:
         source:
           method: github
           url: TheRedDaemon/ucp_graphicsApiReplacer
-          github-sha: 14ef8ddf5b55d57778c2a7cf7b0e522bc045a191
+          github-sha: f180062e10622900f684c3de7f76e37dcbdcf304
           github-tag: main
     - definition:
         name: maploader
