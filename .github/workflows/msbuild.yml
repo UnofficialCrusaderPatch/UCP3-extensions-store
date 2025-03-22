@@ -8,6 +8,9 @@ on:
 
 jobs:
   build:
+    permissions:
+      packages: read
+      contents: read
     runs-on: windows-latest
     env:
         BUILD_CONFIGURATION: ReleaseSecure
@@ -37,7 +40,7 @@ jobs:
       shell: |
         pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
       env:
-        UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
+        UCP3_NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_TOKEN: ${{ github.token }}
       run: |
         .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem"
