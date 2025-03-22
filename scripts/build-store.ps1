@@ -2,7 +2,8 @@ Param(
   [Parameter(Mandatory = $true, ValueFromPipeline = $false)][string]$Certificate,
   [Parameter(Mandatory = $false, ValueFromPipeline = $false)][string]$NugetToken,
   [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$Clean = $true,
-  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$AllowSuperseded = $false
+  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$AllowSuperseded = $false,
+  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$IgnoreBranchMismatch = $false
 )
 
 # Stop this entire script in case of errors
@@ -30,7 +31,7 @@ Import-Module powershell-yaml
 $recipe = Get-Content .\recipe.yml | ConvertFrom-Yaml
 $gitBranch = git rev-parse --abbrev-ref HEAD
 
-if ($recipe.framework.version -ne "=$($gitBranch)") {
+if (($false -eq $IgnoreBranchMismatch) -and ($recipe.framework.version -ne "=$($gitBranch)")) {
   Write-Error "Aborting. Version mismatch between recipe and branch: $($recipe.framework.version) <> $($gitBranch)"
 
   return 1
