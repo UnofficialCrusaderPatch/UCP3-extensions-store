@@ -20,6 +20,11 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
 
+    # - name: Setup NUGET
+    #   uses: nuget/setup-nuget@v2
+    #   with:
+    #     nuget-version: '5.x'
+
     - name: Prepare signing of modules by exporting secret to file
       shell: pwsh
       working-directory: ${{env.GITHUB_WORKSPACE}}
