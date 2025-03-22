@@ -10,7 +10,7 @@ jobs:
   build:
     permissions:
       packages: read
-      contents: read
+      contents: write
     runs-on: windows-latest
     env:
         BUILD_CONFIGURATION: ReleaseSecure
