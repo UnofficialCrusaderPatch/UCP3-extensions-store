@@ -377,6 +377,16 @@ extensions:
           url: Xander10alpha/extension-Xanders-Crusader-Mod
           github-sha: 98bff729dc8a50ed0dc6241ee673e851680ea83e
           github-tag: main
+    - definition:
+        name: NewBalance
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Nevikov/New-Balance
+          github-sha: ece3059abebbac95e067bd82b303c3c813f7b510
+          github-tag: main
 # Modules
     - definition:
         name: aiSwapper
@@ -548,4 +558,4 @@ extensions:
           url: gynt/ucp-extension-ai-ox-tethers
           github-sha: 0b2bc860d49494adf700c1976d5507bc56cf4bf0
           github-tag: main
-   
+
