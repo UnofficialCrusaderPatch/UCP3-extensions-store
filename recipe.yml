@@ -377,6 +377,16 @@ extensions:
           url: Xander10alpha/extension-Xanders-Crusader-Mod
           github-sha: 98bff729dc8a50ed0dc6241ee673e851680ea83e
           github-tag: main
+    - definition:
+        name: NewBalance-Nevikov
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Nevikov/New-Balance
+          gtihub-sha: 4bfeb3b49ef949186b84662022143cf83e3c5a66
+          github-tag: main
 # Modules
     - definition:
         name: aiSwapper
