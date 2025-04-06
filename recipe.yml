@@ -385,7 +385,7 @@ extensions:
         source:
           method: github
           url: Nevikov/New-Balance
-          gtihub-sha: 4bfeb3b49ef949186b84662022143cf83e3c5a66
+          github-sha: 4bfeb3b49ef949186b84662022143cf83e3c5a66
           github-tag: main
 # Modules
     - definition:
