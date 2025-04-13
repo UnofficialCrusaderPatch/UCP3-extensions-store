@@ -379,13 +379,13 @@ extensions:
           github-tag: main
     - definition:
         name: NewBalance-Nevikov
-        version: 1.0.0
+        version: 1.0.1
         type: plugin
       contents:
         source:
           method: github
           url: Nevikov/New-Balance
-          github-sha: 4bfeb3b49ef949186b84662022143cf83e3c5a66
+          github-sha: 6880dafb5cee3cce9037233cbd184a4c9eb266c1
           github-tag: main
 # Modules
     - definition:
