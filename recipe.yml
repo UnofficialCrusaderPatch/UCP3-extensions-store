@@ -307,24 +307,24 @@ extensions:
           location: extension-Ascension-Maps
     - definition:
         name: Community-Paket-Files
-        version: 1.0.1
+        version: 1.1.0
         type: plugin
       contents:
         source:
           method: github
           url: Nevikov/Community-Paket-UCP3
-          github-sha: 1e11f99033c598567145a6597f733945881ba70a
+          github-sha: fe6035e536532e2ed2486f44dfad2f92c003e1fb
           github-tag: main
           location: Community-Paket-Files
     - definition:
         name: Community-Paket
-        version: 1.0.1
+        version: 1.1.0
         type: plugin
       contents:
         source:
           method: github
           url: Nevikov/Community-Paket-UCP3
-          github-sha: 1e11f99033c598567145a6597f733945881ba70a
+          github-sha: fe6035e536532e2ed2486f44dfad2f92c003e1fb
           github-tag: main
           location: Community-Paket
     - definition:
