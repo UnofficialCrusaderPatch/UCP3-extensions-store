@@ -203,22 +203,22 @@ extensions:
     - definition:
         name: Schlossgespenst-KI
         type: plugin
-        version: 1.0.2
+        version: 1.0.3
       contents:
         source:
           method: github
           url: Schlossgespensty/Schlossgespenst-KI
-          github-sha: 8a843337a6a1aea895a4b6f063f1d65ad5d3a4be
+          github-sha: 743a5fd2f05a9a0cf29281d1fe0db40f65cfe62b
           github-tag: main
     - definition:
         name: Schlossgespenst-KI-files
         type: plugin
-        version: 1.0.6
+        version: 1.0.7
       contents:
         source:
           method: github
           url: Schlossgespensty/Schlossgespenst-KI-files
-          github-sha: e2e792635eb600de570ac45d9ad2f7c688a97b34
+          github-sha: a7377fe2ffd03f7a1a7f8e68a0cf0dfe904345c6
           github-tag: main
     - definition:
         name: ConqueringChristmas
