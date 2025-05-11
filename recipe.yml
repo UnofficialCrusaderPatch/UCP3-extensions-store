@@ -390,13 +390,13 @@ extensions:
 # Modules
     - definition:
         name: aiSwapper
-        version: 1.1.0
+        version: 1.2.0
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aiSwapper
-          github-sha: f779b9a2bd5a9691b8bbfc9459af019b5ad29f85
+          github-sha: 5c6fa2aca6600b17471bc7349cdd833747a9e4fa
           github-tag: main
     - definition:
         name: aicloader
