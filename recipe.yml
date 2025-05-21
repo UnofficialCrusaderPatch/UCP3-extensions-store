@@ -550,12 +550,12 @@ extensions:
           github-tag: main
     - definition:
         name: ai-ox-tethers
-        version: 1.0.2
+        version: 1.0.3
         type: module
       contents:
         source:
           method: github
           url: gynt/ucp-extension-ai-ox-tethers
-          github-sha: a5def682fff411d1d1ef398ee07905b0c9e22c64
+          github-sha: fc1209d6dd55b4f1ff9496f50b0f66ee81f97983
           github-tag: main
    
