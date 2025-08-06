@@ -387,6 +387,16 @@ extensions:
           url: Nevikov/New-Balance
           github-sha: df13d00f0b49e6321386d12827c0cb70573a6325
           github-tag: main
+    - definition:
+        name: Ascension-AI-Tournament
+        version: 3.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension-AI-Tournament
+          github-sha: d15108d47bf50c358077334d39e095f0d5227720
+          github-tag: main
 # Modules
     - definition:
         name: aiSwapper
