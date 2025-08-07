@@ -520,13 +520,13 @@ extensions:
           github-tag: main
     - definition:
         name: rebalancer
-        version: 1.1.1
+        version: 1.1.2
         type: module
       contents:
         source:
           method: github
           url: CIO61/rebalancer
-          github-sha: 45a288c3524d380c52b3f7d31809a027f8021647
+          github-sha: 54b09d8aabe60e85350a47b2356bd4b4f4b5ae89
           github-tag: master
     - definition:
         name: citizens
