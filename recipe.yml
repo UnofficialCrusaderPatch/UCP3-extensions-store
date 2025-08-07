@@ -252,24 +252,24 @@ extensions:
           github-tag: main
     - definition:
         name: Ascension-AI-Balance
-        version: 1.1.1
+        version: 1.1.2
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: b6bc7bede5b79d00ec896219f1aa8b150d5a3f68
+          github-sha: 9a871b6e06105835abdc1f9ca1efcad506026a29
           github-tag: ucp3-ascension
           location: extension-Ascension-AI-Balance   
     - definition:
         name: Ascension-Balance
-        version: 1.1.1
+        version: 1.1.2
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: b6bc7bede5b79d00ec896219f1aa8b150d5a3f68
+          github-sha: 5962befeb430a4364bec41e42740988fe1beb501
           github-tag: ucp3-ascension
           location: extension-Ascension-Balance
     - definition:
