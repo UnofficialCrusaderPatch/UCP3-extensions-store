@@ -252,24 +252,24 @@ extensions:
           github-tag: main
     - definition:
         name: Ascension-AI-Balance
-        version: 1.0.6
+        version: 1.1.1
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 184749f1432b8330848abc64faf87a4d83090c29
+          github-sha: 0b080d8ae2255e6fc9a7581b63d63ccc70588991
           github-tag: ucp3-ascension
           location: extension-Ascension-AI-Balance   
     - definition:
         name: Ascension-Balance
-        version: 1.0.3
+        version: 1.1.1
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 184749f1432b8330848abc64faf87a4d83090c29
+          github-sha: 0b080d8ae2255e6fc9a7581b63d63ccc70588991
           github-tag: ucp3-ascension
           location: extension-Ascension-Balance
     - definition:
@@ -285,13 +285,13 @@ extensions:
           location: extension-Ascension-AI
     - definition:
         name: Ascension-Multiplayer
-        version: 1.0.4
+        version: 1.0.5
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 184749f1432b8330848abc64faf87a4d83090c29
+          github-sha: 0b080d8ae2255e6fc9a7581b63d63ccc70588991
           github-tag: ucp3-ascension
           location: extension-Ascension-Multiplayer
     - definition:
@@ -389,13 +389,13 @@ extensions:
           github-tag: main
     - definition:
         name: Ascension-AI-Tournament
-        version: 3.0.0
+        version: 3.0.1
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension-AI-Tournament
-          github-sha: d15108d47bf50c358077334d39e095f0d5227720
+          github-sha: 38bd5f46f40a3e5525f176363e3bad2272677b59
           github-tag: main
 # Modules
     - definition:
@@ -520,13 +520,13 @@ extensions:
           github-tag: main
     - definition:
         name: rebalancer
-        version: 1.1.0
+        version: 1.1.1
         type: module
       contents:
         source:
           method: github
           url: CIO61/rebalancer
-          github-sha: c7c621fc4d63338ee0e2f8d8969b1102d65ff892
+          github-sha: 45a288c3524d380c52b3f7d31809a027f8021647
           github-tag: master
     - definition:
         name: citizens
