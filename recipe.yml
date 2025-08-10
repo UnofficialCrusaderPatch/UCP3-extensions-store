@@ -510,13 +510,13 @@ extensions:
           github-tag: main
     - definition:
         name: running-units
-        version: 1.0.1
+        version: 1.0.2
         type: module
       contents:
         source:
           method: github
           url: gynt/ucp-extension-running-units
-          github-sha: add648dfda85f5c6c36e8ca1b2c0e4f798a034f4
+          github-sha: 8cbfdf7ef2846d16dd5dda0a18ba4937aae59ed1
           github-tag: main
     - definition:
         name: rebalancer
