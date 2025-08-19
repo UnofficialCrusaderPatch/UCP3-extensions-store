@@ -389,13 +389,13 @@ extensions:
           github-tag: main
     - definition:
         name: Ascension-AI-Tournament
-        version: 3.0.3
+        version: 3.0.4
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension-AI-Tournament
-          github-sha: c5a1aa68dd96fe1df00ef9ff5d4fc2ee49dac50a
+          github-sha: 40bf5c04abb2515998a616f2d9f2b24dfd642c05
           github-tag: main
 # Modules
     - definition:
