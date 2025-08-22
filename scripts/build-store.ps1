@@ -199,7 +199,10 @@ if ($localFrameworkSha -ne $frameworkSha) {
 }
 
 if ($NugetToken -ne $null -and $NugetToken -ne "") {
+  # Setup UCP3 Nuget
+  Push-Location "build\ucp3"
   & ".\scripts\build.ps1" -What setup -NugetToken $NugetToken
+  Pop-Location
 }
 
 if ($isFrameworkReleased) {
