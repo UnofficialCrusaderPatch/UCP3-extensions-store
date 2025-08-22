@@ -27,6 +27,13 @@ jobs:
     #   uses: nuget/setup-nuget@v2
     #   with:
     #     nuget-version: '5.x'
+    - name: Check meson presence
+      shell: pwsh
+      run: |
+        python -m pip show meson
+        if ($LASTEXITCODE -ne 0) {
+          python -m pip install meson
+        }
 
     - name: Prepare signing of modules by exporting secret to file
       shell: pwsh
