@@ -22,12 +22,14 @@ jobs:
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
+      with:
+        msbuild-architecture: x86
 
     - name: Set up MSVC for Win32 (x86)
       uses: ilammy/msvc-dev-cmd@v1
       with:
         arch: x86
-        
+
     # - name: Setup NUGET
     #   uses: nuget/setup-nuget@v2
     #   with:
