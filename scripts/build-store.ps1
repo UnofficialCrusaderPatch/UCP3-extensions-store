@@ -198,6 +198,9 @@ if ($localFrameworkSha -ne $frameworkSha) {
   return 1
 }
 
+if ($NugetToken -ne $null -and $NugetToken -ne "") {
+  & ".\scripts\build.ps1" -What setup -NugetToken $NugetToken
+}
 
 if ($isFrameworkReleased) {
   # Fetch nuget package if it exists
@@ -209,9 +212,6 @@ else {
   # Build UCP3
   Push-Location "build\ucp3"
 
-  if ($NugetToken -ne $null -and $NugetToken -ne "") {
-    & ".\scripts\build.ps1" -What setup -NugetToken $NugetToken
-  }
   & ".\scripts\build.ps1" -What nuget
 
   $NUPKG_DIRECTORY = (Get-Item -Path ".\dll\").FullName
