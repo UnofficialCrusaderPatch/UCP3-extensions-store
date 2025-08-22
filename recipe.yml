@@ -597,7 +597,7 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-cffi
-          github-sha: eadcee1a8882af7ec5b91e85416542ab6d704f91
+          github-sha: 4dddc5f9bc51a2cf0918a0381debe9f64e043469
           github-tag: main
     - definition:
         name: luajit
