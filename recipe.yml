@@ -395,7 +395,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/Ascension-AI-Tournament
-          github-sha: 1c9222a96e83d79ea242772ab2da1db1c7711cd1
+          github-sha: 7e587c68c92fd20521bf252310ac8c7b41b737de
           github-tag: main
 # Modules
     - definition:
