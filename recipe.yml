@@ -569,63 +569,63 @@ extensions:
           github-sha: fc1209d6dd55b4f1ff9496f50b0f66ee81f97983
           github-tag: main
 
-    # - definition:
-    #     type: module
-    #     name: map-extensions
-    #     version: 1.0.0
-    #   contents:
-    #     source:
-    #       method: github
-    #       url: gynt/ucp-extension-map-extensions
-    #       github-sha: f123a3c1ca641a4af7832c56d92cbafd25eb1eed
-    #       github-tag: main
-    # - definition:
-    #     name: protocol
-    #     version: 1.0.0
-    #     type: module
-    #   contents:
-    #     source:
-    #       method: github
-    #       url: gynt/ucp-extension-protocol
-    #       github-sha: b5d670a3dd6e8ea7bc8c18ca9b68df0d941a2f24
-    #       github-tag: main
-    # - definition:
-    #     name: cffi
-    #     version: 1.0.0
-    #     type: module
-    #   contents:
-    #     source:
-    #       method: github
-    #       url: gynt/ucp-extension-cffi
-    #       github-sha: 8179b4df37d0e2a2172f758c5c0b58a683a3d5eb
-    #       github-tag: main
-    # - definition:
-    #     name: luajit
-    #     version: 1.0.0
-    #     type: module
-    #   contents:
-    #     source:
-    #       method: github
-    #       url: gynt/ucp-extension-luajit
-    #       github-sha: 3e5976d1d193fb97be5c8528268b8143e14447d8
-    #       github-tag: main
-    # - definition:
-    #     name: ui
-    #     version: 1.0.0
-    #     type: module
-    #   contents:
-    #     source:
-    #       method: github
-    #       url: gynt/ucp-extension-ui
-    #       github-sha: a9c9ef0fff68cb72741996630c29eb39f30c3e84
-    #       github-tag: main
-    # - definition:
-    #     name: automarket
-    #     type: module
-    #     version: 1.0.0
-    #   contents:
-    #     source:
-    #       method: github
-    #       url: gynt/ucp-extension-automarket
-    #       github-sha: ae8442060f37cbd22a34193aa702743b61a5a9f7
-    #       github-tag: main
+    - definition:
+        type: module
+        name: map-extensions
+        version: 1.0.0
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-map-extensions
+          github-sha: 580d9680e12d0ab86933648262614b14f000cdd8
+          github-tag: main
+    - definition:
+        name: protocol
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-protocol
+          github-sha: b5d670a3dd6e8ea7bc8c18ca9b68df0d941a2f24
+          github-tag: main
+    - definition:
+        name: cffi
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-cffi
+          github-sha: 80c70e2c6b423742b682d78810b703d49c4c6410
+          github-tag: main
+    - definition:
+        name: luajit
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-luajit
+          github-sha: 555c5186dd554684f12ba4ba01df6d349470005b
+          github-tag: main
+    - definition:
+        name: ui
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-ui
+          github-sha: 91d30defaac9a69c4f47f9f863da6053d2c99290
+          github-tag: main
+    - definition:
+        name: automarket
+        type: module
+        version: 1.0.0
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-automarket
+          github-sha: a9ded60d89888b134026907a72b87d07958b11f9
+          github-tag: main
