@@ -627,5 +627,5 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-automarket
-          github-sha: 4c68e5f8931b57db4aa73bc6f0639834ff95fd6d
+          github-sha: 22da37f7ebaca90df6e9f6a16156a5bec16a1d79
           github-tag: main
