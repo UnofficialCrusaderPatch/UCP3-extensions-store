@@ -607,7 +607,7 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-luajit
-          github-sha: 555c5186dd554684f12ba4ba01df6d349470005b
+          github-sha: a1b69f3a633de3272d1ce705a92a9496a40fdfcf
           github-tag: main
     - definition:
         name: ui
@@ -617,7 +617,7 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-ui
-          github-sha: e943d797f644cd36f626e5eabfb7f1c1cff6dddc
+          github-sha: 9e82f2628cf6e9953875afec4e2b1fd9b229c57e
           github-tag: main
     - definition:
         name: automarket
@@ -627,5 +627,5 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-automarket
-          github-sha: 75f61782bac4a8f31e8c238607902fe69b1db688
+          github-sha: 4c68e5f8931b57db4aa73bc6f0639834ff95fd6d
           github-tag: main
