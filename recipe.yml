@@ -577,7 +577,7 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-map-extensions
-          github-sha: 580d9680e12d0ab86933648262614b14f000cdd8
+          github-sha: d9399125831c96a46701a510542e09f2a031971f
           github-tag: main
     - definition:
         name: protocol
@@ -587,7 +587,7 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-protocol
-          github-sha: b5d670a3dd6e8ea7bc8c18ca9b68df0d941a2f24
+          github-sha: 30f34ee79e0585f05b2729d01b192de374d0bae5
           github-tag: main
     - definition:
         name: cffi
@@ -617,7 +617,7 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-ui
-          github-sha: 91d30defaac9a69c4f47f9f863da6053d2c99290
+          github-sha: e943d797f644cd36f626e5eabfb7f1c1cff6dddc
           github-tag: main
     - definition:
         name: automarket
@@ -627,5 +627,5 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-automarket
-          github-sha: f188f1da45417724562244ec54a90d54f0b57112
+          github-sha: 75f61782bac4a8f31e8c238607902fe69b1db688
           github-tag: main
