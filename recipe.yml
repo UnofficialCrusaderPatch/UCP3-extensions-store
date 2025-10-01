@@ -546,7 +546,7 @@ extensions:
         source:
           method: github
           url: gynt/ucp-extension-custom-skirmish-trails
-          github-sha: f800260af89c7697dd4a47f44be30f7191fda2b3
+          github-sha: dbb5d72ce27f91adbd3312fcbe6e567034deadb4
           github-tag: main
     - definition:
         name: workers
