@@ -540,7 +540,7 @@ extensions:
           github-tag: main
     - definition:
         name: custom-skirmish-trails
-        version: 1.2.2
+        version: 1.2.3
         type: module
       contents:
         source:
