@@ -540,13 +540,13 @@ extensions:
           github-tag: main
     - definition:
         name: custom-skirmish-trails
-        version: 1.2.4
+        version: 1.2.5
         type: module
       contents:
         source:
           method: github
           url: gynt/ucp-extension-custom-skirmish-trails
-          github-sha: d0d268f2805388dac86301e3a175e97624479820
+          github-sha: 0fcf58a1fad04ce920840e67d9f537557f32f9d9
           github-tag: main
     - definition:
         name: workers
