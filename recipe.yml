@@ -258,18 +258,18 @@ extensions:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 97631c614ac9c588fe3fa2c917bdd1b4a9c021ed
+          github-sha: 68a03a2efb462533074f2e630c1624a1814983d2
           github-tag: ucp3-ascension
           location: extension-Ascension-AI-Balance   
     - definition:
         name: Ascension-Balance
-        version: 1.1.1
+        version: 1.1.2
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 97631c614ac9c588fe3fa2c917bdd1b4a9c021ed
+          github-sha: 68a03a2efb462533074f2e630c1624a1814983d2
           github-tag: ucp3-ascension
           location: extension-Ascension-Balance
     - definition:
@@ -280,29 +280,29 @@ extensions:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 97631c614ac9c588fe3fa2c917bdd1b4a9c021ed
+          github-sha: 68a03a2efb462533074f2e630c1624a1814983d2
           github-tag: ucp3-ascension
           location: extension-Ascension-AI
     - definition:
         name: Ascension-Multiplayer
-        version: 1.0.5
+        version: 1.0.6
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 97631c614ac9c588fe3fa2c917bdd1b4a9c021ed
+          github-sha: 68a03a2efb462533074f2e630c1624a1814983d2
           github-tag: ucp3-ascension
           location: extension-Ascension-Multiplayer
     - definition:
         name: Ascension-Maps
-        version: 1.0.1
+        version: 1.0.2
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 97631c614ac9c588fe3fa2c917bdd1b4a9c021ed
+          github-sha: 68a03a2efb462533074f2e630c1624a1814983d2
           github-tag: ucp3-ascension
           location: extension-Ascension-Maps
     - definition:
