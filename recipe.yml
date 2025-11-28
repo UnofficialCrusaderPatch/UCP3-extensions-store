@@ -397,6 +397,16 @@ extensions:
           url: Krarilotus/Ascension-AI-Tournament
           github-sha: 9b6a400debbf5322b159a2c6d96dab4bd79aa68b
           github-tag: main
+    - definition:
+        name: Schlossgespenst-Ascension-PvE-Pressure-AI
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Schlossgespensty/Schlossgespenst-Ascension-PvE-Pressure-AI
+          github-sha: 7ca96be06bd370efb1b3b10703f211a0dbdd172c
+          github-tag: main
 # Modules
     - definition:
         name: aiSwapper
