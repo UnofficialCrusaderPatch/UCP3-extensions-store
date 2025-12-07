@@ -642,10 +642,10 @@ extensions:
     - definition:
         name: steam-multiplayer
         type: module
-        version: 1.2.2
+        version: 1.2.3
       contents:
         source:
           method: github
           url: gynt/ucp-extension-steam-multiplayer
-          github-sha: 045aad2c8f504b7fb69255a8815e3a130b87de6b
+          github-sha: 18c71b7cf10ba9ba3cc07a5c464dc463a6382bd4
           github-tag: main
