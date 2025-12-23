@@ -126,17 +126,32 @@ foreach ($release in $sortedReleaseVersionsArray) {
     
     Write-Output "Looking for a binary for: $name@$version"
 
-    $latestVersion = $releaseStore.extensions.list | 
-      Where-Object { $_.definition.name -eq $name } | 
-      ForEach-Object { [semver]($_.definition.version) } | Sort-Object -Descending | 
+    $variants = $releaseStore.extensions.list | 
+      Where-Object { $_.definition.name -eq $name }
+    $variantVersions = $variants | 
+      ForEach-Object { [semver]($_.definition.version) }
+    $latestVersion = $variantVersions | Sort-Object -Descending | 
       Select-Object -First 1
 
-    Write-Output "Latest known version is $($latestVersion)"
+    $rVariants = $recipe.extensions.list | 
+      Where-Object { $_.definition.name -eq $name }
+    $rVariantVersions = $rVariants | 
+      ForEach-Object { [semver]($_.definition.version) }
+    $rLatestVersion = $rVariantVersions | Sort-Object -Descending | 
+      Select-Object -First 1
+
+
+    Write-Output "Latest released version is $($latestVersion)"
+    Write-Output "Latest recipe version is $($rLatestVersion)"
     if ([semver]($version) -lt $latestVersion) {
       if ($AllowSuperseded) {
-        Write-Warning "Latest known version is higher than the recipe version. This is probably not what you want"
+        Write-Warning "Latest released version is higher than the recipe version. This is probably not what you want"
       } else {
-        Throw "Latest known version is higher than the recipe version. This is probably not what you want"
+        if ($rVariantVersions.Contains([semver]($version))) {
+          Write-Warning "Latest released version is higher than the recipe version. This is probably not what you want"
+        } else {
+          Throw "Error: Latest released version is higher than the recipe version. This is probably not what you want"
+        }
       }
     }
     
