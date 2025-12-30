@@ -400,13 +400,13 @@ extensions:
           github-tag: main
     - definition:
         name: Ascension-AI-Tournament
-        version: 3.0.7
+        version: 3.0.8
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension-AI-Tournament
-          github-sha: 9b6a400debbf5322b159a2c6d96dab4bd79aa68b
+          github-sha: 8c0039707597e1e77ee7a5c0ce039a3b4e24be28
           github-tag: main
     - definition:
         name: Schlossgespenst-Ascension-PvE-Pressure-AI
