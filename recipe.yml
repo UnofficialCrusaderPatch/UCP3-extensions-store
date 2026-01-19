@@ -162,23 +162,23 @@ extensions:
           github-tag: main
     - definition:
         name: Legends-Of-The-Orient
-        version: 3.1.5
+        version: 3.1.6
         type: plugin
       contents:
         source:
           method: github
           url: CrusaderPilaw/extension-Legends-of-the-Orient
-          github-sha: f6da93e518e3dd2ef49f78dddc994707046d6da8
+          github-sha: d2335fccd286d5f575923def96513b6606b2dcf5
           github-tag: main
     - definition:
         name: Legends-Of-The-Orient-AI
-        version: 3.1.5
+        version: 3.1.6
         type: plugin
       contents:
         source:
           method: github
           url: CrusaderPilaw/extension-Legends-of-the-Orient-AI
-          github-sha: 05d51d38a91485d5116ec492fdd91fb04a4717ad
+          github-sha: 6ff5fea5ae331dd5e05295caa2f5bfe06f638665
           github-tag: main
     - definition:
         name: Fiery-Ladies
