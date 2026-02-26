@@ -172,7 +172,7 @@ extensions:
           github-tag: main
     - definition:
         name: Legends-Of-The-Orient-AI
-        version: 3.1.6
+        version: 3.1.7
         type: plugin
       contents:
         source:
