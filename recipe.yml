@@ -426,7 +426,7 @@ extensions:
         source:
           method: github
           url: Nevikov/Mod-KI-Team-Liga
-          github-sha: e8f1e828a0fb2668fd1b7fda5638d5163f2650ac
+          github-sha: c926f5a38c17ab05c5d78cd0d777417e6854469d
           github-tag: main
 # Modules
     - definition:
