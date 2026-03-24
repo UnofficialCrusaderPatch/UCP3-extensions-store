@@ -420,13 +420,13 @@ extensions:
           github-tag: main
     - definition:
         name: Mod-KI-Team-Liga
-        version: 1.0.8
+        version: 1.0.9
         type: plugin
       contents:
         source:
           method: github
           url: Nevikov/Mod-KI-Team-Liga
-          github-sha: f04e624ddc4dc498de58b6c8b1d0b7167219d4f6
+          github-sha: cb043104e59828be4f10e2fa63f25ac747998215
           github-tag: main
 # Modules
     - definition:
