@@ -242,13 +242,13 @@ extensions:
           github-tag: main
     - definition:
         name: ConqueringArabia
-        version: 1.0.0
+        version: 1.0.1
         type: plugin
       contents:
         source:
           method: github
           url: Monsterfisch/ConqueringArabia_-fixed_updated_StrongholdCrusader_texture-
-          github-sha: 3408a4c1c01401ba23644201c1e814623a8441f3
+          github-sha: adab0c9bbf450ecf0fa50dbfbe1291ba59cc2400
           github-tag: main
     - definition:
         name: Kirito-Kun
