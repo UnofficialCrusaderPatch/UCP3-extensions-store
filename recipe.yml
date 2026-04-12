@@ -248,7 +248,7 @@ extensions:
         source:
           method: github
           url: Monsterfisch/ConqueringArabia_-fixed_updated_StrongholdCrusader_texture-
-          github-sha: adab0c9bbf450ecf0fa50dbfbe1291ba59cc2400
+          github-sha: 774dcc4424d0a5bf3ab7c3eacb30459c6ae78028
           github-tag: main
     - definition:
         name: Kirito-Kun
