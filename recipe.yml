@@ -410,13 +410,13 @@ extensions:
           github-tag: main
     - definition:
         name: Mod-KI-Team-Liga
-        version: 2.0.1
+        version: 2.0.2
         type: plugin
       contents:
         source:
           method: github
           url: Nevikov/Mod-KI-Team-Liga
-          github-sha: cb495ab75273c7b15aaa2cec9f83377d086ded0f
+          github-sha: 141063c8a20243d22057440275dfe35b8f57b23f
           github-tag: main
 # Modules
     - definition:
