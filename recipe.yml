@@ -510,3 +510,25 @@ extensions:
           github-tag: main
 
    
+    - definition:
+        name: hopfarm-limit-fix
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: DDanielDragon/ucp3-fixes
+          github-sha: e76a826ee6bc73b794ac0873dda8912931066117
+          github-tag: master
+          location: hopfarm-limit-fix
+    - definition:
+        name: aiv-troop-spot-fix
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: DDanielDragon/ucp3-fixes
+          github-sha: e76a826ee6bc73b794ac0873dda8912931066117
+          github-tag: master
+          location: aiv-troop-spot-fix
