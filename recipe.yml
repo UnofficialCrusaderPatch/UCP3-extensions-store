@@ -518,7 +518,7 @@ extensions:
         source:
           method: github
           url: DDanielDragon/ucp3-fixes
-          github-sha: e76a826ee6bc73b794ac0873dda8912931066117
+          github-sha: dedb7ca3125e6e212e0e895c373a7e8ee9258783
           github-tag: master
           location: hopfarm-limit-fix
     - definition:
@@ -529,6 +529,6 @@ extensions:
         source:
           method: github
           url: DDanielDragon/ucp3-fixes
-          github-sha: e76a826ee6bc73b794ac0873dda8912931066117
+          github-sha: dedb7ca3125e6e212e0e895c373a7e8ee9258783
           github-tag: master
           location: aiv-troop-spot-fix
