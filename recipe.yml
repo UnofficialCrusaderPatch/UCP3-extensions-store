@@ -420,13 +420,13 @@ extensions:
           github-tag: main
     - definition:
         name: Seraphine-and-Verehrer
-        version: 1.0.1
+        version: 1.0.2
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Seraphine
-          github-sha: 6e0c7b2242a1f64515ea96b92038787669e5c4f2
+          github-sha: 3d90b4f3cfa80740963587c46cca63e20ba251ec
           github-tag: main
 # Modules
     - definition:
