@@ -418,6 +418,16 @@ extensions:
           url: Nevikov/Mod-KI-Team-Liga
           github-sha: 141063c8a20243d22057440275dfe35b8f57b23f
           github-tag: main
+    - definition:
+        name: Seraphine-and-Verehrer
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Seraphine
+          github-sha: dddd62fa840f36aec9a62a24df6f1f1d13d25b6b
+          github-tag: main
 # Modules
     - definition:
         name: ucp-autoclick
