@@ -270,7 +270,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 56747622080425c3ebe19d37013cccff1e166695
+          github-sha: fbf099bc7c9e5d88a3b77841ef9e43e754775a57
           github-tag: ucp3-ascension
           location: extension-Ascension-Balance
     - definition:
@@ -292,7 +292,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 56747622080425c3ebe19d37013cccff1e166695
+          github-sha: fbf099bc7c9e5d88a3b77841ef9e43e754775a57
           github-tag: ucp3-ascension
           location: extension-Ascension-Multiplayer
     - definition:
