@@ -439,25 +439,25 @@ extensions:
 # Modules
     - definition:
         name: aiv-troops-behaviour
-        version: 0.2.0
+        version: 0.2.1
         type: module
       contents:
         source:
           method: github
-          url: Krarilotus/ucp3-fixes
-          github-sha: ca7403e78fa2e675ffb0fce353a6c29f29a01b6d
-          github-tag: feature/aic-troop-behavior
+          url: DanielFleger/ucp3-fixes
+          github-sha: 63219fdeb152f88a17f2ac46040079017fe1251d
+          github-tag: main
           location: aiv-troops-behaviour
     - definition:
         name: hopfarm-limit-fix
-        version: 0.1.1
+        version: 0.1.2
         type: module
       contents:
         source:
           method: github
-          url: Krarilotus/ucp3-fixes
-          github-sha: ca7403e78fa2e675ffb0fce353a6c29f29a01b6d
-          github-tag: feature/aic-troop-behavior
+          url: DanielFleger/ucp3-fixes
+          github-sha: 63219fdeb152f88a17f2ac46040079017fe1251d
+          github-tag: main
           location: hopfarm-limit-fix
     - definition:
         name: ucp-autoclick
