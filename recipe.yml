@@ -15,6 +15,14 @@ timestamp: ~
 signer: default
 supported-languages:
   - en
+  - de
+  - fr
+  - ru
+  - hu
+  - tr
+  - ch
+  - es
+  - fa
 # The extensions defined in this store
 extensions:
 # The list of extensions
@@ -429,6 +437,28 @@ extensions:
           github-sha: 3d90b4f3cfa80740963587c46cca63e20ba251ec
           github-tag: main
 # Modules
+    - definition:
+        name: aiv-troops-behaviour
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: ca7403e78fa2e675ffb0fce353a6c29f29a01b6d
+          github-tag: feature/aic-troop-behavior
+          location: aiv-troops-behaviour
+    - definition:
+        name: hopfarm-limit-fix
+        version: 0.1.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: ca7403e78fa2e675ffb0fce353a6c29f29a01b6d
+          github-tag: feature/aic-troop-behavior
+          location: hopfarm-limit-fix
     - definition:
         name: ucp-autoclick
         version: 1.0.1
