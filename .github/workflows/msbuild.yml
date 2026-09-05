@@ -57,6 +57,8 @@ jobs:
         UCP3_NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_TOKEN: ${{ github.token }}
       run: |
+        # Legacy framework scripts do not check every native tool exit code.
+        $PSNativeCommandUseErrorActionPreference = $true
         .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -Debug
 
     - name: Release store
@@ -66,4 +68,5 @@ jobs:
         UCP3_NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_TOKEN: ${{ github.token }}
       run: |
+        $PSNativeCommandUseErrorActionPreference = $true
         .\scripts\create-release.ps1

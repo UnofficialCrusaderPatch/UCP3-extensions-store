@@ -447,7 +447,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aiSwapper
-          github-sha: 68732123583adacb354a1e3b68d45e66fbc7b8e6
+          github-sha: 7ab40c05c0b4250f66733645d5e6fabbe036e491
           github-tag: main
     - definition:
         name: aicloader
