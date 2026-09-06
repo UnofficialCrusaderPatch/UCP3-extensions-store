@@ -439,14 +439,14 @@ extensions:
 # Modules
     - definition:
         name: aiv-troops-behaviour
-        version: 0.2.2
+        version: 0.2.3
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 2c773f71295c847a0f82cb495d3e87af53ef0b30
-          github-tag: docs/troop-choice-help
+          github-sha: b20dad69257dc94dcfaf8a867a0848d1fccc3252
+          github-tag: main
           location: aiv-troops-behaviour
     - definition:
         name: hopfarm-limit-fix
