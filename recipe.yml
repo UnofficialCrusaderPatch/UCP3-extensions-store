@@ -708,8 +708,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-audio-fixes
-          github-sha: 1817cbb2a8a65a9bea231b82012b45e55ae73cf8
-          github-tag: fix/bink-volume
+          github-sha: 1d8d5bc985c92bae560cbfaec006af44c25f74ed
+          github-tag: fix/positional-audio
     - definition:
         name: steam-multiplayer
         type: module
