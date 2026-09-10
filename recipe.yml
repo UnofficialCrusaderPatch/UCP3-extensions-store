@@ -591,13 +591,13 @@ extensions:
           github-tag: main
     - definition:
         name: custom-projectiles
-        version: 1.6.0
+        version: 1.7.0
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/extension-projectileModifier
-          github-sha: 94b011d6f69f446bdcba53efa334f986386b722f
+          github-sha: 3b147274b0d3c5219a5e06e4ca75529925914c48
           github-tag: main
     - definition:
         name: rebalancer
