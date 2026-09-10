@@ -20,6 +20,13 @@ jobs:
       with:
         submodules: recursive
 
+    - name: Set up Python for module packagers
+      # Module packagers (including Recorder) use modern Python type syntax.
+      # Pin the interpreter rather than inheriting the runner image's default.
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
       with:
