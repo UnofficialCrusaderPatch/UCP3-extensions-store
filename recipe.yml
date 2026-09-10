@@ -708,8 +708,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-audio-fixes
-          github-sha: 1d8d5bc985c92bae560cbfaec006af44c25f74ed
-          github-tag: fix/positional-audio
+          github-sha: 809c37428232c6ed25776cd9dd44abb15bf992c2
+          github-tag: main
     - definition:
         name: steam-multiplayer
         type: module
