@@ -712,11 +712,11 @@ extensions:
           github-tag: main
     - definition:
         name: recorder
-        version: 0.49.3
+        version: 0.49.4
         type: module
       contents:
         source:
           method: github
           url: Corax34/ucp_recorder
-          github-sha: 237570a9e7b40b8ecbc3b9a9c6d65d5ae6d8e132
+          github-sha: eb12e51fde95e9d68e46255b9dc7154289aea629
           github-tag: main
