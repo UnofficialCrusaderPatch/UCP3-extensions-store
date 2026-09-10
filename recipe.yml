@@ -701,6 +701,16 @@ extensions:
           github-sha: 858890f558fd042215913e862745d98ed13d8834
           github-tag: fix/multiplayer-sync-and-fees
     - definition:
+        name: audio-fixes
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-audio-fixes
+          github-sha: 1817cbb2a8a65a9bea231b82012b45e55ae73cf8
+          github-tag: fix/bink-volume
+    - definition:
         name: steam-multiplayer
         type: module
         version: 1.2.3
