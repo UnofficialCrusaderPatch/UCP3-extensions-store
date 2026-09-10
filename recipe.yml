@@ -561,14 +561,14 @@ extensions:
           github-tag: main
     - definition:
         name: ucp2-legacy
-        version: 2.15.1
+        version: 2.15.2
         type: module
       contents:
         source:
           method: github
-          url: UnofficialCrusaderPatch/extension-ucp2-legacy
-          github-sha: 04e826d00f1a5f8a623e15acffc743f115ee7fb1
-          github-tag: main
+          url: Krarilotus/extension-ucp2-legacy
+          github-sha: fbb634bb23313e126a74e09f72defb41fdc559a9
+          github-tag: test-fbb634bb2331
     - definition:
         name: winProcHandler
         version: 1.0.0
@@ -682,14 +682,14 @@ extensions:
           github-tag: main
     - definition:
         name: ui
-        version: 1.0.0
+        version: 1.0.1
         type: module
       contents:
         source:
           method: github
-          url: gynt/ucp-extension-ui
-          github-sha: 24f90be8b2886eb66dea6437fe6016a51bea9a06
-          github-tag: main
+          url: Krarilotus/ucp-extension-ui
+          github-sha: d3a807cfee70308f707ea81ddb92ac8b1d375bd9
+          github-tag: test-d3a807cfee70
     - definition:
         name: automarket
         type: module
@@ -710,3 +710,13 @@ extensions:
           url: gynt/ucp-extension-steam-multiplayer
           github-sha: 18c71b7cf10ba9ba3cc07a5c464dc463a6382bd4
           github-tag: main
+    - definition:
+        name: recorder
+        version: 0.48.5
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp_recorder
+          github-sha: f3c6bd978c5e6a1d244f5f8c92ebbffbedf26019
+          github-tag: pr-46-f3c6bd978c5e
