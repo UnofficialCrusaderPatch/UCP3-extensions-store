@@ -566,9 +566,9 @@ extensions:
       contents:
         source:
           method: github
-          url: Krarilotus/extension-ucp2-legacy
+          url: UnofficialCrusaderPatch/extension-ucp2-legacy
           github-sha: fbb634bb23313e126a74e09f72defb41fdc559a9
-          github-tag: test-fbb634bb2331
+          github-tag: main
     - definition:
         name: winProcHandler
         version: 1.0.0
@@ -687,9 +687,9 @@ extensions:
       contents:
         source:
           method: github
-          url: Krarilotus/ucp-extension-ui
+          url: gynt/ucp-extension-ui
           github-sha: d3a807cfee70308f707ea81ddb92ac8b1d375bd9
-          github-tag: test-d3a807cfee70
+          github-tag: main
     - definition:
         name: automarket
         type: module
@@ -717,6 +717,6 @@ extensions:
       contents:
         source:
           method: github
-          url: Krarilotus/ucp_recorder
+          url: Corax34/ucp_recorder
           github-sha: f3c6bd978c5e6a1d244f5f8c92ebbffbedf26019
-          github-tag: pr-46-f3c6bd978c5e
+          github-tag: main
