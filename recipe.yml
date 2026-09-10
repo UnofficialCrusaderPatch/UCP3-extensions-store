@@ -698,8 +698,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp-extension-map-png
-          github-sha: 026e8d23097c55755825041200869c81daaa81b9
-          github-tag: v0.1.0-test.2
+          github-sha: 560cfd9ff1dd77db68de5df5b45be9b1be30da85
+          github-tag: v0.1.0-test.3
     - definition:
         name: automarket
         type: module
