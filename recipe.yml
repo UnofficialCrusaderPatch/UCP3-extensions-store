@@ -682,14 +682,24 @@ extensions:
           github-tag: main
     - definition:
         name: ui
-        version: 1.0.0
+        version: 1.0.1
         type: module
       contents:
         source:
           method: github
-          url: gynt/ucp-extension-ui
-          github-sha: 24f90be8b2886eb66dea6437fe6016a51bea9a06
-          github-tag: main
+          url: Krarilotus/ucp-extension-ui
+          github-sha: d3a807cfee70308f707ea81ddb92ac8b1d375bd9
+          github-tag: test-d3a807cfee70
+    - definition:
+        name: map-png
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-map-png
+          github-sha: 822053a22493a6874779c2e7f5afc6a3bc4688d1
+          github-tag: v0.1.0-test.1
     - definition:
         name: automarket
         type: module
