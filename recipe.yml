@@ -1490,8 +1490,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-audio-fixes
-          github-sha: a64433c86d85b17ca28a069c7b20897ef460af1b
-          github-tag: preview/gui-1.0.17-discovery-audio-fixes
+          github-sha: c17ff7d06499f581ac1cff73ddca7916333956b4
+          github-tag: main
     - definition:
         name: map-layer-fixes
         version: 0.1.4
