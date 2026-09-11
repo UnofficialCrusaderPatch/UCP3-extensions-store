@@ -708,7 +708,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-audio-fixes
-          github-sha: 809c37428232c6ed25776cd9dd44abb15bf992c2
+          github-sha: 669390229a0ea765acffd988b65cfb15f2569961
           github-tag: main
     - definition:
         name: steam-multiplayer
