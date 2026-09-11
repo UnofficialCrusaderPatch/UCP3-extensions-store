@@ -1,75 +1,106 @@
 # Interface and Visual Fixes 0.1.0
 
-This module adds individually selectable fixes to the game's existing interface
-and graphics. Each option starts disabled and takes effect after a game restart.
-The supported game is Stronghold Crusader 1.41 with UCP 3.0.7.
+Clearer lobbies, smoother building previews, distinct dead-tree stages, aligned
+tower doors with cliff foundations and connected cliff textures. Enable each fix separately and restart
+the game. All seven options start disabled. Requires SHC 1.41 and UCP 3.0.7.
 
 | Option | What changes |
 | --- | --- |
-| Show lobby map descriptions | Custom map descriptions remain visible when switching between custom and shipped maps in the existing lobby text area. |
-| Clear unique-building preview after placement | Successfully placing a marketplace, barracks, mercenary post or guild clears its tool. Failed placement can be retried, and ordinary buildings remain available for repeated placement. |
+| Show lobby map descriptions | Custom descriptions remain visible when switching maps in the existing lobby text area. |
+| Clear unique-building preview after placement | Successfully placing a marketplace, barracks, mercenary post or guild clears its tool. Failed attempts remain retryable; ordinary buildings and granary expansions retain repeat placement. |
 | Show building previews while scrolling | The existing building preview follows camera movement. |
-| Distinguish dead tree stages | Standing dead trees use the game's existing standing-dead art before becoming fallen logs. |
-| Align tower doors with connecting walls | Each side chooses its highest connected wall, then the nearest connection to the side centre among equally high walls. The existing doorway moves along the face and vertically to the chosen join. A higher off-centre wall wins over a lower centred wall; an exact tie uses fixed native boundary order. |
-| Show single-player lobby Load | The existing Load control is visible and usable in a human-only skirmish lobby, positioned between the portrait and Start control. |
+| Distinguish dead tree stages | Standing-dead trees retain their distinct artwork before becoming fallen logs. |
+| Align tower doors with connecting walls | Each side chooses the highest eligible connection, then the nearest to its centre among ties. The door follows the join horizontally and vertically. Outermost joins place it half a tile inward. Exposed tower foundations use existing wall masonry, backing doors at lower connection heights. AI stair6 alone supplies a ground door; raised stairs do not. |
+| Show single-player lobby Load | The existing Load control fits between the portrait and Start, including a lobby without AI opponents. |
+| Continue cliff textures after rotation | Textures advance along both cliff faces in all four map orientations, using the current texture pack. |
 
-The recipe pins merged extension commit528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0.
-All six focused feature PRs and the shared integration PR are merged, with their
-owning issues resolved and final CI checks passing. This submission targets the
-store's3.0.7 branch. Store publication/signing remains with its normal release
-workflow; no release has been published by this task.
+An exact tower-connection tie uses fixed native boundary order. A higher
+off-centre connection wins over a lower centred one. This is a visual correction;
+it does not change tower access, terrain, pathfinding or simulation.
 
 ## Native feature screenshots
 
-Lobby map descriptions use the existing text area:
+Map descriptions remain in the existing lobby text area.
 
-![Custom map description visible](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/native-test-visible-after.png)
+![Map descriptions remain in the existing lobby text area.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/native-test-visible-after.png)
 
-A successfully placed engineers guild clears the unique-building preview:
+The engineers guild is placed and its unique-building preview is cleared.
 
-![Guild placed and preview cleared](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/native-engineers-cleared.png)
+![The engineers guild is placed and its unique-building preview is cleared.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/native-engineers-cleared.png)
 
-The existing building preview remains visible while the camera scrolls:
+The existing building preview remains visible during camera scrolling.
 
-![Preview during camera scrolling](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/native-patched-scrolling-visible.png)
+![The existing building preview remains visible during camera scrolling.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/native-patched-scrolling-visible.png)
 
-Standing-dead trees use their existing distinct art:
+Standing-dead trees use their distinct existing artwork.
 
-![Standing dead trees](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/native-trees-guard-standing.png)
+![Standing-dead trees use their distinct existing artwork.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/native-trees-guard-standing.png)
 
-The foreground square tower selects the nearer of two equally high connections:
+The foreground square tower selects the nearer of two equally high walls.
 
-![Nearer high wall selected](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/r023/nearer-high.png)
+![The foreground square tower selects the nearer of two equally high walls.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/r023/nearer-high.png)
 
-After removing that wall, its doorway follows the remaining off-centre high
-connection despite the nearer low wall. The camera moved between captures.
+After removing that wall, the remaining high wall wins despite the nearer low wall. The camera moved between captures.
 
-![Remaining high wall selected](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/r023/farther-high.png)
+![After removing that wall, the remaining high wall wins despite the nearer low wall. The camera moved between captures.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/r023/farther-high.png)
 
-The single-player Load control fits between the portrait and Start at800x600:
+The outermost high connection places its door half a tile inward from the corner.
 
-![Native lobby Load](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/r001/lobby-800.png)
+![The outermost high connection places its door half a tile inward from the corner.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/r023/review-edge.png)
 
-733 combined automated tests pass; individual validation files describe native
-acceptance and its limits. The tower selection uses the original connection
-refresh. Warm drawing reads its cache without wall scans. A native component
-benchmark added0.0401ms per1000 synthetic tower draws and0.140ms per1000 connection
-refreshes, which occur once per40 tower updates. This is not a whole-game FPS
-or literal1000-speed setting claim. MP, Extreme and replay are not certified.
+The AI built these towers and stairs: stair6 supplies the left ground door; the raised stair on the right supplies none.
 
-## Discovery tags and translations
+![The AI built these towers and stairs: stair6 supplies the left ground door; the raised stair on the right supplies none.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/r023/native-ai-stairs.png)
 
-The module authors the canonical IDs `bugfixes` and `interface` in its
-`definition.yml`. The store builder imports that definition from the pinned
-source, so the same metadata reaches installed packages and the store catalog.
-The GUI supplies translated display labels using `discovery.tag.bugfixes` and
-`discovery.tag.interface`; translated strings are not separate tag IDs.
+Masonry extends beneath the cliff-edge tower. The lower high and low walls each supply a door at their own height.
 
-The implementation contract is [GUI PR382](https://github.com/UnofficialCrusaderPatch/UCP3-GUI/pull/382),
-checked atff683b95e1cf844d2b3babcf4382f9d422a4d340 on11September2026 (still open).
-Its existing `module`, `code` and `options` capability labels are derived by the
-GUI. The module does not duplicate these facts as authored topic tags.
+![Masonry extends beneath the cliff-edge tower. The lower high and low walls each supply a door at their own height.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/r023/foundations/rotation-0.png)
 
-See [the locale label table](interface-visual-fixes-tags.md) for the maintained
-translations. Existing GUIs can still read the additive module metadata; the
-new tag filtering UI requires the discovery update.
+The AI built both elevated towers and stairs: stair6 alone supplies the left foundation door at ground level; the raised stair on the right supplies none.
+
+![The AI built both elevated towers and stairs: stair6 alone supplies the left foundation door at ground level; the raised stair on the right supplies none.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/r023/foundations/ai-stair6.png)
+
+The single-player lobby Load control fits at 800x600.
+
+![The single-player lobby Load control fits at 800x600.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/r001/lobby-800.png)
+
+Before the cliff fix: a quarter turn repeats one texture strip along a face.
+
+![Before the cliff fix: a quarter turn repeats one texture strip along a face.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/cliffs/before-6.png)
+
+After the cliff fix: the same face advances through the existing texture.
+
+![After the cliff fix: the same face advances through the existing texture.](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/dd442ef9f74454dae10e479543e074a26d82a1f0/docs/cliffs/after-6.png)
+
+## Validation and discovery metadata
+
+The recipe pins merged extension commit `dd442ef9f74454dae10e479543e074a26d82a1f0`. The feature and follow-up
+PRs are merged, with their owning issues resolved. The package passes 925 combined
+tests and all nine GUI locale checks; validation files distinguish native,
+original-code and automated evidence. MP, Extreme and replay are not certified.
+
+Tower selection reuses the original connection refresh. Warm drawing reads its
+cache without scanning walls: the native component benchmark added 0.0256 ms per
+1,000 synthetic tower draws and 0.1919 ms per 1,000 connection refreshes, on the
+unchanged 40-update cadence. Tower masonry adds about 5.9 ns per existing
+graphics tile refresh, with no new drawing pass. Cliff selection replaces an existing calculation
+in place, adding no allocation, hook or frame-render work. Its measured median
+added cost stayed below 1 ms per million refresh calls. These are component
+measurements, not full-game FPS or a literal 1,000-speed menu setting.
+
+Canonical tags are `bugfixes` and `interface`. The built module includes flat
+`tags.<id>` labels in all nine locales. The same archive-derived labels are
+included in this recipe's `contents.tag-locales`, so the new discovery feature
+can search them before installation. Translations remain labels, not new IDs.
+See [the label table](interface-visual-fixes-tags.md).
+
+This follows the package/Store contract in
+[GUI PR #382](https://github.com/UnofficialCrusaderPatch/UCP3-GUI/pull/382) and
+[Store PR #33](https://github.com/UnofficialCrusaderPatch/UCP3-extensions-store/pull/33).
+The recipe supplies its own labels without depending on the general extractor
+being merged. Existing GUIs can read the additive metadata; tag filtering and
+translated tag search require the discovery update. Derived code/options/type
+facts are not duplicated as authored topic tags.
+
+Store signing and publication run through the normal release workflow after merge.
+The Store and UCP wiki contain the same condensed changelog entry.

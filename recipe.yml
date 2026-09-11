@@ -534,10 +534,38 @@ extensions:
         version: 0.1.0
         type: module
       contents:
+        tag-locales:
+          en:
+            bugfixes: Bug fixes
+            interface: Interface
+          de:
+            bugfixes: Fehlerkorrekturen
+            interface: Oberfläche
+          fr:
+            bugfixes: Corrections
+            interface: Interface
+          ru:
+            bugfixes: Исправления
+            interface: Интерфейс
+          hu:
+            bugfixes: Hibajavítások
+            interface: Kezelőfelület
+          tr:
+            bugfixes: Hata düzeltmeleri
+            interface: Arayüz
+          ch:
+            bugfixes: 错误修复
+            interface: 界面
+          es:
+            bugfixes: Correcciones
+            interface: Interfaz
+          fa:
+            bugfixes: رفع اشکال
+            interface: رابط کاربری
         source:
           method: github
           url: Krarilotus/extension-interface-visual-fixes
-          github-sha: 528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0
+          github-sha: dd442ef9f74454dae10e479543e074a26d82a1f0
           github-tag: main
     - definition:
         name: maploader
