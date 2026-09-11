@@ -565,8 +565,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-interface-visual-fixes
-          github-sha: 2b0d229317f0e018bf42d954f2c09a25aa6bb417
-          github-tag: fix/cliff-face-uv
+          github-sha: c6faaeb5feeb2eb97f6df09f5758c72ab9208ee3
+          github-tag: main
     - definition:
         name: maploader
         version: 1.1.0
