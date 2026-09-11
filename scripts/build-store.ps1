@@ -26,6 +26,7 @@ if (!(Get-Module -ListAvailable -Name powershell-yaml)) {
 }
 
 Import-Module powershell-yaml
+. "$PSScriptRoot/extension-discovery.ps1"
 # Import-Module "$($PSScriptRoot)\fix-dependency-statement.ps1"
 
 $recipe = Get-Content .\recipe.yml | ConvertFrom-Yaml
@@ -374,9 +375,14 @@ foreach ($extension in $extensionsToBeBuilt) {
 
   }
 
+  $discovery = Get-ExtensionDiscoveryMetadata -ArchivePath $path -Languages $recipe['supported-languages']
   $store.extensions.list | 
   Where-Object { $_.definition.name -eq $extension.definition.name -and $_.definition.version -eq $extension.definition.version } |
-  ForEach-Object { $_.contents.package = $package }
+  ForEach-Object {
+    $_.contents.package = $package
+    $_.definition.capabilities = $discovery.Capabilities
+    $_.contents['tag-locales'] = $discovery.TagLocales
+  }
 
   $description = [System.Collections.ArrayList]::new()
   foreach ($lang in $recipe['supported-languages']) {

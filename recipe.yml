@@ -1,3 +1,4 @@
+# DRAFT GUI 1.0.17 REVIEW CATALOG — see GitHub PR33 before promotion.
 # The version number of this file format
 meta:
   version: 1.0.0
@@ -377,7 +378,7 @@ extensions:
           github-sha: 7dc500c0ba099ec5a290eeaa427604b3762a0885
           github-tag: main
     - definition:
-        name: Xanders-Plug-and-Play
+        name: Xanders-Crusader-Mod
         version: 1.0.0
         type: plugin
       contents:
@@ -460,7 +461,7 @@ extensions:
           github-tag: main
           location: hopfarm-limit-fix
     - definition:
-        name: ucp-autoclick
+        name: autoclicker
         version: 1.0.1
         type: module
       contents:
@@ -710,3 +711,794 @@ extensions:
           url: gynt/ucp-extension-steam-multiplayer
           github-sha: 18c71b7cf10ba9ba3cc07a5c464dc463a6382bd4
           github-tag: main
+
+# Pending Store additions and coordinated metadata patch versions
+    - definition:
+        name: ucp2-legacy
+        version: 2.15.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-legacy
+          github-sha: fbb634bb23313e126a74e09f72defb41fdc559a9
+          github-tag: main
+    - definition:
+        name: custom-projectiles
+        version: 1.8.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-projectileModifier
+          github-sha: 7c292d91f2b90c57969260384d07811e0112cb73
+          github-tag: main
+    - definition:
+        name: ui
+        version: 1.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-ui
+          github-sha: d3a807cfee70308f707ea81ddb92ac8b1d375bd9
+          github-tag: main
+    - definition:
+        name: map-png
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-map-png
+          github-sha: 240ca2abc5b68373cc56f1e359eb81d435fe6028
+          github-tag: v0.1.0-test.4
+    - definition:
+        name: audio-fixes
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-audio-fixes
+          github-sha: 809c37428232c6ed25776cd9dd44abb15bf992c2
+          github-tag: main
+    - definition:
+        name: recorder
+        version: 0.49.4
+        type: module
+      contents:
+        source:
+          method: github
+          url: Corax34/ucp_recorder
+          github-sha: eb12e51fde95e9d68e46255b9dc7154289aea629
+          github-tag: main
+    - definition:
+        name: map-layer-fixes
+        version: 0.1.3
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-map-layer-fixes
+          github-sha: a68030a19fa3bc1ff242ee6a9b381a418e4667b8
+          github-tag: main
+    - definition:
+        name: AI-Tournament-Maps
+        version: 1.0.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-AI-Tournament-Maps
+          github-sha: 977b313d11c7415fd689f4f86ac3564eacaaf710
+          github-tag: preview/gui-1.0.17-discovery-ai-tournament-maps
+    - definition:
+        name: Aggressive-AI-Behaviour
+        version: 1.4.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Aggressive-AI-Behaviour
+          github-sha: eacd478ee489c0a21536b1c5cc88aaaa9ac09099
+          github-tag: preview/gui-1.0.17-discovery-aggressive-ai-behaviour
+    - definition:
+        name: Aggressive-AI-Behaviour-Applied
+        version: 1.4.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Aggressive-AI-Behaviour-Applied
+          github-sha: ba623889e3729ce077ab18e50367b147bf65ad7c
+          github-tag: preview/gui-1.0.17-discovery-aggressive-ai-behaviour-applied
+    - definition:
+        name: ApeX-AI-Behaviour
+        version: 1.4.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-ApeX-AI-Behaviour
+          github-sha: c5237c49ee160d7abf260dc57380cf2825ce0492
+          github-tag: preview/gui-1.0.17-discovery-apex-ai-behaviour
+    - definition:
+        name: ApeX-AI-Behaviour-Applied
+        version: 1.4.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-ApeX-AI-Behaviour-Applied
+          github-sha: 3e950ece004d93740072782f831655788dd16457
+          github-tag: preview/gui-1.0.17-discovery-apex-ai-behaviour-applied
+    - definition:
+        name: Vanilla-Interpretation-Castles
+        version: 1.0.3
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Vanilla-Interpretation-Castles
+          github-sha: eeeae2648dd162970845312f53d6681da47db5fa
+          github-tag: preview/gui-1.0.17-discovery-vanilla-interpretation-castles
+    - definition:
+        name: Vanilla-Interpretation-Castles-Applied
+        version: 1.0.3
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Vanilla-Interpretation-Castles-Applied
+          github-sha: bd6a92f34da34f3c9b74d78de82a9f624fc37aa8
+          github-tag: preview/gui-1.0.17-discovery-vanilla-interpretation-castles-applied
+    - definition:
+        name: Vanilla-Retraced-Unlocked
+        version: 1.0.3
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Vanilla-Retraced
+          github-sha: 7ae2572e2186601f14de762558be5321c86e4557
+          github-tag: preview/gui-1.0.17-discovery-vanilla-retraced-unlocked
+    - definition:
+        name: ucp2-ai-files
+        version: 2.15.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-ai-files
+          github-sha: af2092002d2f5f7ac9350b7ecee4906068b2ace5
+          github-tag: preview/gui-1.0.17-discovery-ucp2-ai-files
+    - definition:
+        name: ucp2-aic-patch
+        version: 2.15.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-aic-patch
+          github-sha: 9974a66e684b8ab681f2542bf50f158419c0fc0a
+          github-tag: preview/gui-1.0.17-discovery-ucp2-aic-patch
+    - definition:
+        name: ucp2-evrey-aiv
+        version: 2.15.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-evrey-aiv
+          github-sha: 2f9d836bfddd73af7e6a5fb1bbd1fcae22ad49f7
+          github-tag: preview/gui-1.0.17-discovery-ucp2-evrey-aiv
+    - definition:
+        name: ucp2-legacy-defaults
+        version: 2.15.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-legacy-defaults
+          github-sha: f46921bbace6856678c4044042e9a1f7000e7fb1
+          github-tag: preview/gui-1.0.17-discovery-ucp2-legacy-defaults
+    - definition:
+        name: ucp2-tatha-aiv
+        version: 2.15.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-tatha-aiv
+          github-sha: f28ffbc35500f2755a9841e6f1fd8c88ce75fb2e
+          github-tag: preview/gui-1.0.17-discovery-ucp2-tatha-aiv
+    - definition:
+        name: ucp2-vanilla-fixed-aiv
+        version: 2.15.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-ucp2-vanilla-fixed-aiv
+          github-sha: 36458d98578f1602be679f5b5db1ca516814aaf7
+          github-tag: preview/gui-1.0.17-discovery-ucp2-vanilla-fixed-aiv
+    - definition:
+        name: Legends-Of-The-Orient
+        version: 3.1.8
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Legends-of-the-Orient
+          github-sha: 8992a04ac9de4a5efcc6214b42ebe7755bcb455b
+          github-tag: preview/gui-1.0.17-discovery-legends-of-the-orient
+    - definition:
+        name: Legends-Of-The-Orient-AI
+        version: 3.1.8
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Legends-of-the-Orient-AI
+          github-sha: 8bb70867be20ded5cc08c51d0eec5a8148df8db9
+          github-tag: preview/gui-1.0.17-discovery-legends-of-the-orient-ai
+    - definition:
+        name: Schlossgespenst-KI
+        version: 1.0.4
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Schlossgespenst-KI
+          github-sha: ca5e79552c1200eb8ee9757c98d719ef2f103734
+          github-tag: preview/gui-1.0.17-discovery-schlossgespenst-ki
+    - definition:
+        name: Schlossgespenst-KI-files
+        version: 1.0.8
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Schlossgespenst-KI-files
+          github-sha: 9d5085e55518cb66049b30e7bb288bf0ec646e8b
+          github-tag: preview/gui-1.0.17-discovery-schlossgespenst-ki-files
+    - definition:
+        name: ConqueringChristmas
+        version: 1.0.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ConqueringChristmas_-Stronghold1_textures-with-snow-
+          github-sha: 8dd0fea2fc0cc6478b1dd71e8296e04f557067cf
+          github-tag: preview/gui-1.0.17-discovery-conqueringchristmas
+    - definition:
+        name: ConqueringEurope
+        version: 1.0.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ConqueringEurope_-Stronghold1_textures-
+          github-sha: 738c448acb844c09266b78bdc278c6ee3db7d8be
+          github-tag: preview/gui-1.0.17-discovery-conqueringeurope
+    - definition:
+        name: ConqueringArabia
+        version: 1.0.4
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ConqueringArabia_-fixed_updated_StrongholdCrusader_texture-
+          github-sha: 8bfe6c1e9c3164506feb966167b710eb8f0f03c1
+          github-tag: preview/gui-1.0.17-discovery-conqueringarabia
+    - definition:
+        name: Kirito-Kun
+        version: 1.0.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Kirito-Kun-AI
+          github-sha: 2e56f70d6d2dfc1e1b63de1273b56a4c3a61678a
+          github-tag: preview/gui-1.0.17-discovery-kirito-kun
+    - definition:
+        name: Ascension-AI
+        version: 1.0.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 79590b6c2e49df281ce75c7661a8e342239eecc9
+          github-tag: preview/gui-1.0.17-discovery-ascension-ai
+          location: extension-Ascension-AI
+    - definition:
+        name: Ascension-AI-Balance
+        version: 1.2.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 79590b6c2e49df281ce75c7661a8e342239eecc9
+          github-tag: preview/gui-1.0.17-discovery-ascension-ai
+          location: extension-Ascension-AI-Balance
+    - definition:
+        name: Ascension-Balance
+        version: 1.1.5
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 79590b6c2e49df281ce75c7661a8e342239eecc9
+          github-tag: preview/gui-1.0.17-discovery-ascension-ai
+          location: extension-Ascension-Balance
+    - definition:
+        name: Ascension-Maps
+        version: 1.0.3
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 79590b6c2e49df281ce75c7661a8e342239eecc9
+          github-tag: preview/gui-1.0.17-discovery-ascension-ai
+          location: extension-Ascension-Maps
+    - definition:
+        name: Ascension-Multiplayer
+        version: 1.0.12
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 79590b6c2e49df281ce75c7661a8e342239eecc9
+          github-tag: preview/gui-1.0.17-discovery-ascension-ai
+          location: extension-Ascension-Multiplayer
+    - definition:
+        name: Community-Paket
+        version: 1.1.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Community-Paket-UCP3
+          github-sha: 2c5c12df33f6db7b9d7ac961a4fd67b3ae5bf529
+          github-tag: preview/gui-1.0.17-discovery-community-paket
+          location: Community-Paket
+    - definition:
+        name: Community-Paket-Files
+        version: 1.1.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Community-Paket-UCP3
+          github-sha: 2c5c12df33f6db7b9d7ac961a4fd67b3ae5bf529
+          github-tag: preview/gui-1.0.17-discovery-community-paket
+          location: Community-Paket-Files
+    - definition:
+        name: Die-neuen-Herrscher
+        version: 1.0.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Die-neuen-Herrscher
+          github-sha: c6503a79b5814f596597c5ab2cc97dc8b985130f
+          github-tag: preview/gui-1.0.17-discovery-die-neuen-herrscher
+    - definition:
+        name: Die-neuen-Herrscher-KI-Files
+        version: 1.0.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Die-neuen-Herrscher-KI
+          github-sha: 0da6c1d4e7244a6c71d6026c6a8c4eb4ab2bd36a
+          github-tag: preview/gui-1.0.17-discovery-die-neuen-herrscher-ki-files
+    - definition:
+        name: Kommander-AI
+        version: 1.0.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Kommander-AI
+          github-sha: 8ba593958b3e710004113a4af6c12ebb7fc31bcb
+          github-tag: preview/gui-1.0.17-discovery-kommander-ai
+    - definition:
+        name: Xanders-UCP-AI-Default
+        version: 1.0.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Xanders-UCP-AI-Default
+          github-sha: 1a761bb6a2e013758041b13afec1937a9d3f8fec
+          github-tag: preview/gui-1.0.17-discovery-xanders-ucp-ai-default
+    - definition:
+        name: Xanders-Crusader-Mod
+        version: 1.0.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-Xanders-Crusader-Mod
+          github-sha: 1ff4894bace522bff291299da8eea06d22b4780b
+          github-tag: preview/gui-1.0.17-discovery-xanders-crusader-mod
+    - definition:
+        name: NewBalance-Nevikov
+        version: 1.0.3
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/New-Balance
+          github-sha: 02936d2e445cca4d72b8005622fdc02a52889c00
+          github-tag: preview/gui-1.0.17-discovery-newbalance-nevikov
+    - definition:
+        name: Ascension-AI-Tournament
+        version: 3.0.9
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension-AI-Tournament
+          github-sha: 9a78a3cf772baa3f23ba1e39bc671d4a691cf158
+          github-tag: preview/gui-1.0.17-discovery-ascension-ai-tournament
+    - definition:
+        name: Schlossgespenst-Ascension-PvE-Pressure-AI
+        version: 1.0.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Schlossgespenst-Ascension-PvE-Pressure-AI
+          github-sha: 14bd1a5031f9ef7b6794e6e45765b8968add511d
+          github-tag: preview/gui-1.0.17-discovery-schlossgespenst-ascension-pve-pressure-ai
+    - definition:
+        name: Mod-KI-Team-Liga
+        version: 2.0.3
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Mod-KI-Team-Liga
+          github-sha: 8b26a1b4ede026b017b14a3e4fc40aea703e7a4c
+          github-tag: preview/gui-1.0.17-discovery-mod-ki-team-liga
+    - definition:
+        name: Seraphine-and-Verehrer
+        version: 1.0.3
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Seraphine
+          github-sha: 633d18513872f0e90999c5a19b08383c565f7de6
+          github-tag: preview/gui-1.0.17-discovery-seraphine-and-verehrer
+    - definition:
+        name: aiv-troops-behaviour
+        version: 0.2.4
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 4fd0dd68eba672521a356bdbd388e004ee5eed33
+          github-tag: preview/gui-1.0.17-discovery-aiv-troops-behaviour
+          location: aiv-troops-behaviour
+    - definition:
+        name: hopfarm-limit-fix
+        version: 0.1.3
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: ab899bc5dbb3490d12aca3144bc89e992c837232
+          github-tag: preview/gui-1.0.17-discovery-hopfarm-limit-fix
+          location: hopfarm-limit-fix
+    - definition:
+        name: autoclicker
+        version: 1.0.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-autoclick
+          github-sha: 37ad5b35c74b4b767d84de0fbcb3be929d453f69
+          github-tag: preview/gui-1.0.17-discovery-autoclicker
+    - definition:
+        name: aiSwapper
+        version: 1.4.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-aiSwapper
+          github-sha: a248e885881d4f8e61eb3f3395dc9a43977d0fb0
+          github-tag: preview/gui-1.0.17-discovery-aiswapper
+    - definition:
+        name: aicloader
+        version: 1.1.3
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-aicloader
+          github-sha: 26b67384eeae0a839b8da0ae888d3c0f67e9140d
+          github-tag: preview/gui-1.0.17-discovery-aicloader
+    - definition:
+        name: aivloader
+        version: 1.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-aivloader
+          github-sha: 48cb9b431a874dc31b8b46b92fd87fb8cdb3119e
+          github-tag: preview/gui-1.0.17-discovery-aivloader
+    - definition:
+        name: files
+        version: 1.3.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-files
+          github-sha: cbf4529723e619d18e2416ccbd9c3669f0ca9099
+          github-tag: preview/gui-1.0.17-discovery-files
+    - definition:
+        name: gmResourceModifier
+        version: 0.2.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/ucp_gmResourceModifier
+          github-sha: 495ac616bcd57a329e432dab9dd30c41598c4f82
+          github-tag: preview/gui-1.0.17-discovery-gmresourcemodifier
+    - definition:
+        name: graphicsApiReplacer
+        version: 1.3.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/ucp_graphicsApiReplacer
+          github-sha: 670fa027ce9508890a825abd7a165095e069f780
+          github-tag: preview/gui-1.0.17-discovery-graphicsapireplacer
+    - definition:
+        name: maploader
+        version: 1.1.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-maploader
+          github-sha: da6db12b875b677aa92d2e2c89d132f41623f790
+          github-tag: preview/gui-1.0.17-discovery-maploader
+    - definition:
+        name: textResourceModifier
+        version: 0.3.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/ucp_textResourceModifier
+          github-sha: ea196579b794ba60087d418b1d08cf24c7020351
+          github-tag: preview/gui-1.0.17-discovery-textresourcemodifier
+    - definition:
+        name: winProcHandler
+        version: 1.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/ucp_winProcHandler
+          github-sha: fb343b294be324aaba30efdc0771ac7af4f56dd1
+          github-tag: preview/gui-1.0.17-discovery-winprochandler
+    - definition:
+        name: rebalancer
+        version: 1.1.5
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/rebalancer
+          github-sha: eb5a48524f6b03ccc424570fc38d15f3e5599d86
+          github-tag: preview/gui-1.0.17-discovery-rebalancer
+    - definition:
+        name: citizens
+        version: 1.0.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-citizens
+          github-sha: 52df383518d04ed905250be2e15c976e1209e991
+          github-tag: preview/gui-1.0.17-discovery-citizens
+    - definition:
+        name: custom-skirmish-trails
+        version: 1.2.7
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-custom-skirmish-trails
+          github-sha: f709c9a41b256ae3159e99071b363df349fc3505
+          github-tag: preview/gui-1.0.17-discovery-custom-skirmish-trails
+    - definition:
+        name: workers
+        version: 0.0.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-workers
+          github-sha: 6ab6b6629af1622fa5fac5e4fa9515538c1459c1
+          github-tag: preview/gui-1.0.17-discovery-workers
+    - definition:
+        name: map-extensions
+        version: 1.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-map-extensions
+          github-sha: 5cd34e8c34d482fee7f3dfbb43b5c1143d0e049b
+          github-tag: preview/gui-1.0.17-discovery-map-extensions
+    - definition:
+        name: protocol
+        version: 1.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-protocol
+          github-sha: c6c5073130bce534f20e76a65c25ca0664aa4e97
+          github-tag: preview/gui-1.0.17-discovery-protocol
+    - definition:
+        name: cffi
+        version: 1.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-cffi
+          github-sha: 1009d0940aaecbf53476b8c179fbb7b0323bc374
+          github-tag: preview/gui-1.0.17-discovery-cffi
+    - definition:
+        name: luajit
+        version: 1.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-luajit
+          github-sha: cae1fa6f2993b2c105eb2c9ce89f02cb5737b755
+          github-tag: preview/gui-1.0.17-discovery-luajit
+    - definition:
+        name: automarket
+        version: 1.1.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-automarket
+          github-sha: a917b12cbb9ea223a0df0d2bbacaf59ef870d1d6
+          github-tag: preview/gui-1.0.17-discovery-automarket
+    - definition:
+        name: steam-multiplayer
+        version: 1.2.4
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-steam-multiplayer
+          github-sha: d7bae830e15a4e9f48d9bd5128d114067e9791f6
+          github-tag: preview/gui-1.0.17-discovery-steam-multiplayer
+    - definition:
+        name: recorder
+        version: 0.50.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp_recorder
+          github-sha: 6fd5fc613d1d7f49830c6f2ec7cc521a2dba7476
+          github-tag: preview/gui-1.0.17-discovery-recorder
+    - definition:
+        name: ui
+        version: 1.0.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-ui
+          github-sha: 8deb13c18a359faf22a53be1289b3274e4790d0e
+          github-tag: preview/gui-1.0.17-discovery-ui
+    - definition:
+        name: ucp2-legacy
+        version: 2.15.3
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-ucp2-legacy
+          github-sha: 66ffd8d1725ea25258aed33c36506a0749a87a80
+          github-tag: preview/gui-1.0.17-discovery-ucp2-legacy
+    - definition:
+        name: ai-ox-tethers
+        version: 1.0.5
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-ai-ox-tethers
+          github-sha: 8dd37fd12cb517d6422f4410108c27789d7a9d03
+          github-tag: preview/gui-1.0.17-discovery-ai-ox-tethers
+    - definition:
+        name: running-units
+        version: 1.0.4
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-running-units
+          github-sha: ab605e53e7f177b634b91c2c47e7e4aaefce15ba
+          github-tag: preview/gui-1.0.17-discovery-running-units
+    - definition:
+        name: startResources
+        version: 1.0.3
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-startResources
+          github-sha: 7c574b297cce68e43dbad00847b0a4e626524003
+          github-tag: preview/gui-1.0.17-discovery-startresources
+    - definition:
+        name: custom-projectiles
+        version: 1.8.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-projectileModifier
+          github-sha: d0e762327a5c2bbacd18fe9588ef1dcbae762250
+          github-tag: preview/gui-1.0.17-discovery-custom-projectiles
+    - definition:
+        name: map-png
+        version: 0.1.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-map-png
+          github-sha: 05714b5717af40d8a44f5ad13666b99e0b5ec108
+          github-tag: preview/gui-1.0.17-discovery-map-png
+    - definition:
+        name: audio-fixes
+        version: 0.1.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-audio-fixes
+          github-sha: a64433c86d85b17ca28a069c7b20897ef460af1b
+          github-tag: preview/gui-1.0.17-discovery-audio-fixes
+    - definition:
+        name: map-layer-fixes
+        version: 0.1.4
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-map-layer-fixes
+          github-sha: f725400bbb169737fdb6a221629de767e39dce41
+          github-tag: preview/gui-1.0.17-discovery-map-layer-fixes
