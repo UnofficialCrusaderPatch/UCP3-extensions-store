@@ -531,7 +531,7 @@ extensions:
           github-tag: main
     - definition:
         name: interface-visual-fixes
-        version: 0.1.1
+        version: 0.1.2
         type: module
       contents:
         tag-locales:
@@ -565,7 +565,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-interface-visual-fixes
-          github-sha: e8c54e6fef59eea27c163ec19c2ee82843ecfa48
+          github-sha: c6faaeb5feeb2eb97f6df09f5758c72ab9208ee3
           github-tag: main
     - definition:
         name: maploader
