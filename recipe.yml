@@ -529,6 +529,17 @@ extensions:
           url: TheRedDaemon/ucp_graphicsApiReplacer
           github-sha: f180062e10622900f684c3de7f76e37dcbdcf304
           github-tag: main
+    # Local candidate: replace with merged main SHA after extension PRs12/13 pass.
+    - definition:
+        name: interface-visual-fixes
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-interface-visual-fixes
+          github-sha: df882307f15ec577cef5a611b3144951be4dbb9e
+          github-tag: release/interface-visual-fixes-0.1.0
     - definition:
         name: maploader
         version: 1.1.0
