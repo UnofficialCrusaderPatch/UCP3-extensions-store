@@ -13,42 +13,42 @@ The supported game is Stronghold Crusader 1.41 with UCP 3.0.7.
 | Align tower doors with connecting walls | Each side chooses its highest connected wall, then the nearest connection to the side centre among equally high walls. The existing doorway moves along the face and vertically to the chosen join. A higher off-centre wall wins over a lower centred wall; an exact tie uses fixed native boundary order. |
 | Show single-player lobby Load | The existing Load control is visible and usable in a human-only skirmish lobby, positioned between the portrait and Start control. |
 
-This local candidate is based on extension PR13 commit
-df882307f15ec577cef5a611b3144951be4dbb9e. R007/R130/R132/R019/R023 are merged;
-R001 and the shared integration PR still require their remaining acceptance and
-normal merges. The recipe must use the final merged main SHA before store PR
-submission to branch3.0.7. No store publication is requested or performed.
+The recipe pins merged extension commit528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0.
+All six focused feature PRs and the shared integration PR are merged, with their
+owning issues resolved and final CI checks passing. This submission targets the
+store's3.0.7 branch. Store publication/signing remains with its normal release
+workflow; no release has been published by this task.
 
 ## Native feature screenshots
 
 Lobby map descriptions use the existing text area:
 
-![Custom map description visible](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/df882307f15ec577cef5a611b3144951be4dbb9e/docs/native-test-visible-after.png)
+![Custom map description visible](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/native-test-visible-after.png)
 
 A successfully placed engineers guild clears the unique-building preview:
 
-![Guild placed and preview cleared](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/df882307f15ec577cef5a611b3144951be4dbb9e/docs/native-engineers-cleared.png)
+![Guild placed and preview cleared](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/native-engineers-cleared.png)
 
 The existing building preview remains visible while the camera scrolls:
 
-![Preview during camera scrolling](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/df882307f15ec577cef5a611b3144951be4dbb9e/docs/native-patched-scrolling-visible.png)
+![Preview during camera scrolling](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/native-patched-scrolling-visible.png)
 
 Standing-dead trees use their existing distinct art:
 
-![Standing dead trees](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/df882307f15ec577cef5a611b3144951be4dbb9e/docs/native-trees-guard-standing.png)
+![Standing dead trees](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/native-trees-guard-standing.png)
 
 The foreground square tower selects the nearer of two equally high connections:
 
-![Nearer high wall selected](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/df882307f15ec577cef5a611b3144951be4dbb9e/docs/r023/nearer-high.png)
+![Nearer high wall selected](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/r023/nearer-high.png)
 
 After removing that wall, its doorway follows the remaining off-centre high
 connection despite the nearer low wall. The camera moved between captures.
 
-![Remaining high wall selected](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/df882307f15ec577cef5a611b3144951be4dbb9e/docs/r023/farther-high.png)
+![Remaining high wall selected](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/r023/farther-high.png)
 
 The single-player Load control fits between the portrait and Start at800x600:
 
-![Native lobby Load](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/df882307f15ec577cef5a611b3144951be4dbb9e/docs/r001/lobby-800.png)
+![Native lobby Load](https://raw.githubusercontent.com/Krarilotus/extension-interface-visual-fixes/528f3ce1022986d8e66d9fd6f155b6bfd4be8fc0/docs/r001/lobby-800.png)
 
 733 combined automated tests pass; individual validation files describe native
 acceptance and its limits. The tower selection uses the original connection
