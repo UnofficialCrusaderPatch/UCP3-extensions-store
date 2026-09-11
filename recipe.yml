@@ -701,6 +701,16 @@ extensions:
           github-sha: 858890f558fd042215913e862745d98ed13d8834
           github-tag: fix/multiplayer-sync-and-fees
     - definition:
+        name: audio-fixes
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-audio-fixes
+          github-sha: 809c37428232c6ed25776cd9dd44abb15bf992c2
+          github-tag: main
+    - definition:
         name: steam-multiplayer
         type: module
         version: 1.2.3
