@@ -692,14 +692,14 @@ extensions:
           github-tag: test-d3a807cfee70
     - definition:
         name: map-png
-        version: 0.1.0
+        version: 0.1.1
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp-extension-map-png
-          github-sha: 240ca2abc5b68373cc56f1e359eb81d435fe6028
-          github-tag: v0.1.0-test.4
+          github-sha: b937114fc7707d887f86913e94cd9497ef489cf4
+          github-tag: v0.1.1-test.1
     - definition:
         name: automarket
         type: module
