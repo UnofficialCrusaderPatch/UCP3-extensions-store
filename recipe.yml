@@ -579,13 +579,13 @@ extensions:
           github-tag: main
     - definition:
         name: startResources
-        version: 1.0.1
+        version: 1.0.2
         type: module
       contents:
         source:
           method: github
-          url: gynt/ucp-extension-startResources
-          github-sha: 71e6d7c2a9691c2110a2e823501ab9c4510d537f
+          url: Krarilotus/ucp-extension-startResources
+          github-sha: d1f5328d4b17d36a523e6108610a079aeb40282f
           github-tag: main
     - definition:
         name: textResourceModifier
