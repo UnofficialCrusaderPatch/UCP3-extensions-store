@@ -1,5 +1,10 @@
 # Custom Hotkeys test preview
 
+For the separate **0.1.2 + Recorder 0.50.4 integration preview**, paired downloads,
+native single-player Automarket evidence and remaining checks, see
+[Recorder integration](recorder-integration/README.md). The 0.1.1 archive below
+is preserved and still rejects active Recorder.
+
 **TL;DR:** 0.1.1 groups shortcuts by purpose, aligns text, adds a live search
 field and18 rows, and removes redundant hints/buttons. Grid keeps native groups: Ctrl+number assigns, number selects,
 and pressing it again focuses. Enable the module, open with F12, edit and Apply.
