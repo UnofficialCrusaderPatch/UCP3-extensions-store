@@ -1,82 +1,33 @@
-# Tunnelers and engineers: single-player testing
+# AI Swapper 1.5.0: single-player testing
 
 ## TL;DR
 
-This release is **not ready to install**. AI tunneler starting troops are being
-investigated in AI Swapper. Existing Engineer starting counts worked in the two
-local baseline builds; no engineer/tunneler recruitment-accounting correction
-has been established or implemented yet.
+AI Swapper 1.5.0 adds configurable AI starting tunnelers, with controls in all nine UCP languages. Existing AI packs receive no extra troops by default. Engineer starting troops retain their existing behavior. No recruitment-accounting fix is advertised.
 
-There is **no feature ZIP or download link yet**. This document reserves the
-testing and delivery notes for the `3.0.7` store PR. It does not add a module to
-the store or claim that an existing AI Swapper archive contains these changes.
+The recipe pins implementation [AI Swapper PR20](https://github.com/UnofficialCrusaderPatch/extension-aiSwapper/pull/20), source `5e8fe70703b00d3987ef10bf199d53b3a5fab3e8`. Release acceptance and signing are still in progress; a public signed download is not yet available. This status must change only after the actual archive is published and verified.
 
-Implementation tracking: [AI Swapper #19](https://github.com/UnofficialCrusaderPatch/extension-aiSwapper/issues/19).
-Recruitment ownership overlaps AIC Tactics
-[#12](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/pull/12),
-[#16](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/pull/16) and
-[#17](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/pull/17).
+## Short test instructions
 
-## Before providing a download
+After the signed `aiSwapper-1.5.0.zip` is available:
 
-- Complete native initialization, acquisition, placement and role/group
-  registration through AI Swapper and the verified native services. Preserve
-  the packed 20-slot starting-troop table and use verified UCP runtime discovery.
-- Reproduce the suspected recruitment defect, coordinate shared sites with AIC
-  Tactics, and either verify the responsible correction or record a supported
-  no-change result. Do not advertise an unproved fix.
-- Complete single-player SHC and Extreme acceptance on the applicable supported
-  variants, including zero/positive/invalid counts, all three starting modes,
-  ownership, useful orders, AI behavior, admission limits, save/load/restart,
-  applicable offline restoration and performance.
-- Verify every supported locale and the installed Customizations controls.
-  Verified simple fixes default ON and retain a working OFF control. Additional
-  starting troop counts default to zero; existing profiles keep their choices.
-- Build using the existing module packaging/signing workflow, verify installation
-  from the exact ZIP, and pin the tested source revision and matching module
-  version in the store recipe. Preserve the established dependency and trust
-  requirements. Do not publish a source-checkout ZIP as an installable module.
-- Add the actual download URL, SHA-256, module/dependency versions, tested game
-  builds, control names and validation evidence below. Complete CI and review
-  before marking the PR ready for release.
+1. Use UCP3.0.7 with AI Swapper's existing dependencies (AIC Loader, AIV Loader, Files, GM Resource Modifier and Text Resource Modifier), normally resolved through the extension store. Install the module ZIP in the test game's `ucp/modules` folder without extracting it. Select AI Swapper1.5.0 in Content and use an AI pack that exposes Starting troops.
+2. Open **Customisations > AI Swapper > Open Menu**. Select Wolf, enable the desired AI's **Starting troops** component, and enter **3** under **Starting tunnelers / Normal game**. Save and Close, then Apply.
+3. Start a **single-player** Normal skirmish with two Wolves and centered starting advantage. Each Wolf should have three additional tunnelers at the start, with its original other units preserved. Test selection and useful orders/AI use.
+4. Save and reload: no additional batch should appear. Restart: each Wolf should begin with the configured count once. Check SHC and Extreme separately.
+5. Enter **0** to disable additional tunnelers for a mode. Clear the field to inherit the AI pack. Reset slot removes user overrides. Save/Apply and reopen to check persistence. Crusader and Deathmatch have separate fields; starting advantage scales their counts too.
 
-## Short test guide to finish with the verified build
+An AI pack can instead author `Tunneler` in `character.json.startTroops` and must declare an AI Swapper dependency of at least1.5.0. Values are integers0..2499. Required plugin selections stay locked. This capability requires no additional enable switch; absent counts remain zero.
 
-These are the required test cases, not instructions for a currently available
-feature. Replace the pending installation details with the exact tested workflow
-before offering the ZIP to players.
+## Performed validation
 
-1. Install the versioned module ZIP in the test game's `ucp/modules` directory
-   using the verified UCP 3.0.7 workflow and its required dependencies. The final
-   instructions must name the archive, required versions and activation steps.
-2. In Customizations, configure a positive tunneler starting count for an AI
-   through AI Swapper. The final instructions must name the actual localized
-   control and category. Also check zero/omitted counts preserve existing starts.
-3. Start a **single-player** skirmish with that AI. Check the requested count
-   using the documented mode/advantage settings, correct ownership and placement,
-   valid selection/orders and eventual AI use. Repeat with two slots using the
-   same personality to catch player/character indexing errors.
-4. Save and reload, then restart the match. Reloading must not add another batch;
-   restarting must initialize the configured count exactly once. Repeat in normal
-   SHC and Extreme using the documented supported builds.
-5. For any verified accounting correction included in the release, compare its
-   default ON behavior with OFF using the supplied quota fixture. Recruitment
-   must stop at the proper quota and replace a legitimate loss without repeated
-   spending on already-counted working units. Save the configuration and confirm
-   that the selected ON/OFF value persists.
+- Existing helper Release/x86 build, menu build, nine-locale menu/state tests, production configuration import/round-trip/required-lock tests, and diff checks passed.
+- Production Lua/PE tests passed on local SHC/Extreme and official Firefly EFIGS/Polish executables. Those tests stub native calls; they do not replace native acceptance.
+- Local SHC1.41 and Extreme1.41.1-E native count3/two-Wolf save/load/restart checks passed. Extreme also retained reciprocal native group membership and IDs/UIDs after load; loading a pre-feature save added no units.
+- Installed build4 ZIP passed GUI edit/Save/Apply/reopen for Normal7/Crusader1/Deathmatch0, including German and Persian RTL layouts. Both official EFIGS executables consumed the written Normal7 override on restart, with seven-member native groups and original three archers/engineers per Wolf. Earlier count3 saves retained three per Wolf after loading.
+- Local build4 ZIP SHA256: `f41f9b78b36d40fccc4780881e09d39c350eed6a5aa09054599e4f395c756631`. This is development-runtime evidence, not the final signed archive checksum.
 
-Report the game/module versions, configuration, expected/actual result and a
-reproducing save with any failure. Multiplayer testing belongs to players and
-is outside this worker's acceptance scope; no multiplayer validation is claimed.
+Remaining gates include Polish native runs, other mode/personality and useful-action/lifecycle coverage, applicable offline restoration/composition, and final signed artifact installation. Measured positive Extreme startup adds roughly20-22seconds for framework ambiguity scans; there is no per-frame scan/census.
 
-## Evidence available so far
+Recruitment accounting remains a separate investigation coordinated with AIC Tactics [PR12](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/pull/12), [PR16](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/pull/16) and [PR17](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/pull/17). No shared recruitment code has changed.
 
-The baseline used existing signed UCP 3.0.7 / AI Swapper 1.1.0, without the new
-feature: two Wolves, Normal Game and centered advantage. Local SHC 1.41 on Green
-Haven and Extreme 1.41 on MP-Downhill Scrum each produced three archers and three
-engineers per Wolf, while the requested Tunneler entry was ignored. The Extreme
-map's name does not indicate a multiplayer test; both tests were single-player.
-
-These observations reproduce the missing starting-tunneler capability. They do
-not validate a feature build, recruitment correction, supported-variant matrix,
-installed localization or final artifact. Release acceptance remains open.
+Multiplayer testing belongs to players and is outside this worker's acceptance scope. Report the executable/module versions, configuration, expected/actual result and a reproducing save with failures.
