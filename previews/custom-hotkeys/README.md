@@ -1,46 +1,59 @@
-# Custom Hotkeys 0.1.5 — native binding and construction fixes
+# Custom Hotkeys 0.1.6
 
-**TL;DR:** Rebind keys in-game, save profiles and try Game Default, Modern RTS or
-Grid. Activate the module and press **F12**. Building and Grid shortcuts now keep
-your map cursor in place. UCP byte-pattern discovery replaces the executable
-hash lock, with native checks on both Crusader and Extreme1.41.
+**TL;DR:** Rebind keyboard and mouse controls in-game, save profiles, assign
+building groups and camera positions, and try Game Default, Modern RTS or Grid.
+Activate the module and press **F12**. Building shortcuts preserve your cursor;
+Options and Automarket controls can also be operated with the keyboard.
 
-[Download Custom Hotkeys 0.1.5](custom-hotkeys-0.1.5.zip?raw=true).
+[Download Custom Hotkeys 0.1.6](custom-hotkeys-0.1.6.zip?raw=true).
 
-Put the ZIP in `ucp/modules`, select the new version and activate it. There is
-no second activation switch. Requires UCP3.0.7+, UI1.0.1, LuaJIT/cffi/
-winProcHandler1.0.0 and graphicsApiReplacer1.3.0. Legacy is optional and its
-conflicting `o_keys.enabled` setting is required false automatically.
+Put the ZIP in `ucp/modules`, select this version and activate it. There is no
+second activation switch. Requires UCP 3.0.7+, UI 1.0.1, LuaJIT/cffi/
+winProcHandler 1.0.0 and graphicsApiReplacer 1.3.0. Legacy is optional; its
+conflicting `o_keys.enabled` value is required false by the module configuration.
+All nine Store descriptions explain opening the editor and follow the launcher
+language. The editor follows the game language.
 
-Multiplayer, Recorder and Automarket remain open for testing, including playback;
-no Hotkeys Recorder-version or playback lock is restored. The optional
-[Recorder0.50.4 preview](recorder-integration/recorder-0.50.4.zip?raw=true) is
-unchanged. Native game control availability, text focus and input ownership apply.
+Ctrl+number assigns a selected owned building or a native unit group; number
+recalls it, repeated number focuses it, and Alt+number focuses directly.
+Shift+Alt+number saves a local camera position; Ctrl+Alt+number recalls it.
+Numpad 8/4/2/6 moves the target, Shift makes fine adjustments, 5 centers,
+Enter confirms and Decimal cancels. Profiles from earlier versions keep their
+bindings: reset a preset to obtain all new defaults or assign individual actions.
 
-The implementation reuses UCP scanning/caching, UI exports, winProcHandler and
-the original enabled button callbacks. Building selection no longer moves the
-mouse or fabricates a click. Actual placement uses the normal native command path.
-Extreme's larger selection arrays and nonblocking tactical-powers HUD are handled.
+Multiplayer, Recorder and Automarket are open for testing, including playback.
+There is no Hotkeys Recorder-version or playback activation lock. Native game
+rules, text-field focus and current menu ownership still apply. The optional
+[Recorder 0.50.4 preview](recorder-integration/recorder-0.50.4.zip?raw=true) is unchanged.
 
-Validation: **515 component tests** on Lua5.4/LuaJIT; all nine Store languages
-updated. Native Crusader and Extreme checks verified category/building selection
-without cursor/camera movement and normal woodcutter placement. F12 opened the
-editor in gameplay. Recorder0.50.4 and Automarket1.1.0 were loaded. The exact
-Extreme-tested ZIP is reproducible: 94,158 bytes, SHA256
-`5fabd7777d246aaf61ee99bc92a9b949e992a87723073fa23c6cef972258fe40`, runtime source `f4f56ec7d3eb6138c8359d6c20b55d31fc5d1e1e`.
-Later metadata source `84ffa791d0e95771e37dfdc2689e328b9941aa2b` has identical packaged source files.
+Validation: **571 component tests**, **42 localized metadata/module checks**,
+and 169 named bindings resolved using UCP utilities with 153 unique patterns in
+each local SHC/Extreme 1.41 fixture. Native SHC checks include building groups,
+camera recall, Modern selection/orders, keyboard construction/recruitment/trade,
+Automarket navigation/Save and Options sliders. A completed Recorder session
+replayed all 4 recorded commands with matching resource, RNG and full RNG
+checkpoints. See the evidence for exact revisions and scope.
 
-[Evidence, reuse inventory and limits](https://github.com/Krarilotus/extension-custom-hotkeys/blob/84ffa791d0e95771e37dfdc2689e328b9941aa2b/docs/native-bindings.md).
+The tested ZIP is reproducible: **101,192 bytes**, SHA256
+`0c5a4e59caa0c762a54b064851bd7c1549e6fbd2b42564b4dbe81c9075df2ceb`,
+runtime source `97cfe4bf290995fafb2f30846e3ba6def830d804`.
+Recipe source `3053ccb12a75d37654fe34512b9c6a1badc5928e` has identical packaged
+source files; subsequent changes only update online descriptions and evidence.
 
-![Actual Extreme gameplay editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/4f5932ec3be14c1b3d6d9daf0ace7e5cf5c2e549/docs/images/hotkeys-015-extreme-ingame.png)
+[Feature and native evidence](https://github.com/Krarilotus/extension-custom-hotkeys/blob/3053ccb12a75d37654fe34512b9c6a1badc5928e/docs/features-0.1.6.md)
+and [package acceptance receipt](custom-hotkeys-0.1.6.native.json).
 
-This is an unsigned development preview. Mouse rebinding, building groups,
-camera bookmarks and complete keyboard workflows remain implementation work.
-Two-peer multiplayer, full replay/state-restore, command-count and high-speed
-acceptance remain outstanding. Other executable variants require testing.
-No full feature completion or verified merge is claimed.
+![Actual 0.1.6 gameplay editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/4fa5305103d4bdf9467d185da5c382ad7ba24a59/docs/images/hotkeys-016-ingame.png)
+
+This is an unsigned development preview. Two-PC multiplayer is deferred to manual
+testing. Full keyboard/text/held/focus acceptance, alternate-profile playback,
+state restore, high-speed simulation and additional executable coverage remain
+to be verified. The expanded 0.1.6 controls still need an Extreme gameplay rerun.
+These are test gaps, not feature activation locks. No completed acceptance or
+verified PR merge is claimed.
 
 Earlier immutable downloads remain available:
+[0.1.5](custom-hotkeys-0.1.5.zip?raw=true),
 [0.1.4](custom-hotkeys-0.1.4.zip?raw=true),
 [0.1.3](custom-hotkeys-0.1.3.zip?raw=true),
 [0.1.2](recorder-integration/custom-hotkeys-0.1.2.zip?raw=true),
