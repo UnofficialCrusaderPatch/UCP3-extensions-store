@@ -1,64 +1,49 @@
-# Custom Hotkeys test preview
+# Custom Hotkeys 0.1.3 test preview
 
-For the separate **0.1.2 + Recorder 0.50.4 integration preview**, paired downloads,
-native single-player Automarket evidence and remaining checks, see
-[Recorder integration](recorder-integration/README.md). The 0.1.1 archive below
-is preserved and still rejects active Recorder.
+**TL;DR:** Multiplayer testing is now enabled. Rebind in-game, save profiles and
+try Game Default, Modern RTS or Grid. Activate the module and press **F12**;
+there is no extra launcher switch. Select **Apply** to save changes.
 
-**TL;DR:** 0.1.1 groups shortcuts by purpose, aligns text, adds a live search
-field and18 rows, and removes redundant hints/buttons. Grid keeps native groups: Ctrl+number assigns, number selects,
-and pressing it again focuses. Enable the module, open with F12, edit and Apply.
+Download [Custom Hotkeys 0.1.3](custom-hotkeys-0.1.3.zip?raw=true).
+For Recorder testing, also install the paired
+[Recorder 0.50.4 preview](recorder-integration/recorder-0.50.4.zip?raw=true).
+Recorder is optional. Older Recorder versions lack the required input lifecycle
+API; use the paired ZIP to test recording, playback and Automarket together.
 
-This is an **unsigned, incomplete test build**, not the signed Store release.
-The Store recipe is a draft proposal; do not publish it before the implementation
-and required acceptance gates in the linked extension PR are complete.
+Install ZIPs in `ucp/modules` in a separate test installation and select the new
+versions in UCP. SHC 1.41, UCP 3.0.7+, UI 1.0.1, LuaJIT/cffi/winProcHandler 1.0.0
+and graphicsApiReplacer 1.3.0 are required. Automarket testing uses Automarket
+1.1.0, protocol 1.0.0 and map-extensions 1.0.0.
 
-Download [custom-hotkeys-0.1.1.zip](custom-hotkeys-0.1.1.zip?raw=true).
-Source: `ce9385f5c5ff1d10134d66c36d857f8e51339355` in
-[extension-custom-hotkeys](https://github.com/Krarilotus/extension-custom-hotkeys/tree/ce9385f5c5ff1d10134d66c36d857f8e51339355).
-Size:87,775 bytes. SHA-256:
-`2122b341bdc88ed7d857c8c4cefa3843c9c9421e3a7f47b1e52cc9de6118eb58`.
-The adjacent build receipt contains the per-file hashes. Two independent builds
-were byte-identical. Images/descriptions and test tools are excluded from the ZIP.
+Legacy is not a dependency. When present, its conflicting `o_keys.enabled` is
+required false and checked before activation. Restart after changing modules.
+Replay live-action protection, text/modal/focus checks and native multiplayer
+save/load restrictions remain active. Use the game's normal multiplayer
+save/load controls; the custom SP quickslot workflow is not a network load path.
 
-Use a separate SHC1.41/UCP3.0.7 test installation. Place the ZIP in `ucp/modules`
-and activate Custom Hotkeys with its declared dependencies: UI1.0.1,
-LuaJIT1.0.0, cffi1.0.0, winProcHandler1.0.0, graphicsApiReplacer1.3.0.
-It starts with the module; there is no separate launcher switch or options page.
-Open the main-menu entry or press **F12** in a supported menu/live SP game.
-**Ctrl+Shift+F12** is the recovery entry. Change bindings and use **Apply** to save.
-The unsigned-development startup notice is expected for this test ZIP.
+All nine Store descriptions have updated localized summaries and instructions.
+All game catalogs pass complete key coverage without English fallback. Native
+building/control names still come from the game. Fluent/native language review
+and two-PC synchronization acceptance remain pending.
 
-Legacy is not required. If active, its hotkey modifications must be off
-(`o_keys.enabled=false`); this is a required configuration value and runtime gate.
-Do not combine this preview with active Recorder. Other executable hashes,
-including Extreme, are rejected by the current implementation.
+These ZIPs are unsigned development previews for testing, not an accepted Store
+release. No multiplayer pass, complete keyboard workflow or verified merge is
+claimed. See the [test checklist](https://github.com/Krarilotus/extension-custom-hotkeys/blob/feat/binding-core/docs/manual-multiplayer.md)
+and [earlier bounded SP Recorder evidence](recorder-integration/README.md).
 
-![Actual in-game hotkey editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/f67fc6d9779f8ffe12b6ebd72462f317a565a160/docs/images/hotkeys-ingame.jpg)
+Source: `7c1421183bb14d8a188360b630c2ab89f7a0d83b`.
+Hotkeys: 89,426 bytes; SHA-256
+`fff2f759044beff01f078ceb7add5ec364b15cf83f71669e0085d244374ccbfe`.
+Two builds are byte-identical; 486 component tests pass in Lua 5.4/LuaJIT.
+Recorder: 917,998 bytes; SHA-256
+`1e8511e91002ed36a1928b8c621d2215a7e343582121a069e51b9b1b33e8046c`.
 
-The screenshots come from native PID7852, frozen6a952f9. This preview differs
-only in build.json; every other installed byte is identical. The18-row editor
-uses the original recessed field background, live search, aligned top controls
-and a shared footer for Reset/Apply/Cancel and the counter. Redundant Change/Clear
-buttons and idle explanatory lines are removed. Click a row or press Enter to
-capture; Delete clears its binding. Search narrowed live to32 group actions;
-Enter capture, Ctrl+F11, Delete, Reset and Cancel passed the bounded native check.
-No test edits were saved. Error log header-only; desktop released05:12:33CEST.
-Earlier PID13032 verified Apply/reopen persistence and conflict handling.
-See the [native receipt](https://github.com/Krarilotus/extension-custom-hotkeys/blob/f67fc6d9779f8ffe12b6ebd72462f317a565a160/docs/editor-0.1.1-evidence.md).
+Previous immutable payloads remain available: [0.1.1](custom-hotkeys-0.1.1.zip?raw=true)
+rejects Recorder; [0.1.2](recorder-integration/custom-hotkeys-0.1.2.zip?raw=true)
+has Recorder integration but blocks multiplayer input.
 
-![Retained native group shortcuts](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/f67fc6d9779f8ffe12b6ebd72462f317a565a160/docs/images/hotkeys-groups-ingame.jpg)
+Native 0.1.3 check: PID2772 loaded with the paired Recorder and Automarket,
+F12 opened the 211-action editor, Cancel closed it and normal exit succeeded.
+Error log contains headers only. [Exact evidence and limits](https://github.com/Krarilotus/extension-custom-hotkeys/blob/b5996268ab677fb054715fba4579908d13671cf5/docs/multiplayer-preview.md).
 
-This is bounded native evidence, not a complete keyboard-only acceptance pass.
-
-Pending before acceptance: mouse rebinding, building control groups, camera
-bookmarks, full economy/recruitment/targeting/grid workflows, text/focus/held-key
-regressions, all game languages/layouts/minimum resolution, native command counts
-and1100-speed performance. Multiplayer remains gated pending the user's physical
-two-peer tests; replay/state restoration requires the Recorder owner's lifecycle
-API and integration acceptance. No approved merge or release is claimed.
-
-Descriptions are supplied for en/de/fr/es/hu/tr/ru/ch/fa and use the launcher
-language. The editor independently uses `data.version.getGameLanguage()` after
-game initialization. The stock API's seven language values are covered by the
-in-game catalogs; other patched languages/fonts need their own verified support.
+![Actual 0.1.3 editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/b5996268ab677fb054715fba4579908d13671cf5/docs/images/hotkeys-013-editor.png)

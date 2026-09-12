@@ -1,3 +1,5 @@
+**Newer preview:** [Hotkeys 0.1.3](../README.md) enables multiplayer testing and uses the same Recorder ZIP below. This page records the earlier 0.1.2 tests.
+
 # Recorder integration preview
 
 **TL;DR:** Hotkeys 0.1.2 can coexist with the accompanying Recorder 0.50.4
