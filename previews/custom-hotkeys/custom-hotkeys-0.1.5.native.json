@@ -1,0 +1,76 @@
+{
+  "pid": 33956,
+  "runtime_source": "f4f56ec",
+  "edition": "Extreme 1.41",
+  "checks": [
+    {
+      "tab": 10,
+      "placement": 0,
+      "mouseX": 929,
+      "mouseY": 540,
+      "cameraX": 224,
+      "cameraY": 2024,
+      "primaryModal": -1,
+      "secondaryModal": -1,
+      "tertiaryModal": 130,
+      "leftDown": 0,
+      "leftHeld": 0,
+      "rightDown": 0,
+      "pendingReset": 0
+    },
+    {
+      "tab": 20,
+      "placement": 0,
+      "mouseX": 929,
+      "mouseY": 540,
+      "cameraX": 224,
+      "cameraY": 2024,
+      "primaryModal": -1,
+      "secondaryModal": -1,
+      "tertiaryModal": 130,
+      "leftDown": 0,
+      "leftHeld": 0,
+      "rightDown": 0,
+      "pendingReset": 0
+    },
+    {
+      "tab": 20,
+      "placement": 51,
+      "mouseX": 929,
+      "mouseY": 540,
+      "cameraX": 224,
+      "cameraY": 2024,
+      "primaryModal": -1,
+      "secondaryModal": -1,
+      "tertiaryModal": 130,
+      "leftDown": 0,
+      "leftHeld": 0,
+      "rightDown": 0,
+      "pendingReset": 0
+    }
+  ],
+  "normal_click_wood": [
+    100,
+    97
+  ],
+  "f12_gameplay": true,
+  "normal_exit_verified": true,
+  "desktop_released": "2026-09-12T15:10:11+02:00",
+  "baseline_restored_sha256": {
+    "ucp-config.yml": "b28785f16aa43131dbd318a9a8c991366248eabdefe908da0e725b82919190f4",
+    "ucp/custom-hotkeys-profiles-a.json": "93881096681eadf46459f496ef252b608c5c44f2bd27299ca683af3cdd9aa484",
+    "ucp/custom-hotkeys-profiles-b.json": "2c95d251337cad6d468b7ee39b481c4ba883fbe8c27a8b319ff81686bc9e15e7"
+  },
+  "not_established": [
+    "command count",
+    "two-peer multiplayer",
+    "full replay",
+    "high-speed simulation",
+    "full keyboard-only route"
+  ],
+  "version": "0.1.5",
+  "zip_sha256": "5fabd7777d246aaf61ee99bc92a9b949e992a87723073fa23c6cef972258fe40",
+  "source": "f4f56ec7d3eb6138c8359d6c20b55d31fc5d1e1e",
+  "metadata_source": "84ffa791d0e95771e37dfdc2689e328b9941aa2b",
+  "full_component_tests": 515
+}

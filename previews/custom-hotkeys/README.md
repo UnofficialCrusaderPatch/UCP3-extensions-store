@@ -1,49 +1,47 @@
-# Custom Hotkeys 0.1.4 — integration tester build
+# Custom Hotkeys 0.1.5 — native binding and construction fixes
 
 **TL;DR:** Rebind keys in-game, save profiles and try Game Default, Modern RTS or
-Grid. Activate the module and press **F12**. Multiplayer and Recorder combinations
-are open for testing; Hotkeys no longer requires a particular Recorder API or
-blocks input because Recorder reports playback.
+Grid. Activate the module and press **F12**. Building and Grid shortcuts now keep
+your map cursor in place. UCP byte-pattern discovery replaces the executable
+hash lock, with native checks on both Crusader and Extreme1.41.
 
-[Download Custom Hotkeys 0.1.4](custom-hotkeys-0.1.4.zip?raw=true).
-Recorder is optional; the [Recorder 0.50.4 preview](recorder-integration/recorder-0.50.4.zip?raw=true)
-used in the paired tests is also available. Older Recorder APIs no longer prevent
-Hotkeys startup. Optional lifecycle notifications still release old held keys at
-world transitions, then fresh input can be used again.
+[Download Custom Hotkeys 0.1.5](custom-hotkeys-0.1.5.zip?raw=true).
 
-Install the ZIP in `ucp/modules` in a test installation and select its new version
-in UCP. SHC1.41, UCP3.0.7+, UI1.0.1, LuaJIT/cffi/winProcHandler1.0.0 and
-graphicsApiReplacer1.3.0. Automarket tests use Automarket1.1.0 with protocol and
-map-extensions1.0.0. Legacy is optional and its known conflicting `o_keys.enabled`
-option is required false. There is no second launcher activation switch.
+Put the ZIP in `ucp/modules`, select the new version and activate it. There is
+no second activation switch. Requires UCP3.0.7+, UI1.0.1, LuaJIT/cffi/
+winProcHandler1.0.0 and graphicsApiReplacer1.3.0. Legacy is optional and its
+conflicting `o_keys.enabled` setting is required false automatically.
 
-This unsigned development build intentionally removes Hotkeys' playback input
-lock. Existing native control availability, text focus and game save/load rules
-still define the actions. Report interactions with Recorder, Automarket and
-multiplayer, including duplicate commands, unexpected actions and desynchronization.
+Multiplayer, Recorder and Automarket remain open for testing, including playback;
+no Hotkeys Recorder-version or playback lock is restored. The optional
+[Recorder0.50.4 preview](recorder-integration/recorder-0.50.4.zip?raw=true) is
+unchanged. Native game control availability, text focus and input ownership apply.
 
-Missing features (mouse rebinding, building groups, camera bookmarks) and remaining
-native acceptance are still development work, not hidden test switches. Nothing
-here claims complete keyboard control, two-peer synchronization, or a merged release.
+The implementation reuses UCP scanning/caching, UI exports, winProcHandler and
+the original enabled button callbacks. Building selection no longer moves the
+mouse or fabricates a click. Actual placement uses the normal native command path.
+Extreme's larger selection arrays and nonblocking tactical-powers HUD are handled.
 
-Validation: 486 component tests on Lua5.4/LuaJIT; 42 affected localized metadata
-and module checks re-run after the description update; source CI green. All nine
-Store descriptions updated. Reproducible ZIP: 88744 bytes, SHA256
-`e34eb581d9d6246016846f7280346c6a50d133d5a480b3632894155512fc95f9`, source `319ccf0b27bf574ffb755153af901acc0dc494e5`.
+Validation: **515 component tests** on Lua5.4/LuaJIT; all nine Store languages
+updated. Native Crusader and Extreme checks verified category/building selection
+without cursor/camera movement and normal woodcutter placement. F12 opened the
+editor in gameplay. Recorder0.50.4 and Automarket1.1.0 were loaded. The exact
+Extreme-tested ZIP is reproducible: 94,158 bytes, SHA256
+`5fabd7777d246aaf61ee99bc92a9b949e992a87723073fa23c6cef972258fe40`, runtime source `f4f56ec7d3eb6138c8359d6c20b55d31fc5d1e1e`.
+Later metadata source `84ffa791d0e95771e37dfdc2689e328b9941aa2b` has identical packaged source files.
 
-Native exact-ZIP check (PID25780): loaded with Recorder0.50.4 and Automarket1.1.0;
-F12 opened the editor both while recording and during playback of a fresh0.1.4
-recording. Cancel returned to playback at1166/2169 ticks with matching HUD checks.
-No world commands were submitted in this check, and playback was exited before
-completion. Header-only error log; normal exit/PID absence verified, baseline
-config/profiles restored and desktop released07:55:01 CEST.
+[Evidence, reuse inventory and limits](https://github.com/Krarilotus/extension-custom-hotkeys/blob/84ffa791d0e95771e37dfdc2689e328b9941aa2b/docs/native-bindings.md).
 
-[Evidence and limits](https://github.com/Krarilotus/extension-custom-hotkeys/blob/e27bdcbf0e82ed0a33be6c521256d3540014d78d/docs/unrestricted-preview.md).
+![Actual Extreme gameplay editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/4f5932ec3be14c1b3d6d9daf0ace7e5cf5c2e549/docs/images/hotkeys-015-extreme-ingame.png)
 
-![Actual 0.1.4 in-game editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/e27bdcbf0e82ed0a33be6c521256d3540014d78d/docs/images/hotkeys-014-recording.png)
+This is an unsigned development preview. Mouse rebinding, building groups,
+camera bookmarks and complete keyboard workflows remain implementation work.
+Two-peer multiplayer, full replay/state-restore, command-count and high-speed
+acceptance remain outstanding. Other executable variants require testing.
+No full feature completion or verified merge is claimed.
 
-
-Previous immutable payloads are preserved: [0.1.3](custom-hotkeys-0.1.3.zip?raw=true),
+Earlier immutable downloads remain available:
+[0.1.4](custom-hotkeys-0.1.4.zip?raw=true),
+[0.1.3](custom-hotkeys-0.1.3.zip?raw=true),
 [0.1.2](recorder-integration/custom-hotkeys-0.1.2.zip?raw=true),
-[0.1.1](custom-hotkeys-0.1.1.zip?raw=true). Their gating/evidence descriptions refer
-to those versions, not 0.1.4.
+[0.1.1](custom-hotkeys-0.1.1.zip?raw=true).
