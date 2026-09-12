@@ -609,14 +609,14 @@ extensions:
           github-tag: main
     - definition:
         name: winProcHandler
-        version: 1.0.0
+        version: 1.0.1
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/ucp_winProcHandler
-          github-sha: 5f85672b063a0687d24990f96117d1fbae33af04
-          github-tag: main
+          github-sha: c6ad7efe50b778f3a2bf5578dc5f437f1c245c1e
+          github-tag: fix/cinterface-proxy
     - definition:
         name: running-units
         version: 1.0.2
@@ -770,13 +770,13 @@ extensions:
           github-tag: main
     - definition:
         name: recorder
-        version: 0.50.30
+        version: 0.50.31
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp_recorder
-          github-sha: 3734b6c220a9a79487adbf6d6cee40cddb5a10d5
+          github-sha: fafaf7a2dee90b488601320ac107300a9e9dac4c
           github-tag: feat/required-state-capability
     - definition:
         name: aic-tactics
@@ -786,7 +786,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aic-tactics
-          github-sha: ba1eee9e5a48a4c94c50e0bee0c91a42026a4add
+          github-sha: 9b4a7619565f5af1b96721cb454612c752970c26
           github-tag: feat/combat-integration
     - definition:
         name: chat
