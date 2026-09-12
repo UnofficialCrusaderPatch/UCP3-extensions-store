@@ -1,14 +1,18 @@
 # Custom Hotkeys test preview
 
+**TL;DR:** 0.1.1 groups shortcuts by purpose, fixes key-text alignment and checks
+Change key capture. Grid keeps native groups: Ctrl+number assigns, number selects,
+and pressing it again focuses. Enable the module, open with F12, edit and Apply.
+
 This is an **unsigned, incomplete test build**, not the signed Store release.
 The Store recipe is a draft proposal; do not publish it before the implementation
 and required acceptance gates in the linked extension PR are complete.
 
-Download [custom-hotkeys-0.1.0.zip](custom-hotkeys-0.1.0.zip?raw=true).
-Source: `c7e3b450159cbef4eedb88ca4eed946190ea6ec8` in
-[extension-custom-hotkeys](https://github.com/Krarilotus/extension-custom-hotkeys/tree/c7e3b450159cbef4eedb88ca4eed946190ea6ec8).
-Size:85,862 bytes. SHA-256:
-`434ddc9b0412cd54bbea220c4c7be0479ed9a31a285e5e5b56a47f4ed98feeab`.
+Download [custom-hotkeys-0.1.1.zip](custom-hotkeys-0.1.1.zip?raw=true).
+Source: `6e419f3429dbe441dd43e7708a9c66750fdfc008` in
+[extension-custom-hotkeys](https://github.com/Krarilotus/extension-custom-hotkeys/tree/6e419f3429dbe441dd43e7708a9c66750fdfc008).
+Size:88,173 bytes. SHA-256:
+`0bc00aa74394598c4d97e0d9727799488b4abcd76f134a781e08fd35405128f8`.
 The adjacent build receipt contains the per-file hashes. Two independent builds
 were byte-identical. Images/descriptions and test tools are excluded from the ZIP.
 
@@ -25,12 +29,18 @@ Legacy is not required. If active, its hotkey modifications must be off
 Do not combine this preview with active Recorder. Other executable hashes,
 including Extreme, are rejected by the current implementation.
 
-![Actual in-game hotkey editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/e27b392f32ca8cd3d3dd33b31a641451cfa23a6f/docs/images/hotkeys-ingame.jpg)
+![Actual in-game hotkey editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/d4875e557b746918ef4501055172736b5f66cfeb/docs/images/hotkeys-ingame.jpg)
 
-The screenshot comes from native PID16012, frozen18ca42f. The preview contains
-identical runtime/configuration/definition bytes; only README and the embedded
-commit receipt differ. Main-menu and gameplay editor pages were checked, including
-F12, persistent Grid selection, native button text centering and texture surfaces.
+The screenshots come from native PID13032, frozen21dab2a, version0.1.1.
+The final preview differs only in build.json; every other installed byte is
+identical. Change key captured Ctrl+F11, Apply persisted scan87/Ctrl, reopen
+confirmed it, F12 conflict preserved it, and Reset restored Ctrl+Tab. Home/Enter
+capture accepted Ctrl+Up; Cancel discarded that edit. Gameplay grouping,
+PageDown, the Group filter and lowered key text were checked. No runtime errors.
+See the [native receipt](https://github.com/Krarilotus/extension-custom-hotkeys/blob/d4875e557b746918ef4501055172736b5f66cfeb/docs/editor-0.1.1-evidence.md).
+
+![Retained native group shortcuts](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/d4875e557b746918ef4501055172736b5f66cfeb/docs/images/hotkeys-groups-ingame.jpg)
+
 This is bounded native evidence, not a complete keyboard-only acceptance pass.
 
 Pending before acceptance: mouse rebinding, building control groups, camera

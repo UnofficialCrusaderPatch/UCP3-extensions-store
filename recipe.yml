@@ -780,11 +780,11 @@ extensions:
           github-tag: pr-46-02014385ce05
     - definition:
         name: custom-hotkeys
-        version: 0.1.0
+        version: 0.1.1
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/extension-custom-hotkeys
-          github-sha: c7e3b450159cbef4eedb88ca4eed946190ea6ec8
+          github-sha: 6e419f3429dbe441dd43e7708a9c66750fdfc008
           github-tag: feat/binding-core
