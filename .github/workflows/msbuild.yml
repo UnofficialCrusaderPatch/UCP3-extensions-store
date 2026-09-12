@@ -123,7 +123,7 @@ jobs:
     - name: Upload AIC Tactics installation bundle
       uses: actions/upload-artifact@v4
       with:
-        name: aic-tactics-0.0.6-testing-bundle
+        name: aic-tactics-0.0.7-testing-bundle
         path: build/aic-tactics-testing/
         if-no-files-found: error
 

@@ -690,13 +690,13 @@ extensions:
           github-tag: feat/native-save-interface
     - definition:
         name: protocol
-        version: 1.1.5
+        version: 1.1.6
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp-extension-protocol
-          github-sha: b5173e2b603fba7bf3a740d4f1609da9bdeab6b8
+          github-sha: 3dfbe07d582aa799649b2042f396b21d3952fc33
           github-tag: feat/native-command-entry-points
     - definition:
         name: cffi
@@ -720,13 +720,13 @@ extensions:
           github-tag: main
     - definition:
         name: ui
-        version: 1.0.3
+        version: 1.0.4
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp-extension-ui
-          github-sha: 9e1b7589cf7ca6ebc96970f2216d4ed98cb325c3
+          github-sha: 756b1de9bb7366c59908728990f1ea56dde19be2
           github-tag: feat/native-menu-interface
     - definition:
         name: map-png
@@ -770,23 +770,23 @@ extensions:
           github-tag: main
     - definition:
         name: recorder
-        version: 0.50.28
+        version: 0.50.29
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp_recorder
-          github-sha: 033676e55944b123cb166b0c62f3cf6c91a8e4fc
+          github-sha: 9bdcef4b968a2ab097cf0b073159afd5f599f079
           github-tag: feat/framework-unique-contexts
     - definition:
         name: aic-tactics
-        version: 0.0.6
+        version: 0.0.7
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aic-tactics
-          github-sha: 62a580ceb291bfe05a8064a43043d0f0cb8a93f1
+          github-sha: ba1eee9e5a48a4c94c50e0bee0c91a42026a4add
           github-tag: feat/combat-integration
     - definition:
         name: chat
