@@ -28,7 +28,11 @@ text-field focus and current menu ownership still apply. The optional
 [Recorder 0.50.4 preview](recorder-integration/recorder-0.50.4.zip?raw=true) is unchanged.
 
 Validation: **605 component tests**, **34 final locale/metadata checks**, and
-171 bindings / 155 unique patterns in each available SHC/Extreme fixture.
+171 resolved bindings. A later overlapping-match audit found an ambiguous
+player-lord signature that the original verifier missed. Its fix and shared
+runtime uniqueness checks are implemented in the [0.1.8 development source](https://github.com/Krarilotus/extension-custom-hotkeys/blob/35893b2/docs/features-0.1.8.md),
+which requires pending RPS/UCP framework updates. This 0.1.7 ZIP and recipe
+remain unchanged; the earlier uniqueness claim is superseded.
 The exact ZIP passed native German startup, main-menu and gameplay editor,
 keyboard search/text ownership, and Options/Load navigation. Earlier receipts
 cover construction, recruitment, trading, groups, targeting, Automarket, Options
