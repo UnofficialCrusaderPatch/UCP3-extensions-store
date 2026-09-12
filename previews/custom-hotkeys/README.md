@@ -1,12 +1,12 @@
-# Custom Hotkeys 0.1.7
+# Custom Hotkeys 0.1.8
 
 **TL;DR:** Rebind keyboard and mouse controls in-game, save profiles, assign
 building groups and camera positions, and try Game Default, Modern RTS or Grid.
 Activate the module and press **F12**. Building shortcuts preserve your cursor.
-0.1.7 fixes the lingering world tooltip, reduces redundant rendering work, and
-adds five missing game-language catalogs with character-safe text layout.
+0.1.8 fixes an overlapping player-lord signature and uses the existing UCP
+scanner, cache and operand decoder. No replacement framework files are needed.
 
-[Download Custom Hotkeys 0.1.7](custom-hotkeys-0.1.7.zip?raw=true).
+[Download Custom Hotkeys 0.1.8](custom-hotkeys-0.1.8.zip?raw=true).
 
 Put the ZIP in `ucp/modules`, select this version and activate it. No second
 activation switch. Requires UCP 3.0.7+, UI 1.0.1, LuaJIT/cffi/winProcHandler 1.0.0
@@ -27,28 +27,29 @@ No Hotkeys Recorder-version or playback activation lock. Native game rules,
 text-field focus and current menu ownership still apply. The optional
 [Recorder 0.50.4 preview](recorder-integration/recorder-0.50.4.zip?raw=true) is unchanged.
 
-Validation: **605 component tests**, **34 final locale/metadata checks**, and
-171 resolved bindings. A later overlapping-match audit found an ambiguous
-player-lord signature that the original verifier missed. Its fix and shared
-runtime uniqueness checks are implemented in the [0.1.8 development source](https://github.com/Krarilotus/extension-custom-hotkeys/blob/35893b2/docs/features-0.1.8.md),
-which requires pending RPS/UCP framework updates. This 0.1.7 ZIP and recipe
-remain unchanged; the earlier uniqueness claim is superseded.
-The exact ZIP passed native German startup, main-menu and gameplay editor,
-keyboard search/text ownership, and Options/Load navigation. Earlier receipts
-cover construction, recruitment, trading, groups, targeting, Automarket, Options
-sliders, held-camera cancellation and Save-name typing isolation. A prior
-Recorder session replayed four commands with matching resource, RNG and full RNG
-checkpoints. These are separate runtime receipts, not complete acceptance.
+Validation: all 155 patterns have one overlapping-aware code match on six
+available Crusader/Extreme executable fixtures. All 171 resolved values match
+the prior expected values, using the actual stock UCP 3.0.7 Lua APIs for
+resolution and extraction. This is an offline audit, not an added runtime
+second-match check. No pending UCP/RPS API proposal is a dependency.
 
-The reproducible ZIP is **112,151 bytes**, SHA256
-`0c1d2ff48f45be2a1152363a2983303bd724f39dcccb30c7f15f863585285d98`,
-runtime `2ed6d48274261923081b7e9e9e0138b651977c4f`. Recipe source
-`2f9a193152ead8c1a591731db152959df3fba5ee` has identical packaged source files.
+The reproducible ZIP is **112,301 bytes**, SHA256
+`5aa42016fe817ec11f450c57cdb7f6444d7d16ad2160289023607dff519f6c1a`,
+source `20f876621e5a5a4def9d530036cc0519ac84c486`. Repeat build is byte-identical.
+Only the player-lord pattern, version and package documentation/receipt differ
+from 0.1.7. Existing controls, profiles and all eleven editor languages remain.
 
-[Native evidence and scope](https://github.com/Krarilotus/extension-custom-hotkeys/blob/2f9a193152ead8c1a591731db152959df3fba5ee/docs/features-0.1.7.md)
-and [package receipt](custom-hotkeys-0.1.7.native.json).
+Native startup and physical-F12 main-menu editor checks passed in both Crusader
+and Extreme with the existing UCP runtime, Recorder 0.50.4 and Automarket 1.1.0
+loaded. Both error logs are clear. Both games closed normally and the test state
+was restored. Gameplay/replay were not exercised in these smoke runs.
+Both component CI jobs passed; 37 focused resolver/package/locale checks passed.
+[Exact package and native receipt](custom-hotkeys-0.1.8.native.json).
 
-![Actual German 0.1.7 gameplay editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/90f0436c862394b5ae6a9b07945a49261363efe4/docs/images/hotkeys-017-german-ingame.png)
+![0.1.8 editor in Crusader](stock018-crusader-editor.png)
+![0.1.8 editor in Extreme](stock018-extreme-editor.png)
+
+[0.1.8 change and scope](https://github.com/Krarilotus/extension-custom-hotkeys/blob/20f876621e5a5a4def9d530036cc0519ac84c486/docs/features-0.1.8.md).
 
 Unsigned development preview. Two-PC multiplayer is deferred to manual testing.
 Full keyboard/text/held/focus/mouse acceptance, alternate-profile replay/state
@@ -57,6 +58,7 @@ executable/font/IME/RTL coverage remain unverified. These are test gaps, not
 feature activation locks. No completed acceptance or verified merge is claimed.
 
 Earlier immutable downloads:
+[0.1.7](custom-hotkeys-0.1.7.zip?raw=true),
 [0.1.6](custom-hotkeys-0.1.6.zip?raw=true),
 [0.1.5](custom-hotkeys-0.1.5.zip?raw=true),
 [0.1.4](custom-hotkeys-0.1.4.zip?raw=true),

@@ -1,0 +1,64 @@
+{
+  "version": "0.1.8",
+  "source": "20f876621e5a5a4def9d530036cc0519ac84c486",
+  "archive": "custom-hotkeys-0.1.8.zip",
+  "bytes": 112301,
+  "sha256": "5aa42016fe817ec11f450c57cdb7f6444d7d16ad2160289023607dff519f6c1a",
+  "reproducible": true,
+  "framework": {
+    "version": "UCP 3.0.7-77c6a (da39a3), existing test installation",
+    "files_unchanged": {
+      "RPS.dll": "bd875e808f24b2105ed46f858b74dc096da8b404e88a552f1915c034cfa9d014",
+      "ucp/code.zip": "ee93555d0455cde4fc68dc5434203142aa0acbc43882d819525c4077be833e00"
+    },
+    "custom_runtime_files_required": false,
+    "apis": [
+      "core.AOBScan",
+      "utils.AOBExtract"
+    ]
+  },
+  "offline": {
+    "fixtures": 6,
+    "patterns": 155,
+    "bindings": 171,
+    "overlapping_matches_counted": true,
+    "resolved_values_unchanged": true,
+    "runtime_duplicate_check": false
+  },
+  "native": {
+    "crusader": {
+      "pid": 15288,
+      "hwnd": 6364966,
+      "initialized": true,
+      "f12_editor": true,
+      "actions": 239,
+      "error_log_header_only": true,
+      "normal_exit_verified": true,
+      "recorder": "0.50.4",
+      "automarket": "1.1.0",
+      "screenshot": "stock018-crusader-editor.png",
+      "log_sha256": "77d875c92b86a5db2cd1e32c27cdada9aa90650c27d45b8ecea9837ee89c6dc9",
+      "error_log_sha256": "c3926111b26fa4c401530253192eef9aa15827e22c1f1a80c564ab8fa0e1ac7f"
+    },
+    "extreme": {
+      "pid": 35332,
+      "hwnd": 16392004,
+      "initialized": true,
+      "f12_editor": true,
+      "actions": 239,
+      "error_log_header_only": true,
+      "normal_exit_verified": true,
+      "recorder": "0.50.4",
+      "automarket": "1.1.0",
+      "screenshot": "stock018-extreme-editor.png",
+      "log_sha256": "f52fafcf9c4ea5a43bfe262444bf0630ff2733420b8f192cbdb3ad0f6834e5dc",
+      "error_log_sha256": "c3926111b26fa4c401530253192eef9aa15827e22c1f1a80c564ab8fa0e1ac7f"
+    }
+  },
+  "desktop_released": "2026-09-12T21:36:08+02:00",
+  "test_state_restored": true,
+  "limits": [
+    "Startup and F12 main-menu editor only; gameplay/replay not exercised in these runs.",
+    "Two-peer multiplayer is manual and unverified. Full original acceptance and reviewed merges remain incomplete."
+  ]
+}
