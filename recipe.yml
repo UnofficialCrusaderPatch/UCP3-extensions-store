@@ -696,7 +696,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp-extension-protocol
-          github-sha: 3dfbe07d582aa799649b2042f396b21d3952fc33
+          github-sha: d74653c0b363d0b26909aa4502ef6190f108f61e
           github-tag: feat/native-command-entry-points
     - definition:
         name: cffi
