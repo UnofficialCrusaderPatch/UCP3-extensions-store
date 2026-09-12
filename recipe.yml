@@ -501,13 +501,13 @@ extensions:
           github-tag: main
     - definition:
         name: files
-        version: 1.4.0
+        version: 1.4.1
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-files
-          github-sha: 981b1becbc01fb282ead0415074f696bfefca07a
+          github-sha: 37894eef03c47047a0db165941d53c05630904b1
           github-tag: feat/bounded-vfs-walk
     - definition:
         name: gmResourceModifier
@@ -690,13 +690,13 @@ extensions:
           github-tag: feat/native-save-interface
     - definition:
         name: protocol
-        version: 1.1.4
+        version: 1.1.5
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp-extension-protocol
-          github-sha: 10001beced6a59ef75fbb9ced91d80c1755bc95a
+          github-sha: b5173e2b603fba7bf3a740d4f1609da9bdeab6b8
           github-tag: feat/native-command-entry-points
     - definition:
         name: cffi
@@ -720,13 +720,13 @@ extensions:
           github-tag: main
     - definition:
         name: ui
-        version: 1.0.2
+        version: 1.0.3
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp-extension-ui
-          github-sha: af31ceb3f49a176672ff43201e93183ba755ac82
+          github-sha: 9e1b7589cf7ca6ebc96970f2216d4ed98cb325c3
           github-tag: feat/native-menu-interface
     - definition:
         name: map-png
@@ -780,13 +780,13 @@ extensions:
           github-tag: feat/framework-unique-contexts
     - definition:
         name: aic-tactics
-        version: 0.0.5
+        version: 0.0.6
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aic-tactics
-          github-sha: de8dc13d62c53cc6ce82a87aa6e6ad207d5f1a50
+          github-sha: 62a580ceb291bfe05a8064a43043d0f0cb8a93f1
           github-tag: feat/combat-integration
     - definition:
         name: chat
