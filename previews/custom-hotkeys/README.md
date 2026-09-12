@@ -1,58 +1,59 @@
-# Custom Hotkeys 0.1.6
+# Custom Hotkeys 0.1.7
 
 **TL;DR:** Rebind keyboard and mouse controls in-game, save profiles, assign
 building groups and camera positions, and try Game Default, Modern RTS or Grid.
-Activate the module and press **F12**. Building shortcuts preserve your cursor;
-Options and Automarket controls can also be operated with the keyboard.
+Activate the module and press **F12**. Building shortcuts preserve your cursor.
+0.1.7 fixes the lingering world tooltip, reduces redundant rendering work, and
+adds five missing game-language catalogs with character-safe text layout.
 
-[Download Custom Hotkeys 0.1.6](custom-hotkeys-0.1.6.zip?raw=true).
+[Download Custom Hotkeys 0.1.7](custom-hotkeys-0.1.7.zip?raw=true).
 
-Put the ZIP in `ucp/modules`, select this version and activate it. There is no
-second activation switch. Requires UCP 3.0.7+, UI 1.0.1, LuaJIT/cffi/
-winProcHandler 1.0.0 and graphicsApiReplacer 1.3.0. Legacy is optional; its
-conflicting `o_keys.enabled` value is required false by the module configuration.
-All nine Store descriptions explain opening the editor and follow the launcher
-language. The editor follows the game language.
+Put the ZIP in `ucp/modules`, select this version and activate it. No second
+activation switch. Requires UCP 3.0.7+, UI 1.0.1, LuaJIT/cffi/winProcHandler 1.0.0
+and graphicsApiReplacer 1.3.0. Legacy is optional; conflicting `o_keys.enabled`
+is required false by the module configuration. All nine Store descriptions
+explain opening the editor. Eleven editor languages follow the loaded game text,
+with UCP's game-language setting as fallback.
 
-Ctrl+number assigns a selected owned building or a native unit group; number
+Ctrl+number assigns a selected owned building or native unit group; number
 recalls it, repeated number focuses it, and Alt+number focuses directly.
-Shift+Alt+number saves a local camera position; Ctrl+Alt+number recalls it.
+Shift+Alt+number stores a camera position; Ctrl+Alt+number recalls it.
 Numpad 8/4/2/6 moves the target, Shift makes fine adjustments, 5 centers,
-Enter confirms and Decimal cancels. Profiles from earlier versions keep their
-bindings: reset a preset to obtain all new defaults or assign individual actions.
+Enter confirms and Decimal cancels. Earlier profiles keep their bindings:
+reset a preset for new defaults or assign the new actions individually.
 
 Multiplayer, Recorder and Automarket are open for testing, including playback.
-There is no Hotkeys Recorder-version or playback activation lock. Native game
-rules, text-field focus and current menu ownership still apply. The optional
+No Hotkeys Recorder-version or playback activation lock. Native game rules,
+text-field focus and current menu ownership still apply. The optional
 [Recorder 0.50.4 preview](recorder-integration/recorder-0.50.4.zip?raw=true) is unchanged.
 
-Validation: **571 component tests**, **42 localized metadata/module checks**,
-and 169 named bindings resolved using UCP utilities with 153 unique patterns in
-each local SHC/Extreme 1.41 fixture. Native SHC checks include building groups,
-camera recall, Modern selection/orders, keyboard construction/recruitment/trade,
-Automarket navigation/Save and Options sliders. A completed Recorder session
-replayed all 4 recorded commands with matching resource, RNG and full RNG
-checkpoints. See the evidence for exact revisions and scope.
+Validation: **605 component tests**, **34 final locale/metadata checks**, and
+171 bindings / 155 unique patterns in each available SHC/Extreme fixture.
+The exact ZIP passed native German startup, main-menu and gameplay editor,
+keyboard search/text ownership, and Options/Load navigation. Earlier receipts
+cover construction, recruitment, trading, groups, targeting, Automarket, Options
+sliders, held-camera cancellation and Save-name typing isolation. A prior
+Recorder session replayed four commands with matching resource, RNG and full RNG
+checkpoints. These are separate runtime receipts, not complete acceptance.
 
-The tested ZIP is reproducible: **101,192 bytes**, SHA256
-`0c5a4e59caa0c762a54b064851bd7c1549e6fbd2b42564b4dbe81c9075df2ceb`,
-runtime source `97cfe4bf290995fafb2f30846e3ba6def830d804`.
-Recipe source `3053ccb12a75d37654fe34512b9c6a1badc5928e` has identical packaged
-source files; subsequent changes only update online descriptions and evidence.
+The reproducible ZIP is **112,151 bytes**, SHA256
+`0c1d2ff48f45be2a1152363a2983303bd724f39dcccb30c7f15f863585285d98`,
+runtime `2ed6d48274261923081b7e9e9e0138b651977c4f`. Recipe source
+`2f9a193152ead8c1a591731db152959df3fba5ee` has identical packaged source files.
 
-[Feature and native evidence](https://github.com/Krarilotus/extension-custom-hotkeys/blob/3053ccb12a75d37654fe34512b9c6a1badc5928e/docs/features-0.1.6.md)
-and [package acceptance receipt](custom-hotkeys-0.1.6.native.json).
+[Native evidence and scope](https://github.com/Krarilotus/extension-custom-hotkeys/blob/2f9a193152ead8c1a591731db152959df3fba5ee/docs/features-0.1.7.md)
+and [package receipt](custom-hotkeys-0.1.7.native.json).
 
-![Actual 0.1.6 gameplay editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/4fa5305103d4bdf9467d185da5c382ad7ba24a59/docs/images/hotkeys-016-ingame.png)
+![Actual German 0.1.7 gameplay editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/90f0436c862394b5ae6a9b07945a49261363efe4/docs/images/hotkeys-017-german-ingame.png)
 
-This is an unsigned development preview. Two-PC multiplayer is deferred to manual
-testing. Full keyboard/text/held/focus acceptance, alternate-profile playback,
-state restore, high-speed simulation and additional executable coverage remain
-to be verified. The expanded 0.1.6 controls still need an Extreme gameplay rerun.
-These are test gaps, not feature activation locks. No completed acceptance or
-verified PR merge is claimed.
+Unsigned development preview. Two-PC multiplayer is deferred to manual testing.
+Full keyboard/text/held/focus/mouse acceptance, alternate-profile replay/state
+restore, high-speed simulation, expanded Extreme gameplay and additional
+executable/font/IME/RTL coverage remain unverified. These are test gaps, not
+feature activation locks. No completed acceptance or verified merge is claimed.
 
-Earlier immutable downloads remain available:
+Earlier immutable downloads:
+[0.1.6](custom-hotkeys-0.1.6.zip?raw=true),
 [0.1.5](custom-hotkeys-0.1.5.zip?raw=true),
 [0.1.4](custom-hotkeys-0.1.4.zip?raw=true),
 [0.1.3](custom-hotkeys-0.1.3.zip?raw=true),
