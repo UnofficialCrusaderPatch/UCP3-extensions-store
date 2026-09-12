@@ -1,0 +1,11 @@
+# AIC Tactics test bundle
+
+Copy the contents of this bundle's `ucp/modules` folder into your game's `ucp/modules`, keeping every module ZIP zipped and its `.zip.sig` beside it; reopen the UCP GUI, enable AIC Tactics, and apply the settings in `AIC-TACTICS-COMPATIBILITY.md`.
+Merge an example fragment into the `aic` object of a copied personality and start a new game; recruitment weights, stable attack targets, next-wave reserves and split raids only change for personalities that opt in.
+For save/replay checks, also enable the included Recorder; all multiplayer peers must use the same bundle and configuration.
+
+These module ZIPs use the existing UCP store signatures and are intended for normal UCP 3.0.7 installations. The outer bundle is only a container: extract it once, then copy the inner ZIPs and signatures. Do not put the outer ZIP in the modules folder.
+
+For the eight-player Green Haven spectator fixture, use neighbouring allied pairs and Vanilla Interpretation Castles. Compare an untouched personality against an opted-in Wolf or Saladin. Report the executable version, personality/configuration and observed behavior on [AIC Tactics PR17](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/pull/17).
+
+Recorder and its UI, LuaJIT, cffi and WinProc Handler dependencies are included for convenience; recording is optional. `SHA256SUMS.txt` and `store-manifest.yml` identify the exact module files and source revisions. Current acceptance evidence is maintained in PR17; this preview does not claim the remaining multiplayer, replay or performance gates have passed.
