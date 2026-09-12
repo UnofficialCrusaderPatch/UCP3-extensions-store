@@ -1,0 +1,78 @@
+{
+  "version": "0.1.6",
+  "runtime_source": "97cfe4bf290995fafb2f30846e3ba6def830d804",
+  "metadata_source": "3053ccb12a75d37654fe34512b9c6a1badc5928e",
+  "zip_sha256": "0c5a4e59caa0c762a54b064851bd7c1549e6fbd2b42564b4dbe81c9075df2ceb",
+  "full_component_tests": 571,
+  "localized_metadata_checks": 42,
+  "production_package_files_equal_recipe": true,
+  "native_sessions": [
+    {
+      "source": "97cfe4bf290995fafb2f30846e3ba6def830d804",
+      "pid": 30484,
+      "zip_sha256": "0c5a4e59caa0c762a54b064851bd7c1549e6fbd2b42564b4dbe81c9075df2ceb",
+      "checks": [
+        "keyboard main Options and Gameplay Options",
+        "speed slider60->59->60 via native handler and display state",
+        "Sound Options music0->1->0",
+        "keyboard Sound Back and main Load",
+        "239-action Grid editor F12/Cancel"
+      ],
+      "normal_exit": true,
+      "desktop_released": "2026-09-12T18:09:05+02:00",
+      "config_profiles_baseline_restored": true,
+      "notes": [
+        "Speech slider restore-default button was exercised and set85; Sound remained Off. Music restored0 and speed60. Task-only game settings need speech0 restoration in next slot.",
+        "World Lord hover banner can persist beneath translucent editor until close/reopen after moving off world target; fresh screenshot does not show it.",
+        "AltF4 from gameplay does not finalize Recorder; this run is not playback evidence."
+      ]
+    },
+    {
+      "source": "46556be",
+      "pid": 25340,
+      "edition": "SHC 1.41",
+      "zip_sha256": "3de71d06e786fa1271526af0d1e3f276d33d56b743a9361aafa8e283f583f6f0",
+      "native_checks": [
+        "main Options/Load keyboard route",
+        "keyboard market placement",
+        "Automarket Tab/ShiftTab/Enter dialog navigation, toggle and Save/Close",
+        "single wood Buy: wood85->90, gold1925->1905",
+        "F12/Cancel during playback"
+      ],
+      "playback": {
+        "commands": 4,
+        "fullRngCheckpoints": "matched",
+        "lastTick": 20732,
+        "resourceCheckpoints": "matched",
+        "rngCheckpoints": "matched",
+        "started": "2026-09-12T15:27:24Z",
+        "status": "finished"
+      },
+      "normal_exit_pid_absent": true,
+      "desktop_released": "2026-09-12T17:31:32+02:00",
+      "restored_sha256": {
+        "ucp-config.yml": "b28785f16aa43131dbd318a9a8c991366248eabdefe908da0e725b82919190f4",
+        "ucp/custom-hotkeys-profiles-a.json": "93881096681eadf46459f496ef252b608c5c44f2bd27299ca683af3cdd9aa484",
+        "ucp/custom-hotkeys-profiles-b.json": "2c95d251337cad6d468b7ee39b481c4ba883fbe8c27a8b319ff81686bc9e15e7"
+      },
+      "not_established": [
+        "two-peer multiplayer",
+        "alternate-profile playback",
+        "seek/restore",
+        "full keyboard-only menu route",
+        "1100 speed",
+        "native text/held/focus matrix",
+        "016 Extreme rerun"
+      ]
+    }
+  ],
+  "not_established": [
+    "two-peer multiplayer (manual later per user)",
+    "full text/held/focus native matrix",
+    "complete keyboard-only acceptance",
+    "alternate-profile replay and state restore",
+    "0.1.6 Extreme gameplay rerun",
+    "1100-speed native performance",
+    "additional executable distribution/language fixtures"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "custom-hotkeys-0.1.2.zip": {
+    "sha256": "9b4037acc4f60c404a9e6b7661b3695ca16a6e492b897616162754580e98541f",
+    "bytes": 89173
+  },
+  "recorder-0.50.4.zip": {
+    "sha256": "1e8511e91002ed36a1928b8c621d2215a7e343582121a069e51b9b1b33e8046c",
+    "bytes": 917998
+  },
+  "map-extensions-1.0.0.zip": {
+    "sha256": "68819a64c5c3c1f5f9ecd7bd072e7ffd9fabd15baad13be0b866c7bb31f3cba1",
+    "bytes": 87785
+  },
+  "protocol-1.0.0.zip": {
+    "sha256": "ba4ff3c40d84925f6cc87e379690161701a5ceb6477c953d93e803e8fb9df74b",
+    "bytes": 94866
+  },
+  "automarket-1.1.0.zip": {
+    "sha256": "26379836942341a53b37bdc53eadd615853706a562ec5fd547bfce7c0ae59f5a",
+    "bytes": 299205
+  },
+  "config_sha256": "6e5def86be48bf4f7cf7807397cf66ef8608f51252f6268bb55ee6e5087b4c3e",
+  "recorder_commit": "8dfb61e7b44c619d804265da790c452b66245ad9",
+  "hotkeys_commit": "5a6d771f29fc93d500e85ebe9755c2ed5c4721a3",
+  "final_hotkeys_commit": "702b7b274c6ab4ae3594820b16cb01b152557620",
+  "final_hotkeys_sha256": "e51e7174e7c58b8142d8b4b19ccdcae347d6b250b9fa0877ca3e408cda091dbf",
+  "final_hotkeys_bytes": 89170,
+  "changed_payload_files_since_native_test": [
+    "build.json"
+  ]
+}
