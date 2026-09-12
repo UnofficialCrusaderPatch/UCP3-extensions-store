@@ -28,7 +28,7 @@ supported menu or live single-player game; **Apply** persists edits. During
 Recorder playback, custom input is blocked, including pause, finish and restore.
 Recorder retains all simulation/load/replay ownership.
 
-The [native evidence](https://github.com/Krarilotus/extension-custom-hotkeys/blob/702b7b274c6ab4ae3594820b16cb01b152557620/docs/recorder-integration.md)
+The [native evidence](https://github.com/Krarilotus/extension-custom-hotkeys/blob/965acd49ff4b974d0376c7bf4a2a15c82070dec3/docs/recorder-integration.md)
 includes a four-command journal and playback receipt: one market placement,
 one Automarket policy commit, two native selection commands. The automatic sale
 reproduced 8 wood and 2087 gold. A separate zero-command recording covered
@@ -36,10 +36,14 @@ backward restore and paused input suppression.
 
 ![Actual finished native playback](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/702b7b274c6ab4ae3594820b16cb01b152557620/docs/images/recorder-automarket-finished.png)
 
+The exact published archive also passed a main-menu editor retest with Recorder
+and Automarket loaded: keyboard search activation/filtering, Enter into capture,
+Ctrl+F11, Apply/reopen persistence and keyboard Reset/Apply. Earlier mouse attempts
+had not established field activation; the explicit keyboard route resolved the
+uncertainty without changing production code. This is not a full live-game route.
+
 Remaining integration checks: held-key restore, different local profiles between
-recording/playback, command-bearing backward restore, and editor search/rebinding
-in this exact combination. The native attempt to enter the search field did not
-complete; whether this is input injection or an editor interaction is unresolved.
+recording/playback and command-bearing backward restore.
 Live multiplayer remains gated, with the physical two-peer test deferred to the
 user. Full keyboard-only coverage and the parent preview's feature gaps remain.
 Do not treat this as clearance for a general tester announcement or normal merge.
