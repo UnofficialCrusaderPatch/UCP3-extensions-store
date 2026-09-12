@@ -1,7 +1,12 @@
 name: Build and release store
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the built store (requires the matching version branch)
+        type: boolean
+        default: false
   push:
     branches:
       - "[0-9]+.[0-9]+.[0-9]+"
@@ -59,9 +64,60 @@ jobs:
       run: |
         # Legacy framework scripts do not check every native tool exit code.
         $PSNativeCommandUseErrorActionPreference = $true
-        .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -Debug
+        $candidateBuild = '${{ github.event_name }}' -eq 'workflow_dispatch' -and '${{ inputs.publish }}' -ne 'true'
+        .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -IgnoreBranchMismatch:$candidateBuild -Debug
+
+    - name: Retain signatures for candidate installation
+      shell: pwsh
+      run: |
+        Import-Module powershell-yaml
+        $store = Get-Content .\build\store.yml -Raw | ConvertFrom-Yaml
+        foreach ($extension in $store.extensions.list) {
+          $archive = ".\build\extensions\$($extension.definition.name)-$($extension.definition.version).zip"
+          if ($extension.definition.type -eq 'module' -and (Test-Path -LiteralPath $archive)) {
+            $package = @($extension.contents.package)[0]
+            if ((Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower() -ne $package.hash) {
+              throw "Store/archive hash mismatch: $archive"
+            }
+            if ($package.signature -notmatch '^[0-9a-fA-F]{1024}$') {
+              throw "Missing or invalid module signature: $archive"
+            }
+            Set-Content -LiteralPath "$archive.sig" -Value $package.signature -Encoding ascii
+          }
+        }
+
+    - name: Upload signed build for installation checks
+      uses: actions/upload-artifact@v4
+      with:
+        name: store-${{ github.sha }}
+        path: |
+          build/store.yml
+          build/extensions/*.zip
+          build/extensions/*.zip.sig
+        if-no-files-found: error
+
+    - name: Prepare AI Swapper installation bundle
+      shell: pwsh
+      run: |
+        $archive = '.\build\extensions\aiSwapper-1.5.0.zip'
+        if (Test-Path -LiteralPath $archive) {
+          New-Item -ItemType Directory -Path '.\build\aiSwapper-testing\modules' -Force | Out-Null
+          Copy-Item -LiteralPath $archive, "$archive.sig" -Destination '.\build\aiSwapper-testing\modules'
+          Copy-Item -LiteralPath '.\docs\tunnelers-engineers-testing.md' -Destination '.\build\aiSwapper-testing\README.md'
+          $digest = (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower()
+          Set-Content -LiteralPath '.\build\aiSwapper-testing\SHA256SUMS.txt' -Value "$digest  modules/aiSwapper-1.5.0.zip" -Encoding ascii
+        }
+
+    - name: Upload AI Swapper installation bundle
+      if: hashFiles('build/aiSwapper-testing/README.md') != ''
+      uses: actions/upload-artifact@v4
+      with:
+        name: aiSwapper-1.5.0-testing-bundle
+        path: build/aiSwapper-testing/
+        if-no-files-found: error
 
     - name: Release store
+      if: github.event_name == 'push' || inputs.publish
       shell: |
         pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
       env:
