@@ -477,7 +477,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aiSwapper
-          github-sha: 5e8fe70703b00d3987ef10bf199d53b3a5fab3e8
+          github-sha: 0188de0c5fc1b037102a2fac04ea0754059d997b
           github-tag: feat/tunneler-starting-troops
     - definition:
         name: aicloader
