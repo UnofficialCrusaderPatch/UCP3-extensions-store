@@ -1,7 +1,7 @@
 # Custom Hotkeys test preview
 
-**TL;DR:** 0.1.1 groups shortcuts by purpose, fixes key-text alignment and checks
-Change key capture. Grid keeps native groups: Ctrl+number assigns, number selects,
+**TL;DR:** 0.1.1 groups shortcuts by purpose, aligns text, adds a live search
+field and18 rows, and removes redundant hints/buttons. Grid keeps native groups: Ctrl+number assigns, number selects,
 and pressing it again focuses. Enable the module, open with F12, edit and Apply.
 
 This is an **unsigned, incomplete test build**, not the signed Store release.
@@ -9,10 +9,10 @@ The Store recipe is a draft proposal; do not publish it before the implementatio
 and required acceptance gates in the linked extension PR are complete.
 
 Download [custom-hotkeys-0.1.1.zip](custom-hotkeys-0.1.1.zip?raw=true).
-Source: `6e419f3429dbe441dd43e7708a9c66750fdfc008` in
-[extension-custom-hotkeys](https://github.com/Krarilotus/extension-custom-hotkeys/tree/6e419f3429dbe441dd43e7708a9c66750fdfc008).
-Size:88,173 bytes. SHA-256:
-`0bc00aa74394598c4d97e0d9727799488b4abcd76f134a781e08fd35405128f8`.
+Source: `ce9385f5c5ff1d10134d66c36d857f8e51339355` in
+[extension-custom-hotkeys](https://github.com/Krarilotus/extension-custom-hotkeys/tree/ce9385f5c5ff1d10134d66c36d857f8e51339355).
+Size:87,775 bytes. SHA-256:
+`2122b341bdc88ed7d857c8c4cefa3843c9c9421e3a7f47b1e52cc9de6118eb58`.
 The adjacent build receipt contains the per-file hashes. Two independent builds
 were byte-identical. Images/descriptions and test tools are excluded from the ZIP.
 
@@ -29,17 +29,20 @@ Legacy is not required. If active, its hotkey modifications must be off
 Do not combine this preview with active Recorder. Other executable hashes,
 including Extreme, are rejected by the current implementation.
 
-![Actual in-game hotkey editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/d4875e557b746918ef4501055172736b5f66cfeb/docs/images/hotkeys-ingame.jpg)
+![Actual in-game hotkey editor](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/f67fc6d9779f8ffe12b6ebd72462f317a565a160/docs/images/hotkeys-ingame.jpg)
 
-The screenshots come from native PID13032, frozen21dab2a, version0.1.1.
-The final preview differs only in build.json; every other installed byte is
-identical. Change key captured Ctrl+F11, Apply persisted scan87/Ctrl, reopen
-confirmed it, F12 conflict preserved it, and Reset restored Ctrl+Tab. Home/Enter
-capture accepted Ctrl+Up; Cancel discarded that edit. Gameplay grouping,
-PageDown, the Group filter and lowered key text were checked. No runtime errors.
-See the [native receipt](https://github.com/Krarilotus/extension-custom-hotkeys/blob/d4875e557b746918ef4501055172736b5f66cfeb/docs/editor-0.1.1-evidence.md).
+The screenshots come from native PID7852, frozen6a952f9. This preview differs
+only in build.json; every other installed byte is identical. The18-row editor
+uses the original recessed field background, live search, aligned top controls
+and a shared footer for Reset/Apply/Cancel and the counter. Redundant Change/Clear
+buttons and idle explanatory lines are removed. Click a row or press Enter to
+capture; Delete clears its binding. Search narrowed live to32 group actions;
+Enter capture, Ctrl+F11, Delete, Reset and Cancel passed the bounded native check.
+No test edits were saved. Error log header-only; desktop released05:12:33CEST.
+Earlier PID13032 verified Apply/reopen persistence and conflict handling.
+See the [native receipt](https://github.com/Krarilotus/extension-custom-hotkeys/blob/f67fc6d9779f8ffe12b6ebd72462f317a565a160/docs/editor-0.1.1-evidence.md).
 
-![Retained native group shortcuts](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/d4875e557b746918ef4501055172736b5f66cfeb/docs/images/hotkeys-groups-ingame.jpg)
+![Retained native group shortcuts](https://raw.githubusercontent.com/Krarilotus/extension-custom-hotkeys/f67fc6d9779f8ffe12b6ebd72462f317a565a160/docs/images/hotkeys-groups-ingame.jpg)
 
 This is bounded native evidence, not a complete keyboard-only acceptance pass.
 

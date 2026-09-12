@@ -786,5 +786,5 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-custom-hotkeys
-          github-sha: 6e419f3429dbe441dd43e7708a9c66750fdfc008
+          github-sha: ce9385f5c5ff1d10134d66c36d857f8e51339355
           github-tag: feat/binding-core
