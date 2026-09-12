@@ -104,6 +104,8 @@ jobs:
           New-Item -ItemType Directory -Path '.\build\aiSwapper-testing\modules' -Force | Out-Null
           Copy-Item -LiteralPath $archive, "$archive.sig" -Destination '.\build\aiSwapper-testing\modules'
           Copy-Item -LiteralPath '.\docs\tunnelers-engineers-testing.md' -Destination '.\build\aiSwapper-testing\README.md'
+          $digest = (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower()
+          Set-Content -LiteralPath '.\build\aiSwapper-testing\SHA256SUMS.txt' -Value "$digest  modules/aiSwapper-1.5.0.zip" -Encoding ascii
         }
 
     - name: Upload AI Swapper installation bundle
