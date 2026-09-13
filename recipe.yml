@@ -294,14 +294,14 @@ extensions:
           location: extension-Ascension-AI
     - definition:
         name: Ascension-Multiplayer
-        version: 1.0.11
+        version: 1.0.12
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 5124663ca77867233e268e63126f7e503809b287
-          github-tag: ucp3-ascension
+          github-sha: 58039a5b903dd899b9f80b0b45485877639e6daf
+          github-tag: ascension-multiplayer-1.0.12
           location: extension-Ascension-Multiplayer
     - definition:
         name: Ascension-Maps
