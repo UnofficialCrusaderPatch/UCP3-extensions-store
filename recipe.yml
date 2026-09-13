@@ -481,14 +481,14 @@ extensions:
           github-tag: feat/tunneler-starting-troops
     - definition:
         name: aicloader
-        version: 1.1.2
+        version: 1.1.5
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aicloader
-          github-sha: b4942485293b308ddb54e8a8ab93743b36d6a79b
-          github-tag: main
+          github-sha: 82a9a1873d0c0abbf4575b2cb2621b7f58e9573a
+          github-tag: feat/native-aic-layout
     - definition:
         name: aivloader
         version: 1.0.0
@@ -501,14 +501,14 @@ extensions:
           github-tag: main
     - definition:
         name: files
-        version: 1.3.0
+        version: 1.4.1
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-files
-          github-sha: 8e48fe8b53dbb85a7672e4d36744163fc266a5a3
-          github-tag: main
+          github-sha: 37894eef03c47047a0db165941d53c05630904b1
+          github-tag: feat/bounded-vfs-walk
     - definition:
         name: gmResourceModifier
         version: 0.2.0
@@ -609,14 +609,14 @@ extensions:
           github-tag: main
     - definition:
         name: winProcHandler
-        version: 1.0.0
+        version: 1.0.1
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/ucp_winProcHandler
-          github-sha: 5f85672b063a0687d24990f96117d1fbae33af04
-          github-tag: main
+          github-sha: 114c0af2620b16882a8655efe890817b614a1777
+          github-tag: fix/cinterface-proxy
     - definition:
         name: running-units
         version: 1.0.2
@@ -681,23 +681,23 @@ extensions:
     - definition:
         type: module
         name: map-extensions
-        version: 1.0.0
+        version: 1.1.4
       contents:
         source:
           method: github
-          url: gynt/ucp-extension-map-extensions
-          github-sha: d9399125831c96a46701a510542e09f2a031971f
-          github-tag: main
+          url: Krarilotus/ucp-extension-map-extensions
+          github-sha: 795d32b4ab60ff43dd9bd2f23d821d7ce7cfa5db
+          github-tag: fix/required-state-failure
     - definition:
         name: protocol
-        version: 1.0.0
+        version: 1.1.7
         type: module
       contents:
         source:
           method: github
-          url: gynt/ucp-extension-protocol
-          github-sha: 30f34ee79e0585f05b2729d01b192de374d0bae5
-          github-tag: main
+          url: Krarilotus/ucp-extension-protocol
+          github-sha: d74653c0b363d0b26909aa4502ef6190f108f61e
+          github-tag: feat/native-command-entry-points
     - definition:
         name: cffi
         version: 1.0.0
@@ -720,14 +720,14 @@ extensions:
           github-tag: main
     - definition:
         name: ui
-        version: 1.0.1
+        version: 1.0.4
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp-extension-ui
-          github-sha: d3a807cfee70308f707ea81ddb92ac8b1d375bd9
-          github-tag: test-d3a807cfee70
+          github-sha: 756b1de9bb7366c59908728990f1ea56dde19be2
+          github-tag: feat/native-menu-interface
     - definition:
         name: map-png
         version: 0.1.2
@@ -770,11 +770,31 @@ extensions:
           github-tag: main
     - definition:
         name: recorder
-        version: 0.50.3
+        version: 0.50.32
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp_recorder
-          github-sha: 02014385ce05b002764c9c4f658e5eb6b98c125e
-          github-tag: pr-46-02014385ce05
+          github-sha: 7d3cee77609a02105e7fc5256b3239abdf20d317
+          github-tag: fix/map-read-context
+    - definition:
+        name: aic-tactics
+        version: 0.0.9
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/extension-aic-tactics
+          github-sha: 478c6851008388249d61dc5e37f77f4e3054f7ab
+          github-tag: feat/combat-integration
+    - definition:
+        name: chat
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-chat
+          github-sha: 8f0c58a52cdc3aa5bca2cd4fd731ad1fcf1b9921
+          github-tag: main
