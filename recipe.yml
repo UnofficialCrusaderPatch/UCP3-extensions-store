@@ -681,12 +681,12 @@ extensions:
     - definition:
         type: module
         name: map-extensions
-        version: 1.1.3
+        version: 1.1.4
       contents:
         source:
           method: github
           url: Krarilotus/ucp-extension-map-extensions
-          github-sha: 2cd6312fb4a976b6c850bc1cdc2c6adc1c4b1b55
+          github-sha: 795d32b4ab60ff43dd9bd2f23d821d7ce7cfa5db
           github-tag: fix/required-state-failure
     - definition:
         name: protocol
@@ -770,23 +770,23 @@ extensions:
           github-tag: main
     - definition:
         name: recorder
-        version: 0.50.31
+        version: 0.50.32
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp_recorder
-          github-sha: fafaf7a2dee90b488601320ac107300a9e9dac4c
-          github-tag: feat/required-state-capability
+          github-sha: 7d3cee77609a02105e7fc5256b3239abdf20d317
+          github-tag: fix/map-read-context
     - definition:
         name: aic-tactics
-        version: 0.0.8
+        version: 0.0.9
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aic-tactics
-          github-sha: 919780ea9a9344b0ce459ae75c11fabff83bd19d
+          github-sha: 478c6851008388249d61dc5e37f77f4e3054f7ab
           github-tag: feat/combat-integration
     - definition:
         name: chat
