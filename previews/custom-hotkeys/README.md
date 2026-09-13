@@ -56,7 +56,7 @@ Unsigned development preview. Two-PC multiplayer is deferred to manual testing.
 Full keyboard/text/held/focus/mouse acceptance, alternate-profile replay/state
 restore, high-speed simulation, expanded Extreme gameplay and additional
 executable/font/IME/RTL coverage remain unverified. These are test gaps, not
-feature activation locks. No completed acceptance or verified merge is claimed.
+feature activation locks. Source [PR2](https://github.com/Krarilotus/extension-custom-hotkeys/pull/2) is merged into `main`; the recipe uses the tested `v0.1.9` tag. Store release acceptance remains under review in [PR41](https://github.com/UnofficialCrusaderPatch/UCP3-extensions-store/pull/41).
 
 Earlier immutable downloads:
 [0.1.8](custom-hotkeys-0.1.8.zip?raw=true),

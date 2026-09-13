@@ -787,4 +787,4 @@ extensions:
           method: github
           url: Krarilotus/extension-custom-hotkeys
           github-sha: 9db157fd3147f0d3446e8de17adcff8f76993b4a
-          github-tag: feat/binding-core
+          github-tag: v0.1.9
