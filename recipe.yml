@@ -770,13 +770,13 @@ extensions:
           github-tag: main
     - definition:
         name: recorder
-        version: 0.50.32
+        version: 0.50.33
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp_recorder
-          github-sha: 7d3cee77609a02105e7fc5256b3239abdf20d317
+          github-sha: 4938f68d90f7e8cac17c8c77cb712dc34b29be1e
           github-tag: fix/map-read-context
     - definition:
         name: aic-tactics
