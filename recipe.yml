@@ -681,13 +681,13 @@ extensions:
     - definition:
         type: module
         name: map-extensions
-        version: 1.1.1
+        version: 1.1.2
       contents:
         source:
           method: github
           url: Krarilotus/ucp-extension-map-extensions
-          github-sha: 9d35dfb2495c277f199c0b38d3443742046010ff
-          github-tag: feat/native-save-interface
+          github-sha: dd9f976df8d4b1562184ec54e630b272aa47f8c8
+          github-tag: fix/required-state-failure
     - definition:
         name: protocol
         version: 1.1.7
@@ -780,13 +780,13 @@ extensions:
           github-tag: feat/required-state-capability
     - definition:
         name: aic-tactics
-        version: 0.0.7
+        version: 0.0.8
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aic-tactics
-          github-sha: 9b4a7619565f5af1b96721cb454612c752970c26
+          github-sha: 4079f17be4eadb57eba26768993c288b3f31b847
           github-tag: feat/combat-integration
     - definition:
         name: chat

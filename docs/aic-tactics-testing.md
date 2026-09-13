@@ -4,9 +4,13 @@
 
 Copy this bundle's `ucp/modules` contents into your game's `ucp/modules`, keeping every module ZIP zipped and its `.zip.sig` beside it; enable AIC Tactics in the UCP GUI and apply `AIC-TACTICS-COMPATIBILITY.md`.
 Merge an example fragment into the `aic` object of a copied personality and start a new game; recruitment weights, stable attack targets, next-wave reserves and split raids only change for personalities that opt in.
-For save/replay checks, also enable the included Recorder; all multiplayer peers must use the same bundle and configuration.
+For replay checks, also enable the included Recorder; ordinary saves do not need it, and all multiplayer peers must use the same bundle and configuration.
 
 No development runtime or newer scanner is required.
+
+This bundle updates AIC Tactics to 0.0.8 and Map Extensions to 1.1.2 for the
+configuration-order and rejected-load fixes. Start a new match; old preview saves
+and replays require their original package versions.
 
 Module ZIPs use the existing UCP store signatures. The outer bundle is only a container: extract it once, then copy the inner ZIPs and signatures. Do not put the outer ZIP in the modules folder.
 
