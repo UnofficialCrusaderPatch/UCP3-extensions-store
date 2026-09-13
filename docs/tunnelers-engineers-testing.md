@@ -2,9 +2,13 @@
 
 ## TL;DR
 
-AI Swapper 1.5.0 adds configurable AI starting tunnelers, with controls in all nine UCP languages. Existing AI packs receive no extra troops by default. Engineer starting troops retain their existing behavior. No recruitment-accounting fix is advertised.
+AI Swapper 1.5.0 adds configurable AI starting tunnelers, with controls in all nine UCP languages. This candidate corrects the previous preview: starting tunnelers enter the ordinary keep-defense group instead of being forced into the tunneling attack group. Existing packs receive no extra troops by default. Crew lifecycle and recruitment accounting remain separate, unfinished work.
 
-The recipe pins implementation [AI Swapper PR20](https://github.com/UnofficialCrusaderPatch/extension-aiSwapper/pull/20), source `0188de0c5fc1b037102a2fac04ea0754059d997b`. The [store signing run](https://github.com/UnofficialCrusaderPatch/UCP3-extensions-store/actions/runs/34710799753) produced a signed module, verified with UCP's public key and installed under standard UCP security. The downloadable testing bundle contains `modules/aiSwapper-1.5.0.zip`, its signature and these instructions. `SHA256SUMS.txt` identifies this bundle's exact archive: rebuilding the native helper can change the ZIP hash even at the same source revision. Historical test hashes below identify their respective runs. This is a testing candidate; the full Tunnelers/Engineers release remains unfinished.
+Source: [AI Swapper PR20](https://github.com/UnofficialCrusaderPatch/extension-aiSwapper/pull/20), `26e1b1f0bb7f22ee3e3ac947f0c3f01d95218082`. Store target: [PR42, branch 3.0.7](https://github.com/UnofficialCrusaderPatch/UCP3-extensions-store/pull/42). The bundle contains the module ZIP, signature and instructions. `SHA256SUMS.txt` identifies its exact archive; older 1.5.0 previews do not contain this correction. This is a testing candidate, not the completed release.
+
+Tunnelers have no native AIV position row, and **AI: AIV Troop Behaviour 0.2.3** exposes no tunneler-specific Hold/Patrol or moat-digging controls. The correction reuses the native defense service and its existing mapper/group hooks. No artificial row or duplicate policy is added. With that module enabled, also verify ordinary troops retain their configured behaviour. Loading an older preview save preserves its existing roles: use a new match or restart to test the correction.
+
+The corrected service passes 1,152 original-instruction cases across all six local/official EFIGS/Polish SHC/Extreme fixtures, with original defense, allocation, membership and tunneler-reassignment callees. These are component checks. The PR records installed-game acceptance separately; historical role15 gameplay below does not validate corrected defense behaviour.
 
 ## Short test instructions
 
@@ -12,7 +16,7 @@ Use a separate test installation and preserve its configuration first:
 
 1. Use UCP3.0.7 with AI Swapper and its existing dependencies installed through Content. Extract the outer testing bundle. Copy both `aiSwapper-1.5.0.zip` and `aiSwapper-1.5.0.zip.sig` from its `modules` directory into the test game's `ucp/modules`; keep the inner module ZIP intact. Select AI Swapper1.5.0 in the GUI and use an AI pack that exposes Starting troops. After store publication, Content can install1.5.0 directly with its signature and dependencies.
 2. Open **Customisations > AI Swapper > Open Menu**. Select Wolf, enable the desired AI's **Starting troops** component, and enter **3** under **Starting tunnelers / Normal game**. Save and Close, then Apply.
-3. Start a **single-player** Normal skirmish with two Wolves and centered starting advantage. Each Wolf should have three additional tunnelers at the start, with its original other units preserved. Test selection and useful orders/AI use.
+3. Start a **single-player** Normal skirmish with two Wolves and centered starting advantage. Each Wolf should have three additional tunnelers at the start, with its original other units preserved. They should join the ordinary keep-defense group, not receive the dedicated tunneling attack assignment. Defense still permits responding to nearby enemies.
 4. Save and reload: no additional batch should appear. Restart: each Wolf should begin with the configured count once. Check SHC and Extreme separately.
 5. Enter **0** to disable additional tunnelers for a mode. Clear the field to inherit the AI pack. Reset slot removes user overrides. Save/Apply and reopen to check persistence. Crusader and Deathmatch have separate fields; starting advantage scales their counts too.
 
