@@ -8,13 +8,14 @@ For replay checks, also enable the included Recorder; ordinary saves do not need
 
 No development runtime or newer scanner is required.
 
-This bundle updates AIC Tactics to 0.0.9, Map Extensions to 1.1.4 and Recorder
-to 0.50.33 for author settings captured before module enable, explicit map/load
-context and rejected-load handling. Start a new match; old preview saves
+This bundle includes GPL-3.0 licenses in AIC Tactics 0.0.10 and Files 1.4.2.
+Map Extensions remains 1.1.4 and Recorder remains 0.50.33 for author settings
+captured before module enable, explicit map/load context and rejected-load
+handling. Start a new match; old preview saves
 and replays require their original package versions.
 
 Module ZIPs use the existing UCP store signatures. The outer bundle is only a container: extract it once, then copy the inner ZIPs and signatures. Do not put the outer ZIP in the modules folder.
 
 For the eight-player Ascension Green Haven spectator fixture, use Vanilla Interpretation Castles and pair allies by their actual neighboring map positions. Compare an untouched personality against an opted-in Wolf or Saladin. Report the executable version, personality/configuration and observed behavior on [AIC Tactics PR17](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/pull/17).
 
-Recorder and its UI, LuaJIT, cffi and WinProc Handler dependencies are included for convenience; recording is optional. `SHA256SUMS.txt` and `store-manifest.yml` identify the exact module files and source revisions. Current acceptance evidence is maintained in PR17; this preview does not claim the remaining multiplayer, replay or performance gates have passed.
+Recorder and its UI, LuaJIT, cffi and WinProc Handler dependencies are included for convenience; recording is optional. `SHA256SUMS.txt` and `store-manifest.yml` identify the exact module files and source revisions. Current acceptance evidence is maintained in PR17; repeated replay restoration and performance acceptance remain open. Multiplayer testing was waived; no multiplayer acceptance is claimed.

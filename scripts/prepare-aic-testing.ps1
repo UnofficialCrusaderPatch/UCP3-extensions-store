@@ -1,5 +1,6 @@
 $ErrorActionPreference = 'Stop'
 Import-Module powershell-yaml
+Add-Type -AssemblyName System.IO.Compression.FileSystem
 $store = Get-Content ./build/store.yml -Raw | ConvertFrom-Yaml
 $modules = @('aic-tactics', 'aicloader', 'map-extensions', 'protocol', 'chat', 'files',
              'ucp2-legacy', 'recorder', 'ui', 'luajit', 'cffi', 'winProcHandler')
@@ -22,6 +23,15 @@ foreach ($name in $modules) {
     $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower()
     if ($hash -ne $package.hash -or $package.signature -notmatch '^[0-9a-fA-F]{1024}$') {
         throw "Invalid store package identity: $filename"
+    }
+    if ($name -in @('aic-tactics', 'files')) {
+        $zip = [IO.Compression.ZipFile]::OpenRead((Resolve-Path -LiteralPath $archive).Path)
+        try {
+            $license = $zip.GetEntry('LICENSE')
+            if ($null -eq $license -or $license.Length -eq 0) {
+                throw "Missing packaged license: $filename"
+            }
+        } finally { $zip.Dispose() }
     }
     Copy-Item -LiteralPath $archive -Destination "$destination/ucp/modules/$filename"
     Set-Content -LiteralPath "$destination/ucp/modules/$filename.sig" -Value $package.signature -Encoding ascii
