@@ -116,6 +116,17 @@ jobs:
         path: build/aiSwapper-testing/
         if-no-files-found: error
 
+    - name: Prepare AIC Tactics installation bundle
+      shell: pwsh
+      run: ./scripts/prepare-aic-testing.ps1
+
+    - name: Upload AIC Tactics installation bundle
+      uses: actions/upload-artifact@v4
+      with:
+        name: aic-tactics-0.0.9-testing-bundle
+        path: build/aic-tactics-testing/
+        if-no-files-found: error
+
     - name: Release store
       if: github.event_name == 'push' || inputs.publish
       shell: |
