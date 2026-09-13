@@ -1,0 +1,129 @@
+{
+  "version": "0.1.7",
+  "runtime_source": "2ed6d48274261923081b7e9e9e0138b651977c4f",
+  "metadata_source": "2f9a193152ead8c1a591731db152959df3fba5ee",
+  "zip_sha256": "0c1d2ff48f45be2a1152363a2983303bd724f39dcccb30c7f15f863585285d98",
+  "bytes": 112151,
+  "full_component_tests": 605,
+  "final_localized_metadata_checks": 34,
+  "production_package_files_equal_recipe": true,
+  "native_sessions": [
+    {
+      "source": "2ed6d48274261923081b7e9e9e0138b651977c4f",
+      "pid": 5648,
+      "edition": "SHC1.41 English executable, German CR.TEX",
+      "game_text_sha256": "6716ffe38391012f04ce32017eb65e52eeddbeb4acc76268d726786c8bfb9dc3",
+      "zip_sha256": "0c1d2ff48f45be2a1152363a2983303bd724f39dcccb30c7f15f863585285d98",
+      "bytes": 112151,
+      "checks": [
+        "native startup with Recorder0.50.4 and Automarket1.1.0",
+        "German main entry and F12 editor on English executable",
+        "keyboard search kamera:24actions; F12 did not interrupt search",
+        "keyboard Cancel/main Options/Load task quickslot",
+        "German239action gameplay editor screenshot"
+      ],
+      "normal_exit_pid_absent": true,
+      "desktop_released": "2026-09-12T19:23:29+02:00",
+      "restored_sha256": {
+        "cr.tex": "ab423bec4dab75595f9568564137584e72189bc0c95851abfe54058aa2f2ff68",
+        "ucp-config.yml": "b28785f16aa43131dbd318a9a8c991366248eabdefe908da0e725b82919190f4",
+        "ucp/custom-hotkeys-profiles-a.json": "93881096681eadf46459f496ef252b608c5c44f2bd27299ca683af3cdd9aa484",
+        "ucp/custom-hotkeys-profiles-b.json": "2c95d251337cad6d468b7ee39b481c4ba883fbe8c27a8b319ff81686bc9e15e7"
+      },
+      "notes": [
+        "No profile changes applied. Existing user profile retains unbound optional actions until preset reset or individual assignment.",
+        "AltF4 does not finalize Recorder; no playback result claimed.",
+        "Automated Escape was not used."
+      ],
+      "not_established": [
+        "native Russian/Hungarian/Turkish/Chinese/Persian fonts",
+        "native IME/DBCS input and RTL shaping",
+        "complete text/focus/held/mouse matrix",
+        "alternate-profile replay/restore",
+        "two-peer multiplayer",
+        "1100speed",
+        "017Extreme gameplay"
+      ]
+    },
+    {
+      "source": "83990c3fc2ea0210a6dd0eb1af1170e4bef56565",
+      "pid": 7116,
+      "zip_sha256": "d2ae2fecb9a838fcd498db2eff122943d0903c7ace9a353945f613975624878d",
+      "bytes": 101614,
+      "checks": [
+        "keyboard main Options/Load quickslot",
+        "239-action editor without hover banner",
+        "held camera Up interrupted by F12; no movement after Cancel",
+        "Save-name wasdx characters retained; F12 preserved text ownership; sampled world inputs unchanged"
+      ],
+      "normal_exit_pid_absent": true,
+      "desktop_released": true,
+      "restored_sha256": {
+        "ucp-config.yml": "b28785f16aa43131dbd318a9a8c991366248eabdefe908da0e725b82919190f4",
+        "ucp/custom-hotkeys-profiles-a.json": "93881096681eadf46459f496ef252b608c5c44f2bd27299ca683af3cdd9aa484",
+        "ucp/custom-hotkeys-profiles-b.json": "2c95d251337cad6d468b7ee39b481c4ba883fbe8c27a8b319ff81686bc9e15e7"
+      },
+      "notes": [
+        "Slot expired during context recovery; no expired-grant input was sent. Released at19:02:38 and queued a separate normal-close cleanup slot.",
+        "Save dialog name was edited but never saved.",
+        "AltF4 did not finalize Recorder; this is not replay evidence."
+      ],
+      "not_established": [
+        "native hover visibility restoration",
+        "full text/held/focus matrix",
+        "two-peer multiplayer",
+        "alternate-profile playback/state restore",
+        "high-speed simulation",
+        "017 Extreme gameplay",
+        "additional executable/language fixtures"
+      ]
+    },
+    {
+      "source": "46556be",
+      "pid": 25340,
+      "edition": "SHC 1.41",
+      "zip_sha256": "3de71d06e786fa1271526af0d1e3f276d33d56b743a9361aafa8e283f583f6f0",
+      "native_checks": [
+        "main Options/Load keyboard route",
+        "keyboard market placement",
+        "Automarket Tab/ShiftTab/Enter dialog navigation, toggle and Save/Close",
+        "single wood Buy: wood85->90, gold1925->1905",
+        "F12/Cancel during playback"
+      ],
+      "playback": {
+        "commands": 4,
+        "fullRngCheckpoints": "matched",
+        "lastTick": 20732,
+        "resourceCheckpoints": "matched",
+        "rngCheckpoints": "matched",
+        "started": "2026-09-12T15:27:24Z",
+        "status": "finished"
+      },
+      "normal_exit_pid_absent": true,
+      "desktop_released": "2026-09-12T17:31:32+02:00",
+      "restored_sha256": {
+        "ucp-config.yml": "b28785f16aa43131dbd318a9a8c991366248eabdefe908da0e725b82919190f4",
+        "ucp/custom-hotkeys-profiles-a.json": "93881096681eadf46459f496ef252b608c5c44f2bd27299ca683af3cdd9aa484",
+        "ucp/custom-hotkeys-profiles-b.json": "2c95d251337cad6d468b7ee39b481c4ba883fbe8c27a8b319ff81686bc9e15e7"
+      },
+      "not_established": [
+        "two-peer multiplayer",
+        "alternate-profile playback",
+        "seek/restore",
+        "full keyboard-only menu route",
+        "1100 speed",
+        "native text/held/focus matrix",
+        "016 Extreme rerun"
+      ]
+    }
+  ],
+  "not_established": [
+    "two-PC multiplayer (manual later per user)",
+    "full keyboard/text/held/focus/mouse acceptance",
+    "alternate-profile replay and state restore",
+    "native 1100-speed performance",
+    "expanded Extreme gameplay",
+    "additional executable variants",
+    "non-Western fonts/IME and RTL shaping"
+  ]
+}

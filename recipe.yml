@@ -778,3 +778,13 @@ extensions:
           url: Krarilotus/ucp_recorder
           github-sha: 02014385ce05b002764c9c4f658e5eb6b98c125e
           github-tag: pr-46-02014385ce05
+    - definition:
+        name: custom-hotkeys
+        version: 0.1.9
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-custom-hotkeys
+          github-sha: 9db157fd3147f0d3446e8de17adcff8f76993b4a
+          github-tag: v0.1.9
