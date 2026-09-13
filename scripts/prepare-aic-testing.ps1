@@ -3,7 +3,7 @@ Import-Module powershell-yaml
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $store = Get-Content ./build/store.yml -Raw | ConvertFrom-Yaml
 $modules = @('aic-tactics', 'aicloader', 'map-extensions', 'protocol', 'chat', 'files',
-             'ucp2-legacy', 'recorder', 'ui', 'luajit', 'cffi', 'winProcHandler')
+             'ucp2-legacy')
 $destination = './build/aic-tactics-testing'
 New-Item -ItemType Directory -Path "$destination/ucp/modules" -Force | Out-Null
 $checksums = @()
