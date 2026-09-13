@@ -8,7 +8,7 @@ For replay checks, also enable the included Recorder; ordinary saves do not need
 
 No development runtime or newer scanner is required.
 
-This bundle updates AIC Tactics to 0.0.8 and Map Extensions to 1.1.2 for the
+This bundle updates AIC Tactics to 0.0.8 and Map Extensions to 1.1.3 for the
 configuration-order and rejected-load fixes. Start a new match; old preview saves
 and replays require their original package versions.
 
