@@ -96,24 +96,27 @@ jobs:
           build/extensions/*.zip.sig
         if-no-files-found: error
 
-    - name: Prepare AI Swapper installation bundle
+    - name: Prepare tunnelers and engineers installation bundle
       shell: pwsh
       run: |
-        $archive = '.\build\extensions\aiSwapper-1.5.0.zip'
-        if (Test-Path -LiteralPath $archive) {
-          New-Item -ItemType Directory -Path '.\build\aiSwapper-testing\modules' -Force | Out-Null
-          Copy-Item -LiteralPath $archive, "$archive.sig" -Destination '.\build\aiSwapper-testing\modules'
-          Copy-Item -LiteralPath '.\docs\tunnelers-engineers-testing.md' -Destination '.\build\aiSwapper-testing\README.md'
+        New-Item -ItemType Directory -Path '.\build\tunnelers-engineers-testing\modules' -Force | Out-Null
+        $digests = foreach ($name in @('aiSwapper-1.5.0', 'unit-behaviour-fixes-0.1.0')) {
+          $archive = ".\build\extensions\$name.zip"
+          if (!(Test-Path -LiteralPath $archive) -or !(Test-Path -LiteralPath "$archive.sig")) {
+            throw "Required signed testing module missing: $name"
+          }
+          Copy-Item -LiteralPath $archive, "$archive.sig" -Destination '.\build\tunnelers-engineers-testing\modules'
           $digest = (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower()
-          Set-Content -LiteralPath '.\build\aiSwapper-testing\SHA256SUMS.txt' -Value "$digest  modules/aiSwapper-1.5.0.zip" -Encoding ascii
+          "$digest  modules/$name.zip"
         }
+        Copy-Item -LiteralPath '.\docs\tunnelers-engineers-testing.md' -Destination '.\build\tunnelers-engineers-testing\README.md'
+        Set-Content -LiteralPath '.\build\tunnelers-engineers-testing\SHA256SUMS.txt' -Value $digests -Encoding ascii
 
-    - name: Upload AI Swapper installation bundle
-      if: hashFiles('build/aiSwapper-testing/README.md') != ''
+    - name: Upload tunnelers and engineers installation bundle
       uses: actions/upload-artifact@v4
       with:
-        name: aiSwapper-1.5.0-testing-bundle
-        path: build/aiSwapper-testing/
+        name: tunnelers-engineers-testing-bundle
+        path: build/tunnelers-engineers-testing/
         if-no-files-found: error
 
     - name: Release store

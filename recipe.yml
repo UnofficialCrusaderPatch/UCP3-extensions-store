@@ -470,6 +470,17 @@ extensions:
           github-sha: a4ecab44c79bdc9f7d387746e235db9d7be57091
           github-tag: main
     - definition:
+        name: unit-behaviour-fixes
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: a29738adab7e62f216446daebb1adb1fc1b2b57a
+          github-tag: fix/native-siege-crew-lifecycle
+          location: unit-behaviour-fixes
+    - definition:
         name: aiSwapper
         version: 1.5.0
         type: module
