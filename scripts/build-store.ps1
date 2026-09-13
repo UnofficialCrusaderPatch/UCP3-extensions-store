@@ -147,7 +147,7 @@ foreach ($release in $sortedReleaseVersionsArray) {
       if ($AllowSuperseded) {
         Write-Warning "Latest released version is higher than the recipe version. This is probably not what you want"
       } else {
-        if ($rVariantVersions.Contains([semver]($version))) {
+        if ($rVariantVersions -contains [semver]($version)) {
           Write-Warning "Latest released version is higher than the recipe version. This is probably not what you want"
         } else {
           Throw "Error: Latest released version is higher than the recipe version. This is probably not what you want"
