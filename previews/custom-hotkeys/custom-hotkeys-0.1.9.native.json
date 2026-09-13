@@ -1,0 +1,48 @@
+{
+  "version": "0.1.9",
+  "source": "9db157fd3147f0d3446e8de17adcff8f76993b4a",
+  "bytes": 112933,
+  "sha256": "a16174d3389cac2c7f2e79a1d47d8a17c97404b54617074653d835dbc92a83a1",
+  "repeat_identical": true,
+  "tests": {
+    "components": 615,
+    "ci": [
+      "https://github.com/Krarilotus/extension-custom-hotkeys/actions/runs/34768635320",
+      "https://github.com/Krarilotus/extension-custom-hotkeys/actions/runs/34768638123"
+    ]
+  },
+  "native": {
+    "pid": 3384,
+    "hwnd": 597974,
+    "edition": "Crusader",
+    "framework": "existing UCP 3.0.7-77c6a (da39a3)",
+    "runtime_files_unchanged": {
+      "RPS.dll": "bd875e808f24b2105ed46f858b74dc096da8b404e88a552f1915c034cfa9d014",
+      "ucp/code.zip": "ee93555d0455cde4fc68dc5434203142aa0acbc43882d819525c4077be833e00"
+    },
+    "module_initialized": true,
+    "editor_capture_shared_F11": [
+      "build.select.woodsman",
+      "build.select.wheatfarm"
+    ],
+    "apply_succeeded": true,
+    "editor_reopened": true,
+    "both_bindings_in_saved_generation": 5,
+    "profile_checksum_verified": true,
+    "error_log_header_only": true,
+    "normal_exit_verified": true
+  },
+  "desktop_released": "2026-09-13T18:34:03+02:00",
+  "baseline_restored": true,
+  "limits": [
+    "Native check covers editor capture, Apply, stored bindings and editor reopen. It does not cover gameplay dispatch or a process restart.",
+    "Cross-panel dispatch, same-panel conflicts, persistence reload and held/text/focus/replay boundaries tested in components.",
+    "Finer same-tab selection states remain conservative; no arbitrary priority between overlapping actions.",
+    "Full original multiplayer/replay/state-restore acceptance and normal reviewed merge remain incomplete."
+  ],
+  "boundary_audit": {
+    "fixtures": 6,
+    "native_menu_rows_per_fixture": 297,
+    "type_parameter_skip_condition_help_equal": true
+  }
+}

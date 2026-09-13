@@ -1,19 +1,25 @@
-# Custom Hotkeys 0.1.8
+# Custom Hotkeys 0.1.9
 
-**TL;DR:** Rebind keyboard and mouse controls in-game, save profiles, assign
-building groups and camera positions, and try Game Default, Modern RTS or Grid.
-Activate the module and press **F12**. Building shortcuts preserve your cursor.
-0.1.8 fixes an overlapping player-lord signature and uses the existing UCP
-scanner, cache and operand decoder. No replacement framework files are needed.
+**TL;DR:** Rebind keyboard/mouse controls in-game, save profiles, and try Game
+Default, Modern RTS or Grid. **0.1.9 allows one key in separate native panels**:
+Woodcutter, Wheat Farm and Catapult can share a key. Activate the module and
+press **F12**.
 
-[Download Custom Hotkeys 0.1.8](custom-hotkeys-0.1.8.zip?raw=true).
+[Download Custom Hotkeys 0.1.9](custom-hotkeys-0.1.9.zip?raw=true).
 
-Put the ZIP in `ucp/modules`, select this version and activate it. No second
-activation switch. Requires UCP 3.0.7+, UI 1.0.1, LuaJIT/cffi/winProcHandler 1.0.0
-and graphicsApiReplacer 1.3.0. Legacy is optional; conflicting `o_keys.enabled`
-is required false by the module configuration. All nine Store descriptions
-explain opening the editor. Eleven editor languages follow the loaded game text,
-with UCP's game-language setting as fallback.
+Put the ZIP in `ucp/modules`, select 0.1.9 and activate it. No second activation
+switch or replacement framework files. Uses the existing UCP 3.0.7 AOB scanner,
+cache and extractor; requires UI 1.0.1, LuaJIT/cffi/winProcHandler 1.0.0 and
+graphicsApiReplacer 1.3.0. Legacy is optional; conflicting `o_keys.enabled` is
+required false. Eleven editor languages follow the loaded game text with UCP's
+game-language setting as fallback. Existing profiles and preset keys are preserved.
+
+Woodcutter and Quarry still conflict because they share Industry. Global actions
+also conflict wherever they overlap. The same explicit native-panel metadata is
+used for validation and dispatch; hidden controls keep their native eligibility
+checks. Held keys cannot activate a new panel until released. Finer conditions
+within the same panel remain conservative; this does not establish priority
+between simultaneously available actions.
 
 Ctrl+number assigns a selected owned building or native unit group; number
 recalls it, repeated number focuses it, and Alt+number focuses directly.
@@ -27,29 +33,24 @@ No Hotkeys Recorder-version or playback activation lock. Native game rules,
 text-field focus and current menu ownership still apply. The optional
 [Recorder 0.50.4 preview](recorder-integration/recorder-0.50.4.zip?raw=true) is unchanged.
 
-Validation: all 155 patterns have one overlapping-aware code match on six
-available Crusader/Extreme executable fixtures. All 171 resolved values match
-the prior expected values, using the actual stock UCP 3.0.7 Lua APIs for
-resolution and extraction. This is an offline audit, not an added runtime
-second-match check. No pending UCP/RPS API proposal is a dependency.
+Validation: **615 component tests**, both CI jobs green. The native panel table
+(type/parameter/skip/condition/help, 297 rows) agrees across six available
+Crusader/Extreme executable fixtures; [boundary audit](custom-hotkeys-0.1.9.boundaries.json).
+Native Crusader editor
+accepted F11 for both Woodcutter and Wheat Farm, applied successfully and reopened.
+Both bindings were verified in the saved profile with a valid checksum. Runtime
+files were unchanged; the game closed normally and the desktop was released.
+Cross-panel dispatch, reload and held/text/focus/replay boundaries were tested in
+components; gameplay dispatch and process restart were not exercised natively in
+this check. [Exact native/package receipt](custom-hotkeys-0.1.9.native.json).
 
-The reproducible ZIP is **112,301 bytes**, SHA256
-`5aa42016fe817ec11f450c57cdb7f6444d7d16ad2160289023607dff519f6c1a`,
-source `20f876621e5a5a4def9d530036cc0519ac84c486`. Repeat build is byte-identical.
-Only the player-lord pattern, version and package documentation/receipt differ
-from 0.1.7. Existing controls, profiles and all eleven editor languages remain.
+![Woodcutter assigned F11](panels019-woodcutter.png)
+![Wheat Farm assigned the same F11](panels019-wheatfarm.png)
 
-Native startup and physical-F12 main-menu editor checks passed in both Crusader
-and Extreme with the existing UCP runtime, Recorder 0.50.4 and Automarket 1.1.0
-loaded. Both error logs are clear. Both games closed normally and the test state
-was restored. Gameplay/replay were not exercised in these smoke runs.
-Both component CI jobs passed; 37 focused resolver/package/locale checks passed.
-[Exact package and native receipt](custom-hotkeys-0.1.8.native.json).
-
-![0.1.8 editor in Crusader](stock018-crusader-editor.png)
-![0.1.8 editor in Extreme](stock018-extreme-editor.png)
-
-[0.1.8 change and scope](https://github.com/Krarilotus/extension-custom-hotkeys/blob/20f876621e5a5a4def9d530036cc0519ac84c486/docs/features-0.1.8.md).
+ZIP: **112,933 bytes**, SHA256
+`a16174d3389cac2c7f2e79a1d47d8a17c97404b54617074653d835dbc92a83a1`. Repeat build byte-identical.
+Source `9db157fd3147f0d3446e8de17adcff8f76993b4a`.
+[Change and boundary details](https://github.com/Krarilotus/extension-custom-hotkeys/blob/9db157fd3147f0d3446e8de17adcff8f76993b4a/docs/features-0.1.9.md).
 
 Unsigned development preview. Two-PC multiplayer is deferred to manual testing.
 Full keyboard/text/held/focus/mouse acceptance, alternate-profile replay/state
@@ -58,6 +59,7 @@ executable/font/IME/RTL coverage remain unverified. These are test gaps, not
 feature activation locks. No completed acceptance or verified merge is claimed.
 
 Earlier immutable downloads:
+[0.1.8](custom-hotkeys-0.1.8.zip?raw=true),
 [0.1.7](custom-hotkeys-0.1.7.zip?raw=true),
 [0.1.6](custom-hotkeys-0.1.6.zip?raw=true),
 [0.1.5](custom-hotkeys-0.1.5.zip?raw=true),
