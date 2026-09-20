@@ -565,8 +565,9 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-interface-visual-fixes
-          github-sha: 140758314f1acc7cfbf93925bc9d5ab8a4408a28
+          github-sha: 99d09b7f914e6cc5b209a3dc8c59d47c8595a07f
           github-tag: main
+          rebuild-on-source-change: true
     - definition:
         name: maploader
         version: 1.1.0
