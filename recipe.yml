@@ -736,8 +736,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp-extension-map-png
-          github-sha: 224756057f724d03257cdcc7637099a7ae2b31ae
-          github-tag: feature/linked-refresh-0.2.0
+            github-sha: c147b7c1a11713243a194ba04b2cd331357850aa
+            github-tag: v0.2.0-rc.1
     - definition:
         name: automarket
         type: module
