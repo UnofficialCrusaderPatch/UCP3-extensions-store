@@ -121,7 +121,7 @@ jobs:
       shell: pwsh
       run: |
         New-Item -ItemType Directory -Path '.\build\tunnelers-engineers-testing\modules' -Force | Out-Null
-        $digests = foreach ($name in @('aiSwapper-1.5.0', 'improved-tunnelers-1.6.6', 'fixed-engineers-0.1.0', 'aicloader-1.1.2', 'aivloader-1.0.0', 'files-1.3.0', 'gmResourceModifier-0.2.0', 'textResourceModifier-0.3.0')) {
+        $digests = foreach ($name in @('aiSwapper-1.5.0', 'improved-tunnelers-1.7.0', 'map-extensions-1.1.5', 'fixed-engineers-0.1.0', 'aicloader-1.1.2', 'aivloader-1.0.0', 'files-1.3.0', 'gmResourceModifier-0.2.0', 'textResourceModifier-0.3.0')) {
           $archive = ".\build\extensions\$name.zip"
           if (!(Test-Path -LiteralPath $archive) -or !(Test-Path -LiteralPath "$archive.sig")) {
             throw "Required signed testing module missing: $name"

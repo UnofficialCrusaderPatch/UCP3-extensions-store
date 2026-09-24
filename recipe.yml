@@ -537,13 +537,13 @@ extensions:
           location: fixed-engineers
     - definition:
         name: improved-tunnelers
-        version: 1.6.6
+        version: 1.7.0
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ImprovedTunnelers
-          github-sha: 7d589de353b00a32c2b0a71115c2cfd2bca7e1c6
+          github-sha: e602c2ce8f0bbfb1431e84010dda67132d77b97d
           github-tag: fix/ucp-packaging-localization
           location: module
     - definition:
@@ -759,13 +759,13 @@ extensions:
     - definition:
         type: module
         name: map-extensions
-        version: 1.0.0
+        version: 1.1.5
       contents:
         source:
           method: github
-          url: gynt/ucp-extension-map-extensions
-          github-sha: d9399125831c96a46701a510542e09f2a031971f
-          github-tag: main
+          url: Krarilotus/ucp-extension-map-extensions
+          github-sha: 683765703c5d79776b8154813e86912627f5bbf6
+          github-tag: fix/map-scenario-initialization
     - definition:
         name: protocol
         version: 1.0.0
