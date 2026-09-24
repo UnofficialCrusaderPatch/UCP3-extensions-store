@@ -543,7 +543,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ImprovedTunnelers
-          github-sha: a65648f5c0714dd2c8c1f45e915d858a98fd53ac
+          github-sha: 635b4633cde08d18303849e94c8478fbc45db220
           github-tag: fix/ucp-packaging-localization
           location: module
     - definition:
