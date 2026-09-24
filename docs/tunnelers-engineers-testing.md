@@ -1,7 +1,7 @@
 # Tunnelers and engineers: single-player test bundle
 
 **TL;DR:** Three independent modules, with their five module dependencies and
-UCP signatures. AI Swapper1.5.0 owns starting tunnelers. Improved Tunnelers1.6.5
+UCP signatures. AI Swapper1.5.0 owns starting tunnelers. Improved Tunnelers1.6.6
 owns tunneling, stance response and raid behaviour. Fixed Engineers0.1.0 contains
 only siege crew death/fire cleanup and safe dismounting. The old duplicate
 Unit Behaviour Fixes module is no longer in this bundle.
@@ -41,6 +41,8 @@ another module's saved configuration automatically.
   must not add another batch. Crusader/Deathmatch have independent counts;0
   suppresses them and an empty field inherits the selected AI pack.
 - **Tunnelers:** Compare idle response to nearby enemies with Stances ON/OFF.
+  With the attack-button option OFF, check that the original dig button remains;
+  restart with it ON and check both attack-here and dig buttons.
   Test a digging order, and an AI with a Tunneler's Guild plus Tunneler in its
   raid settings. Improved Tunnelers already supplies that raid implementation;
   this contribution does not add a second raid controller or a new AIV row.
@@ -67,9 +69,16 @@ evidence belongs to the historical module, not this renamed package.
 Improved Tunnelers passes catalog/default/manifest checks and SHC/Extreme Lua
 message-lifecycle rejection checks. The latter stubs assembly allocation; no
 new native payload, full emulator, text encoding or gameplay pass is implied.
-Its existing upstream assembly is unchanged. AI Swapper is unchanged at26e1b1f;
+The 1.6.6 Lua audit also corrects the UI OFF path, strengthens keep/tick signatures,
+rejects failed native contexts and reuses framework jump encoding. All 15 signatures
+match once on each of six fixture files (two distinct native code layouts), and
+four focused Lua tests pass. The existing upstream assembly is unchanged.
+AI Swapper is unchanged at26e1b1f;
 its earlier starting-defense and single-player evidence remains recorded in PR20.
 
+Improved Tunnelers' custom collapse queue/routes are not saved through a lifecycle
+owner, and restoring patches does not check for later owners. These are unresolved
+integration limitations; this build must not be treated as save/load validated.
 The new combined signed bundle has not been run in-game. Full lifecycle, save,
 composition, GUI, variant and measured performance acceptance remains incomplete.
 AI Swapper positive-count startup previously measured roughly18–22 seconds of

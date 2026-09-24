@@ -537,13 +537,13 @@ extensions:
           location: fixed-engineers
     - definition:
         name: improved-tunnelers
-        version: 1.6.5
+        version: 1.6.6
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ImprovedTunnelers
-          github-sha: 4aa7fa96ca0836bba4da3116f9edc13d779c7207
+          github-sha: 7d589de353b00a32c2b0a71115c2cfd2bca7e1c6
           github-tag: fix/ucp-packaging-localization
           location: module
     - definition:
