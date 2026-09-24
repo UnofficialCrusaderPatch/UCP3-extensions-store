@@ -1,32 +1,85 @@
-﻿# Tunnelers and engineers: single-player test bundle
+# Tunnelers and engineers: single-player test bundle
 
-## TL;DR
+**TL;DR:** Three independent modules, with their five module dependencies and
+UCP signatures. AI Swapper1.5.0 owns starting tunnelers. Improved Tunnelers1.6.5
+owns tunneling, stance response and raid behaviour. Fixed Engineers0.1.0 contains
+only siege crew death/fire cleanup and safe dismounting. The old duplicate
+Unit Behaviour Fixes module is no longer in this bundle.
 
-This bundle includes **AI Swapper1.5.0** and **Unit Behaviour Fixes0.1.0**, with their UCP signatures. Starting tunnelers use native keep-defense placement. Idle tunnelers can respond to nearby enemies according to their group stance. Siege crew cleanup and dismount identity checks reuse the original crew records, preserving surviving engineers' identity and health.
-
-Both unit fix switches default **ON** when the module is selected. Extra starting troop counts remain zero unless configured. Options and descriptions cover all nine UCP frontend languages. **Recruitment accounting is still unfinished. This is a test candidate, not the completed release.** Runtime-error localization, GUI acceptance and the full native lifecycle/compatibility review also remain open.
-
-[Store PR42, targeting3.0.7](https://github.com/UnofficialCrusaderPatch/UCP3-extensions-store/pull/42) links the latest download. Sources: [AI Swapper PR20](https://github.com/UnofficialCrusaderPatch/extension-aiSwapper/pull/20), commit26e1b1f0bb7f22ee3e3ac947f0c3f01d95218082; [unit fixes PR2](https://github.com/Krarilotus/ucp3-fixes/pull/2), commita29738adab7e62f216446daebb1adb1fc1b2b57a. Use SHA256SUMS.txt to distinguish this bundle from older previews with the same module version.
+This is a **test candidate**, not a complete release. Engineer recruitment
+accounting and the newly requested AI siege placement, coordinated harassment,
+expanded force limits and resource-payment/reservation policies are not included.
+All nine GUI option/description catalogs are present; human translation review,
+technical diagnostic localization and installed-game/GUI acceptance remain open.
 
 ## Install
 
-1. Use a separate **UCP3.0.7** test installation. Preserve its existing configuration. Install AI Swapper and its existing dependencies through Content first.
-2. Extract this outer bundle. Copy all four files from `modules` into the game's **`ucp/modules`**: both inner module ZIPs and their `.zip.sig` files. Keep the inner ZIPs intact. These are signed module packages; no security bypass is required.
-3. Select **AI Swapper1.5.0** and **Unit Behaviour Fixes0.1.0** in the GUI. In Customizations, leave **Siege crew cleanup** ON under **Bugfixes** and **Tunneler combat response** ON under **AI / Fixes**. Apply and restart the game after changing a switch.
+1. Use a separate UCP3.0.7 test installation and preserve your configuration.
+2. Extract the outer download once. Copy every ZIP and adjacent `.zip.sig` from
+   `modules/` into the game's `ucp/modules/`. Keep the inner ZIPs intact; these
+   are signed packages and need no security bypass.
+3. Disable **Unit Behaviour Fixes** if selected. Select **Improved Tunnelers**
+   and/or **Fixed Engineers**. Select **AI Swapper1.5.0** only if you want its
+   starting-troop configuration. Let the GUI enable each module's dependencies.
+   Apply and restart.
+
+Fixed Engineers' single **Siege crew cleanup** switch defaults ON under
+**Customizations → Bugfixes**. Improved Tunnelers' switches are in its existing
+localized **Improved Tunnelers** category, default ON except diagnostics OFF.
+The two previously inconsistent UI defaults now match the original module's
+runtime values:120 seconds of building restriction and60 nearby-building damage.
+Explicit saved values remain effective. If the old crew switch was OFF, keep
+the new Fixed Engineers switch OFF when migrating: module renames do not migrate
+another module's saved configuration automatically.
 
 ## Short tests
 
-- **Starting troops:** Customizations > AI Swapper > Open Menu. Select Wolf, enable Starting troops, enter3 in Starting tunnelers / Normal game, then Save and Close and Apply. Start a new single-player Normal skirmish with centered starting advantage. Each Wolf should receive3 additional tunnelers in native keep-defense placement. Other starting troops should retain their configured counts. Save/load must not add another batch; restart should create the configured count once.
-- **Nearby defense:** use an AI with tunnelers in an ordinary attacking troop slot. Bring hostile troops within the group's response range. Idle tunnelers should use the same stance-controlled response as ordinary melee troops. Hold stance should not initiate pursuit. Also try a tunneling order and report any interruption. No new AIV row is added; AI: AIV Troop Behaviour0.2.3 and AIC Loader1.1.2 retain their configuration owners.
-- **Siege crews:** mount injured engineers, then dismount: survivors should retain their health. Destroy a crewed siege engine: its original crew should not remain as living hidden engineers. These checks still need wider player feedback; the component evidence is described below.
-- **Compare/restore:** turn either fix OFF and restart for original behavior. Set extra tunnelers to0 to disable that addition, or clear the field to inherit the AI pack. Crusader and Deathmatch have separate starting counts. Older preview saves keep their existing roles; test placement using a new match or restart.
+- **Starting troops:** In AI Swapper, select an AI slot, enable its Starting
+  troops component, enter3 for Normal starting tunnelers, Save/Close and Apply.
+  Start a new Normal single-player match with centered advantage. That AI should
+  receive3 additional tunnelers in its ordinary keep-defense group. Save/load
+  must not add another batch. Crusader/Deathmatch have independent counts;0
+  suppresses them and an empty field inherits the selected AI pack.
+- **Tunnelers:** Compare idle response to nearby enemies with Stances ON/OFF.
+  Test a digging order, and an AI with a Tunneler's Guild plus Tunneler in its
+  raid settings. Improved Tunnelers already supplies that raid implementation;
+  this contribution does not add a second raid controller or a new AIV row.
+- **Engineers:** Dismount injured engineers and check surviving health. Destroy
+  a crewed engine and check that living crew do not remain hidden. Restart with
+  Siege crew cleanup OFF for the native comparison.
+- **Game text:** With building denial/message enabled, breach a fortification
+  and attempt to rebuild there. The refusal should follow game language, which
+  can differ from GUI language. Unrecognized languages keep the native message.
 
-## What was checked
+AI Swapper starting counts remain zero unless authored/configured. Neither
+Improved Tunnelers nor Fixed Engineers is required to spawn starting tunnelers.
+Older saves preserve existing roles; use new games for assignment comparisons.
+Avoid the old Unit Behaviour Fixes tunneler patch alongside Improved Tunnelers.
 
-AI Swapper's corrected starting-defense path has original-instruction checks on six local/EFIGS/Polish SHC/Extreme fixtures. The corrected signed AI-only package also passed Polish SHC/Extreme load, restart and identity/group preservation checks. Earlier versions' gameplay evidence is not silently attributed to this combined bundle.
+## Evidence and limits
 
-Unit fixes have focused original-instruction checks for crew death/fire, dismount UID/bounds/health, and idle enemy response with original native callees. The new dismount candidate preserves the complete native unit pool for valid partial/full crews and performs no writes to a reused crew record. Binding checks reject missing/ambiguous/occupied/changed contexts. The package's33 repository tests passed. Native Polish SHC/Extreme crew observations and Polish SHC idle flag installation were performed on earlier unit candidates; **the final combined signed bundle has not yet been run in-game**.
+Fixed Engineers preserves the existing crew/unman native payloads.35 repository
+tests,66 crew binding/preflight cases across six SHC/Extreme fixtures, and
+dismount instruction checks for partial/full crews, reused IDs, bounds, repeat
+commands and complete valid unit-pool equality pass. Earlier crew/fire gameplay
+evidence belongs to the historical module, not this renamed package.
 
-Remaining code work includes role-specific recruitment accounting coordinated with AIC Tactics PRs12/16/17. Additional lifecycle/casualty, idle-to-work transition, save/restore, composition, GUI and performance acceptance is recorded in the source PRs. Starting-troop discovery currently adds roughly18-22seconds in measured positive setups; no per-frame scan or census is added. Following the user's latest direction, remaining worker testing stays focused rather than repeating broad gameplay rounds.
+Improved Tunnelers passes catalog/default/manifest checks and SHC/Extreme Lua
+message-lifecycle rejection checks. The latter stubs assembly allocation; no
+new native payload, full emulator, text encoding or gameplay pass is implied.
+Its existing upstream assembly is unchanged. AI Swapper is unchanged at26e1b1f;
+its earlier starting-defense and single-player evidence remains recorded in PR20.
 
-Multiplayer testing belongs to players and was not performed by this worker. Report game/module versions, settings, expected/actual behavior and a reproducing save.
+The new combined signed bundle has not been run in-game. Full lifecycle, save,
+composition, GUI, variant and measured performance acceptance remains incomplete.
+AI Swapper positive-count startup previously measured roughly18–22 seconds of
+additional discovery time; no per-frame scan is added. Multiplayer testing is
+player-owned. Report exact versions/configuration and a reproducing save.
+
+Sources: [AI Swapper PR20](https://github.com/UnofficialCrusaderPatch/extension-aiSwapper/pull/20),
+[Improved Tunnelers PR1](https://github.com/Monsterfisch/ImprovedTunnelers/pull/1),
+[Fixed Engineers PR4](https://github.com/Krarilotus/ucp3-fixes/pull/4).
+[Store PR42](https://github.com/UnofficialCrusaderPatch/UCP3-extensions-store/pull/42)
+links the versioned signed download. SHA256SUMS.txt identifies this exact build.
+Upstream ImprovedTunnelers license selection and maintainer review remain open
+before claiming store release readiness.

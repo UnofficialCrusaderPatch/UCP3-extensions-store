@@ -525,16 +525,27 @@ extensions:
           github-sha: a4ecab44c79bdc9f7d387746e235db9d7be57091
           github-tag: main
     - definition:
-        name: unit-behaviour-fixes
+        name: fixed-engineers
         version: 0.1.0
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: a29738adab7e62f216446daebb1adb1fc1b2b57a
-          github-tag: fix/native-siege-crew-lifecycle
-          location: unit-behaviour-fixes
+          github-sha: fd77fbeafcdda95eda2b3b3ac3fd108ae0ca6a8d
+          github-tag: fix/engineer-lifecycle-only
+          location: fixed-engineers
+    - definition:
+        name: improved-tunnelers
+        version: 1.6.5
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ImprovedTunnelers
+          github-sha: 4aa7fa96ca0836bba4da3116f9edc13d779c7207
+          github-tag: fix/ucp-packaging-localization
+          location: module
     - definition:
         name: aiSwapper
         version: 1.5.0
