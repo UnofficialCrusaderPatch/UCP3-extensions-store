@@ -1,7 +1,7 @@
 # Tunnelers and engineers: single-player test bundle
 
-**TL;DR:** Three independent modules, with their five module dependencies and
-UCP signatures. AI Swapper1.5.0 owns starting tunnelers. Improved Tunnelers1.6.6
+**TL;DR:** Three independent modules, with their six module dependencies and
+UCP signatures. AI Swapper1.5.0 owns starting tunnelers. Improved Tunnelers1.7.1
 owns tunneling, stance response and raid behaviour. Fixed Engineers0.1.0 contains
 only siege crew death/fire cleanup and safe dismounting. The old duplicate
 Unit Behaviour Fixes module is no longer in this bundle.
@@ -21,7 +21,7 @@ technical diagnostic localization and installed-game/GUI acceptance remain open.
 3. Disable **Unit Behaviour Fixes** if selected. Select **Improved Tunnelers**
    and/or **Fixed Engineers**. Select **AI Swapper1.5.0** only if you want its
    starting-troop configuration. Let the GUI enable each module's dependencies.
-   Improved Tunnelers 1.7.0 requires the included Map Extensions 1.1.5.
+   Improved Tunnelers 1.7.1 requires the included Map Extensions 1.1.5.
    Apply and restart. Keep old recording setups backed up; recordings need their
    exact original package files and settings.
 
@@ -62,7 +62,11 @@ another module's saved configuration automatically.
 - **Map editor:** Copy a save into Maps, rename `.sav` to `.map`, open/edit/save
   it in the game editor and start a new match. The native map content remains;
   pending collapse/denial state from the original battle starts fresh. Ordinary
-  `.sav` loads retain ongoing work. Older-save migration is out of scope.
+  `.sav` loads retain ongoing work. Repeat with Improved Tunnelers disabled, then
+  with both Improved Tunnelers and Map Extensions absent. Check that the completed
+  bare tunnel footprint is walkable/buildable. Use a newly created 1.7.1 save;
+  old-save migration is out of scope. Pending extra damage/denial is deliberately
+  discarded when starting a map, not carried into the new scenario.
 
 AI Swapper starting counts remain zero unless authored/configured. Neither
 Improved Tunnelers nor Fixed Engineers is required to spawn starting tunnelers.
@@ -87,7 +91,12 @@ four focused Lua tests pass. Version 1.7.0 adds deterministic queue scheduling
 and saved state through Map Extensions' existing required-state API. Six further
 focused tests cover emitted queue/step instructions (native damage/path callees
 stubbed), relocated saved state, malformed-state rejection, reset and the actual
-owner/stock framework proxy. All ten module tests pass. Map Extensions 1.1.5
+owner/stock framework proxy. Version 1.7.1 moves bare-ground repair and its native path update before the
+native tunnel path is released, including with a full damage queue. Empty ground
+now returns immediately; delayed damage stays bounded. A further assembly test
+covers terrain ownership; a stock-reader test skips unknown sections in all six
+fixtures (18 placements). All twelve focused module tests pass. Native path/damage
+callees in the terrain test are recorded stubs. This is not an editor run. Map Extensions 1.1.5
 passes 32 owner tests, including save-to-map initialization on Lua 5.4/LuaJIT.
 AI Swapper is unchanged at26e1b1f;
 its earlier starting-defense and single-player evidence remains recorded in PR20.
@@ -110,3 +119,9 @@ is the editable-map prerequisite, stacked on its existing save-owner work.
 links the versioned signed download. SHA256SUMS.txt identifies this exact build.
 Upstream ImprovedTunnelers license selection and maintainer review remain open
 before claiming store release readiness.
+
+Map portability audit: [Improved Tunnelers 1.7.1](https://github.com/Monsterfisch/ImprovedTunnelers/blob/fix/ucp-packaging-localization/UCP-MAP-PORTABILITY.md).
+The stock reader ignores the extra section; its 6,000,000-byte total payload limit
+still applies. Other modules can impose their own requirements. Released Map
+Extensions 1.0.0 ignores unknown providers; development 1.1.0-1.1.4 predates the
+new map policy. Use the included 1.1.5 to run Improved Tunnelers.
