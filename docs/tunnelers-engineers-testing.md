@@ -1,127 +1,73 @@
-# Tunnelers and engineers: single-player test bundle
+# Tunnelers and engineers: single-player test setup
 
-**TL;DR:** Three independent modules, with their six module dependencies and
-UCP signatures. AI Swapper1.5.0 owns starting tunnelers. Improved Tunnelers1.7.1
-owns tunneling, stance response and raid behaviour. Fixed Engineers0.1.0 contains
-only siege crew death/fire cleanup and safe dismounting. The old duplicate
-Unit Behaviour Fixes module is no longer in this bundle.
+**TL;DR:** Improved Tunnelers **1.7.2** corrects terrain cleanup, including tunnels
+under buildings and cleanup when a tunneler is destroyed. It replaces the regressed
+1.7.1 test build. Options now have short descriptions in all nine UCP UI languages.
 
-This is a **test candidate**, not a complete release. Engineer recruitment
-accounting and the newly requested AI siege placement, coordinated harassment,
-expanded force limits and resource-payment/reservation policies are not included.
-All nine GUI option/description catalogs are present; human translation review,
-technical diagnostic localization and installed-game/GUI acceptance remain open.
+The building/repair delay is **on by default at 100 ticks** (2.5 seconds at normal
+speed). Its standard UCP slider allows **1–2400 ticks** and can be switched off.
+Find it under **Customizations → Balance Changes → Building after a breach**.
+The ground-restoration switch is under **Bugfixes** and defaults on.
+Stances are in Bugfixes; raids in AI / Improvements; diagnostics in Miscellaneous.
 
 ## Install
 
-1. Use a separate UCP3.0.7 test installation and preserve your configuration.
-2. Extract the outer download once. Copy every ZIP and adjacent `.zip.sig` from
-   `modules/` into the game's `ucp/modules/`. Keep the inner ZIPs intact; these
-   are signed packages and need no security bypass.
-3. Disable **Unit Behaviour Fixes** if selected. Select **Improved Tunnelers**
-   and/or **Fixed Engineers**. Select **AI Swapper1.5.0** only if you want its
-   starting-troop configuration. Let the GUI enable each module's dependencies.
-   Improved Tunnelers 1.7.1 requires the included Map Extensions 1.1.5.
-   Apply and restart. Keep old recording setups backed up; recordings need their
-   exact original package files and settings.
+1. Use a UCP **3.0.7** test installation. Extract the outer download once.
+2. Copy all inner ZIPs and adjacent `.zip.sig` files from `modules/` into
+   `ucp/modules/`. Keep the inner ZIPs intact.
+3. Select **Improved Tunnelers 1.7.2** and its included dependencies, including
+   **Map Extensions 1.1.5**. Disable the old duplicate **Unit Behaviour Fixes**.
+4. Apply, restart, and start a new single-player match. Use the defaults first.
 
-Fixed Engineers' single **Siege crew cleanup** switch defaults ON under
-**Customizations → Bugfixes**. Improved Tunnelers' switches are in its existing
-localized **Improved Tunnelers** category, default ON except diagnostics OFF.
-The two previously inconsistent UI defaults now match the original module's
-runtime values:120 seconds of building restriction and60 nearby-building damage.
-Explicit saved values remain effective. If the old crew switch was OFF, keep
-the new Fixed Engineers switch OFF when migrating: module renames do not migrate
-another module's saved configuration automatically.
+AI Swapper 1.5.0 and Fixed Engineers 0.1.0 are also included but remain independent.
+AI Swapper owns extra starting tunnelers; they are zero unless configured. Fixed
+Engineers only fixes siege crew death/fire cleanup and safe dismounting.
+All eight unchanged packages are reused from the previous download. No Python
+or developer tools are required. SHA256SUMS.txt lists the module archive hashes.
 
-## Short tests
+## Short checks for Monsterfisch
 
-- **Starting troops:** In AI Swapper, select an AI slot, enable its Starting
-  troops component, enter3 for Normal starting tunnelers, Save/Close and Apply.
-  Start a new Normal single-player match with centered advantage. That AI should
-  receive3 additional tunnelers in its ordinary keep-defense group. Save/load
-  must not add another batch. Crusader/Deathmatch have independent counts;0
-  suppresses them and an empty field inherits the selected AI pack.
-- **Tunnelers:** Compare idle response to nearby enemies with Stances ON/OFF.
-  With the attack-button option OFF, check that the original dig button remains;
-  restart with it ON and check both attack-here and dig buttons.
-  Test a digging order, and an AI with a Tunneler's Guild plus Tunneler in its
-  raid settings. Improved Tunnelers already supplies that raid implementation;
-  this contribution does not add a second raid controller or a new AIV row.
-- **Engineers:** Dismount injured engineers and check surviving health. Destroy
-  a crewed engine and check that living crew do not remain hidden. Restart with
-  Siege crew cleanup OFF for the native comparison.
-- **Game text:** With building denial/message enabled, breach a fortification
-  and attempt to rebuild there. The refusal should follow game language, which
-  can differ from GUI language. Unrecognized languages keep the native message.
-- **Save/replay:** Save during a collapse, continue, reload and compare with
-  uninterrupted play; repeat after restarting the game process. Record/replay
-  with identical packages/settings. Collapse speed now bounds both new tunnel
-  tiles and damage calls per tick; dense collapses may take longer, independently
-  of CPU speed and diagnostics.
-- **Map editor:** Copy a save into Maps, rename `.sav` to `.map`, open/edit/save
-  it in the game editor and start a new match. The native map content remains;
-  pending collapse/denial state from the original battle starts fresh. Ordinary
-  `.sav` loads retain ongoing work. Repeat with Improved Tunnelers disabled, then
-  with both Improved Tunnelers and Map Extensions absent. Check that the completed
-  bare tunnel footprint is walkable/buildable. Use a newly created 1.7.1 save;
-  old-save migration is out of scope. Pending extra damage/denial is deliberately
-  discarded when starting a map, not carried into the new scenario.
+- **Ground:** Try short, long and overlapping tunnels on flat and raised ground,
+  beside walls and under buildings. Also destroy a tunneler before it finishes.
+  Ground should return to its original shape and remain usable for walking/building.
+  Unrelated walls and buildings must stay intact.
+- **Settings:** Check the 100-tick building delay, then try 2400 and OFF. Switch
+  ground restoration off for comparison with the original cleanup. Apply/restart
+  between setups. Check translated labels and that your settings are retained.
+- **Save and editor:** Save while digging and during collapse; reload and compare.
+  Rename a copy to `.map`, open/edit/save/play it. Repeat without Improved Tunnelers,
+  then without Map Extensions too. No stuck raised ground should remain. Old
+  pending extra effects should not carry into the new scenario.
+- **Orders and smoothness:** Check movement, digging, stances and configured AI
+  raids. Try several long tunnels in a busy castle and watch for pauses at completion.
+- **Replay, if available:** Record/replay with identical packages and settings.
+  Actions and damage should match. A replay tool is not included.
 
-AI Swapper starting counts remain zero unless authored/configured. Neither
-Improved Tunnelers nor Fixed Engineers is required to spawn starting tunnelers.
-Use new games for assignment comparisons.
-Avoid the old Unit Behaviour Fixes tunneler patch alongside Improved Tunnelers.
+Please test normal Crusader and Extreme. Report **passed / failed / could not test**,
+the game version/language, and a save or short clip for a problem. Multiplayer
+testing is player-owned.
 
-## Evidence and limits
+Optional companion checks: configure starting tunnelers in AI Swapper and verify
+they appear once in the ordinary starting group; dismount injured engineers and
+check their health, then destroy a crewed siege engine and check crew cleanup.
 
-Fixed Engineers preserves the existing crew/unman native payloads.35 repository
-tests,66 crew binding/preflight cases across six SHC/Extreme fixtures, and
-dismount instruction checks for partial/full crews, reused IDs, bounds, repeat
-commands and complete valid unit-pool equality pass. Earlier crew/fire gameplay
-evidence belongs to the historical module, not this renamed package.
+## Status and limits
 
-Improved Tunnelers passes catalog/default/manifest checks and SHC/Extreme Lua
-message-lifecycle rejection checks. The latter stubs assembly allocation; no
-new native payload, full emulator, text encoding or gameplay pass is implied.
-The 1.6.6 Lua audit also corrects the UI OFF path, strengthens keep/tick signatures,
-rejects failed native contexts and reuses framework jump encoding. All 15 signatures
-match once on each of six fixture files (two distinct native code layouts), and
-four focused Lua tests pass. Version 1.7.0 adds deterministic queue scheduling
-and saved state through Map Extensions' existing required-state API. Six further
-focused tests cover emitted queue/step instructions (native damage/path callees
-stubbed), relocated saved state, malformed-state rejection, reset and the actual
-owner/stock framework proxy. Version 1.7.1 moves bare-ground repair and its native path update before the
-native tunnel path is released, including with a full damage queue. Empty ground
-now returns immediately; delayed damage stays bounded. A further assembly test
-covers terrain ownership; a stock-reader test skips unknown sections in all six
-fixtures (18 placements). All twelve focused module tests pass. Native path/damage
-callees in the terrain test are recorded stubs. This is not an editor run. Map Extensions 1.1.5
-passes 32 owner tests, including save-to-map initialization on Lua 5.4/LuaJIT.
-AI Swapper is unchanged at26e1b1f;
-its earlier starting-defense and single-player evidence remains recorded in PR20.
+This is a **signed test candidate**, not a completed store release. Sixteen focused
+module tests pass. Actual native brush/coordinate-helper/cleanup instructions and
+stock section dispatch are covered across six fixture files (two SHC/Extreme code
+layouts); downstream path/damage functions are stubs. This does not establish
+in-game appearance, editor/replay results, installed GUI layout or performance.
+The unchanged Map Extensions owner previously passed 32 tests.
 
-The saved-state implementation is now present. Installed game/editor/replay
-acceptance is still pending; codec tests do not establish those results.
-Restoring patches still does not check for later owners, an existing limitation.
-The new combined signed bundle has not been run in-game. Full lifecycle, save,
-composition, GUI, variant and measured performance acceptance remains incomplete.
-AI Swapper positive-count startup previously measured roughly18–22 seconds of
-additional discovery time; no per-frame scan is added. Multiplayer testing is
-player-owned. Report exact versions/configuration and a reproducing save.
+Exact saved-match/replay continuation requires matching modules/settings. Converted
+maps start fresh. No old-save migration is promised. Stock file-size limits and
+other modules' requirements still apply. Existing damage-queue saturation and live
+patch-unload limitations remain; restart when changing setups. Human translation
+review, game acceptance and upstream license/maintainer review remain open.
+Engineer recruitment accounting and new AI siege tactics are outside these packages.
 
-Sources: [AI Swapper PR20](https://github.com/UnofficialCrusaderPatch/extension-aiSwapper/pull/20),
-[Improved Tunnelers PR1](https://github.com/Monsterfisch/ImprovedTunnelers/pull/1),
-[Fixed Engineers PR4](https://github.com/Krarilotus/ucp3-fixes/pull/4).
-[Map Extensions PR3](https://github.com/Krarilotus/ucp-extension-map-extensions/pull/3)
-is the editable-map prerequisite, stacked on its existing save-owner work.
-[Store PR42](https://github.com/UnofficialCrusaderPatch/UCP3-extensions-store/pull/42)
-links the versioned signed download. SHA256SUMS.txt identifies this exact build.
-Upstream ImprovedTunnelers license selection and maintainer review remain open
-before claiming store release readiness.
-
-Map portability audit: [Improved Tunnelers 1.7.1](https://github.com/Monsterfisch/ImprovedTunnelers/blob/fix/ucp-packaging-localization/UCP-MAP-PORTABILITY.md).
-The stock reader ignores the extra section; its 6,000,000-byte total payload limit
-still applies. Other modules can impose their own requirements. Released Map
-Extensions 1.0.0 ignores unknown providers; development 1.1.0-1.1.4 predates the
-new map policy. Use the included 1.1.5 to run Improved Tunnelers.
+[Improved Tunnelers PR1](https://github.com/Monsterfisch/ImprovedTunnelers/pull/1) ·
+[Store PR42, branch 3.0.7](https://github.com/UnofficialCrusaderPatch/UCP3-extensions-store/pull/42) ·
+[Terrain audit](https://github.com/Krarilotus/ImprovedTunnelers/blob/fix/ucp-packaging-localization/UCP-TERRAIN-RESET.md) ·
+[Map Extensions prerequisite](https://github.com/Krarilotus/ucp-extension-map-extensions/pull/3)
