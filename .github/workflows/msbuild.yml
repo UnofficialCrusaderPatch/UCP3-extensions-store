@@ -1,7 +1,12 @@
 name: Build and release store
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the built store (requires the matching version branch)
+        type: boolean
+        default: false
   push:
     branches:
       - "[0-9]+.[0-9]+.[0-9]+"
@@ -59,9 +64,84 @@ jobs:
       run: |
         # Legacy framework scripts do not check every native tool exit code.
         $PSNativeCommandUseErrorActionPreference = $true
-        .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -Debug
+        $candidateBuild = '${{ github.event_name }}' -eq 'workflow_dispatch' -and '${{ inputs.publish }}' -ne 'true'
+        .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -IgnoreBranchMismatch:$candidateBuild -Debug
+
+    - name: Fetch reused signed dependencies for the testing bundle
+      shell: pwsh
+      run: |
+        Import-Module powershell-yaml
+        $store = Get-Content .\build\store.yml -Raw | ConvertFrom-Yaml
+        foreach ($name in @('aicloader-1.1.2', 'aivloader-1.0.0', 'files-1.3.0', 'gmResourceModifier-0.2.0', 'textResourceModifier-0.3.0')) {
+          $archive = ".\build\extensions\$name.zip"
+          if (!(Test-Path -LiteralPath $archive)) {
+            $entry = @($store.extensions.list | Where-Object { "$($_.definition.name)-$($_.definition.version)" -eq $name })
+            if ($entry.Count -ne 1 -or $entry[0].definition.type -ne 'module') {
+              throw "Missing or ambiguous dependency in built store: $name"
+            }
+            $packages = @($entry[0].contents.package)
+            if ($packages.Count -ne 1) { throw "Ambiguous package for $name" }
+            Invoke-WebRequest -Uri $packages[0].url -OutFile $archive
+            if ((Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower() -ne $packages[0].hash) {
+              throw "Downloaded dependency hash mismatch: $name"
+            }
+          }
+        }
+
+    - name: Retain signatures for candidate installation
+      shell: pwsh
+      run: |
+        Import-Module powershell-yaml
+        $store = Get-Content .\build\store.yml -Raw | ConvertFrom-Yaml
+        foreach ($extension in $store.extensions.list) {
+          $archive = ".\build\extensions\$($extension.definition.name)-$($extension.definition.version).zip"
+          if ($extension.definition.type -eq 'module' -and (Test-Path -LiteralPath $archive)) {
+            $package = @($extension.contents.package)[0]
+            if ((Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower() -ne $package.hash) {
+              throw "Store/archive hash mismatch: $archive"
+            }
+            if ($package.signature -notmatch '^[0-9a-fA-F]{1024}$') {
+              throw "Missing or invalid module signature: $archive"
+            }
+            Set-Content -LiteralPath "$archive.sig" -Value $package.signature -Encoding ascii
+          }
+        }
+
+    - name: Upload signed build for installation checks
+      uses: actions/upload-artifact@v4
+      with:
+        name: store-${{ github.sha }}
+        path: |
+          build/store.yml
+          build/extensions/*.zip
+          build/extensions/*.zip.sig
+        if-no-files-found: error
+
+    - name: Prepare tunnelers and engineers installation bundle
+      shell: pwsh
+      run: |
+        New-Item -ItemType Directory -Path '.\build\tunnelers-engineers-testing\modules' -Force | Out-Null
+        $digests = foreach ($name in @('aiSwapper-1.5.0', 'improved-tunnelers-1.7.2', 'map-extensions-1.1.5', 'fixed-engineers-0.1.0', 'aicloader-1.1.2', 'aivloader-1.0.0', 'files-1.3.0', 'gmResourceModifier-0.2.0', 'textResourceModifier-0.3.0')) {
+          $archive = ".\build\extensions\$name.zip"
+          if (!(Test-Path -LiteralPath $archive) -or !(Test-Path -LiteralPath "$archive.sig")) {
+            throw "Required signed testing module missing: $name"
+          }
+          Copy-Item -LiteralPath $archive, "$archive.sig" -Destination '.\build\tunnelers-engineers-testing\modules'
+          $digest = (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower()
+          "$digest  modules/$name.zip"
+        }
+        Copy-Item -LiteralPath '.\docs\tunnelers-engineers-testing.md' -Destination '.\build\tunnelers-engineers-testing\README.md'
+        Set-Content -LiteralPath '.\build\tunnelers-engineers-testing\SHA256SUMS.txt' -Value $digests -Encoding ascii
+
+    - name: Upload tunnelers and engineers installation bundle
+      uses: actions/upload-artifact@v4
+      with:
+        name: tunnelers-engineers-testing-bundle
+        path: build/tunnelers-engineers-testing/
+        if-no-files-found: error
 
     - name: Release store
+      if: github.event_name == 'push' || inputs.publish
       shell: |
         pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
       env:

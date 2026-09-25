@@ -525,15 +525,37 @@ extensions:
           github-sha: a4ecab44c79bdc9f7d387746e235db9d7be57091
           github-tag: main
     - definition:
+        name: fixed-engineers
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: fd77fbeafcdda95eda2b3b3ac3fd108ae0ca6a8d
+          github-tag: fix/engineer-lifecycle-only
+          location: fixed-engineers
+    - definition:
+        name: improved-tunnelers
+        version: 1.7.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ImprovedTunnelers
+          github-sha: 741cce9e41d8391d3d8efb0fcc4257e8a0741162
+          github-tag: fix/ucp-packaging-localization
+          location: module
+    - definition:
         name: aiSwapper
-        version: 1.3.0
+        version: 1.5.0
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aiSwapper
-          github-sha: 7ab40c05c0b4250f66733645d5e6fabbe036e491
-          github-tag: main
+          github-sha: 26e1b1f0bb7f22ee3e3ac947f0c3f01d95218082
+          github-tag: feat/tunneler-starting-troops
     - definition:
         name: aicloader
         version: 1.1.2
@@ -737,13 +759,13 @@ extensions:
     - definition:
         type: module
         name: map-extensions
-        version: 1.0.0
+        version: 1.1.5
       contents:
         source:
           method: github
-          url: gynt/ucp-extension-map-extensions
-          github-sha: d9399125831c96a46701a510542e09f2a031971f
-          github-tag: main
+          url: Krarilotus/ucp-extension-map-extensions
+          github-sha: 683765703c5d79776b8154813e86912627f5bbf6
+          github-tag: fix/map-scenario-initialization
     - definition:
         name: protocol
         version: 1.0.0
