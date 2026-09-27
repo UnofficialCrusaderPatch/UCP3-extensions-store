@@ -19,10 +19,11 @@ Stances are in Bugfixes; raids in AI / Improvements; diagnostics in Miscellaneou
    **Map Extensions 1.1.5**. Disable the old duplicate **Unit Behaviour Fixes**.
 4. Apply, restart, and start a new single-player match. Use the defaults first.
 
-AI Swapper 1.5.0 and Fixed Engineers 0.1.0 are also included but remain independent.
+AI Swapper 1.5.0 and Fixed Engineers 0.2.0 are also included but remain independent.
 AI Swapper owns extra starting tunnelers; they are zero unless configured. Fixed
-Engineers only fixes siege crew death/fire cleanup and safe dismounting.
-All eight unchanged packages are reused from the previous download. No Python
+Engineers fixes crew death/fire cleanup, safe dismounting, and moving catapults
+and trebuchets continuing an old path after a direct attack order.
+No Python
 or developer tools are required. SHA256SUMS.txt lists the module archive hashes.
 
 ## Short checks for Monsterfisch
@@ -50,6 +51,9 @@ testing is player-owned.
 Optional companion checks: configure starting tunnelers in AI Swapper and verify
 they appear once in the ordinary starting group; dismount injured engineers and
 check their health, then destroy a crewed siege engine and check crew cleanup.
+Move a crewed catapult and trebuchet, click an enemy unit in another direction,
+and check they stop the old path while normal aiming/firing continues. Repeat
+with each Fixed Engineers switch OFF after restarting.
 
 ## Status and limits
 
