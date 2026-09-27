@@ -511,14 +511,14 @@ extensions:
           github-tag: main
     - definition:
         name: gmResourceModifier
-        version: 0.2.0
+        version: 0.3.0
         type: module
       contents:
         source:
           method: github
-          url: TheRedDaemon/ucp_gmResourceModifier
-          github-sha: 019039afcb29f3806aa30c7157ae5a1253c06673
-          github-tag: main
+          url: UnofficialCrusaderPatch/ucp_gmResourceModifier
+          github-sha: ebc303982cf6004e54db9598940ee6d00fbf1e10
+          github-tag: feature/inherited-sheets
     - definition:
         name: graphicsApiReplacer
         version: 1.3.0
@@ -591,14 +591,14 @@ extensions:
           github-tag: main
     - definition:
         name: custom-projectiles
-        version: 1.8.6
+        version: 1.8.7
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/extension-projectileModifier
-          github-sha: 2d19420152e26b8b78f4fb43a0433fbf5a0c739f
-          github-tag: main
+          github-sha: de0ba99b969391155f0e111f41a6f98a625e0af6
+          github-tag: refactor/sheet-reservations
     - definition:
         name: rebalancer
         version: 1.1.3
