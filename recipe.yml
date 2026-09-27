@@ -271,6 +271,17 @@ extensions:
           github-tag: ucp3-ascension
           location: extension-Ascension-AI-Balance   
     - definition:
+        name: Ascension-AI-Balance
+        version: 1.2.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 07c89c746fe1bca4472c481153453e90ba7273cc
+          github-tag: ascension-ai-balance-1.2.1
+          location: extension-Ascension-AI-Balance
+    - definition:
         name: Ascension-Balance
         version: 1.1.4
         type: plugin
@@ -280,6 +291,17 @@ extensions:
           url: Krarilotus/Ascension
           github-sha: 5124663ca77867233e268e63126f7e503809b287
           github-tag: ucp3-ascension
+          location: extension-Ascension-Balance
+    - definition:
+        name: Ascension-Balance
+        version: 1.1.5
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 07c89c746fe1bca4472c481153453e90ba7273cc
+          github-tag: ascension-balance-1.1.5
           location: extension-Ascension-Balance
     - definition:
         name: Ascension-AI
@@ -293,15 +315,37 @@ extensions:
           github-tag: ucp3-ascension
           location: extension-Ascension-AI
     - definition:
-        name: Ascension-Multiplayer
-        version: 1.0.11
+        name: Ascension-AI
+        version: 1.0.1
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 5124663ca77867233e268e63126f7e503809b287
-          github-tag: ucp3-ascension
+          github-sha: 07c89c746fe1bca4472c481153453e90ba7273cc
+          github-tag: ascension-ai-1.0.1
+          location: extension-Ascension-AI
+    - definition:
+        name: Ascension-Multiplayer
+        version: 1.0.12
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 58039a5b903dd899b9f80b0b45485877639e6daf
+          github-tag: ascension-multiplayer-1.0.12
+          location: extension-Ascension-Multiplayer
+    - definition:
+        name: Ascension-Multiplayer
+        version: 1.0.13
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 07c89c746fe1bca4472c481153453e90ba7273cc
+          github-tag: ascension-multiplayer-1.0.13
           location: extension-Ascension-Multiplayer
     - definition:
         name: Ascension-Maps
@@ -313,6 +357,17 @@ extensions:
           url: Krarilotus/Ascension
           github-sha: 05682411b6ebba6172bd424b74f9c7302d0e1510
           github-tag: ucp3-ascension
+          location: extension-Ascension-Maps
+    - definition:
+        name: Ascension-Maps
+        version: 1.0.3
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 07c89c746fe1bca4472c481153453e90ba7273cc
+          github-tag: ascension-maps-1.0.3
           location: extension-Ascension-Maps
     - definition:
         name: Community-Paket-Files
@@ -530,6 +585,45 @@ extensions:
           github-sha: f180062e10622900f684c3de7f76e37dcbdcf304
           github-tag: main
     - definition:
+        name: interface-visual-fixes
+        version: 0.1.5
+        type: module
+      contents:
+        tag-locales:
+          en:
+            bugfixes: Bug fixes
+            interface: Interface
+          de:
+            bugfixes: Fehlerkorrekturen
+            interface: Oberfläche
+          fr:
+            bugfixes: Corrections
+            interface: Interface
+          ru:
+            bugfixes: Исправления
+            interface: Интерфейс
+          hu:
+            bugfixes: Hibajavítások
+            interface: Kezelőfelület
+          tr:
+            bugfixes: Hata düzeltmeleri
+            interface: Arayüz
+          ch:
+            bugfixes: 错误修复
+            interface: 界面
+          es:
+            bugfixes: Correcciones
+            interface: Interfaz
+          fa:
+            bugfixes: رفع اشکال
+            interface: رابط کاربری
+        source:
+          method: github
+          url: Krarilotus/extension-interface-visual-fixes
+          github-sha: 99d09b7f914e6cc5b209a3dc8c59d47c8595a07f
+          github-tag: main
+          rebuild-on-source-change: true
+    - definition:
         name: maploader
         version: 1.1.0
         type: module
@@ -541,13 +635,13 @@ extensions:
           github-tag: main
     - definition:
         name: startResources
-        version: 1.0.1
+        version: 1.0.2
         type: module
       contents:
         source:
           method: github
-          url: gynt/ucp-extension-startResources
-          github-sha: 71e6d7c2a9691c2110a2e823501ab9c4510d537f
+          url: Krarilotus/ucp-extension-startResources
+          github-sha: d1f5328d4b17d36a523e6108610a079aeb40282f
           github-tag: main
     - definition:
         name: textResourceModifier
@@ -561,13 +655,13 @@ extensions:
           github-tag: main
     - definition:
         name: ucp2-legacy
-        version: 2.15.1
+        version: 2.15.2
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-ucp2-legacy
-          github-sha: 04e826d00f1a5f8a623e15acffc743f115ee7fb1
+          github-sha: 3fd852df9ac3f2b00595512555e9043e3b624437
           github-tag: main
     - definition:
         name: winProcHandler
@@ -692,14 +786,24 @@ extensions:
           github-tag: main
     - definition:
         name: ui
-        version: 1.0.0
+        version: 1.0.1
         type: module
       contents:
         source:
           method: github
-          url: gynt/ucp-extension-ui
-          github-sha: 24f90be8b2886eb66dea6437fe6016a51bea9a06
-          github-tag: main
+          url: Krarilotus/ucp-extension-ui
+          github-sha: d3a807cfee70308f707ea81ddb92ac8b1d375bd9
+          github-tag: test-d3a807cfee70
+    - definition:
+        name: map-png
+        version: 0.1.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-map-png
+          github-sha: 14f2c6c68054935af1e9992979e56c06827f700f
+          github-tag: v0.1.2
     - definition:
         name: automarket
         type: module
@@ -711,6 +815,16 @@ extensions:
           github-sha: 858890f558fd042215913e862745d98ed13d8834
           github-tag: fix/multiplayer-sync-and-fees
     - definition:
+        name: audio-fixes
+        version: 0.1.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-audio-fixes
+          github-sha: c17ff7d06499f581ac1cff73ddca7916333956b4
+          github-tag: main
+    - definition:
         name: steam-multiplayer
         type: module
         version: 1.2.3
@@ -720,3 +834,13 @@ extensions:
           url: gynt/ucp-extension-steam-multiplayer
           github-sha: 18c71b7cf10ba9ba3cc07a5c464dc463a6382bd4
           github-tag: main
+    - definition:
+        name: recorder
+        version: 0.51.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp_recorder
+          github-sha: 651817dd3e88ea920684b1de8a750c0f2f1f1cc2
+          github-tag: compat-0.51.0-651817dd3e88

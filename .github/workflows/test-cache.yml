@@ -1,0 +1,15 @@
+name: Test binary cache selection
+on:
+  pull_request:
+  push:
+    branches: ['3.0.7']
+jobs:
+  cache-selection:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check same-version source selection
+        shell: pwsh
+        run: ./tests/test-binary-cache.ps1

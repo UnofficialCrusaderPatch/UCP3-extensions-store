@@ -147,7 +147,7 @@ foreach ($release in $sortedReleaseVersionsArray) {
       if ($AllowSuperseded) {
         Write-Warning "Latest released version is higher than the recipe version. This is probably not what you want"
       } else {
-        if ($rVariantVersions.Contains([semver]($version))) {
+        if ($rVariantVersions -contains [semver]($version)) {
           Write-Warning "Latest released version is higher than the recipe version. This is probably not what you want"
         } else {
           Throw "Error: Latest released version is higher than the recipe version. This is probably not what you want"
@@ -156,6 +156,23 @@ foreach ($release in $sortedReleaseVersionsArray) {
     }
     
     $hit = $releaseStore.extensions.list | Where-Object { $_.definition.name -eq $name } | Where-Object { $_.definition.version -eq $version }
+
+    # Opt in per recipe: legacy entries may deliberately reuse older sources.
+    # A same-version correction must not silently reuse the superseded binary.
+    if ($extension.contents.source['rebuild-on-source-change'] -eq $true) {
+      $hit = $hit | Where-Object {
+        $cachedSource = $_.contents.source
+        $requestedSource = $extension.contents.source
+        if ($null -eq $cachedSource) { return $false }
+        $sameSource = -not [string]::IsNullOrWhiteSpace($requestedSource['github-sha'])
+        foreach ($field in @('method', 'url', 'github-sha', 'location', 'extension-type')) {
+          if ([string]$cachedSource[$field] -cne [string]$requestedSource[$field]) {
+            $sameSource = $false
+          }
+        }
+        $sameSource
+      }
+    }
 
     if ($null -ne $hit) {
       Write-Output "Found a binary"
