@@ -532,8 +532,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 3eb1790135c6acd5eb0ab0c42052bebce5097cd0
-          github-tag: fix/engineer-lifecycle-only
+          github-sha: 86f6f09261407559f65d515ce2a4f47d69a60d5e
+          github-tag: main
           location: fixed-engineers
     - definition:
         name: improved-tunnelers
