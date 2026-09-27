@@ -780,14 +780,14 @@ extensions:
           github-tag: fix/map-read-context
     - definition:
         name: aic-tactics
-        version: 0.0.10
+        version: 0.0.11
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aic-tactics
-          github-sha: 28fd32092839d2046f7dbac74e8ea2cff38038d1
-          github-tag: feat/combat-integration
+          github-sha: ac8c0b55ff750deea21db241437703e6485d1079
+          github-tag: feat/siege-ai-policy
     - definition:
         name: chat
         version: 1.0.0
