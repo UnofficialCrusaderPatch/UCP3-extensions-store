@@ -511,13 +511,13 @@ extensions:
           github-tag: main
     - definition:
         name: gmResourceModifier
-        version: 0.3.0
+        version: 0.3.1
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/ucp_gmResourceModifier
-          github-sha: ebc303982cf6004e54db9598940ee6d00fbf1e10
+          github-sha: ea42d8be37ef98b8601425cb6860fd0a3c748685
           github-tag: feature/inherited-sheets
     - definition:
         name: graphicsApiReplacer
@@ -591,13 +591,13 @@ extensions:
           github-tag: main
     - definition:
         name: custom-projectiles
-        version: 1.8.7
+        version: 1.8.8
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/extension-projectileModifier
-          github-sha: de0ba99b969391155f0e111f41a6f98a625e0af6
+          github-sha: cdcb8f9beef474542957a640bb7c1818e19a78dd
           github-tag: refactor/sheet-reservations
     - definition:
         name: rebalancer
