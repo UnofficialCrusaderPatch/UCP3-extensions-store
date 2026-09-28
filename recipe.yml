@@ -691,8 +691,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-projectileModifier
-          github-sha: 4243fa869885d234ca3bdd63b6c2b9bfc3fefd9a
-          github-tag: feature/native-target-scoring
+          github-sha: cf063d9c95077c4353de66fad12a988a2fd57bb2
+          github-tag: main
     - definition:
         name: rebalancer
         version: 1.1.3
