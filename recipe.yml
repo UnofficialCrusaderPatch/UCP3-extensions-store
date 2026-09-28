@@ -1014,7 +1014,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-Legends-of-the-Orient
-          github-sha: 8992a04ac9de4a5efcc6214b42ebe7755bcb455b
+          github-sha: fcdab7eb642aba0fa0f927d083169faef1bd9a77
           github-tag: preview/gui-1.0.17-discovery-legends-of-the-orient
     - definition:
         name: Legends-Of-The-Orient-AI
@@ -1024,7 +1024,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-Legends-of-the-Orient-AI
-          github-sha: 8bb70867be20ded5cc08c51d0eec5a8148df8db9
+          github-sha: 7ad24c2551170dec478efd48da7460c7f4710a95
           github-tag: preview/gui-1.0.17-discovery-legends-of-the-orient-ai
     - definition:
         name: Schlossgespenst-KI
@@ -1034,7 +1034,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/Schlossgespenst-KI
-          github-sha: ca5e79552c1200eb8ee9757c98d719ef2f103734
+          github-sha: 6070296dd15da7bd374cdecc167d7853885d216f
           github-tag: preview/gui-1.0.17-discovery-schlossgespenst-ki
     - definition:
         name: Schlossgespenst-KI-files
@@ -1044,7 +1044,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/Schlossgespenst-KI-files
-          github-sha: 9d5085e55518cb66049b30e7bb288bf0ec646e8b
+          github-sha: dccc16e6eb18acd10e581f9b349848d0501b8d77
           github-tag: preview/gui-1.0.17-discovery-schlossgespenst-ki-files
     - definition:
         name: ConqueringChristmas
@@ -1094,7 +1094,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/Community-Paket-UCP3
-          github-sha: 2c5c12df33f6db7b9d7ac961a4fd67b3ae5bf529
+          github-sha: 2eee73a101392214a1b3624f9c0ab5a10aed4e01
           github-tag: preview/gui-1.0.17-discovery-community-paket
           location: Community-Paket
     - definition:
@@ -1105,7 +1105,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/Community-Paket-UCP3
-          github-sha: 2c5c12df33f6db7b9d7ac961a4fd67b3ae5bf529
+          github-sha: 2eee73a101392214a1b3624f9c0ab5a10aed4e01
           github-tag: preview/gui-1.0.17-discovery-community-paket
           location: Community-Paket-Files
     - definition:
@@ -1116,7 +1116,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/Die-neuen-Herrscher
-          github-sha: c6503a79b5814f596597c5ab2cc97dc8b985130f
+          github-sha: 737530357d54363dde15c9b1c5472ab9bd162ec4
           github-tag: preview/gui-1.0.17-discovery-die-neuen-herrscher
     - definition:
         name: Die-neuen-Herrscher-KI-Files
@@ -1126,7 +1126,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/Die-neuen-Herrscher-KI
-          github-sha: 0da6c1d4e7244a6c71d6026c6a8c4eb4ab2bd36a
+          github-sha: d2e313da6b172632a4f0b77d30a94bdc059ff905
           github-tag: preview/gui-1.0.17-discovery-die-neuen-herrscher-ki-files
     - definition:
         name: Kommander-AI
