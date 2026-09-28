@@ -786,7 +786,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aic-tactics
-          github-sha: b136da3dcf7e09f71e193cb69cf13960c584c615
+          github-sha: c04993980a18da7cb0acbb76dbf1a93e84084298
           github-tag: feat/per-ai-strength-states
     - definition:
         name: chat
