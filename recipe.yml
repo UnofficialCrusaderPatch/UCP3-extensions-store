@@ -616,7 +616,7 @@ extensions:
           method: github
           url: UnofficialCrusaderPatch/ucp_winProcHandler
           github-sha: 114c0af2620b16882a8655efe890817b614a1777
-          github-tag: fix/cinterface-proxy
+          github-tag: main
     - definition:
         name: running-units
         version: 1.0.2
