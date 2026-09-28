@@ -1,7 +1,12 @@
 name: Build and release store
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the built store (requires the matching version branch)
+        type: boolean
+        default: false
   push:
     branches:
       - "[0-9]+.[0-9]+.[0-9]+"
@@ -59,9 +64,41 @@ jobs:
       run: |
         # Legacy framework scripts do not check every native tool exit code.
         $PSNativeCommandUseErrorActionPreference = $true
-        .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -Debug
+        $candidateBuild = '${{ github.event_name }}' -eq 'workflow_dispatch' -and '${{ inputs.publish }}' -ne 'true'
+        .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -IgnoreBranchMismatch:$candidateBuild -Debug
+
+    - name: Prepare signed worker-delivery test package
+      if: github.event_name == 'workflow_dispatch' && !inputs.publish
+      shell: pwsh
+      run: |
+        Import-Module powershell-yaml
+        $store = Get-Content .\build\store.yml -Raw | ConvertFrom-Yaml
+        $entry = @($store.extensions.list | Where-Object { $_.definition.name -eq 'worker-delivery-fix' -and $_.definition.version -eq '0.1.0' })
+        if ($entry.Count -ne 1) { throw 'Missing or ambiguous worker-delivery package' }
+        $package = @($entry[0].contents.package)
+        if ($package.Count -ne 1 -or $package[0].signature -notmatch '^[0-9a-fA-F]{1024}$') {
+          throw 'Missing worker-delivery signature'
+        }
+        $archive = '.\build\extensions\worker-delivery-fix-0.1.0.zip'
+        if (!(Test-Path -LiteralPath $archive)) { throw 'Missing worker-delivery ZIP' }
+        if ((Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower() -ne $package[0].hash) {
+          throw 'Worker-delivery ZIP hash mismatch'
+        }
+        Set-Content -LiteralPath "$archive.sig" -Value $package[0].signature -Encoding ascii
+
+    - name: Upload signed worker-delivery test package
+      if: github.event_name == 'workflow_dispatch' && !inputs.publish
+      uses: actions/upload-artifact@v4
+      with:
+        name: worker-delivery-test-${{ github.sha }}
+        path: |
+          build/extensions/worker-delivery-fix-0.1.0.zip
+          build/extensions/worker-delivery-fix-0.1.0.zip.sig
+          docs/worker-delivery-testing.md
+        if-no-files-found: error
 
     - name: Release store
+      if: github.ref_name == '3.0.7' && (github.event_name == 'push' || inputs.publish)
       shell: |
         pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
       env:
