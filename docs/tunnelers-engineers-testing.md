@@ -1,35 +1,77 @@
-# AI Swapper 1.5.0: single-player testing
+# Tunnelers and engineers: single-player test setup
 
-## TL;DR
+**TL;DR:** Improved Tunnelers **1.7.2** corrects terrain cleanup, including tunnels
+under buildings and cleanup when a tunneler is destroyed. It replaces the regressed
+1.7.1 test build. Options now have short descriptions in all nine UCP UI languages.
 
-AI Swapper 1.5.0 adds configurable AI starting tunnelers, with controls in all nine UCP languages. Existing AI packs receive no extra troops by default. Engineer starting troops retain their existing behavior. No recruitment-accounting fix is advertised.
+The building/repair delay is **on by default at 100 ticks** (2.5 seconds at normal
+speed). Its standard UCP slider allows **1–2400 ticks** and can be switched off.
+Find it under **Customizations → Balance Changes → Building after a breach**.
+The ground-restoration switch is under **Bugfixes** and defaults on.
+Stances are in Bugfixes; raids in AI / Improvements; diagnostics in Miscellaneous.
 
-The recipe pins implementation [AI Swapper PR20](https://github.com/UnofficialCrusaderPatch/extension-aiSwapper/pull/20), source `0188de0c5fc1b037102a2fac04ea0754059d997b`. The [store signing run](https://github.com/UnofficialCrusaderPatch/UCP3-extensions-store/actions/runs/34710799753) produced a signed module, verified with UCP's public key and installed under standard UCP security. The downloadable testing bundle contains `modules/aiSwapper-1.5.0.zip`, its signature and these instructions. `SHA256SUMS.txt` identifies this bundle's exact archive: rebuilding the native helper can change the ZIP hash even at the same source revision. Historical test hashes below identify their respective runs. This is a testing candidate; the full Tunnelers/Engineers release remains unfinished.
+## Install
 
-## Short test instructions
+1. Use a UCP **3.0.7** test installation. Extract the outer download once.
+2. Copy all inner ZIPs and adjacent `.zip.sig` files from `modules/` into
+   `ucp/modules/`. Keep the inner ZIPs intact.
+3. Select **Improved Tunnelers 1.7.2** and its included dependencies, including
+   **Map Extensions 1.1.5**. Disable the old duplicate **Unit Behaviour Fixes**.
+4. Apply, restart, and start a new single-player match. Use the defaults first.
 
-Use a separate test installation and preserve its configuration first:
+AI Swapper 1.5.0 and Fixed Engineers 0.2.0 are also included but remain independent.
+AI Swapper owns extra starting tunnelers; they are zero unless configured. Fixed
+Engineers fixes crew death/fire cleanup, safe dismounting, and moving catapults
+and trebuchets continuing an old path after a direct attack order.
+No Python
+or developer tools are required. SHA256SUMS.txt lists the module archive hashes.
 
-1. Use UCP3.0.7 with AI Swapper and its existing dependencies installed through Content. Extract the outer testing bundle. Copy both `aiSwapper-1.5.0.zip` and `aiSwapper-1.5.0.zip.sig` from its `modules` directory into the test game's `ucp/modules`; keep the inner module ZIP intact. Select AI Swapper1.5.0 in the GUI and use an AI pack that exposes Starting troops. After store publication, Content can install1.5.0 directly with its signature and dependencies.
-2. Open **Customisations > AI Swapper > Open Menu**. Select Wolf, enable the desired AI's **Starting troops** component, and enter **3** under **Starting tunnelers / Normal game**. Save and Close, then Apply.
-3. Start a **single-player** Normal skirmish with two Wolves and centered starting advantage. Each Wolf should have three additional tunnelers at the start, with its original other units preserved. Test selection and useful orders/AI use.
-4. Save and reload: no additional batch should appear. Restart: each Wolf should begin with the configured count once. Check SHC and Extreme separately.
-5. Enter **0** to disable additional tunnelers for a mode. Clear the field to inherit the AI pack. Reset slot removes user overrides. Save/Apply and reopen to check persistence. Crusader and Deathmatch have separate fields; starting advantage scales their counts too.
+## Short checks for Monsterfisch
 
-An AI pack can instead author `Tunneler` in `character.json.startTroops` and must declare an AI Swapper dependency of at least1.5.0. Values are integers0..2499. Required plugin selections stay locked. This capability requires no additional enable switch; absent counts remain zero.
+- **Ground:** Try short, long and overlapping tunnels on flat and raised ground,
+  beside walls and under buildings. Also destroy a tunneler before it finishes.
+  Ground should return to its original shape and remain usable for walking/building.
+  Unrelated walls and buildings must stay intact.
+- **Settings:** Check the 100-tick building delay, then try 2400 and OFF. Switch
+  ground restoration off for comparison with the original cleanup. Apply/restart
+  between setups. Check translated labels and that your settings are retained.
+- **Save and editor:** Save while digging and during collapse; reload and compare.
+  Rename a copy to `.map`, open/edit/save/play it. Repeat without Improved Tunnelers,
+  then without Map Extensions too. No stuck raised ground should remain. Old
+  pending extra effects should not carry into the new scenario.
+- **Orders and smoothness:** Check movement, digging, stances and configured AI
+  raids. Try several long tunnels in a busy castle and watch for pauses at completion.
+- **Replay, if available:** Record/replay with identical packages and settings.
+  Actions and damage should match. A replay tool is not included.
 
-## Performed validation
+Please test normal Crusader and Extreme. Report **passed / failed / could not test**,
+the game version/language, and a save or short clip for a problem. Multiplayer
+testing is player-owned.
 
-- Existing helper Release/x86 build, menu build, nine-locale menu/state tests, production configuration import/round-trip/required-lock tests, and diff checks passed.
-- Production Lua/PE tests passed on local SHC/Extreme and official Firefly EFIGS/Polish executables. Those tests stub native calls; they do not replace native acceptance.
-- Local SHC1.41 and Extreme1.41.1-E native count3/two-Wolf save/load/restart checks passed. Extreme also retained reciprocal native group membership and IDs/UIDs after load; loading a pre-feature save added no units.
-- Installed build4 ZIP passed GUI edit/Save/Apply/reopen for Normal7/Crusader1/Deathmatch0, including German and Persian RTL layouts. Both official EFIGS executables consumed the written Normal7 override on restart, with seven-member native groups and original three archers/engineers per Wolf. Earlier count3 saves retained three per Wolf after loading.
-- Polish SHC/Extreme native load/count7 restart and reciprocal membership also pass. Mixed Polish SHC matches give Crusader1/1/3 and Deathmatch0/0/3 for two Wolves and Saladin; Normal minor-computer advantage gives8/8/3 as expected from125-percent native scaling.
-- Source0188de0 corrects a discovery conflict with Recorder's existing post-launch observer, using a verified independent restart caller of the same initializer. The regression failed before the change and passes on all six executable fixtures with native calls stubbed.
-- First signed test archive SHA256: `8ba99f21533140f67084b1ee15b21f23dcf2a8ff357699065f843f782fbc2b62`. Standard secure UCP accepted it. Zero configuration preserved the original initializer bytes. Polish SHC load/restart retained/created8/8/3 tunnelers with reciprocal native groups and ordinary starting troops; groups remained intact through tick11327. Polish Extreme retained3/3 from the earlier save, restarted7/7 and preserved all14 IDs/UIDs/roles/group memberships through a new save/load. A later Extreme sample at tick36406 followed a native AI defeat; defeated-player units were cleaned up. Useful tunneling was not observed in these intervals.
+Optional companion checks: configure starting tunnelers in AI Swapper and verify
+they appear once in the ordinary starting group; dismount injured engineers and
+check their health, then destroy a crewed siege engine and check crew cleanup.
+Move a crewed catapult and trebuchet, click an enemy unit in another direction,
+and check they stop the old path while normal aiming/firing continues. Repeat
+with each Fixed Engineers switch OFF after restarting.
 
-Remaining gates include useful-action/lifecycle coverage, applicable offline restoration/composition, final publication and the full accounting correction. Measured positive startup adds roughly20-22seconds for framework ambiguity scans; there is no per-frame scan/census.
+## Status and limits
 
-Recruitment accounting is coordinated with AIC Tactics [PR12](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/pull/12), [PR16](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/pull/16) and [PR17](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/pull/17). [Issue18](https://github.com/UnofficialCrusaderPatch/extension-aic-tactics/issues/18) records native recruitment of18 then22 defense engineers at quota3 while both counters remain0. The cause and group lifecycle are still being investigated; no accounting fix or default-on fix switch is included yet. No shared recruitment code has changed.
+This is a **signed test candidate**, not a completed store release. Sixteen focused
+module tests pass. Actual native brush/coordinate-helper/cleanup instructions and
+stock section dispatch are covered across six fixture files (two SHC/Extreme code
+layouts); downstream path/damage functions are stubs. This does not establish
+in-game appearance, editor/replay results, installed GUI layout or performance.
+The unchanged Map Extensions owner previously passed 32 tests.
 
-Multiplayer testing belongs to players and is outside this worker's acceptance scope. Report the executable/module versions, configuration, expected/actual result and a reproducing save with failures.
+Exact saved-match/replay continuation requires matching modules/settings. Converted
+maps start fresh. No old-save migration is promised. Stock file-size limits and
+other modules' requirements still apply. Existing damage-queue saturation and live
+patch-unload limitations remain; restart when changing setups. Human translation
+review, game acceptance and upstream license/maintainer review remain open.
+Engineer recruitment accounting and new AI siege tactics are outside these packages.
+
+[Improved Tunnelers PR1](https://github.com/Monsterfisch/ImprovedTunnelers/pull/1) ·
+[Store PR42, branch 3.0.7](https://github.com/UnofficialCrusaderPatch/UCP3-extensions-store/pull/42) ·
+[Terrain audit](https://github.com/Krarilotus/ImprovedTunnelers/blob/fix/ucp-packaging-localization/UCP-TERRAIN-RESET.md) ·
+[Map Extensions prerequisite](https://github.com/Krarilotus/ucp-extension-map-extensions/pull/3)
