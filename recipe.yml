@@ -1746,5 +1746,5 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-custom-hotkeys
-          github-sha: 9e38f854b4b34e571eb3fba9de781c96a324fd46
+          github-sha: f2eced94523b9068057ca2585b878a3742f7c315
           github-tag: preview/gui-1.0.17-discovery-tags-0.2.2
