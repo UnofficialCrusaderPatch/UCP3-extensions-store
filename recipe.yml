@@ -523,7 +523,7 @@ extensions:
           method: github
           url: Krarilotus/ucp3-fixes
           github-sha: 2823529a7e22bba69a2a12aa8944f1192385ebd3
-          github-tag: fix/worker-delivery-poi
+          github-tag: main
           location: worker-delivery-fix
     - definition:
         name: ucp-autoclick
