@@ -1322,13 +1322,13 @@ extensions:
           github-tag: preview/gui-1.0.17-discovery-textresourcemodifier
     - definition:
         name: winProcHandler
-        version: 1.0.1
+        version: 1.0.2
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/ucp_winProcHandler
-          github-sha: fb343b294be324aaba30efdc0771ac7af4f56dd1
+          github-sha: 5db570fe3053c374550f8613d117f517223d9289
           github-tag: preview/gui-1.0.17-discovery-winprochandler
     - definition:
         name: rebalancer
@@ -1458,7 +1458,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp-extension-ai-ox-tethers
-          github-sha: 8dd37fd12cb517d6422f4410108c27789d7a9d03
+          github-sha: 59027ff1072102812ad1f7060695a5f404b6761c
           github-tag: preview/gui-1.0.17-discovery-ai-ox-tethers
     - definition:
         name: running-units
@@ -1498,7 +1498,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-map-layer-fixes
-          github-sha: f725400bbb169737fdb6a221629de767e39dce41
+          github-sha: 520a85e938222251fe1699960f8bf437ac615a2b
           github-tag: preview/gui-1.0.17-discovery-map-layer-fixes
 
     - definition:
