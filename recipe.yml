@@ -685,14 +685,14 @@ extensions:
           github-tag: main
     - definition:
         name: custom-projectiles
-        version: 1.8.9
+        version: 1.8.11
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/extension-projectileModifier
-          github-sha: e2bd9dadcc9f8eeb02f83d8cb2a1828f642cf9e9
-          github-tag: refactor/active-render-index
+          github-sha: b4e46f82298c2bfe27edd0118c3e23de748aba4a
+          github-tag: feature/native-target-scoring
     - definition:
         name: rebalancer
         version: 1.1.3
