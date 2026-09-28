@@ -836,14 +836,14 @@ extensions:
           github-tag: compat-0.51.0-651817dd3e88
     - definition:
         name: custom-hotkeys
-        version: 0.2.0
+        version: 0.2.1
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/extension-custom-hotkeys
-          github-sha: f00ea9582a655dec8b6a935b916365aec5213963
-          github-tag: v0.2.0
+          github-sha: 92738d7903534a5053c982ec02fbe152d50005f6
+          github-tag: v0.2.1
 
 # Draft GUI 1.0.17 translated discovery package versions.
     - definition:
@@ -1638,7 +1638,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 29866b17d872d23a1642c5895a91536149b0175a
+          github-sha: 761ea0c63c40398907fc5fd3001e84209f586646
           github-tag: fix/gui-1.0.17-fixes-family
           location: ucp3-fixes
     - definition:
@@ -1649,7 +1649,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 29866b17d872d23a1642c5895a91536149b0175a
+          github-sha: 761ea0c63c40398907fc5fd3001e84209f586646
           github-tag: fix/gui-1.0.17-fixes-family
           location: worker-delivery-fix
     - definition:
@@ -1660,7 +1660,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 29866b17d872d23a1642c5895a91536149b0175a
+          github-sha: 761ea0c63c40398907fc5fd3001e84209f586646
           github-tag: fix/gui-1.0.17-fixes-family
           location: gatehouse-capture-fix
     - definition:
@@ -1671,7 +1671,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 29866b17d872d23a1642c5895a91536149b0175a
+          github-sha: 761ea0c63c40398907fc5fd3001e84209f586646
           github-tag: fix/gui-1.0.17-fixes-family
           location: hunter-targeting-fix
 
@@ -1704,7 +1704,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp-extension-map-png
-          github-sha: 906fe92959100398b0999ae9925c970ecd04c054
+          github-sha: 06fcb45cda64cb4e9183a6a87124dde032c1fa6f
           github-tag: preview/gui-1.0.17-discovery-map-png
     - definition:
         name: fixed-engineers
@@ -1714,7 +1714,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: ab5b8f86df90bfeda2f441f372b7179671b6bdfe
+          github-sha: 8d3632b63b242e87c44973a3632f29f75d336246
           github-tag: preview/gui-1.0.17-fixed-engineers-tags
           location: fixed-engineers
     - definition:
