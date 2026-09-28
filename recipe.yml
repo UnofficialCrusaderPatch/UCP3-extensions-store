@@ -1501,6 +1501,62 @@ extensions:
           github-sha: f725400bbb169737fdb6a221629de767e39dce41
           github-tag: preview/gui-1.0.17-discovery-map-layer-fixes
 
+    - definition:
+        name: Ascension-AI
+        version: 1.0.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 4f78119c33538ff9ac44901d517d6ec593758048
+          github-tag: preview/gui-1.0.17-discovery-ascension-ai
+          location: extension-Ascension-AI
+    - definition:
+        name: Ascension-AI-Balance
+        version: 1.2.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 4f78119c33538ff9ac44901d517d6ec593758048
+          github-tag: preview/gui-1.0.17-discovery-ascension-ai
+          location: extension-Ascension-AI-Balance
+    - definition:
+        name: Ascension-Balance
+        version: 1.1.6
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 4f78119c33538ff9ac44901d517d6ec593758048
+          github-tag: preview/gui-1.0.17-discovery-ascension-ai
+          location: extension-Ascension-Balance
+    - definition:
+        name: Ascension-Maps
+        version: 1.0.4
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 4f78119c33538ff9ac44901d517d6ec593758048
+          github-tag: preview/gui-1.0.17-discovery-ascension-ai
+          location: extension-Ascension-Maps
+    - definition:
+        name: Ascension-Multiplayer
+        version: 1.0.14
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 4f78119c33538ff9ac44901d517d6ec593758048
+          github-tag: preview/gui-1.0.17-discovery-ascension-ai
+          location: extension-Ascension-Multiplayer
+
 # Pending 3.0.7 source review candidates; each keeps its separate acceptance gate.
     - definition:
         name: gmResourceModifier
@@ -1582,8 +1638,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 34348f9ea6d44bfe2690cb2d37f45ce6cd946b98
-          github-tag: main
+          github-sha: 29866b17d872d23a1642c5895a91536149b0175a
+          github-tag: fix/gui-1.0.17-fixes-family
           location: ucp3-fixes
     - definition:
         name: worker-delivery-fix
@@ -1593,8 +1649,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 34348f9ea6d44bfe2690cb2d37f45ce6cd946b98
-          github-tag: main
+          github-sha: 29866b17d872d23a1642c5895a91536149b0175a
+          github-tag: fix/gui-1.0.17-fixes-family
           location: worker-delivery-fix
     - definition:
         name: gatehouse-capture-fix
@@ -1604,8 +1660,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 34348f9ea6d44bfe2690cb2d37f45ce6cd946b98
-          github-tag: main
+          github-sha: 29866b17d872d23a1642c5895a91536149b0175a
+          github-tag: fix/gui-1.0.17-fixes-family
           location: gatehouse-capture-fix
     - definition:
         name: hunter-targeting-fix
@@ -1615,6 +1671,6 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 34348f9ea6d44bfe2690cb2d37f45ce6cd946b98
-          github-tag: main
+          github-sha: 29866b17d872d23a1642c5895a91536149b0175a
+          github-tag: fix/gui-1.0.17-fixes-family
           location: hunter-targeting-fix
