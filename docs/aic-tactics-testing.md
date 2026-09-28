@@ -9,8 +9,8 @@ For multiplayer, all peers must use the same bundle and configuration.
 No development runtime or newer scanner is required.
 
 This bundle includes GPL-3.0 licenses in AIC Tactics 0.0.17 and Files 1.4.2.
-Map Extensions remains 1.1.4 for explicit map/load context and rejected-load
-handling. Start a new match; old preview saves
+Map Extensions 1.1.5 matches the current Store recipe for map/load context.
+Start a new match; old preview saves
 and replays require their original package versions.
 
 Module ZIPs use the existing UCP store signatures. The outer bundle is only a container: extract it once, then copy the inner ZIPs and signatures. Do not put the outer ZIP in the modules folder.

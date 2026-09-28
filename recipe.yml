@@ -681,13 +681,13 @@ extensions:
     - definition:
         type: module
         name: map-extensions
-        version: 1.1.4
+        version: 1.1.5
       contents:
         source:
           method: github
           url: Krarilotus/ucp-extension-map-extensions
-          github-sha: 795d32b4ab60ff43dd9bd2f23d821d7ce7cfa5db
-          github-tag: fix/required-state-failure
+          github-sha: 683765703c5d79776b8154813e86912627f5bbf6
+          github-tag: fix/map-scenario-initialization
     - definition:
         name: protocol
         version: 1.1.7
