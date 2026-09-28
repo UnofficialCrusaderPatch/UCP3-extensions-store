@@ -526,6 +526,28 @@ extensions:
           github-tag: main
           location: worker-delivery-fix
     - definition:
+        name: gatehouse-capture-fix
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 13ee41ddb344d444701ba6285bf501783df6155d
+          github-tag: main
+          location: gatehouse-capture-fix
+    - definition:
+        name: hunter-targeting-fix
+        version: 0.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 13ee41ddb344d444701ba6285bf501783df6155d
+          github-tag: main
+          location: hunter-targeting-fix
+    - definition:
         name: ucp-autoclick
         version: 1.0.1
         type: module

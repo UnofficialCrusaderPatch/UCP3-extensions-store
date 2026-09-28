@@ -67,34 +67,40 @@ jobs:
         $candidateBuild = '${{ github.event_name }}' -eq 'workflow_dispatch' -and '${{ inputs.publish }}' -ne 'true'
         .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -IgnoreBranchMismatch:$candidateBuild -Debug
 
-    - name: Prepare signed worker-delivery test package
+    - name: Prepare signed Fixes test packages
       if: github.event_name == 'workflow_dispatch' && !inputs.publish
       shell: pwsh
       run: |
         Import-Module powershell-yaml
         $store = Get-Content .\build\store.yml -Raw | ConvertFrom-Yaml
-        $entry = @($store.extensions.list | Where-Object { $_.definition.name -eq 'worker-delivery-fix' -and $_.definition.version -eq '0.1.0' })
-        if ($entry.Count -ne 1) { throw 'Missing or ambiguous worker-delivery package' }
-        $package = @($entry[0].contents.package)
-        if ($package.Count -ne 1 -or $package[0].signature -notmatch '^[0-9a-fA-F]{1024}$') {
-          throw 'Missing worker-delivery signature'
+        foreach ($name in @('worker-delivery-fix', 'gatehouse-capture-fix', 'hunter-targeting-fix')) {
+          $entry = @($store.extensions.list | Where-Object { $_.definition.name -eq $name -and $_.definition.version -eq '0.1.0' })
+          if ($entry.Count -ne 1) { throw "Missing or ambiguous $name package" }
+          $package = @($entry[0].contents.package)
+          if ($package.Count -ne 1 -or $package[0].signature -notmatch '^[0-9a-fA-F]{1024}$') {
+            throw "Missing $name signature"
+          }
+          $archive = ".\build\extensions\$name-0.1.0.zip"
+          if (!(Test-Path -LiteralPath $archive)) { throw "Missing $name ZIP" }
+          if ((Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower() -ne $package[0].hash) {
+            throw "$name ZIP hash mismatch"
+          }
+          Set-Content -LiteralPath "$archive.sig" -Value $package[0].signature -Encoding ascii
         }
-        $archive = '.\build\extensions\worker-delivery-fix-0.1.0.zip'
-        if (!(Test-Path -LiteralPath $archive)) { throw 'Missing worker-delivery ZIP' }
-        if ((Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower() -ne $package[0].hash) {
-          throw 'Worker-delivery ZIP hash mismatch'
-        }
-        Set-Content -LiteralPath "$archive.sig" -Value $package[0].signature -Encoding ascii
 
-    - name: Upload signed worker-delivery test package
+    - name: Upload signed Fixes test packages
       if: github.event_name == 'workflow_dispatch' && !inputs.publish
       uses: actions/upload-artifact@v4
       with:
-        name: worker-delivery-test-${{ github.sha }}
+        name: fixes-test-${{ github.sha }}
         path: |
           build/extensions/worker-delivery-fix-0.1.0.zip
           build/extensions/worker-delivery-fix-0.1.0.zip.sig
-          docs/worker-delivery-testing.md
+          build/extensions/gatehouse-capture-fix-0.1.0.zip
+          build/extensions/gatehouse-capture-fix-0.1.0.zip.sig
+          build/extensions/hunter-targeting-fix-0.1.0.zip
+          build/extensions/hunter-targeting-fix-0.1.0.zip.sig
+          docs/fixes-test-setup.md
         if-no-files-found: error
 
     - name: Release store
