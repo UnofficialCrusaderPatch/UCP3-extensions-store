@@ -73,14 +73,15 @@ jobs:
       run: |
         Import-Module powershell-yaml
         $store = Get-Content .\build\store.yml -Raw | ConvertFrom-Yaml
-        foreach ($name in @('worker-delivery-fix', 'gatehouse-capture-fix', 'hunter-targeting-fix')) {
-          $entry = @($store.extensions.list | Where-Object { $_.definition.name -eq $name -and $_.definition.version -eq '0.1.0' })
+        foreach ($name in @('ucp3-fixes', 'worker-delivery-fix', 'gatehouse-capture-fix', 'hunter-targeting-fix')) {
+          $version = if ($name -eq 'ucp3-fixes') { '0.1.0' } else { '0.1.1' }
+          $entry = @($store.extensions.list | Where-Object { $_.definition.name -eq $name -and $_.definition.version -eq $version })
           if ($entry.Count -ne 1) { throw "Missing or ambiguous $name package" }
           $package = @($entry[0].contents.package)
           if ($package.Count -ne 1 -or $package[0].signature -notmatch '^[0-9a-fA-F]{1024}$') {
             throw "Missing $name signature"
           }
-          $archive = ".\build\extensions\$name-0.1.0.zip"
+          $archive = ".\build\extensions\$name-$version.zip"
           if (!(Test-Path -LiteralPath $archive)) { throw "Missing $name ZIP" }
           if ((Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower() -ne $package[0].hash) {
             throw "$name ZIP hash mismatch"
@@ -94,12 +95,14 @@ jobs:
       with:
         name: fixes-test-${{ github.sha }}
         path: |
-          build/extensions/worker-delivery-fix-0.1.0.zip
-          build/extensions/worker-delivery-fix-0.1.0.zip.sig
-          build/extensions/gatehouse-capture-fix-0.1.0.zip
-          build/extensions/gatehouse-capture-fix-0.1.0.zip.sig
-          build/extensions/hunter-targeting-fix-0.1.0.zip
-          build/extensions/hunter-targeting-fix-0.1.0.zip.sig
+          build/extensions/ucp3-fixes-0.1.0.zip
+          build/extensions/ucp3-fixes-0.1.0.zip.sig
+          build/extensions/worker-delivery-fix-0.1.1.zip
+          build/extensions/worker-delivery-fix-0.1.1.zip.sig
+          build/extensions/gatehouse-capture-fix-0.1.1.zip
+          build/extensions/gatehouse-capture-fix-0.1.1.zip.sig
+          build/extensions/hunter-targeting-fix-0.1.1.zip
+          build/extensions/hunter-targeting-fix-0.1.1.zip.sig
           docs/fixes-test-setup.md
         if-no-files-found: error
 
