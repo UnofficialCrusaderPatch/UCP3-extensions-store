@@ -786,7 +786,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aic-tactics
-          github-sha: 947d98b87a3dbddf631693cb0f580861afd1a3e0
+          github-sha: a89d9d2757a6cee7be483d834bb4151b4e0e5c4f
           github-tag: feat/larger-siege-force
     - definition:
         name: chat
