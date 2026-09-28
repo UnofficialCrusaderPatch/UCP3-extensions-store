@@ -148,7 +148,7 @@ foreach ($release in $sortedReleaseVersionsArray) {
       if ($AllowSuperseded) {
         Write-Warning "Latest released version is higher than the recipe version. This is probably not what you want"
       } else {
-        if ($rVariantVersions.Contains([semver]($version))) {
+        if ($rVariantVersions -contains [semver]($version)) {
           Write-Warning "Latest released version is higher than the recipe version. This is probably not what you want"
         } else {
           Throw "Error: Latest released version is higher than the recipe version. This is probably not what you want"
@@ -158,14 +158,58 @@ foreach ($release in $sortedReleaseVersionsArray) {
     
     $hit = $releaseStore.extensions.list | Where-Object { $_.definition.name -eq $name } | Where-Object { $_.definition.version -eq $version }
 
+    # Opt in per recipe: legacy entries may deliberately reuse older sources.
+    # A same-version correction must not silently reuse the superseded binary.
+    if ($extension.contents.source['rebuild-on-source-change'] -eq $true) {
+      $hit = $hit | Where-Object {
+        $cachedSource = $_.contents.source
+        $requestedSource = $extension.contents.source
+        if ($null -eq $cachedSource) { return $false }
+        $sameSource = -not [string]::IsNullOrWhiteSpace($requestedSource['github-sha'])
+        foreach ($field in @('method', 'url', 'github-sha', 'location', 'extension-type')) {
+          if ([string]$cachedSource[$field] -cne [string]$requestedSource[$field]) {
+            $sameSource = $false
+          }
+        }
+        $sameSource
+      }
+    }
+
     if ($null -ne $hit) {
       Write-Output "Found a binary"
       # Copy over the contents
       $extension.contents = $hit.contents
 
+      # Older signed packages can already contain translated tag labels even when
+      # their published Store entry predates discovery metadata. Read the exact
+      # cached archive, verifying its published hash, instead of rebuilding it.
+      if ($null -ne $extension.definition.tags -and @($extension.definition.tags).Count -gt 0 -and
+          ($null -eq $hit.contents['tag-locales'] -or $null -eq $hit.definition.capabilities)) {
+        $binary = @($hit.contents.package) | Select-Object -First 1
+        if ($null -eq $binary -or [string]::IsNullOrWhiteSpace($binary.url) -or
+            [string]::IsNullOrWhiteSpace($binary.hash)) {
+          throw "Cached package metadata is incomplete for $name@$version"
+        }
+        $cachedArchive = [IO.Path]::GetTempFileName()
+        try {
+          Invoke-WebRequest -Uri $binary.url -OutFile $cachedArchive | Out-Null
+          $actualHash = (Get-FileHash -Algorithm SHA256 -Path $cachedArchive).Hash.ToLowerInvariant()
+          if ($actualHash -cne ([string]$binary.hash).ToLowerInvariant()) {
+            throw "Cached package hash mismatch for $name@$version"
+          }
+          $discovery = Get-ExtensionDiscoveryMetadata -ArchivePath $cachedArchive -Languages $recipe['supported-languages']
+          $extension.definition.capabilities = $discovery.Capabilities
+          $extension.contents['tag-locales'] = $discovery.TagLocales
+        }
+        finally { Remove-Item -LiteralPath $cachedArchive -Force -ErrorAction Ignore }
+      }
+
       $store.extensions.list | 
       Where-Object { $_.definition.name -eq $extension.definition.name -and $_.definition.version -eq $extension.definition.version } |
-      ForEach-Object { $_.contents = $hit.contents }
+      ForEach-Object {
+        $_.definition.capabilities = $extension.definition.capabilities
+        $_.contents = $extension.contents
+      }
 
       $extensionsToBeBuilt.Remove($extension) | Out-Null
       $resolvedExtensions.Add($extension) | Out-Null
