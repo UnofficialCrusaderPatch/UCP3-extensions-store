@@ -836,11 +836,11 @@ extensions:
           github-tag: compat-0.51.0-651817dd3e88
     - definition:
         name: custom-hotkeys
-        version: 0.1.12
+        version: 0.2.0
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/extension-custom-hotkeys
-          github-sha: 14492bcbfd5ef386f6de740df9a3e9979969fbf1
-          github-tag: v0.1.12
+          github-sha: f00ea9582a655dec8b6a935b916365aec5213963
+          github-tag: v0.2.0
