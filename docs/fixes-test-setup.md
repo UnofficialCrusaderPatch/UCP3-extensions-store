@@ -1,4 +1,4 @@
-# UCP3 Fixes 0.1.2 test setup
+# UCP3 Fixes 0.1.3 test setup
 
 TL;DR: fixes worker deliveries, hunters, gatehouses, siege crews and AI hop-farm counting.
 
@@ -28,3 +28,7 @@ not an accepted Store release. The Store build is run with publication disabled.
 Native gameplay, installed GUI, composition, editor/save/replay, performance and
 additional supported executable variants remain pending. Multiplayer testing belongs to players.
 Gatehouse Fixes comes from its author's pending integration PR; no native code is copied into Fixes.
+
+Every inner package includes its original author and CREDITS.md. Translated tags
+use the launcher discovery system. The fixes are compatible dependencies, not
+exclusive family choices. This metadata update does not change gameplay code.

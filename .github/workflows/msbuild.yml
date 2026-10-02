@@ -67,6 +67,10 @@ jobs:
         $candidateBuild = '${{ github.event_name }}' -eq 'workflow_dispatch' -and '${{ inputs.publish }}' -ne 'true'
         .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -IgnoreBranchMismatch:$candidateBuild -Debug
 
+    - name: Check package discovery metadata
+      shell: pwsh
+      run: .\scripts\test-extension-discovery.ps1
+
     - name: Prepare signed Fixes test packages
       if: github.event_name == 'workflow_dispatch' && !inputs.publish
       shell: pwsh
@@ -74,6 +78,7 @@ jobs:
         Import-Module powershell-yaml
         $store = Get-Content .\build\store.yml -Raw | ConvertFrom-Yaml
         New-Item -ItemType Directory -Path '.\build\fixes-testing\modules' -Force | Out-Null
+        $discoveryEvidence = @()
         $digests = foreach ($moduleName in @('ucp3-fixes', 'worker-delivery-fix', 'gatehouse-capture-fix', 'hunter-targeting-fix', 'fixed-engineers', 'hopfarm-limit-fix', 'smarter-gatehouses')) {
           $entry = @($store.extensions.list | Where-Object { $_.definition.name -eq $moduleName })
           if ($entry.Count -ne 1 -or $entry[0].definition.type -ne 'module') {
@@ -91,7 +96,9 @@ jobs:
           $digest = (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower()
           if ($digest -ne $package[0].hash) { throw "$name ZIP hash mismatch" }
           Set-Content -LiteralPath "$archive.sig" -Value $package[0].signature -Encoding ascii
-          Copy-Item -LiteralPath $archive, "$archive.sig" -Destination '.\build\fixes-testing\modules'
+          ConvertTo-Json -InputObject $discoveryEvidence -Depth 30 | Set-Content -LiteralPath '.\build\fixes-testing\DISCOVERY.json' -Encoding utf8
+        Copy-Item -LiteralPath $archive, "$archive.sig" -Destination '.\build\fixes-testing\modules'
+          $discoveryEvidence += @{ definition = $entry[0].definition; 'tag-locales' = $entry[0].contents['tag-locales'] }
           "$digest  modules/$name.zip"
         }
         Copy-Item -LiteralPath '.\docs\fixes-test-setup.md' -Destination '.\build\fixes-testing\README.md'
