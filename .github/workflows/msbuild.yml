@@ -96,11 +96,11 @@ jobs:
           $digest = (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower()
           if ($digest -ne $package[0].hash) { throw "$name ZIP hash mismatch" }
           Set-Content -LiteralPath "$archive.sig" -Value $package[0].signature -Encoding ascii
-          ConvertTo-Json -InputObject $discoveryEvidence -Depth 30 | Set-Content -LiteralPath '.\build\fixes-testing\DISCOVERY.json' -Encoding utf8
-        Copy-Item -LiteralPath $archive, "$archive.sig" -Destination '.\build\fixes-testing\modules'
+          Copy-Item -LiteralPath $archive, "$archive.sig" -Destination '.\build\fixes-testing\modules'
           $discoveryEvidence += @{ definition = $entry[0].definition; 'tag-locales' = $entry[0].contents['tag-locales'] }
           "$digest  modules/$name.zip"
         }
+        ConvertTo-Json -InputObject $discoveryEvidence -Depth 30 | Set-Content -LiteralPath '.\build\fixes-testing\DISCOVERY.json' -Encoding utf8
         Copy-Item -LiteralPath '.\docs\fixes-test-setup.md' -Destination '.\build\fixes-testing\README.md'
         Set-Content -LiteralPath '.\build\fixes-testing\SHA256SUMS.txt' -Value $digests -Encoding ascii
 
