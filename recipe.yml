@@ -493,14 +493,36 @@ extensions:
           github-tag: main
 # Modules
     - definition:
-        name: ucp3-fixes
-        version: 0.1.0
+        name: fixed-engineers
+        version: 0.2.0
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 34348f9ea6d44bfe2690cb2d37f45ce6cd946b98
+          github-sha: ea97dccc8ef760ee0afffa6312296fa1d9096031
+          github-tag: main
+          location: fixed-engineers
+    - definition:
+        name: smarter-gatehouses
+        version: 1.0.3
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/SmarterGatehouses
+          github-sha: 1c1321eb3157dbdbba9aa35beb5ed7fd60cdffeb
+          github-tag: fix/ucp-package-integration
+          location: module
+    - definition:
+        name: ucp3-fixes
+        version: 0.1.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: ea97dccc8ef760ee0afffa6312296fa1d9096031
           github-tag: main
           location: ucp3-fixes
     - definition:

@@ -1,19 +1,30 @@
-# Fixes test setup for UCP 3.0.7
+# UCP3 Fixes 0.1.2 test setup
 
-Extract the outer download once. Copy the four module ZIPs and their matching
-`.zip.sig` files into `ucp/modules/` without extracting the module ZIPs. In
-UCP 3.0.7 Content, select **UCP3 Fixes** to activate all three fixes together.
-The upcoming family-enabled launcher groups them beneath that bundle; the
-current launcher lists them separately. Each fix can also be selected alone.
-Their switches are under **Bugfixes** and are ON by default. Restart the game
-after changing a switch. No other optional module is needed.
+TL;DR: fixes worker deliveries, hunters, gatehouses, siege crews and AI hop-farm counting.
 
-- [ ] **Deliveries:** Block the keep route but leave a worker route to a granary or armory open. Workers should still deliver, and the AI should keep the store.
-- [ ] **Gatehouses:** Kill the last defender while a living attacker remains. A visible corpse should not keep control. Repeat with a dead attacker and living defender.
-- [ ] **Hunters:** Place a deer beside a hunter's hut. Then block a shot with terrain or a wall; the hunter should move closer and try again.
-- [ ] Turn each switch OFF and restart to compare with the original behavior.
-- [ ] Repeat representative cases in normal Crusader and Extreme, including save/load and replay. Check that a renamed save opens as a `.map` in the editor.
+Extract the outer download once. Copy the seven module ZIPs and matching `.zip.sig`
+files from `modules/` into `ucp/modules/`. Do not extract the inner ZIPs. Select
+**UCP3 Fixes** in Content. Each fix can also be selected alone. Restart after
+changing a setting. Disable the older Unit Behaviour Fixes preview when using
+Fixed Engineers; it patches the same crew/command behavior.
 
-These are signed **test candidates**. Native bindings, isolated branches,
-packaging and localization have been checked; the listed gameplay and editor
-cases remain pending. Multiplayer testing belongs to players.
+Simple fixes are ON by default under **Bugfixes**; hop-farm counting is under
+**AI > Fixes**. Gatehouse stairs are optional, OFF by default under **Balance Changes**.
+The bundle adds no duplicate settings. Its contents are signed test candidates,
+not an accepted Store release. The Store build is run with publication disabled.
+
+- [ ] Workers deliver to a reachable granary/armory even with the keep route blocked.
+- [ ] Fallen troops do not capture or defend gates; own/allied/captured gates remain usable.
+- [ ] Gate closing works from each side; unreachable enemies do not close an inner gate.
+- [ ] Hunters choose nearby deer and move closer when a shot is blocked.
+- [ ] Engineers retain health when leaving equipment; destroyed/burning equipment clears crews correctly.
+- [ ] Catapults/trebuchets stop to attack, then aim, reload and fire normally.
+- [ ] AI hop farms count toward the existing farm limit without changing that limit.
+- [ ] Each switch appears once; OFF choices survive restart and applying the bundle.
+- [ ] Repeat in normal Crusader and Extreme with save/load, matching-setup replay and other enabled modules.
+- [ ] A save renamed to `.map` remains usable in the editor without these optional modules.
+- [ ] Check long/RTL translations and performance in a busy match.
+
+Native gameplay, installed GUI, composition, editor/save/replay, performance and
+additional supported executable variants remain pending. Multiplayer testing belongs to players.
+Gatehouse Fixes comes from its author's pending integration PR; no native code is copied into Fixes.
