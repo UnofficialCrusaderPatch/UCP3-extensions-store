@@ -554,8 +554,9 @@ extensions:
       contents:
         source:
           method: github
+          rebuild-on-source-change: true
           url: Krarilotus/ucp3-fixes
-          github-sha: 34348f9ea6d44bfe2690cb2d37f45ce6cd946b98
+          github-sha: ea97dccc8ef760ee0afffa6312296fa1d9096031
           github-tag: main
           location: worker-delivery-fix
     - definition:
@@ -565,8 +566,9 @@ extensions:
       contents:
         source:
           method: github
+          rebuild-on-source-change: true
           url: Krarilotus/ucp3-fixes
-          github-sha: 34348f9ea6d44bfe2690cb2d37f45ce6cd946b98
+          github-sha: ea97dccc8ef760ee0afffa6312296fa1d9096031
           github-tag: main
           location: gatehouse-capture-fix
     - definition:
@@ -576,8 +578,9 @@ extensions:
       contents:
         source:
           method: github
+          rebuild-on-source-change: true
           url: Krarilotus/ucp3-fixes
-          github-sha: 34348f9ea6d44bfe2690cb2d37f45ce6cd946b98
+          github-sha: ea97dccc8ef760ee0afffa6312296fa1d9096031
           github-tag: main
           location: hunter-targeting-fix
     - definition:
