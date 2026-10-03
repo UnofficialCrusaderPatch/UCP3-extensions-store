@@ -1,4 +1,4 @@
-# UCP3 Fixes 0.1.3 test setup
+# UCP3 Fixes 0.1.4 test setup
 
 TL;DR: fixes worker deliveries, hunters, gatehouses, siege crews and AI hop-farm counting.
 
@@ -8,8 +8,10 @@ files from `modules/` into `ucp/modules/`. Do not extract the inner ZIPs. Select
 changing a setting. Disable the older Unit Behaviour Fixes preview when using
 Fixed Engineers; it patches the same crew/command behavior.
 
-Simple fixes are ON by default under **Bugfixes**; hop-farm counting is under
-**AI > Fixes**. Gatehouse stairs are optional, OFF by default under **Balance Changes**.
+Selecting **UCP3 Fixes** applies its recommended setup: every fix ON, optional
+gatehouse stairs OFF. These are suggestions; switches you already changed keep
+your value. Simple fixes are under **Bugfixes**; hop-farm counting is under
+**AI > Fixes**; gatehouse stairs are under **Balance Changes**.
 The bundle adds no duplicate settings. Its contents are signed test candidates,
 not an accepted Store release. The Store build is run with publication disabled.
 
@@ -20,6 +22,7 @@ not an accepted Store release. The Store build is run with publication disabled.
 - [ ] Engineers retain health when leaving equipment; destroyed/burning equipment clears crews correctly.
 - [ ] Catapults/trebuchets stop to attack, then aim, reload and fire normally.
 - [ ] AI hop farms count toward the existing farm limit without changing that limit.
+- [ ] A fresh bundle selection shows every fix ON and both stairs switches OFF.
 - [ ] Each switch appears once; OFF choices survive restart and applying the bundle.
 - [ ] Repeat in normal Crusader and Extreme with save/load, matching-setup replay and other enabled modules.
 - [ ] A save renamed to `.map` remains usable in the editor without these optional modules.
@@ -30,5 +33,5 @@ additional supported executable variants remain pending. Multiplayer testing bel
 Gatehouse Fixes comes from its author's pending integration PR; no native code is copied into Fixes.
 
 Every inner package includes its original author and CREDITS.md. Translated tags
-use the launcher discovery system. The fixes are compatible dependencies, not
-exclusive family choices. This metadata update does not change gameplay code.
+use the launcher discovery system. The bundle is the root of the UCP3 Fixes
+family; the fixes are compatible dependencies, not exclusive family choices. This metadata update does not change gameplay code.
