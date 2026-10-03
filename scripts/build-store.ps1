@@ -26,6 +26,7 @@ if (!(Get-Module -ListAvailable -Name powershell-yaml)) {
 }
 
 Import-Module powershell-yaml
+. "$PSScriptRoot/extension-discovery.ps1"
 # Import-Module "$($PSScriptRoot)\fix-dependency-statement.ps1"
 
 $recipe = Get-Content .\recipe.yml | ConvertFrom-Yaml
@@ -179,9 +180,36 @@ foreach ($release in $sortedReleaseVersionsArray) {
       # Copy over the contents
       $extension.contents = $hit.contents
 
+      # Older signed packages can already contain translated tag labels even when
+      # their published Store entry predates discovery metadata. Read the exact
+      # cached archive, verifying its published hash, instead of rebuilding it.
+      if ($null -ne $extension.definition.tags -and @($extension.definition.tags).Count -gt 0 -and
+          ($null -eq $hit.contents['tag-locales'] -or $null -eq $hit.definition.capabilities)) {
+        $binary = @($hit.contents.package) | Select-Object -First 1
+        if ($null -eq $binary -or [string]::IsNullOrWhiteSpace($binary.url) -or
+            [string]::IsNullOrWhiteSpace($binary.hash)) {
+          throw "Cached package metadata is incomplete for $name@$version"
+        }
+        $cachedArchive = [IO.Path]::GetTempFileName()
+        try {
+          Invoke-WebRequest -Uri $binary.url -OutFile $cachedArchive | Out-Null
+          $actualHash = (Get-FileHash -Algorithm SHA256 -Path $cachedArchive).Hash.ToLowerInvariant()
+          if ($actualHash -cne ([string]$binary.hash).ToLowerInvariant()) {
+            throw "Cached package hash mismatch for $name@$version"
+          }
+          $discovery = Get-ExtensionDiscoveryMetadata -ArchivePath $cachedArchive -Languages $recipe['supported-languages']
+          $extension.definition.capabilities = $discovery.Capabilities
+          $extension.contents['tag-locales'] = $discovery.TagLocales
+        }
+        finally { Remove-Item -LiteralPath $cachedArchive -Force -ErrorAction Ignore }
+      }
+
       $store.extensions.list | 
       Where-Object { $_.definition.name -eq $extension.definition.name -and $_.definition.version -eq $extension.definition.version } |
-      ForEach-Object { $_.contents = $hit.contents }
+      ForEach-Object {
+        $_.definition.capabilities = $extension.definition.capabilities
+        $_.contents = $extension.contents
+      }
 
       $extensionsToBeBuilt.Remove($extension) | Out-Null
       $resolvedExtensions.Add($extension) | Out-Null
@@ -391,9 +419,14 @@ foreach ($extension in $extensionsToBeBuilt) {
 
   }
 
+  $discovery = Get-ExtensionDiscoveryMetadata -ArchivePath $path -Languages $recipe['supported-languages']
   $store.extensions.list | 
   Where-Object { $_.definition.name -eq $extension.definition.name -and $_.definition.version -eq $extension.definition.version } |
-  ForEach-Object { $_.contents.package = $package }
+  ForEach-Object {
+    $_.contents.package = $package
+    $_.definition.capabilities = $discovery.Capabilities
+    $_.contents['tag-locales'] = $discovery.TagLocales
+  }
 
   $description = [System.Collections.ArrayList]::new()
   foreach ($lang in $recipe['supported-languages']) {
