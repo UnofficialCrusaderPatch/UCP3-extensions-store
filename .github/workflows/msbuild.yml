@@ -1,7 +1,12 @@
 name: Build and release store
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the built store (requires the matching version branch)
+        type: boolean
+        default: false
   push:
     branches:
       - "[0-9]+.[0-9]+.[0-9]+"
@@ -59,9 +64,56 @@ jobs:
       run: |
         # Legacy framework scripts do not check every native tool exit code.
         $PSNativeCommandUseErrorActionPreference = $true
-        .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -Debug
+        $candidateBuild = '${{ github.event_name }}' -eq 'workflow_dispatch' -and '${{ inputs.publish }}' -ne 'true'
+        .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -IgnoreBranchMismatch:$candidateBuild -Debug
+
+    - name: Check package discovery metadata
+      shell: pwsh
+      run: .\scripts\test-extension-discovery.ps1
+
+    - name: Prepare signed Fixes test packages
+      if: github.event_name == 'workflow_dispatch' && !inputs.publish
+      shell: pwsh
+      run: |
+        Import-Module powershell-yaml
+        $store = Get-Content .\build\store.yml -Raw | ConvertFrom-Yaml
+        New-Item -ItemType Directory -Path '.\build\fixes-testing\modules' -Force | Out-Null
+        $discoveryEvidence = @()
+        $digests = foreach ($moduleName in @('ucp3-fixes', 'worker-delivery-fix', 'gatehouse-capture-fix', 'hunter-targeting-fix', 'fixed-engineers', 'hopfarm-limit-fix', 'smarter-gatehouses')) {
+          $entry = @($store.extensions.list | Where-Object { $_.definition.name -eq $moduleName })
+          if ($entry.Count -ne 1 -or $entry[0].definition.type -ne 'module') {
+            throw "Missing or ambiguous testing module: $moduleName"
+          }
+          $name = "$moduleName-$($entry[0].definition.version)"
+          $package = @($entry[0].contents.package)
+          if ($package.Count -ne 1 -or $package[0].signature -notmatch '^[0-9a-fA-F]{1024}$') {
+            throw "Missing or ambiguous $name signature"
+          }
+          $archive = ".\build\extensions\$name.zip"
+          if (!(Test-Path -LiteralPath $archive)) {
+            Invoke-WebRequest -Uri $package[0].url -OutFile $archive
+          }
+          $digest = (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLower()
+          if ($digest -ne $package[0].hash) { throw "$name ZIP hash mismatch" }
+          Set-Content -LiteralPath "$archive.sig" -Value $package[0].signature -Encoding ascii
+          Copy-Item -LiteralPath $archive, "$archive.sig" -Destination '.\build\fixes-testing\modules'
+          $discoveryEvidence += @{ definition = $entry[0].definition; 'tag-locales' = $entry[0].contents['tag-locales'] }
+          "$digest  modules/$name.zip"
+        }
+        ConvertTo-Json -InputObject $discoveryEvidence -Depth 30 | Set-Content -LiteralPath '.\build\fixes-testing\DISCOVERY.json' -Encoding utf8
+        Copy-Item -LiteralPath '.\docs\fixes-test-setup.md' -Destination '.\build\fixes-testing\README.md'
+        Set-Content -LiteralPath '.\build\fixes-testing\SHA256SUMS.txt' -Value $digests -Encoding ascii
+
+    - name: Upload signed Fixes test packages
+      if: github.event_name == 'workflow_dispatch' && !inputs.publish
+      uses: actions/upload-artifact@v4
+      with:
+        name: fixes-testing-bundle
+        path: build/fixes-testing/
+        if-no-files-found: error
 
     - name: Release store
+      if: github.ref_name == '3.0.7' && (github.event_name == 'push' || inputs.publish)
       shell: |
         pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
       env:
