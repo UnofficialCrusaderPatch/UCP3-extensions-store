@@ -69,4 +69,34 @@ Test-Package @{ 'definition.yml' = "name: minimal`nversion: 1.0.0" } {
   Assert-Equal $metadata.Capabilities.options $false 'Missing options'
   Assert-Equal $metadata.TagLocales.Count 0 'Old package without tags'
 }
-Write-Output 'Packaged discovery metadata checks passed.'
+
+Test-Package @{
+  'definition.yml' = "name: bare`nversion: 1.0.0`nfamily:`n- name: ai`n  root: true"
+  'locale/en.yml' = "family.ai: AI Behaviour`nfamily.ai.configuration: Bare`nfamily.unused: Ignored"
+  'locale/de.yml' = "family.ai: KI-Verhalten`nfamily.ai.configuration: Ohne Einstellungen"
+  'locale/fa.yml' = "family.ai: 7`nfamily.ai.configuration: '  '"
+} {
+  param($metadata)
+  Assert-Equal $metadata.FamilyLocales.en.ai 'AI Behaviour' 'Family display label'
+  Assert-Equal $metadata.FamilyLocales.de.'ai.configuration' 'Ohne Einstellungen' 'Configuration display label'
+  Assert-Equal $metadata.FamilyLocales.en.ContainsKey('unused') $false 'Ignore undeclared families'
+  Assert-Equal $metadata.FamilyLocales.ContainsKey('fa') $false 'Ignore malformed family labels'
+}
+
+$root = @{ definition = @{ name = 'bare'; version = '1.0.0'; family = @(@{ name = 'ai'; root = $true }) } }
+$member = @{ definition = @{ name = 'applied'; family = @(@{ name = 'ai' }) } }
+$rootVersion = @{ definition = @{ name = 'bare'; version = '1.1.0'; family = @(@{ name = 'ai'; root = $true }) } }
+Assert-ExtensionFamilyCatalog @($root, $rootVersion, $member)
+foreach ($invalid in @(
+    @($member),
+    @($root),
+    @($root, @{ definition = @{ name = 'applied'; family = @(@{ name = 'ai'; root = $true }) } }),
+    @($root, @{ definition = @{ name = 'applied'; family = @(@{ name = 'ai'; root = 'yes' }) } }),
+    @($root, @{ definition = @{ name = 'applied'; family = @(@{ name = 'ai' }, @{ name = 'ai' }) } })
+)) {
+  $rejected = $false
+  try { Assert-ExtensionFamilyCatalog $invalid }
+  catch { $rejected = $true }
+  Assert-Equal $rejected $true 'Reject invalid catalog family'
+}
+Write-Output 'Packaged discovery metadata and catalog family checks passed.'

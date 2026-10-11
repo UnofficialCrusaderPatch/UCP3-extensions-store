@@ -92,6 +92,7 @@ foreach ($extension in $extensions) {
   $extension.definition = $definition
 }
 
+Assert-ExtensionFamilyCatalog -Extensions $extensions
 $store = $recipe | ConvertTo-Yaml | ConvertFrom-Yaml
 
 $resolvedExtensions = [System.Collections.ArrayList]::new()
@@ -183,8 +184,10 @@ foreach ($release in $sortedReleaseVersionsArray) {
       # Older signed packages can already contain translated tag labels even when
       # their published Store entry predates discovery metadata. Read the exact
       # cached archive, verifying its published hash, instead of rebuilding it.
-      if ($null -ne $extension.definition.tags -and @($extension.definition.tags).Count -gt 0 -and
-          ($null -eq $hit.contents['tag-locales'] -or $null -eq $hit.definition.capabilities)) {
+      if ((@($extension.definition.tags | Where-Object { $null -ne $_ }).Count -gt 0 -or
+           @($extension.definition.family | Where-Object { $null -ne $_ }).Count -gt 0) -and
+          ($null -eq $hit.contents['tag-locales'] -or $null -eq $hit.definition.capabilities -or
+           ($null -ne $extension.definition.family -and $null -eq $hit.contents['family-locales']))) {
         $binary = @($hit.contents.package) | Select-Object -First 1
         if ($null -eq $binary -or [string]::IsNullOrWhiteSpace($binary.url) -or
             [string]::IsNullOrWhiteSpace($binary.hash)) {
@@ -200,6 +203,7 @@ foreach ($release in $sortedReleaseVersionsArray) {
           $discovery = Get-ExtensionDiscoveryMetadata -ArchivePath $cachedArchive -Languages $recipe['supported-languages']
           $extension.definition.capabilities = $discovery.Capabilities
           $extension.contents['tag-locales'] = $discovery.TagLocales
+          $extension.contents['family-locales'] = $discovery.FamilyLocales
         }
         finally { Remove-Item -LiteralPath $cachedArchive -Force -ErrorAction Ignore }
       }
@@ -426,6 +430,7 @@ foreach ($extension in $extensionsToBeBuilt) {
     $_.contents.package = $package
     $_.definition.capabilities = $discovery.Capabilities
     $_.contents['tag-locales'] = $discovery.TagLocales
+    $_.contents['family-locales'] = $discovery.FamilyLocales
   }
 
   $description = [System.Collections.ArrayList]::new()

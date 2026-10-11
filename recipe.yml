@@ -884,7 +884,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-Aggressive-AI-Behaviour
-          github-sha: d0cbd79a4609d78d5104a5177b783017eea471e4
+          github-sha: c697e4c2e1901e7ed856eb1ed4ab8b858e2e1055
           github-tag: preview/gui-1.0.17-discovery-aggressive-ai-behaviour
     - definition:
         name: Aggressive-AI-Behaviour-Applied
@@ -894,7 +894,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-Aggressive-AI-Behaviour-Applied
-          github-sha: 401901562503500525bd7beacfadf52a89a33c75
+          github-sha: cf6133f3b8c290db0a99b88987e0afba04b76257
           github-tag: preview/gui-1.0.17-discovery-aggressive-ai-behaviour-applied
     - definition:
         name: ApeX-AI-Behaviour
@@ -904,7 +904,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-ApeX-AI-Behaviour
-          github-sha: c5237c49ee160d7abf260dc57380cf2825ce0492
+          github-sha: d0703fb1bb064b23a7a994e1a49dd7bde60c3505
           github-tag: preview/gui-1.0.17-discovery-apex-ai-behaviour
     - definition:
         name: ApeX-AI-Behaviour-Applied
@@ -914,7 +914,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-ApeX-AI-Behaviour-Applied
-          github-sha: 3e950ece004d93740072782f831655788dd16457
+          github-sha: 8dcfcf5224b9df8aabe472b23c01ed6f64de77c7
           github-tag: preview/gui-1.0.17-discovery-apex-ai-behaviour-applied
     - definition:
         name: Vanilla-Interpretation-Castles
@@ -924,7 +924,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-Vanilla-Interpretation-Castles
-          github-sha: eeeae2648dd162970845312f53d6681da47db5fa
+          github-sha: 37156dd6a5da6f3ccb18b63575addcc886ee2f28
           github-tag: preview/gui-1.0.17-discovery-vanilla-interpretation-castles
     - definition:
         name: Vanilla-Interpretation-Castles-Applied
@@ -934,7 +934,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-Vanilla-Interpretation-Castles-Applied
-          github-sha: bd6a92f34da34f3c9b74d78de82a9f624fc37aa8
+          github-sha: 24b838b81aeae9fe7bc1baeebc8a69586c408b9e
           github-tag: preview/gui-1.0.17-discovery-vanilla-interpretation-castles-applied
     - definition:
         name: Vanilla-Retraced-Unlocked
@@ -1448,7 +1448,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-ucp2-legacy
-          github-sha: ea9bb9f86f13986ad1d536bd9d5c9c3d08bc1dbb
+          github-sha: 42d9c4746a05dc1a82508d423ead63d6bc5bde6c
           github-tag: preview/gui-1.0.17-discovery-ucp2-legacy
     - definition:
         name: ai-ox-tethers
@@ -1694,7 +1694,7 @@ extensions:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aiSwapper
-          github-sha: f8faca6f70118be5db260729c763df6350d3e1a9
+          github-sha: 7164e482f64d363dc749ac024c15665f5c48afaf
           github-tag: preview/gui-1.0.17-discovery-aiswapper
     - definition:
         name: map-png
@@ -1704,7 +1704,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp-extension-map-png
-          github-sha: 06fcb45cda64cb4e9183a6a87124dde032c1fa6f
+          github-sha: 906fe92959100398b0999ae9925c970ecd04c054
           github-tag: preview/gui-1.0.17-discovery-map-png
     - definition:
         name: fixed-engineers
@@ -1725,19 +1725,19 @@ extensions:
         source:
           method: github
           url: Krarilotus/ImprovedTunnelers
-          github-sha: 0f230426d6cba41fdc0483498c27612d6a382d9f
-          github-tag: preview/gui-1.0.17-tunneler-tags
+          github-sha: d8bdafef485f976c1a96322db4d93c3a6a1c7619
+          github-tag: fix/ucp-packaging-localization
           location: module
     - definition:
-        type: module
         name: map-extensions
         version: 1.1.6
+        type: module
       contents:
         source:
           method: github
           url: Krarilotus/ucp-extension-map-extensions
-          github-sha: 84100dcda1fb7480ca3099c72f7f632660662c1d
-          github-tag: preview/gui-1.0.17-map-extensions-tags
+          github-sha: 4eb6569f762fc947505db852f7d43a2dc674a30c
+          github-tag: fix/map-scenario-initialization
     - definition:
         name: custom-hotkeys
         version: 0.2.2
@@ -1748,3 +1748,115 @@ extensions:
           url: Krarilotus/extension-custom-hotkeys
           github-sha: f2eced94523b9068057ca2585b878a3742f7c315
           github-tag: preview/gui-1.0.17-discovery-tags-0.2.2
+    - definition:
+        name: fixed-engineers
+        version: 0.2.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: c354ef98f8cbbe8c756f43ce8d6dbb93950f8f05
+          github-tag: main
+          location: fixed-engineers
+    - definition:
+        name: smarter-gatehouses
+        version: 1.0.4
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/SmarterGatehouses
+          github-sha: 735d240926cb390c53cd7e96c83b1477d935cfd3
+          github-tag: fix/ucp-package-integration
+          location: module
+    - definition:
+        name: aiv-troops-behaviour
+        version: 0.2.5
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 30d2b4e62a701a577fe91f16e758fd40638e4bd2
+          github-tag: main
+          location: aiv-troops-behaviour
+    - definition:
+        name: hopfarm-limit-fix
+        version: 0.1.4
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 30d2b4e62a701a577fe91f16e758fd40638e4bd2
+          github-tag: main
+          location: hopfarm-limit-fix
+    - definition:
+        name: worker-delivery-fix
+        version: 0.1.2
+        type: module
+      contents:
+        source:
+          method: github
+          rebuild-on-source-change: true
+          url: Krarilotus/ucp3-fixes
+          github-sha: c354ef98f8cbbe8c756f43ce8d6dbb93950f8f05
+          github-tag: main
+          location: worker-delivery-fix
+    - definition:
+        name: gatehouse-capture-fix
+        version: 0.1.2
+        type: module
+      contents:
+        source:
+          method: github
+          rebuild-on-source-change: true
+          url: Krarilotus/ucp3-fixes
+          github-sha: c354ef98f8cbbe8c756f43ce8d6dbb93950f8f05
+          github-tag: main
+          location: gatehouse-capture-fix
+    - definition:
+        name: hunter-targeting-fix
+        version: 0.1.2
+        type: module
+      contents:
+        source:
+          method: github
+          rebuild-on-source-change: true
+          url: Krarilotus/ucp3-fixes
+          github-sha: c354ef98f8cbbe8c756f43ce8d6dbb93950f8f05
+          github-tag: main
+          location: hunter-targeting-fix
+    - definition:
+        name: improved-tunnelers
+        version: 1.7.4
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ImprovedTunnelers
+          github-sha: e42ec332959e79e84d23bf2600959286aa14bb3e
+          github-tag: preview/gui-1.0.17-tunneler-tags
+          location: module
+    - definition:
+        name: map-extensions
+        version: 1.1.7
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-map-extensions
+          github-sha: 637b64352a86f11845c16b11287d98bd4f111ecb
+          github-tag: preview/gui-1.0.17-map-extensions-tags
+    - definition:
+        name: ucp3-fixes
+        version: 0.1.5
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 686a6182e3cf1fefb58024b79912a374ba5c92d8
+          github-tag: preview/gui-1.0.17-fixes-bundle-discovery
+          location: ucp3-fixes
