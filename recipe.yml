@@ -1781,7 +1781,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ImprovedTunnelers
-          github-sha: e42ec332959e79e84d23bf2600959286aa14bb3e
+          github-sha: 518db4b2ed835d6ff3f705d208ac61131805e7be
           github-tag: preview/gui-1.0.17-tunneler-tags
           location: module
     - definition:
@@ -1792,7 +1792,7 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp-extension-map-extensions
-          github-sha: 637b64352a86f11845c16b11287d98bd4f111ecb
+          github-sha: 0ca9c6bf7fc95eebaa14c6af34f8602ee3eb0ca8
           github-tag: preview/gui-1.0.17-map-extensions-tags
     - definition:
         name: ucp3-fixes
