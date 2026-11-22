@@ -449,6 +449,17 @@ extensions:
           github-tag: main
           location: aiv-troops-behaviour
     - definition:
+        name: aiv-troops-behaviour
+        version: 0.2.5
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 30d2b4e62a701a577fe91f16e758fd40638e4bd2
+          github-tag: main
+          location: aiv-troops-behaviour
+    - definition:
         name: hopfarm-limit-fix
         version: 0.1.2
         type: module
