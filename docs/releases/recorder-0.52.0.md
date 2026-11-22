@@ -29,7 +29,12 @@ the module-setup matrix and mutation-checked fallbacks; Recorder's checks agains
 the original Crusader and Extreme 1.41 executables (58 passed); the Store's
 `build-store.ps1` run locally with PowerShell 7 and a throwaway signing key: it
 built only Recorder 0.52.0 from this source, and the resulting `store.yml` differs
-from the published one only in that entry. In-game: IN_GAME_PLACEHOLDER
+from the published one only in that entry. In-game on Crusader 1.41 with UCP
+3.0.7, Vanilla-Retraced-Unlocked and AI lords: with Map Extensions 1.0.0,
+Automarket 1.1.0 and UCP2-Legacy 2.15.2 a skirmish was recorded and played back,
+and jumping back to both restore points and forward again kept the replay checks
+matching; a replay recorded with 0.51.1 played after the settings restart; with
+UCP2-Legacy 2.15.1 Recorder showed its notice and the game continued.
 
 Source: `Krarilotus/ucp_recorder`, branch `release/recorder-0.52.0`, commit
 `8d53b00597a5fb91c8f57ff4df18dc342828fd6d`.
