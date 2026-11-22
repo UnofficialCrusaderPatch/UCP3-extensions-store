@@ -26,8 +26,10 @@ different set of modules, versions or settings is not advised.
 
 Validation: 506 Recorder tests (one skipped) on Lua 5.4 and LuaJIT, including
 the module-setup matrix and mutation-checked fallbacks; Recorder's checks against
-the original Crusader and Extreme 1.41 executables (58 passed); the Store build
-script run locally. In-game: IN_GAME_PLACEHOLDER
+the original Crusader and Extreme 1.41 executables (58 passed); the Store's
+`build-store.ps1` run locally with PowerShell 7 and a throwaway signing key: it
+built only Recorder 0.52.0 from this source, and the resulting `store.yml` differs
+from the published one only in that entry. In-game: IN_GAME_PLACEHOLDER
 
 Source: `Krarilotus/ucp_recorder`, branch `release/recorder-0.52.0`, commit
 `8d53b00597a5fb91c8f57ff4df18dc342828fd6d`.
