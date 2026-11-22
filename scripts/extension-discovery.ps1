@@ -1,10 +1,26 @@
 # Derive discovery data from the actual packaged files, using the existing YAML
 # dependency and .NET ZIP reader. This adds no runtime or build-tool dependency.
+# Windows PowerShell 5.1 does not load the ZIP types by default (PowerShell 7 does).
+Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
+
+# True when a package lists family IDs that differ only in case ("ai" and "AI").
+# The launcher would treat them as two families, but powershell-yaml reads locale
+# files and the Store catalog into case-insensitive hashtables, so their labels
+# would collapse into one. Such packages are refused instead.
+function Test-FamilyIdCaseCollision($Family) {
+  $ids = @($Family | Where-Object { $_ -is [Collections.IDictionary] -and $_['name'] -is [string] } |
+    ForEach-Object { $_['name'].Trim() })
+  $ordinal = @($ids | Sort-Object -CaseSensitive -Unique).Count
+  $ignoringCase = @($ids | Sort-Object -Unique).Count
+  return $ordinal -ne $ignoringCase
+}
+
 function Assert-ExtensionFamilyCatalog {
   param([Parameter(Mandatory = $true)]$Extensions)
   # Same rules as the launcher's normalizeFamilies/groupFamilies: `family` is a
-  # list, `root` is a boolean when present, and family IDs and package names are
-  # compared case-sensitively (PowerShell's default hashtables are not).
+  # list of mappings with the exact keys `name` (string) and optional `root`
+  # (boolean), and family IDs and package names are compared case-sensitively
+  # (PowerShell's default hashtables, also those from ConvertFrom-Yaml, are not).
   $families = [hashtable]::new([StringComparer]::Ordinal)
   foreach ($extension in $Extensions) {
     $definition = $extension.definition
@@ -12,12 +28,18 @@ function Assert-ExtensionFamilyCatalog {
     if ($definition.family -isnot [Collections.IList]) {
       throw "Invalid family metadata for $($definition.name)@$($definition.version): family must be a list"
     }
+    if (Test-FamilyIdCaseCollision $definition.family) {
+      throw "Invalid family metadata for $($definition.name)@$($definition.version): family IDs differ only in case"
+    }
     $seen = [hashtable]::new([StringComparer]::Ordinal)
     foreach ($membership in $definition.family) {
-      if ($membership -isnot [Collections.IDictionary] -or
-          $membership.name -isnot [string] -or [string]::IsNullOrWhiteSpace($membership.name) -or
-          $membership.name -cne $membership.name.Trim() -or $seen.ContainsKey($membership.name) -or
-          ($membership.Contains('root') -and $membership.root -isnot [bool])) {
+      $keys = if ($membership -is [Collections.IDictionary]) { @($membership.Keys | ForEach-Object { [string]$_ }) } else { @() }
+      # The launcher reads exactly `name` and `root`; `Name:` or `Root:` would be ignored there.
+      $misspelled = @($keys | Where-Object { ($_ -ieq 'name' -or $_ -ieq 'root') -and $_ -cne 'name' -and $_ -cne 'root' })
+      if ($membership -isnot [Collections.IDictionary] -or $misspelled.Count -gt 0 -or $keys -cnotcontains 'name' -or
+          $membership['name'] -isnot [string] -or [string]::IsNullOrWhiteSpace($membership['name']) -or
+          $membership['name'] -cne $membership['name'].Trim() -or $seen.ContainsKey($membership['name']) -or
+          ($keys -ccontains 'root' -and $membership['root'] -isnot [bool])) {
         throw "Invalid family metadata for $($definition.name)@$($definition.version)"
       }
       $seen[$membership.name] = $true
@@ -44,7 +66,9 @@ function Get-ExtensionDiscoveryMetadata {
     [Parameter(Mandatory = $true)][string]$ArchivePath,
     [Parameter(Mandatory = $true)][string[]]$Languages
   )
-  $archive = [IO.Compression.ZipFile]::OpenRead([IO.Path]::GetFullPath($ArchivePath))
+  # Resolve against PowerShell's location; .NET would use the process directory.
+  $fullPath = (Resolve-Path -LiteralPath $ArchivePath -ErrorAction Stop).ProviderPath
+  $archive = [IO.Compression.ZipFile]::OpenRead($fullPath)
   try {
     function Read-PackagedYaml([string]$Name) {
       $entry = $archive.GetEntry($Name)
@@ -66,6 +90,9 @@ function Get-ExtensionDiscoveryMetadata {
       return $false
     }
     $definition = Read-PackagedYaml 'definition.yml'
+    if (Test-FamilyIdCaseCollision $definition.family) {
+      throw "Family IDs that differ only in case in $ArchivePath; their labels cannot be kept apart"
+    }
     $config = Read-PackagedYaml 'config.yml'
     $options = Read-PackagedYaml 'options.yml'
     $sparse = $config['config-sparse']
@@ -96,7 +123,8 @@ function Get-ExtensionDiscoveryMetadata {
       if ($labels.Count -gt 0) { $tagLocales[$language] = $labels }
       $familyLabels = @{}
       foreach ($family in $definition.family) {
-        if ($family -isnot [Collections.IDictionary] -or $family.name -isnot [string]) { continue }
+        if ($family -isnot [Collections.IDictionary] -or @($family.Keys) -cnotcontains 'name' -or
+            $family['name'] -isnot [string]) { continue }
         foreach ($id in @($family.name.Trim(), "$($family.name.Trim()).configuration")) {
           $label = $locale["family.$id"]
           if (($label -is [string]) -and -not [string]::IsNullOrWhiteSpace($label)) {
