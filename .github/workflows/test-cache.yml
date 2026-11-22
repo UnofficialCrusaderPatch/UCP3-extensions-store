@@ -13,3 +13,8 @@ jobs:
       - name: Check same-version source selection
         shell: pwsh
         run: ./tests/test-binary-cache.ps1
+      - name: Check packaged discovery metadata
+        shell: pwsh
+        run: |
+          Install-Module powershell-yaml -Scope CurrentUser -Force
+          ./scripts/test-extension-discovery.ps1
