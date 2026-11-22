@@ -92,11 +92,96 @@ foreach ($invalid in @(
     @($root),
     @($root, @{ definition = @{ name = 'applied'; family = @(@{ name = 'ai'; root = $true }) } }),
     @($root, @{ definition = @{ name = 'applied'; family = @(@{ name = 'ai'; root = 'yes' }) } }),
-    @($root, @{ definition = @{ name = 'applied'; family = @(@{ name = 'ai' }, @{ name = 'ai' }) } })
+    @($root, @{ definition = @{ name = 'applied'; family = @(@{ name = 'ai' }, @{ name = 'ai' }) } }),
+    # The launcher ignores these, so the Store must not accept them either:
+    @($root, @{ definition = @{ name = 'applied'; family = @{ name = 'ai' } } }),
+    @($root, @{ definition = @{ name = 'applied'; family = @(@{ name = 'ai'; root = $null }) } }),
+    @($root, $member, @{ definition = @{ name = 'other'; family = @(@{ name = 'AI' }) } })
 )) {
   $rejected = $false
   try { Assert-ExtensionFamilyCatalog $invalid }
   catch { $rejected = $true }
   Assert-Equal $rejected $true 'Reject invalid catalog family'
 }
-Write-Output 'Packaged discovery metadata and catalog family checks passed.'
+# Family IDs that differ only in case are separate families, each checked on its own.
+Assert-ExtensionFamilyCatalog @($root, $member,
+  @{ definition = @{ name = 'other-bare'; family = @(@{ name = 'AI'; root = $true }) } },
+  @{ definition = @{ name = 'other-applied'; family = @(@{ name = 'AI' }) } })
+
+# Cached packages: published facts are kept, missing ones are read from the exact
+# published archive after its hash is checked.
+function New-TestArchive([hashtable]$Files) {
+  $path = [IO.Path]::GetTempFileName()
+  $stream = [IO.File]::Open($path, [IO.FileMode]::Create)
+  $zip = [IO.Compression.ZipArchive]::new($stream, [IO.Compression.ZipArchiveMode]::Create)
+  try {
+    foreach ($name in $Files.Keys) {
+      $writer = [IO.StreamWriter]::new($zip.CreateEntry($name).Open(), [Text.UTF8Encoding]::new($false))
+      try { $writer.Write($Files[$name]) }
+      finally { $writer.Dispose() }
+    }
+  }
+  finally { $zip.Dispose(); $stream.Dispose() }
+  return $path
+}
+
+$archive = New-TestArchive @{
+  'definition.yml' = "name: cached`nversion: 1.0.0`ntags: [tools]`nfamily:`n- name: ai"
+  'init.lua' = '-- fixture'
+  'locale/en.yml' = "tags.tools: Tools`nfamily.ai: AI Behaviour"
+}
+try {
+  $archiveHash = (Get-FileHash -Algorithm SHA256 -Path $archive).Hash.ToLowerInvariant()
+  $fromArchive = { param($Uri, $OutFile) Copy-Item -LiteralPath $archive -Destination $OutFile -Force }.GetNewClosure()
+  $noDownload = { param($Uri, $OutFile) throw 'unexpected download' }
+  $languages = @('en', 'de')
+
+  function New-CacheCase($Definition, $Capabilities, [hashtable]$Published, [string]$Hash) {
+    $cached = @{ package = @(@{ url = 'https://example.invalid/cached.zip'; hash = $Hash }) }
+    foreach ($key in $Published.Keys) { $cached[$key] = $Published[$key] }
+    $hit = @{ definition = @{ name = $Definition.name; version = '1.0.0'; capabilities = $Capabilities }; contents = $cached }
+    # build-store.ps1 copies the cached contents before completing discovery
+    return @{ Extension = @{ definition = $Definition; contents = $hit.contents }; Hit = $hit }
+  }
+
+  # 1. Untagged package with published capabilities: carried over, no download.
+  $published = @{ files = $true; code = $false; configuration = $false; options = $false }
+  $case = New-CacheCase @{ name = 'plain'; version = '1.0.0' } $published @{} $archiveHash
+  Complete-CachedExtensionDiscovery -Extension $case.Extension -Hit $case.Hit -Languages $languages -Download $noDownload
+  Assert-Equal $case.Extension.definition.capabilities.files $true 'Keep published capabilities'
+  Assert-Equal $case.Extension.contents.ContainsKey('tag-locales') $false 'No labels for an untagged package'
+
+  # 2. Untagged package published before capabilities existed: read from the archive.
+  $case = New-CacheCase @{ name = 'plain'; version = '1.0.0' } $null @{} $archiveHash
+  Complete-CachedExtensionDiscovery -Extension $case.Extension -Hit $case.Hit -Languages $languages -Download $fromArchive
+  Assert-Equal $case.Extension.definition.capabilities.code $true 'Capabilities read from the cached archive'
+  Assert-Equal $case.Extension.contents.ContainsKey('tag-locales') $false 'Still no labels for an untagged package'
+
+  # 3. Tagged package with capabilities but no labels: labels read, capabilities kept.
+  $case = New-CacheCase @{ name = 'tagged'; version = '1.0.0'; tags = @('tools') } $published @{} $archiveHash
+  Complete-CachedExtensionDiscovery -Extension $case.Extension -Hit $case.Hit -Languages $languages -Download $fromArchive
+  Assert-Equal $case.Extension.contents['tag-locales'].en.tools 'Tools' 'Tag labels read from the cached archive'
+  Assert-Equal $case.Extension.definition.capabilities.files $true 'Published capabilities are not replaced'
+
+  # 4. Everything published already: nothing downloaded, labels unchanged.
+  $case = New-CacheCase @{ name = 'tagged'; version = '1.0.0'; tags = @('tools') } $published @{ 'tag-locales' = @{ en = @{ tools = 'Werkzeug' } } } $archiveHash
+  Complete-CachedExtensionDiscovery -Extension $case.Extension -Hit $case.Hit -Languages $languages -Download $noDownload
+  Assert-Equal $case.Extension.contents['tag-locales'].en.tools 'Werkzeug' 'Published labels stay'
+
+  # 5. Family member without family labels: read from the archive.
+  $case = New-CacheCase @{ name = 'member'; version = '1.0.0'; family = @(@{ name = 'ai' }) } $published @{} $archiveHash
+  Complete-CachedExtensionDiscovery -Extension $case.Extension -Hit $case.Hit -Languages $languages -Download $fromArchive
+  Assert-Equal $case.Extension.contents['family-locales'].en.ai 'AI Behaviour' 'Family labels read from the cached archive'
+
+  # 6. Wrong hash or missing package data: the build stops.
+  foreach ($bad in @(
+      (New-CacheCase @{ name = 'plain'; version = '1.0.0' } $null @{} ('0' * 64)),
+      (New-CacheCase @{ name = 'plain'; version = '1.0.0' } $null @{} ''))) {
+    $rejected = $false
+    try { Complete-CachedExtensionDiscovery -Extension $bad.Extension -Hit $bad.Hit -Languages $languages -Download $fromArchive }
+    catch { $rejected = $true }
+    Assert-Equal $rejected $true 'Reject an unverifiable cached archive'
+  }
+}
+finally { Remove-Item -LiteralPath $archive -Force }
+Write-Output 'Packaged discovery metadata, catalog family and cached package checks passed.'
