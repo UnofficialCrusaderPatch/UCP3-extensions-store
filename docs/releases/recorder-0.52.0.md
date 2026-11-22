@@ -12,11 +12,12 @@ no extension data to keep. Any other Map Extensions 1.x is now accepted at
 startup; if it lacks the archive, Recorder skips restore points and seeking
 replays from the starting save.
 
-Dependencies are unchanged: UCP 3.0.7 or newer and UI 1.0.1. Map Extensions,
-Automarket, UCP2-Legacy and other modules stay optional. When UCP2-Legacy is
-active, Recorder still needs its Store version 2.15.2, which Vanilla Retraced
-accepts; 2.15.1 keeps AI state outside saved games, so Recorder stays off for
-that launch with a message and the game continues.
+Dependencies are unchanged: UCP 3.0.7 or newer and UI 1.0.1 or a compatible 1.x
+release. Map Extensions, Automarket, UCP2-Legacy and other modules stay
+optional. When UCP2-Legacy is active, Recorder still needs 2.15.2 or newer (the
+Store's version, which Vanilla Retraced accepts); 2.15.1 keeps AI state outside
+saved games, so Recorder stays off for that launch with a message and the game
+continues.
 
 Replay and restore point formats are unchanged. A replay keeps the exact versions
 it was recorded with: keep Recorder 0.51.1 installed to play 0.51.1 replays (the
