@@ -1,5 +1,7 @@
 # Run with the Store's existing powershell-yaml dependency installed.
 $ErrorActionPreference = 'Stop'
+# The fixtures below build ZIPs; Windows PowerShell 5.1 does not load these types by default.
+Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
 if (-not (Get-Module powershell-yaml)) { Import-Module powershell-yaml }
 . "$PSScriptRoot/extension-discovery.ps1"
 
@@ -83,6 +85,28 @@ Test-Package @{
   Assert-Equal $metadata.FamilyLocales.ContainsKey('fa') $false 'Ignore malformed family labels'
 }
 
+Test-Package @{
+  'definition.yml' = "name: both`nversion: 1.0.0`nfamily:`n- name: ai`n  root: true`n- name: castles"
+  'locale/en.yml' = "family.ai: AI Behaviour`nfamily.ai.configuration: Bare`nfamily.castles: Castles`nfamily.castles.configuration: Plain"
+} {
+  param($metadata)
+  Assert-Equal $metadata.FamilyLocales.en.ai 'AI Behaviour' 'First family label'
+  Assert-Equal $metadata.FamilyLocales.en.castles 'Castles' 'Second family label'
+  Assert-Equal $metadata.FamilyLocales.en.'castles.configuration' 'Plain' 'Second configuration label'
+}
+
+# Family IDs that differ only in case would lose a label in case-insensitive
+# hashtables, so the exporter refuses the package instead of collapsing them.
+$rejected = $false
+try {
+  Test-Package @{
+    'definition.yml' = "name: clash`nversion: 1.0.0`nfamily:`n- name: ai`n  root: true`n- name: AI"
+    'locale/en.yml' = "family.ai: AI Behaviour`nfamily.AI: Other"
+  } { param($metadata) }
+}
+catch { $rejected = $true }
+Assert-Equal $rejected $true 'Refuse family IDs that differ only in case'
+
 $root = @{ definition = @{ name = 'bare'; version = '1.0.0'; family = @(@{ name = 'ai'; root = $true }) } }
 $member = @{ definition = @{ name = 'applied'; family = @(@{ name = 'ai' }) } }
 $rootVersion = @{ definition = @{ name = 'bare'; version = '1.1.0'; family = @(@{ name = 'ai'; root = $true }) } }
@@ -107,6 +131,25 @@ foreach ($invalid in @(
 Assert-ExtensionFamilyCatalog @($root, $member,
   @{ definition = @{ name = 'other-bare'; family = @(@{ name = 'AI'; root = $true }) } },
   @{ definition = @{ name = 'other-applied'; family = @(@{ name = 'AI' }) } })
+
+# The same rules on definitions parsed from YAML, as build-store.ps1 reads them
+# (powershell-yaml returns case-insensitive hashtables and List[object] sequences).
+function ConvertTo-TestExtension([string]$Yaml) { @{ definition = (ConvertFrom-Yaml $Yaml) } }
+$yamlRoot = ConvertTo-TestExtension "name: bare`nversion: 1.0.0`nfamily:`n- name: ai`n  root: true"
+$yamlMember = ConvertTo-TestExtension "name: applied`nversion: 1.0.0`nfamily:`n- name: ai"
+Assert-ExtensionFamilyCatalog @($yamlRoot, $yamlMember)
+foreach ($familyYaml in @(
+    "family:`n- Name: ai",                        # the launcher reads only `name`
+    "family:`n- name: ai`n  Root: false",          # ... and only `root`
+    "family:`n- name: ai`n  root: null",
+    "family:`n- name: ai`n  root: 'true'",
+    "family:`n  name: ai",                         # a mapping, not a list
+    "family:`n- name: ai`n- name: AI")) {          # IDs that differ only in case
+  $rejected = $false
+  try { Assert-ExtensionFamilyCatalog @($yamlRoot, (ConvertTo-TestExtension "name: applied`nversion: 1.0.0`n$familyYaml")) }
+  catch { $rejected = $true }
+  Assert-Equal $rejected $true "Reject YAML family metadata: $($familyYaml -replace "`n", ' | ')"
+}
 
 # Cached packages: published facts are kept, missing ones are read from the exact
 # published archive after its hash is checked.
@@ -181,6 +224,20 @@ try {
     try { Complete-CachedExtensionDiscovery -Extension $bad.Extension -Hit $bad.Hit -Languages $languages -Download $fromArchive }
     catch { $rejected = $true }
     Assert-Equal $rejected $true 'Reject an unverifiable cached archive'
+  }
+
+  # 7. A relative archive path is resolved against PowerShell's location, not the
+  #    process directory (build-store.ps1 passes .\build\extensions\<name>.zip).
+  $processDirectory = [Environment]::CurrentDirectory
+  Push-Location -LiteralPath (Split-Path -Parent $archive)
+  try {
+    [Environment]::CurrentDirectory = $PSScriptRoot
+    $relative = Get-ExtensionDiscoveryMetadata -ArchivePath (Join-Path '.' (Split-Path -Leaf $archive)) -Languages $languages
+    Assert-Equal $relative.Capabilities.code $true 'Relative archive path from another process directory'
+  }
+  finally {
+    [Environment]::CurrentDirectory = $processDirectory
+    Pop-Location
   }
 }
 finally { Remove-Item -LiteralPath $archive -Force }
