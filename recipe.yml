@@ -436,6 +436,17 @@ extensions:
           url: Krarilotus/Seraphine
           github-sha: 3d90b4f3cfa80740963587c46cca63e20ba251ec
           github-tag: main
+    - definition:
+        name: ucp3-fixes
+        version: 0.2.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: ucp3-fixes
 # Modules
     - definition:
         name: aiv-troops-behaviour
@@ -449,6 +460,28 @@ extensions:
           github-tag: main
           location: aiv-troops-behaviour
     - definition:
+        name: aiv-troops-behaviour
+        version: 0.2.5
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 30d2b4e62a701a577fe91f16e758fd40638e4bd2
+          github-tag: main
+          location: aiv-troops-behaviour
+    - definition:
+        name: aiv-troops-behaviour
+        version: 0.3.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: aiv-troops-behaviour
+    - definition:
         name: hopfarm-limit-fix
         version: 0.1.2
         type: module
@@ -459,6 +492,73 @@ extensions:
           github-sha: 63219fdeb152f88a17f2ac46040079017fe1251d
           github-tag: main
           location: hopfarm-limit-fix
+    # From 0.2.0 on, Hop Farm Counting Fix (by Daniel Fleger) is published from Krarilotus/ucp3-fixes; 0.1.2 stays from DanielFleger/ucp3-fixes.
+    - definition:
+        name: hopfarm-limit-fix
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: hopfarm-limit-fix
+    - definition:
+        name: worker-delivery-fix
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: worker-delivery-fix
+    - definition:
+        name: gatehouse-capture-fix
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: gatehouse-capture-fix
+    - definition:
+        name: hunter-targeting-fix
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: hunter-targeting-fix
+    - definition:
+        name: fixed-engineers
+        version: 0.3.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: fixed-engineers
+    - definition:
+        name: build-over-workers
+        version: 1.1.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: build-over-workers
     - definition:
         name: ucp-autoclick
         version: 1.0.1
@@ -568,6 +668,16 @@ extensions:
           github-sha: 99d09b7f914e6cc5b209a3dc8c59d47c8595a07f
           github-tag: main
           rebuild-on-source-change: true
+    - definition:
+        name: interface-visual-fixes
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-interface-visual-fixes
+          github-sha: 1a40f8b874fbed14ab5a8735d36665a9a61f5cd6
+          github-tag: main
     - definition:
         name: maploader
         version: 1.1.0
@@ -758,6 +868,16 @@ extensions:
           method: github
           url: Krarilotus/extension-audio-fixes
           github-sha: c17ff7d06499f581ac1cff73ddca7916333956b4
+          github-tag: main
+    - definition:
+        name: audio-fixes
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-audio-fixes
+          github-sha: 48997dd1367bfdff7a335b5defe93cc45ab395f0
           github-tag: main
     - definition:
         name: steam-multiplayer

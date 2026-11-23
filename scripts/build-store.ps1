@@ -26,6 +26,7 @@ if (!(Get-Module -ListAvailable -Name powershell-yaml)) {
 }
 
 Import-Module powershell-yaml
+. "$PSScriptRoot/extension-discovery.ps1"
 # Import-Module "$($PSScriptRoot)\fix-dependency-statement.ps1"
 
 $recipe = Get-Content .\recipe.yml | ConvertFrom-Yaml
@@ -91,6 +92,7 @@ foreach ($extension in $extensions) {
   $extension.definition = $definition
 }
 
+Assert-ExtensionFamilyCatalog -Extensions $extensions
 $store = $recipe | ConvertTo-Yaml | ConvertFrom-Yaml
 
 $resolvedExtensions = [System.Collections.ArrayList]::new()
@@ -179,9 +181,17 @@ foreach ($release in $sortedReleaseVersionsArray) {
       # Copy over the contents
       $extension.contents = $hit.contents
 
+      # Keep the discovery facts published with the cached package, and read any
+      # missing ones from the exact published archive (hash-verified) instead of
+      # rebuilding it. See Complete-CachedExtensionDiscovery.
+      Complete-CachedExtensionDiscovery -Extension $extension -Hit $hit -Languages $recipe['supported-languages']
+
       $store.extensions.list | 
       Where-Object { $_.definition.name -eq $extension.definition.name -and $_.definition.version -eq $extension.definition.version } |
-      ForEach-Object { $_.contents = $hit.contents }
+      ForEach-Object {
+        $_.definition.capabilities = $extension.definition.capabilities
+        $_.contents = $extension.contents
+      }
 
       $extensionsToBeBuilt.Remove($extension) | Out-Null
       $resolvedExtensions.Add($extension) | Out-Null
@@ -391,9 +401,15 @@ foreach ($extension in $extensionsToBeBuilt) {
 
   }
 
+  $discovery = Get-ExtensionDiscoveryMetadata -ArchivePath $path -Languages $recipe['supported-languages']
   $store.extensions.list | 
   Where-Object { $_.definition.name -eq $extension.definition.name -and $_.definition.version -eq $extension.definition.version } |
-  ForEach-Object { $_.contents.package = $package }
+  ForEach-Object {
+    $_.contents.package = $package
+    $_.definition.capabilities = $discovery.Capabilities
+    $_.contents['tag-locales'] = $discovery.TagLocales
+    $_.contents['family-locales'] = $discovery.FamilyLocales
+  }
 
   $description = [System.Collections.ArrayList]::new()
   foreach ($lang in $recipe['supported-languages']) {
