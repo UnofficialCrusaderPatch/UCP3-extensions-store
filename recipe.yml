@@ -444,8 +444,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 6e1182b869303877ef7a695a632861cc96af21ce
-          github-tag: feat/ucp3-setup-family
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
           location: ucp3-fixes
 # Modules
     - definition:
@@ -478,8 +478,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 6e1182b869303877ef7a695a632861cc96af21ce
-          github-tag: feat/ucp3-setup-family
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
           location: aiv-troops-behaviour
     - definition:
         name: hopfarm-limit-fix
@@ -501,8 +501,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 6e1182b869303877ef7a695a632861cc96af21ce
-          github-tag: feat/ucp3-setup-family
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
           location: hopfarm-limit-fix
     - definition:
         name: worker-delivery-fix
@@ -512,8 +512,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 6e1182b869303877ef7a695a632861cc96af21ce
-          github-tag: feat/ucp3-setup-family
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
           location: worker-delivery-fix
     - definition:
         name: gatehouse-capture-fix
@@ -523,8 +523,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 6e1182b869303877ef7a695a632861cc96af21ce
-          github-tag: feat/ucp3-setup-family
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
           location: gatehouse-capture-fix
     - definition:
         name: hunter-targeting-fix
@@ -534,8 +534,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 6e1182b869303877ef7a695a632861cc96af21ce
-          github-tag: feat/ucp3-setup-family
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
           location: hunter-targeting-fix
     - definition:
         name: fixed-engineers
@@ -545,8 +545,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 6e1182b869303877ef7a695a632861cc96af21ce
-          github-tag: feat/ucp3-setup-family
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
           location: fixed-engineers
     - definition:
         name: build-over-workers
@@ -556,8 +556,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/ucp3-fixes
-          github-sha: 6e1182b869303877ef7a695a632861cc96af21ce
-          github-tag: feat/ucp3-setup-family
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
           location: build-over-workers
     - definition:
         name: ucp-autoclick
@@ -676,8 +676,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-interface-visual-fixes
-          github-sha: 9cceca2934865db63adc731192207fbad293db0a
-          github-tag: release/0.2.0-vanilla-defaults
+          github-sha: 1a40f8b874fbed14ab5a8735d36665a9a61f5cd6
+          github-tag: main
     - definition:
         name: maploader
         version: 1.1.0
@@ -877,8 +877,8 @@ extensions:
         source:
           method: github
           url: Krarilotus/extension-audio-fixes
-          github-sha: 4bfd2d586b80a2ff750b939a60213508f246467c
-          github-tag: release/0.2.0-vanilla-defaults
+          github-sha: 48997dd1367bfdff7a335b5defe93cc45ab395f0
+          github-tag: main
     - definition:
         name: steam-multiplayer
         type: module
