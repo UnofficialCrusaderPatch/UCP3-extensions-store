@@ -901,11 +901,11 @@ extensions:
           github-tag: release/recorder-0.52.0
     - definition:
         name: custom-hotkeys
-        version: 0.2.1
+        version: 0.3.0
         type: module
       contents:
         source:
           method: github
           url: Krarilotus/extension-custom-hotkeys
-          github-sha: 92738d7903534a5053c982ec02fbe152d50005f6
-          github-tag: v0.2.1
+          github-sha: 6f5686e2b29cc15c54daf81c991559c66c9fe326
+          github-tag: main
