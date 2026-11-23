@@ -789,3 +789,25 @@ extensions:
           url: Krarilotus/extension-custom-hotkeys
           github-sha: 92738d7903534a5053c982ec02fbe152d50005f6
           github-tag: v0.2.1
+    - definition:
+        name: selfaware-bridge
+        type: module
+        version: 0.1.0
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/Selfaware-AI
+          github-sha: c6ac85f1a977a0f59a2250a245d02510ebcf2f2d
+          github-tag: codex/branching-fortunes
+          location: store-module
+    - definition:
+        name: Selfaware-AI
+        type: plugin
+        version: 0.2.0
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/Selfaware-AI
+          github-sha: c6ac85f1a977a0f59a2250a245d02510ebcf2f2d
+          github-tag: codex/branching-fortunes
+          location: store-content
