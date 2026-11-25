@@ -8,6 +8,9 @@ on:
 
 jobs:
   build:
+    permissions:
+      packages: read
+      contents: write
     runs-on: windows-latest
     env:
         BUILD_CONFIGURATION: ReleaseSecure
@@ -19,6 +22,25 @@ jobs:
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
+      with:
+        msbuild-architecture: x86
+
+    - name: Set up MSVC for Win32 (x86)
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x86
+
+    # - name: Setup NUGET
+    #   uses: nuget/setup-nuget@v2
+    #   with:
+    #     nuget-version: '5.x'
+    - name: Check meson presence
+      shell: pwsh
+      run: |
+        python -m pip show meson
+        if ($LASTEXITCODE -ne 0) {
+          python -m pip install meson
+        }
 
     - name: Prepare signing of modules by exporting secret to file
       shell: pwsh
@@ -32,16 +54,19 @@ jobs:
       shell: |
         pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
       env:
-        UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
+        UCP3_NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_TOKEN: ${{ github.token }}
       run: |
-        .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem"
+        # Legacy framework scripts do not check every native tool exit code.
+        $PSNativeCommandUseErrorActionPreference = $true
+        .\scripts\build-store.ps1 -NugetToken "$env:UCP3_NUGET_TOKEN" -Certificate "$($env:GITHUB_WORKSPACE)\ucp3-module-signing-key.pem" -Debug
 
     - name: Release store
       shell: |
         pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
       env:
-        UCP3_NUGET_TOKEN: ${{ secrets.UCP3_READ_PACKAGES }}
+        UCP3_NUGET_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_TOKEN: ${{ github.token }}
       run: |
+        $PSNativeCommandUseErrorActionPreference = $true
         .\scripts\create-release.ps1

@@ -1,7 +1,9 @@
 Param(
   [Parameter(Mandatory = $true, ValueFromPipeline = $false)][string]$Certificate,
   [Parameter(Mandatory = $false, ValueFromPipeline = $false)][string]$NugetToken,
-  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$Clean = $true
+  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$Clean = $true,
+  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$AllowSuperseded = $false,
+  [Parameter(Mandatory = $false, ValueFromPipeline = $false)][boolean]$IgnoreBranchMismatch = $false
 )
 
 # Stop this entire script in case of errors
@@ -24,12 +26,13 @@ if (!(Get-Module -ListAvailable -Name powershell-yaml)) {
 }
 
 Import-Module powershell-yaml
+. "$PSScriptRoot/extension-discovery.ps1"
 # Import-Module "$($PSScriptRoot)\fix-dependency-statement.ps1"
 
 $recipe = Get-Content .\recipe.yml | ConvertFrom-Yaml
 $gitBranch = git rev-parse --abbrev-ref HEAD
 
-if ($recipe.framework.version -ne "=$($gitBranch)") {
+if (($false -eq $IgnoreBranchMismatch) -and ($recipe.framework.version -ne "=$($gitBranch)")) {
   Write-Error "Aborting. Version mismatch between recipe and branch: $($recipe.framework.version) <> $($gitBranch)"
 
   return 1
@@ -89,6 +92,7 @@ foreach ($extension in $extensions) {
   $extension.definition = $definition
 }
 
+Assert-ExtensionFamilyCatalog -Extensions $extensions
 $store = $recipe | ConvertTo-Yaml | ConvertFrom-Yaml
 
 $resolvedExtensions = [System.Collections.ArrayList]::new()
@@ -124,16 +128,70 @@ foreach ($release in $sortedReleaseVersionsArray) {
     
     Write-Output "Looking for a binary for: $name@$version"
 
+    $variants = $releaseStore.extensions.list | 
+      Where-Object { $_.definition.name -eq $name }
+    $variantVersions = $variants | 
+      ForEach-Object { [semver]($_.definition.version) }
+    $latestVersion = $variantVersions | Sort-Object -Descending | 
+      Select-Object -First 1
+
+    $rVariants = $recipe.extensions.list | 
+      Where-Object { $_.definition.name -eq $name }
+    $rVariantVersions = $rVariants | 
+      ForEach-Object { [semver]($_.definition.version) }
+    $rLatestVersion = $rVariantVersions | Sort-Object -Descending | 
+      Select-Object -First 1
+
+
+    Write-Output "Latest released version is $($latestVersion)"
+    Write-Output "Latest recipe version is $($rLatestVersion)"
+    if ([semver]($version) -lt $latestVersion) {
+      if ($AllowSuperseded) {
+        Write-Warning "Latest released version is higher than the recipe version. This is probably not what you want"
+      } else {
+        if ($rVariantVersions -contains [semver]($version)) {
+          Write-Warning "Latest released version is higher than the recipe version. This is probably not what you want"
+        } else {
+          Throw "Error: Latest released version is higher than the recipe version. This is probably not what you want"
+        }
+      }
+    }
+    
     $hit = $releaseStore.extensions.list | Where-Object { $_.definition.name -eq $name } | Where-Object { $_.definition.version -eq $version }
+
+    # Opt in per recipe: legacy entries may deliberately reuse older sources.
+    # A same-version correction must not silently reuse the superseded binary.
+    if ($extension.contents.source['rebuild-on-source-change'] -eq $true) {
+      $hit = $hit | Where-Object {
+        $cachedSource = $_.contents.source
+        $requestedSource = $extension.contents.source
+        if ($null -eq $cachedSource) { return $false }
+        $sameSource = -not [string]::IsNullOrWhiteSpace($requestedSource['github-sha'])
+        foreach ($field in @('method', 'url', 'github-sha', 'location', 'extension-type')) {
+          if ([string]$cachedSource[$field] -cne [string]$requestedSource[$field]) {
+            $sameSource = $false
+          }
+        }
+        $sameSource
+      }
+    }
 
     if ($null -ne $hit) {
       Write-Output "Found a binary"
       # Copy over the contents
       $extension.contents = $hit.contents
 
+      # Keep the discovery facts published with the cached package, and read any
+      # missing ones from the exact published archive (hash-verified) instead of
+      # rebuilding it. See Complete-CachedExtensionDiscovery.
+      Complete-CachedExtensionDiscovery -Extension $extension -Hit $hit -Languages $recipe['supported-languages']
+
       $store.extensions.list | 
       Where-Object { $_.definition.name -eq $extension.definition.name -and $_.definition.version -eq $extension.definition.version } |
-      ForEach-Object { $_.contents = $hit.contents }
+      ForEach-Object {
+        $_.definition.capabilities = $extension.definition.capabilities
+        $_.contents = $extension.contents
+      }
 
       $extensionsToBeBuilt.Remove($extension) | Out-Null
       $resolvedExtensions.Add($extension) | Out-Null
@@ -182,6 +240,12 @@ if ($localFrameworkSha -ne $frameworkSha) {
   return 1
 }
 
+if ($NugetToken -ne $null -and $NugetToken -ne "") {
+  # Setup UCP3 Nuget
+  Push-Location "build\ucp3"
+  & ".\scripts\build.ps1" -What setup -NugetToken $NugetToken
+  Pop-Location
+}
 
 if ($isFrameworkReleased) {
   # Fetch nuget package if it exists
@@ -193,9 +257,6 @@ else {
   # Build UCP3
   Push-Location "build\ucp3"
 
-  if ($NugetToken -ne $null -and $NugetToken -ne "") {
-    & ".\scripts\build.ps1" -What setup -NugetToken $NugetToken
-  }
   & ".\scripts\build.ps1" -What nuget
 
   $NUPKG_DIRECTORY = (Get-Item -Path ".\dll\").FullName
@@ -340,9 +401,15 @@ foreach ($extension in $extensionsToBeBuilt) {
 
   }
 
+  $discovery = Get-ExtensionDiscoveryMetadata -ArchivePath $path -Languages $recipe['supported-languages']
   $store.extensions.list | 
   Where-Object { $_.definition.name -eq $extension.definition.name -and $_.definition.version -eq $extension.definition.version } |
-  ForEach-Object { $_.contents.package = $package }
+  ForEach-Object {
+    $_.contents.package = $package
+    $_.definition.capabilities = $discovery.Capabilities
+    $_.contents['tag-locales'] = $discovery.TagLocales
+    $_.contents['family-locales'] = $discovery.FamilyLocales
+  }
 
   $description = [System.Collections.ArrayList]::new()
   foreach ($lang in $recipe['supported-languages']) {

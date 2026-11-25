@@ -6,15 +6,23 @@ frontend:
   version: ">=1.0.2"
 # The framework version this store file applies to
 framework:
-  version: =3.0.6
-  github-tag: 'v3.0.6' # Or branch
-  github-sha: 720117b4598fbd027e3eb5383d2716342ce67403
+  version: =3.0.7
+  github-tag: 'v3.0.7' # Or branch
+  github-sha: 77c6accf14a55fb95434fe6ffd96516e005568b5
 # When this store was created
 timestamp: ~
 # Which certificate signed the modules in this store
 signer: default
 supported-languages:
   - en
+  - de
+  - fr
+  - ru
+  - hu
+  - tr
+  - ch
+  - es
+  - fa
 # The extensions defined in this store
 extensions:
 # The list of extensions
@@ -162,63 +170,43 @@ extensions:
           github-tag: main
     - definition:
         name: Legends-Of-The-Orient
-        version: 3.0.3
+        version: 3.1.7
         type: plugin
       contents:
         source:
           method: github
           url: CrusaderPilaw/extension-Legends-of-the-Orient
-          github-sha: 1e9a785e65107345403f28fb40d365d6df8001ab
+          github-sha: 733b0c54b16852f3712eaef5638ee83daeac1a3d
           github-tag: main
     - definition:
         name: Legends-Of-The-Orient-AI
-        version: 3.0.2
+        version: 3.1.7
         type: plugin
       contents:
         source:
           method: github
           url: CrusaderPilaw/extension-Legends-of-the-Orient-AI
-          github-sha: 2fd8840c40264a53110fc21e9060d098192b1049
-          github-tag: main
-    - definition:
-        name: Fiery-Ladies
-        type: plugin
-        version: 0.4.0
-      contents:
-        source:
-          method: github
-          url: ByBurton/extension-fiery-ladies
-          github-sha: 39bc99c47eee03311440b37882c68ed442a4ef73
-          github-tag: main
-    - definition:
-        name: Fiery-Ladies-AI
-        type: plugin
-        version: 0.4.0
-      contents:
-        source:
-          method: github
-          url: ByBurton/extension-fiery-ladies-ai
-          github-sha: 5567282108b89387bd2bc7016d67995c7cd0fcb4
+          github-sha: 596175b6f2e4d48fd6f8cdb37a535b74994f6d68
           github-tag: main
     - definition:
         name: Schlossgespenst-KI
         type: plugin
-        version: 1.0.2
+        version: 1.0.3
       contents:
         source:
           method: github
           url: Schlossgespensty/Schlossgespenst-KI
-          github-sha: 8a843337a6a1aea895a4b6f063f1d65ad5d3a4be
+          github-sha: 743a5fd2f05a9a0cf29281d1fe0db40f65cfe62b
           github-tag: main
     - definition:
         name: Schlossgespenst-KI-files
         type: plugin
-        version: 1.0.4
+        version: 1.0.7
       contents:
         source:
           method: github
           url: Schlossgespensty/Schlossgespenst-KI-files
-          github-sha: 362eadd1d3f5f84d660ffaa2c101f67c95fb2677
+          github-sha: a7377fe2ffd03f7a1a7f8e68a0cf0dfe904345c6
           github-tag: main
     - definition:
         name: ConqueringChristmas
@@ -241,6 +229,16 @@ extensions:
           github-sha: fb703ff23c4f05b761fbc3dc0dcdaab108d8ff3f
           github-tag: main
     - definition:
+        name: ConqueringArabia
+        version: 1.0.3
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Monsterfisch/ConqueringArabia_-fixed_updated_StrongholdCrusader_texture-
+          github-sha: 3c2151faa083d29875c4b65b5213f75224f0fb58
+          github-tag: main
+    - definition:
         name: Kirito-Kun
         version: 1.0.0
         type: plugin
@@ -252,79 +250,90 @@ extensions:
           github-tag: main
     - definition:
         name: Ascension-AI-Balance
-        version: 1.0.6
+        version: 1.1.3
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 184749f1432b8330848abc64faf87a4d83090c29
+          github-sha: 05682411b6ebba6172bd424b74f9c7302d0e1510
           github-tag: ucp3-ascension
           location: extension-Ascension-AI-Balance   
     - definition:
+        name: Ascension-AI-Balance
+        version: 1.2.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 07c89c746fe1bca4472c481153453e90ba7273cc
+          github-tag: ascension-ai-balance-1.2.1
+          location: extension-Ascension-AI-Balance
+    - definition:
         name: Ascension-Balance
+        version: 1.1.5
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 07c89c746fe1bca4472c481153453e90ba7273cc
+          github-tag: ascension-balance-1.1.5
+          location: extension-Ascension-Balance
+    - definition:
+        name: Ascension-AI
+        version: 1.0.1
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 07c89c746fe1bca4472c481153453e90ba7273cc
+          github-tag: ascension-ai-1.0.1
+          location: extension-Ascension-AI
+    - definition:
+        name: Ascension-Multiplayer
+        version: 1.0.13
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension
+          github-sha: 07c89c746fe1bca4472c481153453e90ba7273cc
+          github-tag: ascension-multiplayer-1.0.13
+          location: extension-Ascension-Multiplayer
+    - definition:
+        name: Ascension-Maps
         version: 1.0.3
         type: plugin
       contents:
         source:
           method: github
           url: Krarilotus/Ascension
-          github-sha: 184749f1432b8330848abc64faf87a4d83090c29
-          github-tag: ucp3-ascension
-          location: extension-Ascension-Balance
-    - definition:
-        name: Ascension-AI
-        version: 1.0.0
-        type: plugin
-      contents:
-        source:
-          method: github
-          url: Krarilotus/Ascension
-          github-sha: 184749f1432b8330848abc64faf87a4d83090c29
-          github-tag: ucp3-ascension
-          location: extension-Ascension-AI
-    - definition:
-        name: Ascension-Multiplayer
-        version: 1.0.4
-        type: plugin
-      contents:
-        source:
-          method: github
-          url: Krarilotus/Ascension
-          github-sha: 184749f1432b8330848abc64faf87a4d83090c29
-          github-tag: ucp3-ascension
-          location: extension-Ascension-Multiplayer
-    - definition:
-        name: Ascension-Maps
-        version: 1.0.1
-        type: plugin
-      contents:
-        source:
-          method: github
-          url: Krarilotus/Ascension
-          github-sha: 184749f1432b8330848abc64faf87a4d83090c29
-          github-tag: ucp3-ascension
+          github-sha: 07c89c746fe1bca4472c481153453e90ba7273cc
+          github-tag: ascension-maps-1.0.3
           location: extension-Ascension-Maps
     - definition:
         name: Community-Paket-Files
-        version: 1.0.1
+        version: 1.1.0
         type: plugin
       contents:
         source:
           method: github
           url: Nevikov/Community-Paket-UCP3
-          github-sha: 1e11f99033c598567145a6597f733945881ba70a
+          github-sha: fe6035e536532e2ed2486f44dfad2f92c003e1fb
           github-tag: main
           location: Community-Paket-Files
     - definition:
         name: Community-Paket
-        version: 1.0.1
+        version: 1.1.0
         type: plugin
       contents:
         source:
           method: github
           url: Nevikov/Community-Paket-UCP3
-          github-sha: 1e11f99033c598567145a6597f733945881ba70a
+          github-sha: fe6035e536532e2ed2486f44dfad2f92c003e1fb
           github-tag: main
           location: Community-Paket
     - definition:
@@ -348,45 +357,237 @@ extensions:
           github-sha: 080d56188175cb36699b8b980e1d73543dc01fdb
           github-tag: main
     - definition:
-        name: Ascension-AI-Tournament
-        version: 3.0.0
-        type: plugin
-      contents:
-        source:
-          method: github
-          url: Krarilotus/Ascension-AI-Tournament
-          github-sha: d15108d47bf50c358077334d39e095f0d5227720
-          github-tag: main
-    - definition:
-        name: Seraphine-and-Verehrer
+        name: Kommander-AI
         version: 1.0.0
         type: plugin
       contents:
         source:
           method: github
-          url: Krarilotus/Seraphine
-          github-sha: dddd62fa840f36aec9a62a24df6f1f1d13d25b6b
+          url: Xander10alpha/extension-Kommander-AI
+          github-sha: 0e09f6cfdc05338e108c333e4f70eb2c3a6c19c8
           github-tag: main
+    - definition:
+        name: Xanders-UCP-AI-Default
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Xander10alpha/extension-Xanders-UCP-AI-Default
+          github-sha: 7dc500c0ba099ec5a290eeaa427604b3762a0885
+          github-tag: main
+    - definition:
+        name: Xanders-Plug-and-Play
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Xander10alpha/extension-Xanders-Crusader-Mod
+          github-sha: 98bff729dc8a50ed0dc6241ee673e851680ea83e
+          github-tag: main
+    - definition:
+        name: NewBalance-Nevikov
+        version: 1.0.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Nevikov/New-Balance
+          github-sha: df13d00f0b49e6321386d12827c0cb70573a6325
+          github-tag: main
+    - definition:
+        name: Ascension-AI-Tournament
+        version: 3.0.8
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Ascension-AI-Tournament
+          github-sha: 8c0039707597e1e77ee7a5c0ce039a3b4e24be28
+          github-tag: main
+    - definition:
+        name: Schlossgespenst-Ascension-PvE-Pressure-AI
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Schlossgespensty/Schlossgespenst-Ascension-PvE-Pressure-AI
+          github-sha: 7ca96be06bd370efb1b3b10703f211a0dbdd172c
+          github-tag: main
+    - definition:
+        name: Mod-KI-Team-Liga
+        version: 2.0.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Nevikov/Mod-KI-Team-Liga
+          github-sha: 141063c8a20243d22057440275dfe35b8f57b23f
+          github-tag: main
+    - definition:
+        name: Seraphine-and-Verehrer
+        version: 1.0.2
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/Seraphine
+          github-sha: 3d90b4f3cfa80740963587c46cca63e20ba251ec
+          github-tag: main
+    - definition:
+        name: ucp3-fixes
+        version: 0.2.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: ucp3-fixes
 # Modules
     - definition:
-        name: aiSwapper
+        name: aiv-troops-behaviour
+        version: 0.2.3
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: b20dad69257dc94dcfaf8a867a0848d1fccc3252
+          github-tag: main
+          location: aiv-troops-behaviour
+    - definition:
+        name: aiv-troops-behaviour
+        version: 0.2.5
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 30d2b4e62a701a577fe91f16e758fd40638e4bd2
+          github-tag: main
+          location: aiv-troops-behaviour
+    - definition:
+        name: aiv-troops-behaviour
+        version: 0.3.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: aiv-troops-behaviour
+    - definition:
+        name: hopfarm-limit-fix
+        version: 0.1.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: DanielFleger/ucp3-fixes
+          github-sha: 63219fdeb152f88a17f2ac46040079017fe1251d
+          github-tag: main
+          location: hopfarm-limit-fix
+    # From 0.2.0 on, Hop Farm Counting Fix (by Daniel Fleger) is published from Krarilotus/ucp3-fixes; 0.1.2 stays from DanielFleger/ucp3-fixes.
+    - definition:
+        name: hopfarm-limit-fix
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: hopfarm-limit-fix
+    - definition:
+        name: worker-delivery-fix
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: worker-delivery-fix
+    - definition:
+        name: gatehouse-capture-fix
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: gatehouse-capture-fix
+    - definition:
+        name: hunter-targeting-fix
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: hunter-targeting-fix
+    - definition:
+        name: fixed-engineers
+        version: 0.3.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: fixed-engineers
+    - definition:
+        name: build-over-workers
         version: 1.1.0
         type: module
       contents:
         source:
           method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: build-over-workers
+    - definition:
+        name: ucp-autoclick
+        version: 1.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: americanpotato/ucp-autoclick
+          github-sha: a4ecab44c79bdc9f7d387746e235db9d7be57091
+          github-tag: main
+    - definition:
+        name: aiSwapper
+        version: 1.3.0
+        type: module
+      contents:
+        source:
+          method: github
           url: UnofficialCrusaderPatch/extension-aiSwapper
-          github-sha: f779b9a2bd5a9691b8bbfc9459af019b5ad29f85
+          github-sha: 7ab40c05c0b4250f66733645d5e6fabbe036e491
           github-tag: main
     - definition:
         name: aicloader
-        version: 1.1.1
+        version: 1.1.2
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-aicloader
-          github-sha: a6d1a960f9e96f4e815d601ac5dee2a736659da2
+          github-sha: b4942485293b308ddb54e8a8ab93743b36d6a79b
           github-tag: main
     - definition:
         name: aivloader
@@ -400,23 +601,13 @@ extensions:
           github-tag: main
     - definition:
         name: files
-        version: 1.1.0
+        version: 1.3.0
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-files
-          github-sha: 27b1a19f22c3cc53c1641f593d9f82fa71dfd029
-          github-tag: main
-    - definition:
-        name: files
-        version: 1.2.0
-        type: module
-      contents:
-        source:
-          method: github
-          url: UnofficialCrusaderPatch/extension-files
-          github-sha: c77b07577aef94d594b2454cbde8a81f9e15e4d4
+          github-sha: 8e48fe8b53dbb85a7672e4d36744163fc266a5a3
           github-tag: main
     - definition:
         name: gmResourceModifier
@@ -430,33 +621,82 @@ extensions:
           github-tag: main
     - definition:
         name: graphicsApiReplacer
-        version: 1.2.0
+        version: 1.3.0
         type: module
       contents:
         source:
           method: github
           url: TheRedDaemon/ucp_graphicsApiReplacer
-          github-sha: 14ef8ddf5b55d57778c2a7cf7b0e522bc045a191
+          github-sha: f180062e10622900f684c3de7f76e37dcbdcf304
+          github-tag: main
+    - definition:
+        name: interface-visual-fixes
+        version: 0.1.5
+        type: module
+      contents:
+        tag-locales:
+          en:
+            bugfixes: Bug fixes
+            interface: Interface
+          de:
+            bugfixes: Fehlerkorrekturen
+            interface: Oberfläche
+          fr:
+            bugfixes: Corrections
+            interface: Interface
+          ru:
+            bugfixes: Исправления
+            interface: Интерфейс
+          hu:
+            bugfixes: Hibajavítások
+            interface: Kezelőfelület
+          tr:
+            bugfixes: Hata düzeltmeleri
+            interface: Arayüz
+          ch:
+            bugfixes: 错误修复
+            interface: 界面
+          es:
+            bugfixes: Correcciones
+            interface: Interfaz
+          fa:
+            bugfixes: رفع اشکال
+            interface: رابط کاربری
+        source:
+          method: github
+          url: Krarilotus/extension-interface-visual-fixes
+          github-sha: 99d09b7f914e6cc5b209a3dc8c59d47c8595a07f
+          github-tag: main
+          rebuild-on-source-change: true
+    - definition:
+        name: interface-visual-fixes
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-interface-visual-fixes
+          github-sha: 1a40f8b874fbed14ab5a8735d36665a9a61f5cd6
           github-tag: main
     - definition:
         name: maploader
-        version: 1.0.0
+        version: 1.1.0
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-maploader
-          github-sha: 658f9e73feb1ff4b4da3e45f236cb2ff0c1d8d32
+          github-sha: 1045d679646051f110cc81e86aebe0b9bce11beb
           github-tag: main
     - definition:
         name: startResources
-        version: 1.0.0
+        version: 1.0.2
         type: module
       contents:
         source:
           method: github
-          url: gynt/ucp_startResources
-          github-sha: 1942ce1e1d55ea4499a997fbecf719f882c9f715
+          url: Krarilotus/ucp-extension-startResources
+          github-sha: d1f5328d4b17d36a523e6108610a079aeb40282f
           github-tag: main
     - definition:
         name: textResourceModifier
@@ -470,53 +710,202 @@ extensions:
           github-tag: main
     - definition:
         name: ucp2-legacy
-        version: 2.15.1
+        version: 2.15.2
         type: module
       contents:
         source:
           method: github
           url: UnofficialCrusaderPatch/extension-ucp2-legacy
-          github-sha: 04e826d00f1a5f8a623e15acffc743f115ee7fb1
+          github-sha: 3fd852df9ac3f2b00595512555e9043e3b624437
           github-tag: main
     - definition:
         name: winProcHandler
-        version: 0.2.0
-        type: module
-      contents:
-        source:
-          method: github
-          url: TheRedDaemon/ucp_winProcHandler
-          github-sha: aa39902c15dc63fc159ade35ca4907ac334e9724
-          github-tag: main
-    - definition:
-        name: running-units
-        version: 1.0.1
-        type: module
-      contents:
-        source:
-          method: github
-          url: gynt/ucp-extension-running-units
-          github-sha: add648dfda85f5c6c36e8ca1b2c0e4f798a034f4
-          github-tag: main
-    - definition:
-        name: rebalancer
-        version: 1.0.6
-        type: module
-      contents:
-        source:
-          method: github
-          url: CIO61/rebalancer
-          github-sha: 14af1a3239e2a912de6e19b1a406917583acca2e
-          github-tag: master
-    - definition:
-        name: citizens
         version: 1.0.0
         type: module
       contents:
         source:
           method: github
+          url: UnofficialCrusaderPatch/ucp_winProcHandler
+          github-sha: 5f85672b063a0687d24990f96117d1fbae33af04
+          github-tag: main
+    - definition:
+        name: running-units
+        version: 1.0.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-running-units
+          github-sha: 8cbfdf7ef2846d16dd5dda0a18ba4937aae59ed1
+          github-tag: main
+    - definition:
+        name: rebalancer
+        version: 1.1.3
+        type: module
+      contents:
+        source:
+          method: github
+          url: CIO61/rebalancer
+          github-sha: b3e1a36020b6b00f06a6799d3ede09a4dd5067a5
+          github-tag: master
+    - definition:
+        name: citizens
+        version: 1.0.1
+        type: module
+      contents:
+        source:
+          method: github
           url: gynt/ucp-extension-citizens
-          github-sha: 74b4b610212110f4bd21195efb9d35b0d0c90f04
+          github-sha: 46c9af6daaad564de229cfbd2b8e2739e2b96934
+          github-tag: main
+    - definition:
+        name: custom-skirmish-trails
+        version: 1.2.6
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-custom-skirmish-trails
+          github-sha: 7afdbd93db2d1c432cfb04ee2cac568f6254c462
+          github-tag: main
+    - definition:
+        name: workers
+        version: 0.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-workers
+          github-sha: e7a629c031308fe1b9dca467213f4e1b943479db
+          github-tag: main
+    - definition:
+        name: ai-ox-tethers
+        version: 1.0.3
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-ai-ox-tethers
+          github-sha: fc1209d6dd55b4f1ff9496f50b0f66ee81f97983
           github-tag: main
 
-   
+    - definition:
+        type: module
+        name: map-extensions
+        version: 1.0.0
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-map-extensions
+          github-sha: d9399125831c96a46701a510542e09f2a031971f
+          github-tag: main
+    - definition:
+        name: protocol
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-protocol
+          github-sha: 30f34ee79e0585f05b2729d01b192de374d0bae5
+          github-tag: main
+    - definition:
+        name: cffi
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-cffi
+          github-sha: 80c70e2c6b423742b682d78810b703d49c4c6410
+          github-tag: main
+    - definition:
+        name: luajit
+        version: 1.0.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-luajit
+          github-sha: 5b1e7f21c5e5db41a10937a81cf016169dc50067
+          github-tag: main
+    - definition:
+        name: ui
+        version: 1.0.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-ui
+          github-sha: d3a807cfee70308f707ea81ddb92ac8b1d375bd9
+          github-tag: test-d3a807cfee70
+    - definition:
+        name: map-png
+        version: 0.1.2
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-map-png
+          github-sha: 14f2c6c68054935af1e9992979e56c06827f700f
+          github-tag: v0.1.2
+    - definition:
+        name: automarket
+        type: module
+        version: 1.1.0
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp-extension-automarket
+          github-sha: 858890f558fd042215913e862745d98ed13d8834
+          github-tag: fix/multiplayer-sync-and-fees
+    - definition:
+        name: audio-fixes
+        version: 0.1.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-audio-fixes
+          github-sha: c17ff7d06499f581ac1cff73ddca7916333956b4
+          github-tag: main
+    - definition:
+        name: audio-fixes
+        version: 0.2.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-audio-fixes
+          github-sha: 48997dd1367bfdff7a335b5defe93cc45ab395f0
+          github-tag: main
+    - definition:
+        name: steam-multiplayer
+        type: module
+        version: 1.2.3
+      contents:
+        source:
+          method: github
+          url: gynt/ucp-extension-steam-multiplayer
+          github-sha: 18c71b7cf10ba9ba3cc07a5c464dc463a6382bd4
+          github-tag: main
+    - definition:
+        name: recorder
+        version: 0.52.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp_recorder
+          github-sha: 8d53b00597a5fb91c8f57ff4df18dc342828fd6d
+          github-tag: release/recorder-0.52.0
+    - definition:
+        name: custom-hotkeys
+        version: 0.3.0
+        type: module
+      contents:
+        source:
+          method: github
+          url: Krarilotus/extension-custom-hotkeys
+          github-sha: 6f5686e2b29cc15c54daf81c991559c66c9fe326
+          github-tag: main
