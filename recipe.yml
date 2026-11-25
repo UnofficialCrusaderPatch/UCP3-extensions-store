@@ -447,6 +447,39 @@ extensions:
           github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
           github-tag: main
           location: ucp3-fixes
+    - definition:
+        name: ucp3-basics
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: ucp3-basics
+    - definition:
+        name: ucp3-basics-fixes
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: ucp3-basics-fixes
+    - definition:
+        name: ucp3-recommended
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: ucp3-recommended
 # Modules
     - definition:
         name: aiv-troops-behaviour
@@ -611,6 +644,16 @@ extensions:
           github-tag: main
     - definition:
         name: gmResourceModifier
+        version: 0.3.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/ucp_gmResourceModifier
+          github-sha: 27d4af01f7385e228fc3b30e5908f83973654c3a
+          github-tag: main
+    - definition:
+        name: gmResourceModifier
         version: 0.2.0
         type: module
       contents:
@@ -697,6 +740,16 @@ extensions:
           method: github
           url: Krarilotus/ucp-extension-startResources
           github-sha: d1f5328d4b17d36a523e6108610a079aeb40282f
+          github-tag: main
+    - definition:
+        name: textResourceModifier
+        version: 0.3.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/ucp_textResourceModifier
+          github-sha: 2025ebb8360664003cd212867c2816df2740d1e3
           github-tag: main
     - definition:
         name: textResourceModifier
@@ -850,16 +903,6 @@ extensions:
           github-sha: 14f2c6c68054935af1e9992979e56c06827f700f
           github-tag: v0.1.2
     - definition:
-        name: automarket
-        type: module
-        version: 1.1.0
-      contents:
-        source:
-          method: github
-          url: Krarilotus/ucp-extension-automarket
-          github-sha: 858890f558fd042215913e862745d98ed13d8834
-          github-tag: fix/multiplayer-sync-and-fees
-    - definition:
         name: audio-fixes
         version: 0.1.1
         type: module
@@ -889,16 +932,6 @@ extensions:
           url: gynt/ucp-extension-steam-multiplayer
           github-sha: 18c71b7cf10ba9ba3cc07a5c464dc463a6382bd4
           github-tag: main
-    - definition:
-        name: recorder
-        version: 0.52.0
-        type: module
-      contents:
-        source:
-          method: github
-          url: Krarilotus/ucp_recorder
-          github-sha: 8d53b00597a5fb91c8f57ff4df18dc342828fd6d
-          github-tag: release/recorder-0.52.0
     - definition:
         name: custom-hotkeys
         version: 0.3.0
