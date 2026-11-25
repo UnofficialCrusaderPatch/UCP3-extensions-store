@@ -447,6 +447,39 @@ extensions:
           github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
           github-tag: main
           location: ucp3-fixes
+    - definition:
+        name: ucp3-basics
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: ucp3-basics
+    - definition:
+        name: ucp3-basics-fixes
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: ucp3-basics-fixes
+    - definition:
+        name: ucp3-recommended
+        version: 1.0.0
+        type: plugin
+      contents:
+        source:
+          method: github
+          url: Krarilotus/ucp3-fixes
+          github-sha: 97a7fec827921c67ad8b81499d7b0b97559e6f48
+          github-tag: main
+          location: ucp3-recommended
 # Modules
     - definition:
         name: aiv-troops-behaviour
@@ -611,6 +644,16 @@ extensions:
           github-tag: main
     - definition:
         name: gmResourceModifier
+        version: 0.3.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/ucp_gmResourceModifier
+          github-sha: 27d4af01f7385e228fc3b30e5908f83973654c3a
+          github-tag: main
+    - definition:
+        name: gmResourceModifier
         version: 0.2.0
         type: module
       contents:
@@ -697,6 +740,16 @@ extensions:
           method: github
           url: Krarilotus/ucp-extension-startResources
           github-sha: d1f5328d4b17d36a523e6108610a079aeb40282f
+          github-tag: main
+    - definition:
+        name: textResourceModifier
+        version: 0.3.1
+        type: module
+      contents:
+        source:
+          method: github
+          url: UnofficialCrusaderPatch/ucp_textResourceModifier
+          github-sha: 2025ebb8360664003cd212867c2816df2740d1e3
           github-tag: main
     - definition:
         name: textResourceModifier
